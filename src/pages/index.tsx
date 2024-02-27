@@ -1,11 +1,12 @@
 import MainLayout from "@/components/layouts/MainLayout";
 import Stack from "@/components/layouts/Stack";
+import Intro from "@/features/Home/Intro";
 
 export default function Home() {
   return (
     <MainLayout>
       <Stack>
-        <h1>Hello World</h1>
+        <Intro />
       </Stack>
     </MainLayout>
   );
