@@ -1,3 +1,4 @@
+import MainNav from "@/features/Nav/MainNav";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
