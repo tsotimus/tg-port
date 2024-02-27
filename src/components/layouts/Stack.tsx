@@ -19,7 +19,7 @@ const Stack = ({
   const justifyClass = justify ? `justify-${justify}` : "";
   return (
     <div
-      className={`flex flex-${direction} ${gapClass} ${justifyClass} ${classNames} `}
+      className={`flex flex-${direction} ${gapClass} ${justifyClass} ${classNames} w-full `}
     >
       {children}
     </div>

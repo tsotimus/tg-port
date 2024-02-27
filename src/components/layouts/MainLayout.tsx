@@ -8,7 +8,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
       <MainNav />
-      <div>{children}</div>
+      {children}
     </>
   );
 };
