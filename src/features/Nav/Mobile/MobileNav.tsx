@@ -6,7 +6,7 @@ import { useDimensions } from "@/hooks/useDimensions";
 
 const sidebar = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    clipPath: `circle(${height * 2 + 200}px at 240px 40px)`,
     transition: {
       type: "spring",
       stiffness: 20,
@@ -14,7 +14,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: "circle(30px at 40px 40px)",
+    clipPath: "circle(30px at 240px 40px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -41,6 +41,7 @@ const MobileNav = () => {
         className="absolute top-0 right-0 bottom-0 w-72 bg-white"
         variants={sidebar}
       />
+
       <Navigation />
       <MobileToggle toggle={() => toggleOpen()} />
     </motion.nav>

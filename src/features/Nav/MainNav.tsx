@@ -1,8 +1,6 @@
 import Stack from "@/components/layouts/Stack";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
 import Link from "next/link";
-import { MobileToggle } from "./Mobile/MobileToggle";
-import { useState } from "react";
 import MobileNav from "./Mobile/MobileNav";
 
 const MainNav = () => {
