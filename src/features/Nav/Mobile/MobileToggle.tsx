@@ -23,7 +23,7 @@ type MobileToggleProps = {
 export const MobileToggle = ({ toggle }: MobileToggleProps) => (
   <button
     onClick={toggle}
-    className="flex justify-center align-center outline-none border-none select-none cursor-pointer absolute top-4 right-6 w-12 h-12 rounded-full bg-transparent "
+    className="flex justify-center items-center outline-none border-none select-none cursor-pointer absolute top-4 right-6 w-12 h-12 rounded-full bg-transparent "
   >
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path

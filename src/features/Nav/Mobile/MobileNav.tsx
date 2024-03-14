@@ -14,7 +14,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: "circle(30px at 240px 40px)",
+    clipPath: "circle(30px at 380px 40px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -35,10 +35,10 @@ const MobileNav = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      className="absolute top-0 right-0 bottom-0 w-72"
+      className="absolute top-0 right-0 bottom-0 w-full"
     >
       <motion.div
-        className="absolute top-0 right-0 bottom-0 w-72 bg-white"
+        className="absolute top-0 right-0 bottom-0 w-full bg-white"
         variants={sidebar}
       />
 
