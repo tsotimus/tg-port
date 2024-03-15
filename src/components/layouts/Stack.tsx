@@ -19,7 +19,7 @@ const Stack = ({
 }: PropsWithChildren<StackProps>) => {
   const gapClass = direction === "row" ? `space-x-${gap}` : `space-y-${gap}`;
   const justifyClass = justify ? `justify-${justify}` : "";
-  const alignClass = align ? `content-${align}` : "";
+  const alignClass = align ? `items-${align}` : "";
   return (
     <div
       className={`flex flex-${direction} ${alignClass} ${gapClass} ${justifyClass} ${className} w-full `}

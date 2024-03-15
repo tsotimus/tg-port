@@ -5,7 +5,8 @@ const Intro = () => {
     <Stack
       direction="col"
       align="center"
-      className="bg-slate-900 dark:bg-background w-full justify-center  "
+      justify="center"
+      className="bg-slate-900 dark:bg-background w-full"
       gap={20}
     >
       <h1 className="sm:text-3xl md:text-2xl lg:text-5xl m-6 font-bold text-center text-white relative w-1/2">

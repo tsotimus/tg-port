@@ -1,7 +1,7 @@
-import { useCycle, motion } from "framer-motion";
+import { useCycle, motion, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import { Navigation } from "./Navigation";
-import { MobileToggle } from "./MobileToggle";
+import { MobileToggle } from "./Mobile/MobileToggle";
 import { useDimensions } from "@/hooks/useDimensions";
 
 const sidebar = {
@@ -43,7 +43,7 @@ const MobileNav = () => {
         className="absolute top-0 right-0 bottom-0 w-full bg-white"
         variants={sidebar}
       />
-      <Navigation />
+      <Navigation isMobile />
       <MobileToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );
