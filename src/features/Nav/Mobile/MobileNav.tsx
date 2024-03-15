@@ -12,6 +12,7 @@ const sidebar = {
       stiffness: 20,
       restDelta: 2,
     },
+    zIndex: 49,
   }),
   closed: {
     clipPath: "circle(30px at 380px 40px)",
@@ -21,6 +22,7 @@ const sidebar = {
       stiffness: 400,
       damping: 40,
     },
+    zIndex: 0,
   },
 };
 
@@ -35,7 +37,7 @@ const MobileNav = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      className="absolute top-0 right-0 bottom-0 w-full z-50"
+      className="absolute top-0 right-0 bottom-0 w-full"
     >
       <motion.div
         className="absolute top-0 right-0 bottom-0 w-full bg-white"
