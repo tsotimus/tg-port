@@ -54,6 +54,9 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      inset: {
+        "4/5": "80%",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
