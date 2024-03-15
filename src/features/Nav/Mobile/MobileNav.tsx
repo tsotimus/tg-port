@@ -35,13 +35,12 @@ const MobileNav = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      className="absolute top-0 right-0 bottom-0 w-full"
+      className="absolute top-0 right-0 bottom-0 w-full z-50"
     >
       <motion.div
         className="absolute top-0 right-0 bottom-0 w-full bg-white"
         variants={sidebar}
       />
-
       <Navigation />
       <MobileToggle toggle={() => toggleOpen()} />
     </motion.nav>
