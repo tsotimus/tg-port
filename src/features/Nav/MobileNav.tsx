@@ -22,7 +22,7 @@ const sidebar = {
       stiffness: 400,
       damping: 40,
     },
-    zIndex: 0,
+    transitionEnd: { zIndex: 0 },
   },
 };
 
