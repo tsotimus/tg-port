@@ -1,4 +1,4 @@
-import Typography from "@/components/Typography";
+import Typography from "@/components/Typography/Typography";
 import Stack from "@/components/layouts/Stack";
 
 const Welcome = () => {
