@@ -1,6 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./Mobile/MenuItem";
+import { NavItem } from "./types";
 
 const variants = {
   open: {
@@ -13,37 +14,20 @@ const variants = {
 
 interface NavigationProps {
   isMobile?: boolean;
+  navItems: NavItem[];
 }
 
 const desktopClasses = "inline-flex flex-1 gap-12";
 const mobileClasses =
   "flex flex-col gap-8 z-50 relative justify-center items-center p-20 ";
 
-export const Navigation = ({ isMobile }: NavigationProps) => (
+export const Navigation = ({ isMobile, navItems }: NavigationProps) => (
   <motion.ul
     variants={variants}
     className={isMobile ? mobileClasses : desktopClasses}
   >
-    {itemIds.map((item) => (
+    {navItems.map((item) => (
       <MenuItem key={`${item.text}_${item.num}`} {...item} />
     ))}
   </motion.ul>
 );
-
-const itemIds = [
-  {
-    text: "Home",
-    href: "/",
-    num: 0,
-  },
-  {
-    text: "Projects",
-    href: "/blog",
-    num: 1,
-  },
-  {
-    text: "Blog",
-    href: "/blog",
-    num: 2,
-  },
-];

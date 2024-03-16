@@ -1,8 +1,10 @@
+import AdminLayout from "@/components/layouts/AdminLayout";
+
 const HomeAdminPage = () => {
   return (
-    <div>
+    <AdminLayout>
       <h1>Admin Home Page</h1>
-    </div>
+    </AdminLayout>
   );
 };
 

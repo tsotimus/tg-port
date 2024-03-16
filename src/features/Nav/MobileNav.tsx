@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Navigation } from "./Navigation";
 import { MobileToggle } from "./Mobile/MobileToggle";
 import { useDimensions } from "@/hooks/useDimensions";
+import { NavItem } from "./types";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -26,7 +27,11 @@ const sidebar = {
   },
 };
 
-const MobileNav = () => {
+type MobileNavProps = {
+  navItems: NavItem[];
+};
+
+const MobileNav = ({ navItems }: MobileNavProps) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -43,7 +48,7 @@ const MobileNav = () => {
         className="absolute top-0 right-0 bottom-0 w-full bg-white"
         variants={sidebar}
       />
-      <Navigation isMobile />
+      <Navigation navItems={navItems} isMobile />
       <MobileToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );

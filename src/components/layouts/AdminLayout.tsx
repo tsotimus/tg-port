@@ -7,23 +7,23 @@ interface MainLayoutProps {
 
 const NAV_ITEMS = [
   {
-    text: "Home",
+    text: "Portfolio",
     href: "/",
     num: 0,
   },
   {
-    text: "Projects",
+    text: "Blog",
     href: "/blog",
     num: 1,
   },
   {
-    text: "Blog",
+    text: "Logout",
     href: "/blog",
     num: 2,
   },
 ];
 
-const MainLayout = ({ children }: MainLayoutProps) => {
+const AdminLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
       <MainNav navItems={NAV_ITEMS} />
@@ -32,4 +32,4 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   );
 };
 
-export default MainLayout;
+export default AdminLayout;
