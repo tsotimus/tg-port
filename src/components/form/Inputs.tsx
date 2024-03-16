@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
 
 type GenericInputProps = {
   name: string;
@@ -71,5 +72,46 @@ export const SelectInput = ({
         );
       }}
     />
+  );
+};
+
+type FileInputProps = Omit<GenericInputProps, "rules"> & {
+  required?: boolean;
+};
+
+export const FileInput = ({ name, required, label }: FileInputProps) => {
+  const { register, setValue } = useFormContext();
+  const fileElement = useRef<HTMLInputElement>(null);
+
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+    setValue(name, file, {
+      shouldTouch: true,
+      shouldDirty: true,
+      shouldValidate: true,
+    });
+  };
+
+  return (
+    <div>
+      <label
+        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        htmlFor="file_input"
+      >
+        {label ? label : "Upload file"}
+      </label>
+      <input
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        id="file_input"
+        type="file"
+        accept="image/*"
+        {...register(name, {
+          required: required,
+        })}
+        onChange={handleOnChange}
+        ref={fileElement}
+      />
+    </div>
   );
 };

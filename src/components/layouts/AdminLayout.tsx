@@ -7,18 +7,18 @@ interface MainLayoutProps {
 
 const NAV_ITEMS = [
   {
-    text: "Portfolio",
-    href: "/",
+    text: "Projects",
+    href: "/admin/projects",
     num: 0,
   },
   {
     text: "Blog",
-    href: "/blog",
+    href: "/admin/blog",
     num: 1,
   },
   {
     text: "Logout",
-    href: "/blog",
+    href: "/",
     num: 2,
   },
 ];
