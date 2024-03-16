@@ -27,7 +27,7 @@ export const TextInput = ({ name, label, rules }: TextInputProps) => {
       render={({ field: { onChange, onBlur, value } }) => {
         return (
           <input
-            className="border border-gray-300 rounded-md p-2"
+            className="border border-gray-300 rounded-md p-2 w-full"
             placeholder={label}
             onChange={onChange}
             value={value}

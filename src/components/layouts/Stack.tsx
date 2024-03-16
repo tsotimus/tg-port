@@ -22,7 +22,7 @@ const Stack = ({
   const alignClass = align ? `items-${align}` : "";
   return (
     <div
-      className={`flex flex-${direction} ${alignClass} ${gapClass} ${justifyClass} ${className} w-full `}
+      className={`flex flex-${direction} ${gapClass} ${alignClass} ${justifyClass} ${className} w-full `}
     >
       {children}
     </div>
