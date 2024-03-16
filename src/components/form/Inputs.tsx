@@ -7,7 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
+import { ChangeEvent, useRef } from "react";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
 type GenericInputProps = {
   name: string;
@@ -26,8 +28,8 @@ export const TextInput = ({ name, label, rules }: TextInputProps) => {
       rules={rules}
       render={({ field: { onChange, onBlur, value } }) => {
         return (
-          <input
-            className="border border-gray-300 rounded-md p-2 w-full"
+          <Input
+            type="text"
             placeholder={label}
             onChange={onChange}
             value={value}
@@ -59,7 +61,7 @@ export const SelectInput = ({
         return (
           <Select value={value} onValueChange={onChange}>
             <SelectTrigger className="w-[280px]">
-              <SelectValue placeholder="Select a timezone" />
+              <SelectValue placeholder={label} />
             </SelectTrigger>
             <SelectContent>
               {options.map((option) => (
@@ -94,15 +96,12 @@ export const FileInput = ({ name, required, label }: FileInputProps) => {
   };
 
   return (
-    <div>
-      <label
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        htmlFor="file_input"
-      >
+    <div className="grid w-full max-w-sm items-center gap-1.5">
+      <Label className="cursor-pointer block mb-2 " htmlFor="file_input">
         {label ? label : "Upload file"}
-      </label>
-      <input
-        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+      </Label>
+      <Input
+        className="block w-full text-sm text-black bg-white cursor-pointer focus:outline-none placeholder-white"
         id="file_input"
         type="file"
         accept="image/*"

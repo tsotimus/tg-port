@@ -27,7 +27,7 @@ const AdminLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
       <MainNav navItems={NAV_ITEMS} />
-      {children}
+      <div className="bg-black">{children}</div>
     </>
   );
 };

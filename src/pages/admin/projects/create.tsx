@@ -5,7 +5,7 @@ import CreateProject from "@/features/Admin/Projects/CreateProject";
 const CreateProjectPage = () => {
   return (
     <AdminLayout>
-      <Stack className="p-10">
+      <Stack className="p-12">
         <CreateProject />
       </Stack>
     </AdminLayout>

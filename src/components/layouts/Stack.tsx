@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { PropsWithChildren, ReactNode } from "react";
 
 interface StackProps {
@@ -17,12 +18,14 @@ const Stack = ({
   align,
   children,
 }: PropsWithChildren<StackProps>) => {
-  const gapClass = direction === "row" ? `space-x-${gap}` : `space-y-${gap}`;
   const justifyClass = justify ? `justify-${justify}` : "";
   const alignClass = align ? `items-${align}` : "";
   return (
     <div
-      className={`flex flex-${direction} ${gapClass} ${alignClass} ${justifyClass} ${className} w-full `}
+      className={cn(
+        `flex flex-${direction} ${alignClass} ${justifyClass} w-full gap-${gap}`,
+        className
+      )}
     >
       {children}
     </div>

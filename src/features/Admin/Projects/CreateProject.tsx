@@ -3,6 +3,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import ProjectForm from "./ProjectForm";
+import Stack from "@/components/layouts/Stack";
+import Typography from "@/components/Typography/Typography";
 
 const MAX_FILE_SIZE = 500000;
 const ACCEPTED_IMAGE_TYPES = [
@@ -14,6 +16,7 @@ const ACCEPTED_IMAGE_TYPES = [
 
 const schema = z.object({
   title: z.string(),
+  projectType: z.enum(["SHOWCASE", "LINK"]),
   file: z
     .any()
     .refine((files) => files?.length == 1, "Image is required.")
@@ -41,7 +44,10 @@ const CreateProject = () => {
   return (
     <FormProvider {...methods}>
       <FormLayout onSubmit={onSubmit}>
-        <ProjectForm />
+        <Stack gap={12}>
+          <Typography variant="h1">Create Project</Typography>
+          <ProjectForm />
+        </Stack>
       </FormLayout>
     </FormProvider>
   );

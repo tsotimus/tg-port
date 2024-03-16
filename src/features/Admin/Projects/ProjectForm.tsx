@@ -4,12 +4,25 @@ import Stack from "@/components/layouts/Stack";
 
 const ProjectForm = () => {
   return (
-    <Stack gap={4}>
+    <Stack gap={8}>
       <FormRow>
         <TextInput name="title" label="Title" />
       </FormRow>
       <FormRow>
-        <SelectInput name="projectType" label="Project Type" options={[]} />
+        <SelectInput
+          name="projectType"
+          label="Project Type"
+          options={[
+            {
+              label: "Showcase",
+              value: "SHOWCASE",
+            },
+            {
+              label: "Link",
+              value: "LINK",
+            },
+          ]}
+        />
       </FormRow>
       <FormRow>
         <FileInput name="mainImage" label="Main Image" />
