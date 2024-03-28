@@ -15,17 +15,24 @@ type GenericInputProps = {
   name: string;
   label?: string;
   rules?: RegisterOptions;
+  defaultValue?: string;
 };
 
 type TextInputProps = GenericInputProps;
 
-export const TextInput = ({ name, label, rules }: TextInputProps) => {
+export const TextInput = ({
+  name,
+  label,
+  rules,
+  defaultValue,
+}: TextInputProps) => {
   const { control } = useFormContext();
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
+      defaultValue={defaultValue || ""}
       render={({ field: { onChange, onBlur, value } }) => {
         return (
           <Input
