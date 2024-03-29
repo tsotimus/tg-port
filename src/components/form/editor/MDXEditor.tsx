@@ -17,14 +17,11 @@ import {
   DiffSourceToggleWrapper,
   UndoRedo,
   jsxPlugin,
-  usePublisher,
-  insertJsx$,
-  Button,
 } from "@mdxeditor/editor";
 import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
 import { InsertAccordion, InsertCallout } from "./Inserts";
 
-const MDXEditor = dynamic(
+const ImportedEditor = dynamic(
   () => import("@mdxeditor/editor").then((mod) => mod.MDXEditor),
   { ssr: false }
 );
@@ -52,7 +49,7 @@ interface EditorProps {
   rules?: RegisterOptions;
   defaultValue?: string;
 }
-const Editor = ({ name, rules, defaultValue }: EditorProps) => {
+const MDXEditor = ({ name, rules, defaultValue }: EditorProps) => {
   const { control } = useFormContext();
 
   return (
@@ -63,29 +60,27 @@ const Editor = ({ name, rules, defaultValue }: EditorProps) => {
       defaultValue={defaultValue || ""}
       render={({ field: { value, onChange } }) => {
         return (
-          <MDXEditor
-            className="w-full h-96 bg-white border border-gray-200 rounded-md p-4"
+          <ImportedEditor
+            className="w-full h-[1000px] overflow-auto bg-white border border-gray-200 rounded-md p-4"
+            contentEditableClassName="prose h-[1000px]"
             onChange={onChange}
             markdown={value}
             plugins={[
               codeBlockPlugin({
                 codeBlockEditorDescriptors: [PlainTextCodeEditorDescriptor],
               }),
-              diffSourcePlugin({
-                viewMode: "rich-text",
-              }),
               headingsPlugin(),
               listsPlugin(),
               linkPlugin(),
               quotePlugin(),
               markdownShortcutPlugin(),
+              diffSourcePlugin({
+                viewMode: "source",
+              }),
               jsxPlugin({ jsxComponentDescriptors: MDX_COMPONENTS }),
               toolbarPlugin({
                 toolbarContents: () => (
                   <>
-                    <DiffSourceToggleWrapper>
-                      <UndoRedo />
-                    </DiffSourceToggleWrapper>
                     <InsertCallout />
                     <InsertAccordion />
                   </>
@@ -99,4 +94,4 @@ const Editor = ({ name, rules, defaultValue }: EditorProps) => {
   );
 };
 
-export default Editor;
+export default MDXEditor;

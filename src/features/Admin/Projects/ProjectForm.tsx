@@ -1,11 +1,9 @@
-import Editor from "@/components/form/editor/Editor";
+import MDXEditor from "@/components/form/editor/MDXEditor";
 import { FormRow } from "@/components/form/FormLayout";
 import { FileInput, SelectInput, TextInput } from "@/components/form/Inputs";
-// import MdxEditor from "@/components/form/MDXEditor";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import { useFormContext } from "react-hook-form";
-// import { DevTool } from "@hookform/devtools";
 
 const ProjectForm = () => {
   const {
@@ -37,7 +35,7 @@ const ProjectForm = () => {
           ]}
         />
       </FormRow>
-      <Editor name="mdxContent" rules={{ required: true }} />
+      <MDXEditor name="mdxContent" rules={{ required: true }} />
       <FormRow>
         <Button type="submit" disabled={!isValid || !isDirty}>
           Submit
