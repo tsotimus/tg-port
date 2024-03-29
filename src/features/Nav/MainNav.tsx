@@ -11,7 +11,7 @@ const MainNav = ({ navItems }: MainNavProps) => {
   const { isMobile } = useBreakpoints();
 
   return (
-    <Stack direction="row" justify="between" className="p-6">
+    <Stack direction="row" justify="between" className="p-6" component="header">
       <h1 className="text-2xl font-bold w-full">My Portfolio</h1>
       {isMobile ? (
         <MobileNav navItems={navItems} />

@@ -1,5 +1,6 @@
 import MainNav from "@/features/Nav/MainNav";
 import { ReactNode } from "react";
+import BackgroundBeam from "./BackgroundBeam";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -27,6 +28,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
       <MainNav navItems={NAV_ITEMS} />
+      <BackgroundBeam />
       {children}
     </>
   );

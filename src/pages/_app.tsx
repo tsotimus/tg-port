@@ -10,13 +10,13 @@ export const fontSans = FontSans({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main
+    <div
       className={cn(
         "min-h-screen bg-background font-sans antialiased",
         fontSans.variable
       )}
     >
       <Component {...pageProps} />
-    </main>
+    </div>
   );
 }

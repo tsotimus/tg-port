@@ -25,49 +25,37 @@ const components = {
   MyTest: dynamic(() => import("@/components/mdx/TestComponent")),
   Head,
 };
-type PostPageProps = {
+type ProjectPageProps = {
   source: MDXRemoteSerializeResult;
-  frontMatter: {
-    title: string;
-    description?: string;
-  };
+  title: string;
 };
 
-export default function PostPage({ source, frontMatter }: PostPageProps) {
+export default function ProjectPage({ source, title }: ProjectPageProps) {
   return (
     <MainLayout>
       <Head>
-        <title>{frontMatter.title}</title>
+        <title>{title}</title>
       </Head>
-      <header>
+      {/* <header>
         <nav>
           <Link href="/" legacyBehavior>
             <a>👈 Go back home</a>
           </Link>
         </nav>
-      </header>
-      <div className="post-header">
-        <h1>{frontMatter.title}</h1>
-        {frontMatter.description && (
+      </header> */}
+      <main className="flex justify-between px-4 mx-auto max-w-screen-xl flex-col">
+        <div className="post-header">
+          <h1 className="text-2xl font-extrabold tracking-tight text-slate-200 md:text-3xl ">
+            {title}
+          </h1>
+          {/* {frontMatter.description && (
           <p className="description">{frontMatter.description}</p>
-        )}
-      </div>
-      <main>
-        <MDXRemote {...source} components={components} />
+        )} */}
+        </div>
+        <article className="prose text-white prose-img:rounded-xl prose-headings:text-white prose-a:text-blue-600 mt-12 prose prose-slate dark:prose-dark">
+          <MDXRemote {...source} components={components} />
+        </article>
       </main>
-
-      <style jsx>{`
-        .post-header h1 {
-          margin-bottom: 0;
-        }
-
-        .post-header {
-          margin-bottom: 2rem;
-        }
-        .description {
-          opacity: 0.6;
-        }
-      `}</style>
     </MainLayout>
   );
 }
@@ -85,7 +73,7 @@ export const getStaticProps = async ({ params }: StaticPropsProps) => {
     slug: slug,
   });
 
-  const { content, data } = matter(newProject.mdxContent);
+  const { content } = matter(newProject.mdxContent);
 
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
@@ -93,13 +81,13 @@ export const getStaticProps = async ({ params }: StaticPropsProps) => {
       remarkPlugins: [],
       rehypePlugins: [],
     },
-    scope: data,
+    // scope: data,
   });
 
   return {
     props: {
       source: mdxSource,
-      frontMatter: data,
+      title: newProject.title,
     },
   };
 };
