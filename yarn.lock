@@ -570,6 +570,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@headlessui/react@npm:^1.7.18":
+  version: 1.7.18
+  resolution: "@headlessui/react@npm:1.7.18"
+  dependencies:
+    "@tanstack/react-virtual": "npm:^3.0.0-beta.60"
+    client-only: "npm:^0.0.1"
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 10c0/2d88d10874879182d4b9ed9a7779266032214034481129ba544e858d3624c8d12333e6a9d9d8263f2f116bc823bcfd43a2d1f69800fbf6a47b34d989370346e5
+  languageName: node
+  linkType: hard
+
 "@hookform/devtools@npm:^4.3.1":
   version: 4.3.1
   resolution: "@hookform/devtools@npm:4.3.1"
@@ -2216,10 +2229,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/react-virtual@npm:^3.0.0-beta.60":
+  version: 3.2.0
+  resolution: "@tanstack/react-virtual@npm:3.2.0"
+  dependencies:
+    "@tanstack/virtual-core": "npm:3.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/e736cfa35a6381a2dfcf3f2aa29e07cd842a1ee586aa88c4851dea1c5887a6d4c262f6cbf87d8aad668e137a14612a5f1197793d222d1233d70764f2614ef164
+  languageName: node
+  linkType: hard
+
 "@tanstack/table-core@npm:8.15.3":
   version: 8.15.3
   resolution: "@tanstack/table-core@npm:8.15.3"
   checksum: 10c0/06448565bee2f366c31b1a143545355138937d7eb2525aeebaa2cb6dad7ce9e6acf692a2cc9e583da36f59eca0db2c40a2a6f27f19a8bffa0e52ee18caf86f8a
+  languageName: node
+  linkType: hard
+
+"@tanstack/virtual-core@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@tanstack/virtual-core@npm:3.2.0"
+  checksum: 10c0/04e14e238bd3246d15990b93a11f4986fe8168fbe3cec9e631adaf0cf17d1a9eed6e939f7594bae959ceeb4d16e6e58189e2c1a787c2feea7f5f5b4269a17229
   languageName: node
   linkType: hard
 
@@ -7267,6 +7299,7 @@ __metadata:
   resolution: "new-port@workspace:."
   dependencies:
     "@auth0/nextjs-auth0": "npm:^3.5.0"
+    "@headlessui/react": "npm:^1.7.18"
     "@hookform/devtools": "npm:^4.3.1"
     "@hookform/resolvers": "npm:^3.3.4"
     "@mdxeditor/editor": "npm:^2.18.0"
