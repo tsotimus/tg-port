@@ -44,3 +44,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.prose .callout p {
+  @apply m-0;
+}
