@@ -43,7 +43,7 @@ export default function ProjectPage({ source, title }: ProjectPageProps) {
           </Link>
         </nav>
       </header> */}
-      <main className="flex justify-between px-4 mx-auto max-w-screen-xl flex-col">
+      <main className="max-w-3xl mx-auto">
         <div className="post-header">
           <h1 className="text-2xl font-extrabold tracking-tight text-slate-200 md:text-3xl ">
             {title}
@@ -52,7 +52,7 @@ export default function ProjectPage({ source, title }: ProjectPageProps) {
           <p className="description">{frontMatter.description}</p>
         )} */}
         </div>
-        <article className="prose text-white prose-img:rounded-xl prose-headings:text-white prose-a:text-blue-600 mt-12 prose prose-slate dark:prose-dark">
+        <article className="prose prose-img:rounded-xl prose-headings:text-white prose-a:text-blue-600 mt-12 text-slate-400">
           <MDXRemote {...source} components={components} />
         </article>
       </main>

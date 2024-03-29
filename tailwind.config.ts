@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import { Config } from "tailwindcss";
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
@@ -16,38 +16,8 @@ const config = {
     extend: {
       colors: {
         border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
       },
       inset: {
         "4/5": "80%",
@@ -71,6 +41,51 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      typography: (theme: any) => ({
+        css: {
+          color: theme("colors.slate.400"),
+          "--tw-prose-lead": theme("colors.slate.400"),
+          "h2, h3, h4, thead th": {
+            color: theme("colors.slate.200"),
+          },
+          "h2 small, h3 small, h4 small": {
+            color: theme("colors.slate.400"),
+          },
+          kbd: {
+            background: theme("colors.slate.700"),
+            borderColor: theme("colors.slate.600"),
+            color: theme("colors.slate.200"),
+          },
+          code: {
+            color: theme("colors.slate.200"),
+          },
+          hr: {
+            borderColor: theme("colors.slate.200"),
+            opacity: "0.05",
+          },
+          pre: {
+            boxShadow: "inset 0 0 0 1px rgb(255 255 255 / 0.1)",
+          },
+          "--tw-prose-bullets": theme("colors.slate.500"),
+          a: {
+            color: theme("colors.white"),
+            borderBottomColor: theme("colors.sky.400"),
+          },
+          strong: {
+            color: theme("colors.slate.200"),
+          },
+          thead: {
+            color: theme("colors.slate.300"),
+            borderBottomColor: "rgb(148 163 184 / 0.2)",
+          },
+          "tbody tr": {
+            borderBottomColor: "rgb(148 163 184 / 0.1)",
+          },
+          blockQuote: {
+            color: theme("colors.white"),
+          },
+        },
+      }),
     },
     fontFamily: {
       sans: ["var(--font-sans)", ...fontFamily.sans],
