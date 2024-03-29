@@ -8,7 +8,9 @@ import Link from "next/link";
 import path from "path";
 import CustomLink from "@/components/CustomLink";
 import MainLayout from "@/components/layouts/MainLayout";
-import { postFilePaths, POSTS_PATH } from "@/lib/mdxUtils";
+import dbConnect from "@/lib/dbConnect";
+import Project from "@/models/Project";
+// import { postFilePaths, POSTS_PATH } from "@/lib/mdxUtils";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -20,6 +22,7 @@ const components = {
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
   TestComponent: dynamic(() => import("@/components/mdx/TestComponent")),
+  MyTest: dynamic(() => import("@/components/mdx/TestComponent")),
   Head,
 };
 type PostPageProps = {
@@ -76,10 +79,13 @@ type StaticPropsProps = {
 };
 
 export const getStaticProps = async ({ params }: StaticPropsProps) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(postFilePath);
+  const { slug } = params;
+  await dbConnect();
+  const newProject = await Project.findOne({
+    slug: slug,
+  });
 
-  const { content, data } = matter(source);
+  const { content, data } = matter(newProject.mdxContent);
 
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
@@ -99,11 +105,13 @@ export const getStaticProps = async ({ params }: StaticPropsProps) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = postFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ""))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }));
+  await dbConnect();
+  const allProjects = await Project.find();
+
+  // Map the path into the static paths object required by Next.js
+  const paths = allProjects.map((project) => ({
+    params: { slug: project.slug },
+  }));
 
   return {
     paths,
