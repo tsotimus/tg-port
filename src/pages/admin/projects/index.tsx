@@ -2,6 +2,7 @@ import AdminLayout from "@/components/layouts/AdminLayout";
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/typography/Typography";
 import { Button } from "@/components/ui/button";
+import MyProjects from "@/features/Admin/Projects/MyProjects";
 import Link from "next/link";
 
 const MyProjectsPage = () => {
@@ -12,6 +13,7 @@ const MyProjectsPage = () => {
         <Link href="/admin/projects/create">
           <Button type="button">Create new</Button>
         </Link>
+        <MyProjects />
       </Stack>
     </AdminLayout>
   );
