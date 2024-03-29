@@ -12,7 +12,7 @@ export const FormLayout = <T extends FieldValues>({
   const { handleSubmit } = useFormContext<T>();
   return (
     <form
-      className="bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
       onSubmit={handleSubmit(onSubmit)}
     >
       {children}

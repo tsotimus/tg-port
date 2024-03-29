@@ -97,18 +97,24 @@ export const SelectInput = ({
   );
 };
 
+type SwitchInputProps = GenericInputProps & {
+  disabled?: boolean;
+};
+
 export const SwitchInput = ({
   name,
   label,
   rules,
   defaultValue,
-}: TextInputProps) => {
+  disabled,
+}: SwitchInputProps) => {
   const { control } = useFormContext();
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
+      disabled={disabled}
       defaultValue={defaultValue || ""}
       render={({ field: { onChange, onBlur, value } }) => {
         return (
@@ -118,8 +124,8 @@ export const SwitchInput = ({
               <Switch
                 checked={value}
                 onCheckedChange={onChange}
-                disabled
                 aria-readonly
+                disabled={disabled}
               />
             </FormControl>
           </FormRow>
