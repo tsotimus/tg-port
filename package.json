@@ -29,6 +29,7 @@
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "date-fns": "^3.6.0",
     "easymde": "^2.18.0",
     "framer-motion": "10.12.16",
     "gray-matter": "^4.0.3",
