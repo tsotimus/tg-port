@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   },
   {
     text: "Projects",
-    href: "/blog",
+    href: "/projects",
     num: 1,
   },
   {
