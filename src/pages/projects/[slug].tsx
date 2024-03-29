@@ -7,6 +7,9 @@ import CustomLink from "@/components/CustomLink";
 import MainLayout from "@/components/layouts/MainLayout";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
+import TestComponent from "@/components/mdx/TestComponent";
+import { Callout } from "@/components/mdx/Callout";
+import AccordionMdx from "@/components/mdx/AccordionMdx";
 // import { postFilePaths, POSTS_PATH } from "@/lib/mdxUtils";
 
 // Custom components/renderers to pass to MDX.
@@ -15,13 +18,12 @@ import Project from "@/models/Project";
 // here.
 const components = {
   a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  TestComponent: dynamic(() => import("@/components/mdx/TestComponent")),
-  MyTest: dynamic(() => import("@/components/mdx/TestComponent")),
+  Callout: Callout,
+  Accordion: AccordionMdx,
+  MyTest: TestComponent,
   Head,
 };
+
 type ProjectPageProps = {
   source: MDXRemoteSerializeResult;
   title: string;

@@ -1,7 +1,6 @@
 // You can use this code in a separate component that's imported in your pages.
 import type { CodeBlockEditorDescriptor } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
-import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import MDX_COMPONENTS from "./definitions";
 
@@ -23,31 +22,12 @@ import {
   Button,
 } from "@mdxeditor/editor";
 import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
+import { InsertAccordion, InsertCallout } from "./Inserts";
 
 const MDXEditor = dynamic(
   () => import("@mdxeditor/editor").then((mod) => mod.MDXEditor),
   { ssr: false }
 );
-
-// a toolbar button that will insert a JSX element into the editor.
-const InsertMyLeaf = () => {
-  const insertJsx = usePublisher(insertJsx$);
-  return (
-    <Button
-      onClick={() =>
-        insertJsx({
-          name: "MyTest",
-          kind: "text",
-          props: {
-            name: "Tsot and Becca",
-          },
-        })
-      }
-    >
-      Leaf
-    </Button>
-  );
-};
 
 const PlainTextCodeEditorDescriptor: CodeBlockEditorDescriptor = {
   match: () => true,
@@ -106,7 +86,8 @@ const Editor = ({ name, rules, defaultValue }: EditorProps) => {
                     <DiffSourceToggleWrapper>
                       <UndoRedo />
                     </DiffSourceToggleWrapper>
-                    <InsertMyLeaf />
+                    <InsertCallout />
+                    <InsertAccordion />
                   </>
                 ),
               }),
