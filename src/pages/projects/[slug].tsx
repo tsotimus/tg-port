@@ -1,7 +1,6 @@
 import matter from "gray-matter";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import dynamic from "next/dynamic";
 import Head from "next/head";
 import CustomLink from "@/components/CustomLink";
 import MainLayout from "@/components/layouts/MainLayout";
@@ -10,12 +9,11 @@ import Project from "@/models/Project";
 import TestComponent from "@/components/mdx/TestComponent";
 import { Callout } from "@/components/mdx/Callout";
 import AccordionMdx from "@/components/mdx/AccordionMdx";
-// import { postFilePaths, POSTS_PATH } from "@/lib/mdxUtils";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
+// to handle import statements. Instead, you must include components in scope here
+//TODO: Test moving this to a separate file
 const components = {
   a: CustomLink,
   Callout: Callout,
