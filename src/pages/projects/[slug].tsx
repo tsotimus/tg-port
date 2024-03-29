@@ -1,11 +1,8 @@
-import fs from "fs";
 import matter from "gray-matter";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import Link from "next/link";
-import path from "path";
 import CustomLink from "@/components/CustomLink";
 import MainLayout from "@/components/layouts/MainLayout";
 import dbConnect from "@/lib/dbConnect";
