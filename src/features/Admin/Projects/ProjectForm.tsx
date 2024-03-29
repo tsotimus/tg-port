@@ -13,7 +13,6 @@ import { Form, useFormContext } from "react-hook-form";
 const ProjectForm = () => {
   const {
     formState: { isValid, isDirty },
-    control,
   } = useFormContext();
 
   return (

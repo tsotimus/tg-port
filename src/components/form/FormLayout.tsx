@@ -21,5 +21,5 @@ export const FormLayout = <T extends FieldValues>({
 };
 
 export const FormRow = ({ children }: PropsWithChildren<{}>) => {
-  return <div className="w-[280px]">{children}</div>;
+  return <div className="w-[280px] flex flex-col gap-4">{children}</div>;
 };
