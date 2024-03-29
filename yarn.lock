@@ -7344,7 +7344,7 @@ __metadata:
     postcss: "npm:^8"
     react: "npm:^18"
     react-dom: "npm:^18"
-    react-hook-form: "npm:^7.51.0"
+    react-hook-form: "npm:^7.51.2"
     react-simplemde-editor: "npm:^5.2.0"
     remark: "npm:^15.0.1"
     remark-mdx: "npm:^3.0.1"
@@ -8015,7 +8015,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.44.2, react-hook-form@npm:^7.51.0":
+"react-hook-form@npm:^7.44.2, react-hook-form@npm:^7.51.2":
   version: 7.51.2
   resolution: "react-hook-form@npm:7.51.2"
   peerDependencies:

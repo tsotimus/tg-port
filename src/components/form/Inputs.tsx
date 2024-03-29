@@ -10,6 +10,9 @@ import {
 import { ChangeEvent, useRef } from "react";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
+import { FormControl, FormLabel } from "../ui/form";
+import { FormRow } from "./FormLayout";
 
 type GenericInputProps = {
   name: string;
@@ -35,13 +38,18 @@ export const TextInput = ({
       defaultValue={defaultValue || ""}
       render={({ field: { onChange, onBlur, value } }) => {
         return (
-          <Input
-            type="text"
-            placeholder={label}
-            onChange={onChange}
-            value={value}
-            onBlur={onBlur}
-          />
+          <FormRow>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Input
+                type="text"
+                placeholder={label}
+                onChange={onChange}
+                value={value}
+                onBlur={onBlur}
+              />
+            </FormControl>
+          </FormRow>
         );
       }}
     />
@@ -66,18 +74,55 @@ export const SelectInput = ({
       rules={rules}
       render={({ field: { onChange, value } }) => {
         return (
-          <Select value={value} onValueChange={onChange}>
-            <SelectTrigger className="w-[280px]">
-              <SelectValue placeholder={label} />
-            </SelectTrigger>
-            <SelectContent>
-              {options.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <FormRow>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Select value={value} onValueChange={onChange}>
+                <SelectTrigger className="w-[280px]">
+                  <SelectValue placeholder={label} />
+                </SelectTrigger>
+                <SelectContent>
+                  {options.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </FormControl>
+          </FormRow>
+        );
+      }}
+    />
+  );
+};
+
+export const SwitchInput = ({
+  name,
+  label,
+  rules,
+  defaultValue,
+}: TextInputProps) => {
+  const { control } = useFormContext();
+  return (
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue || ""}
+      render={({ field: { onChange, onBlur, value } }) => {
+        return (
+          <FormRow>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Switch
+                checked={value}
+                onCheckedChange={onChange}
+                disabled
+                aria-readonly
+              />
+            </FormControl>
+          </FormRow>
         );
       }}
     />

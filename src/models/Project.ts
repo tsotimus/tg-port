@@ -1,16 +1,5 @@
+import { ProjectModel } from "@/types/project";
 import mongoose from "mongoose";
-
-export type ProjectModel = {
-  title: string;
-  description: string;
-  slug: string;
-  mdxContent: string;
-  type: "SHOWCASE" | "LINK";
-  createdAt: Date;
-  updatedAt: Date;
-  featured: boolean;
-  publishedAt?: Date;
-};
 
 /* PetSchema will correspond to a collection in your MongoDB database. */
 const ProjectSchema = new mongoose.Schema<ProjectModel>(
