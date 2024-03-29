@@ -18,6 +18,7 @@ const config = {
         border: "hsl(var(--border))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        primary: "#0ea5e9",
       },
       inset: {
         "4/5": "80%",
