@@ -14,6 +14,7 @@ interface StackProps {
     | "aside"
     | "main"
     | "header"
+    | "form"
     | "footer";
   children: ReactNode;
 }
@@ -56,6 +57,10 @@ const Stack = ({
 
   if (component === "footer") {
     return <footer className={computedCname}>{children}</footer>;
+  }
+
+  if (component === "form") {
+    return <form className={computedCname}>{children}</form>;
   }
 
   return <div className={computedCname}>{children}</div>;

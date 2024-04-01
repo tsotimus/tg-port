@@ -18,9 +18,14 @@ const NAV_ITEMS = [
     num: 1,
   },
   {
+    text: "Media",
+    href: "/admin/media",
+    num: 2,
+  },
+  {
     text: "Logout",
     href: "/",
-    num: 2,
+    num: 3,
   },
 ];
 
