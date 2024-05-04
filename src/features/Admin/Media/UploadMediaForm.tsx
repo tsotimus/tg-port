@@ -1,6 +1,7 @@
 import DropzoneInput from "@/components/form/DropzoneInput";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
+import { MEDIA_HEADERS } from "@/utils/client/headers";
 import axios from "axios";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -34,7 +35,7 @@ const UploadMediaForm = () => {
     axios
       .post("/api/admin/v1/media", formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          ...MEDIA_HEADERS,
         },
       })
       .then(() => {
