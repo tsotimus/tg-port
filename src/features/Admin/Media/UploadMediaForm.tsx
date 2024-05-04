@@ -33,7 +33,7 @@ const UploadMediaForm = () => {
     }
 
     axios
-      .post("/api/admin/v1/media", formData, {
+      .post("/api/admin/v1/media/upload", formData, {
         headers: {
           ...MEDIA_HEADERS,
         },
