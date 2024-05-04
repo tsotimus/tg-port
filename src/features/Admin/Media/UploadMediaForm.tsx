@@ -1,6 +1,7 @@
 import DropzoneInput from "@/components/form/DropzoneInput";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import { FormProvider, useForm } from "react-hook-form";
 
 const acceptedFiles = {
@@ -23,8 +24,16 @@ const UploadMediaForm = () => {
   } = methods;
 
   const onSubmit = (data: FormData) => {
-    console.log("Here");
-    console.log(data);
+    const formData = new FormData();
+    for (let i = 0; i < data.media.length; i++) {
+      formData.append(`media${i}`, data.media[i]);
+    }
+
+    axios.post("/api/admin/v1/media", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
 
   return (
