@@ -11,6 +11,7 @@ export default async function handler(
       const { files } = await formidablePromise(req, {
         fileWriteStreamHandler: (file) => {
           console.log(file);
+          //TODO: Amend the VolatileFile type to include originalFilename, because it does actually exist and we should use this for public_id
           return createCloudinaryStream("somethingRandom");
         },
         keepExtensions: true,
