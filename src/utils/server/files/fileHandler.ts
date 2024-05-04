@@ -35,4 +35,13 @@ const isOverSizeLimit = (size: number) => {
   return false;
 };
 
-export { getFileExtension, formidablePromise, isOverSizeLimit };
+const removeFileExtension = (filename: string) => {
+  return filename.replace(/\.[^/.]+$/, "");
+};
+
+export {
+  getFileExtension,
+  formidablePromise,
+  isOverSizeLimit,
+  removeFileExtension,
+};

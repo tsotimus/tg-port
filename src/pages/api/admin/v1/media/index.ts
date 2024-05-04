@@ -1,6 +1,18 @@
-import { formidablePromise } from "@/utils/server/files/fileHandler";
-import { createCloudinaryStream } from "@/utils/server/files/fileStream";
+import { createApiResponse } from "@/utils/server/createApiResponse";
+import {
+  formidablePromise,
+  removeFileExtension,
+} from "@/utils/server/files/fileHandler";
+import {
+  MyVolatileFile,
+  createCloudinaryStreamForImage,
+  createCloudinaryStreamForVideo,
+} from "@/utils/server/files/fileStream";
 import { NextApiRequest, NextApiResponse } from "next";
+
+type ResponseData = {
+  message: string;
+};
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,20 +22,33 @@ export default async function handler(
     try {
       const { files } = await formidablePromise(req, {
         fileWriteStreamHandler: (file) => {
-          console.log(file);
-          //TODO: Amend the VolatileFile type to include originalFilename, because it does actually exist and we should use this for public_id
-          return createCloudinaryStream("somethingRandom");
+          const currentFile = file as MyVolatileFile; // Formidable VolatileFile type is not correct
+          const fileName = currentFile.originalFilename as string;
+          const parseFileName = removeFileExtension(fileName);
+          if (currentFile.mimetype?.includes("video")) {
+            return createCloudinaryStreamForVideo(parseFileName);
+          } else {
+            return createCloudinaryStreamForImage(parseFileName);
+          }
         },
         keepExtensions: true,
         allowEmptyFiles: false,
       });
 
       if (files) {
-        console.log("Success", files);
+        return res
+          .status(200)
+          .json(createApiResponse<ResponseData>({ message: "Success" }));
       }
     } catch (err) {
       console.error(err);
-      res.status(500).json({ error: "Something went wrong" });
+      return res
+        .status(500)
+        .json(
+          createApiResponse<ResponseData>({ message: "Error" }, [
+            "Something went wrong",
+          ])
+        );
     }
   }
 }

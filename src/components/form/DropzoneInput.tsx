@@ -8,6 +8,7 @@ import {
 import { useMemo } from "react";
 import Typography from "../typography/Typography";
 import { FileIcon } from "@radix-ui/react-icons";
+import { Files } from "formidable";
 
 const baseClassNames =
   "flex flex-col items-center w-3/4 m-4 p-20 outline-none transition-border duration-200 ease-in-out cursor-pointer border-2 rounded border-gray-200";
@@ -53,13 +54,17 @@ const DropzoneInput = ({
     },
   });
 
-  const acceptedFileItems = (acceptedFiles as FileWithPath[]).map((file) => (
-    <li key={file.path} className="flex gap-4">
-      <FileIcon />
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+  const acceptedFileItems = (files: FileWithPath[] | undefined) => {
+    if (!files) return null;
+    return files.map((file) => (
+      <li key={file.path} className="flex gap-4">
+        <FileIcon />
+        {file.path} - {file.size} bytes
+      </li>
+    ));
+  };
 
+  //TODO: Fix this to use value, instead of fileRejections
   const fileRejectionItems = fileRejections.map(({ file, errors }) => {
     const typedFile = file as FileWithPath;
     return (
@@ -113,7 +118,7 @@ const DropzoneInput = ({
             </div>
             <aside className="p-4 flex flex-col w-full">
               <h4>Accepted files</h4>
-              <ul>{acceptedFileItems}</ul>
+              <ul>{acceptedFileItems(value)}</ul>
               <h4>Rejected files</h4>
               <ul>{fileRejectionItems}</ul>
             </aside>

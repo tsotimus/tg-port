@@ -3,6 +3,7 @@ import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { FormProvider, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const acceptedFiles = {
   "image/*": [".png", ".gif", ".jpeg", ".jpg"],
@@ -21,6 +22,7 @@ const UploadMediaForm = () => {
   const {
     handleSubmit,
     formState: { isValid },
+    reset,
   } = methods;
 
   const onSubmit = (data: FormData) => {
@@ -29,11 +31,19 @@ const UploadMediaForm = () => {
       formData.append(`media${i}`, data.media[i]);
     }
 
-    axios.post("/api/admin/v1/media", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    axios
+      .post("/api/admin/v1/media", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(() => {
+        toast.success("Media uploaded successfully");
+        reset();
+      })
+      .catch(() => {
+        toast.error("Something went wrong");
+      });
   };
 
   return (

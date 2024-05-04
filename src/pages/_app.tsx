@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Inter as FontSans } from "next/font/google";
+import { Toaster } from "sonner";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
         fontSans.variable
       )}
     >
+      <Toaster />
       <Component {...pageProps} />
     </div>
   );
