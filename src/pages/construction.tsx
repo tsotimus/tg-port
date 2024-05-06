@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Stack from "@/components/layouts/Stack";
+import Head from "next/head";
 
 const ConstructionPage = () => {
   return (
@@ -9,6 +10,9 @@ const ConstructionPage = () => {
       gap={12}
       className="bg-gray-100 min-h-screen items-center justify-center"
     >
+      <Head>
+        <title>Under Construction</title>
+      </Head>
       <CldImage
         width="600"
         height="600"
