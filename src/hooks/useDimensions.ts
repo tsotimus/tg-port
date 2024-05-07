@@ -10,6 +10,7 @@ export const useDimensions = (ref: RefObject<HTMLElement>) => {
   useEffect(() => {
     dimensions.current.width = ref.current?.offsetWidth || 0;
     dimensions.current.height = ref.current?.offsetHeight || 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return dimensions.current;

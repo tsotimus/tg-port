@@ -6,9 +6,8 @@ import {
   FileWithPath,
 } from "react-dropzone";
 import { useMemo } from "react";
-import Typography from "../typography/Typography";
+import Typography from "@/components/typography/Typography";
 import { FileIcon } from "@radix-ui/react-icons";
-import { Files } from "formidable";
 
 const baseClassNames =
   "flex flex-col items-center w-3/4 m-4 p-20 outline-none transition-border duration-200 ease-in-out cursor-pointer border-2 rounded border-gray-200";
