@@ -1,6 +1,6 @@
 import AdminLayout from "@/components/layouts/AdminLayout";
 import Stack from "@/components/layouts/Stack";
-import Typography from "@/components/typography/Typography";
+import Typography from "@/components/Typography";
 import UploadMediaForm from "@/features/Admin/Media/UploadMediaForm";
 import Head from "next/head";
 

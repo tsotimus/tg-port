@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import ProjectForm from "./ProjectForm";
 import Stack from "@/components/layouts/Stack";
-import Typography from "@/components/typography/Typography";
+import Typography from "@/components/Typography";
 import axios from "axios";
 import { FormSchema, projectValidation } from "@/types/project";
 

@@ -6,7 +6,7 @@ import {
   FileWithPath,
 } from "react-dropzone";
 import { useMemo } from "react";
-import Typography from "@/components/typography/Typography";
+import Typography from "@/components/Typography";
 import { FileIcon } from "@radix-ui/react-icons";
 
 const baseClassNames =

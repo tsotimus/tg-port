@@ -1,5 +1,5 @@
 import MainLayout from "@/components/layouts/MainLayout";
-import Typography from "@/components/typography/Typography";
+import Typography from "@/components/Typography";
 
 const AllProjectsPage = () => {
   return (

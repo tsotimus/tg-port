@@ -1,6 +1,6 @@
 import AdminLayout from "@/components/layouts/AdminLayout";
 import Stack from "@/components/layouts/Stack";
-import Typography from "@/components/typography/Typography";
+import Typography from "@/components/Typography";
 import { Button } from "@/components/ui/button";
 import Head from "next/head";
 import Link from "next/link";
