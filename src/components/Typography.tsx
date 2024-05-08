@@ -45,9 +45,7 @@ const Typography = ({ variant, children, className = "" }: TypographyProps) => {
     case "h6":
       return <h6 className={`text-base ${className}`}>{children}</h6>;
     default:
-      return (
-        <p className={`leading-7 [&:not(:first-child)]:mt-6`}>{children}</p>
-      );
+      return <p className={`leading-7 ${className}`}>{children}</p>;
   }
 };
 
