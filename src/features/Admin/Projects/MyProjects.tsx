@@ -4,6 +4,8 @@ import { DataTable } from "@/components/tables/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import { Project } from "@/types/project";
 import { useRouter } from "next/router";
+import { Button } from "@/components/ui/button";
+import ButtonLink from "@/components/ButtonLink";
 
 const COLUMNS: ColumnDef<Project, string | number>[] = [
   {
@@ -21,7 +23,28 @@ const COLUMNS: ColumnDef<Project, string | number>[] = [
   },
   {
     header: "View",
+    cell: (cell) => (
+      <ButtonLink href={`/projects/${cell.row.original.slug}`}>View</ButtonLink>
+    ),
   },
+  {
+    header: "Edit",
+    cell: (cell) => {
+      return (
+        <ButtonLink href={`/admin/projects/edit/${cell.row.original._id}`}>
+          Edit
+        </ButtonLink>
+      );
+    },
+  },
+  // {
+  //   header: "Delete",
+  //   cell: (cell) => (
+  //     <ButtonLink href={`/admin/projects/delete/${cell.row.getValue("_id")}`}>
+  //       Delete
+  //     </ButtonLink>
+  //   ),
+  // },
 ];
 
 const MyProjects = () => {
@@ -32,11 +55,7 @@ const MyProjects = () => {
     <FullPageLoader />
   ) : (
     <div className="px-40 w-full mt-20">
-      <DataTable
-        columns={COLUMNS}
-        data={allProjects}
-        onRowClick={(row) => router.push(`/admin/projects/edit/${row._id}`)}
-      />
+      <DataTable columns={COLUMNS} data={allProjects} />
     </div>
   );
 };
