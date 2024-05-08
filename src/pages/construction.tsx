@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Stack from "@/components/layouts/Stack";
 import Head from "next/head";
+import ButtonLink from "@/components/ButtonLink";
 
 const ConstructionPage = () => {
   return (
@@ -31,9 +32,9 @@ const ConstructionPage = () => {
           In the meantime, you can check out my open source projects on GitHub.
         </p>
       </Stack>
-      <Button asChild>
-        <Link href="https://github.com/RockiRider">Visit my GitHub</Link>
-      </Button>
+      <ButtonLink href="https://github.com/RockiRider">
+        Visit my Github
+      </ButtonLink>
     </Stack>
   );
 };

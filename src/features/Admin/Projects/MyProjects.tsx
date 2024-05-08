@@ -4,7 +4,6 @@ import { DataTable } from "@/components/tables/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import { Project } from "@/types/project";
 import { useRouter } from "next/router";
-import { Button } from "@/components/ui/button";
 import ButtonLink from "@/components/ButtonLink";
 
 const COLUMNS: ColumnDef<Project, string | number>[] = [
