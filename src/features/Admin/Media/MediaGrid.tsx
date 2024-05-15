@@ -3,7 +3,7 @@ import { Media } from "./types";
 import Stack from "@/components/layouts/Stack";
 import { useState } from "react";
 import Typography from "@/components/Typography";
-import copy from "copy-to-clipboard";
+import CopyToClipboard from "@/components/loaders/CopyToClipboard";
 
 interface MediaGridProps {
   data: Media[];
@@ -13,8 +13,8 @@ const MediaGrid = ({ data }: MediaGridProps) => {
 
   const handleMediaClick = (media: Media) => {
     setSelectedMedia(media);
-    copy(media.public_id);
   };
+
   return (
     <Stack gap={2} className="mt-10" align="center">
       {selectedMedia && (
@@ -26,7 +26,10 @@ const MediaGrid = ({ data }: MediaGridProps) => {
           gap={4}
         >
           <Typography>Source: </Typography>
-          <Typography>{selectedMedia.public_id}</Typography>
+          <Stack direction="row" gap={2} align="center">
+            <Typography>{selectedMedia.public_id}</Typography>
+            <CopyToClipboard text={selectedMedia.public_id} />
+          </Stack>
         </Stack>
       )}
       <div className="flex flex-wrap w-full">
