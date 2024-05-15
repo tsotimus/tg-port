@@ -23,7 +23,7 @@ const MediaGrid = ({ data }: MediaGridProps) => {
           justify="center"
           align="center"
           className="mb-5 w-1/2"
-          gap={2}
+          gap={4}
         >
           <Typography>Source: </Typography>
           <Typography>{selectedMedia.public_id}</Typography>

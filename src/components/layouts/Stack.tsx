@@ -30,8 +30,11 @@ const Stack = ({
 }: PropsWithChildren<StackProps>) => {
   const justifyClass = justify ? `justify-${justify}` : "";
   const alignClass = align ? `items-${align}` : "";
+  const layoutClass =
+    direction === "col" ? `flex flex-${direction}` : `grid grid-flow-col`;
+  const gapClass = direction === "col" ? `space-y-${gap}` : `gap-${gap}`;
   const computedCname = cn(
-    `flex flex-${direction} ${alignClass} ${justifyClass} w-full gap-${gap}`,
+    `${layoutClass} ${alignClass} ${justifyClass} w-full ${gapClass}`,
     className
   );
 
