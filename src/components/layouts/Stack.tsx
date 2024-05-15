@@ -32,9 +32,8 @@ const Stack = ({
   const alignClass = align ? `items-${align}` : "";
   const layoutClass =
     direction === "col" ? `flex flex-${direction}` : `grid grid-flow-col`;
-  const gapClass = direction === "col" ? `space-y-${gap}` : `gap-${gap}`;
   const computedCname = cn(
-    `${layoutClass} ${alignClass} ${justifyClass} w-full ${gapClass}`,
+    `${layoutClass} ${alignClass} ${justifyClass} w-full gap-${gap}`,
     className
   );
 
