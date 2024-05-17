@@ -1,16 +1,21 @@
-import { FormLayout } from "@/components/form/FormLayout";
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import ProjectForm from "./ProjectForm";
-import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
+import { FormLayout } from "@/components/form/FormLayout";
+import Stack from "@/components/layouts/Stack";
+import { FormSchema, Project, projectValidation } from "@/types/project";
+import { FormProvider, useForm } from "react-hook-form";
+import ProjectForm from "./ProjectForm";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { FormSchema, projectValidation } from "@/types/project";
 
-const CreateProject = () => {
+interface EditProjectProps {
+  project: Project;
+}
+
+const EditProject = ({ project }: EditProjectProps) => {
   const methods = useForm<FormSchema>({
     mode: "onChange",
     resolver: zodResolver(projectValidation),
+    defaultValues: project,
   });
 
   const onSubmit = (data: FormSchema) => {
@@ -28,7 +33,7 @@ const CreateProject = () => {
     <FormProvider {...methods}>
       <FormLayout onSubmit={onSubmit}>
         <Stack gap={12}>
-          <Typography variant="h1">Create Project</Typography>
+          <Typography variant="h1">Edit Project</Typography>
           <ProjectForm />
         </Stack>
       </FormLayout>
@@ -36,4 +41,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default EditProject;
