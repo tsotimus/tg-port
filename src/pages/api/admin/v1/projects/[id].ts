@@ -22,4 +22,19 @@ export default async function handler(
       return res.status(500).json({ msg: "Internal Server Error" });
     }
   }
+  if (req.method === "DELETE") {
+    try {
+      const { id } = req.query;
+
+      await dbConnect();
+      await Project.findOneAndDelete({
+        _id: id,
+      });
+      return res.status(201).json(createApiResponse("Success", []));
+    } catch (err) {
+      return res
+        .status(500)
+        .json(createApiResponse(null, ["Internal Server Error"]));
+    }
+  }
 }
