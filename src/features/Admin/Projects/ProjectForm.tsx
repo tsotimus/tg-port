@@ -8,9 +8,14 @@ import {
 } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
-import { Form, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
-const ProjectForm = () => {
+interface ProjectFormProps {
+  isEditing?: boolean;
+  handleDelete?: () => void;
+}
+
+const ProjectForm = ({ isEditing, handleDelete }: ProjectFormProps) => {
   const {
     formState: { isValid, isDirty },
   } = useFormContext();
@@ -38,9 +43,16 @@ const ProjectForm = () => {
       <MDXEditor name="mdxContent" rules={{ required: true }} />
       <FormRow>
         <Button type="submit" disabled={!isValid || !isDirty}>
-          Submit
+          {isEditing ? "Save" : "Create"}
         </Button>
       </FormRow>
+      {isEditing && (
+        <FormRow>
+          <Button type="button" variant="destructive" onClick={handleDelete}>
+            Delete
+          </Button>
+        </FormRow>
+      )}
     </Stack>
   );
 };

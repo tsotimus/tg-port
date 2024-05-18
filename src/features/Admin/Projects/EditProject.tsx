@@ -5,13 +5,24 @@ import { FormSchema, Project, projectValidation } from "@/types/project";
 import { FormProvider, useForm } from "react-hook-form";
 import ProjectForm from "./ProjectForm";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import useSWRMutation from "swr/mutation";
+import { deleteFetcher, updateFetcher } from "@/utils/client/genericFetchers";
 
 interface EditProjectProps {
   project: Project;
 }
 
 const EditProject = ({ project }: EditProjectProps) => {
+  const { trigger: triggerUpdate } = useSWRMutation(
+    `/api/admin/v1/projects/${project._id}`,
+    updateFetcher
+  );
+
+  const { trigger: triggerDelete } = useSWRMutation(
+    `/api/admin/v1/projects/${project._id}`,
+    deleteFetcher
+  );
+
   const methods = useForm<FormSchema>({
     mode: "onChange",
     resolver: zodResolver(projectValidation),
@@ -19,14 +30,11 @@ const EditProject = ({ project }: EditProjectProps) => {
   });
 
   const onSubmit = (data: FormSchema) => {
-    axios
-      .post("/api/admin/v1/projects", data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    triggerUpdate(data);
+  };
+
+  const handleDelete = () => {
+    triggerDelete();
   };
 
   return (
@@ -34,7 +42,7 @@ const EditProject = ({ project }: EditProjectProps) => {
       <FormLayout onSubmit={onSubmit}>
         <Stack gap={12}>
           <Typography variant="h1">Edit Project</Typography>
-          <ProjectForm />
+          <ProjectForm isEditing handleDelete={handleDelete} />
         </Stack>
       </FormLayout>
     </FormProvider>
