@@ -6,7 +6,6 @@ import CustomLink from "@/components/CustomLink";
 import MainLayout from "@/components/layouts/MainLayout";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
-import TestComponent from "@/components/mdx/TestComponent";
 import { Callout } from "@/components/mdx/Callout";
 import AccordionMdx from "@/components/mdx/AccordionMdx";
 
@@ -18,7 +17,6 @@ const components = {
   a: CustomLink,
   Callout: Callout,
   Accordion: AccordionMdx,
-  MyTest: TestComponent,
   Head,
 };
 

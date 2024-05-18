@@ -14,8 +14,6 @@ import {
   useCodeBlockEditorContext,
   diffSourcePlugin,
   toolbarPlugin,
-  DiffSourceToggleWrapper,
-  UndoRedo,
   jsxPlugin,
 } from "@mdxeditor/editor";
 import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
