@@ -23,6 +23,7 @@ const config = {
         foreground: "hsl(var(--foreground))",
         primary: "#0ea5e9",
         destructive: "#ff4d4d",
+        altDark: "#0F172A",
       },
       inset: {
         "4/5": "80%",
