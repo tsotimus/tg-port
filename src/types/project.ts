@@ -39,9 +39,10 @@ export type ProjectModel = {
   createdAt: Date;
   updatedAt: Date;
   featured: boolean;
+  coverImage: string;
   publishedAt?: Date;
 };
 
-export type Project = ProjectModel & {
+export type ProjectContent = ProjectModel & {
   _id: string;
 };

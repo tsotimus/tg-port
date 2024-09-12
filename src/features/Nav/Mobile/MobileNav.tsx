@@ -1,9 +1,10 @@
 import { useCycle, motion, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
-import { Navigation } from "./Navigation";
-import { MobileToggle } from "./Mobile/MobileToggle";
+import { Navigation } from "../Navigation";
+import { MobileToggle } from "./MobileToggle";
 import { useDimensions } from "@/hooks/useDimensions";
-import { NavItem } from "./types";
+import { NavItem } from "../types";
+import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/navigation";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -28,10 +29,10 @@ const sidebar = {
 };
 
 type MobileNavProps = {
-  navItems: NavItem[];
+  isAdmin: boolean;
 };
 
-const MobileNav = ({ navItems }: MobileNavProps) => {
+const MobileNav = ({ isAdmin }: MobileNavProps) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -48,7 +49,7 @@ const MobileNav = ({ navItems }: MobileNavProps) => {
         className="absolute top-0 right-0 bottom-0 w-full bg-white"
         variants={sidebar}
       />
-      <Navigation navItems={navItems} isMobile />
+      <Navigation navItems={isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS} isMobile />
       <MobileToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );

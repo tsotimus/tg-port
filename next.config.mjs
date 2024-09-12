@@ -3,8 +3,11 @@ const generateConfig = async () => {
 
   /** @type {import('next').NextConfig} */
   const nextConfig = {
-    transpilePackages: ["@mdxeditor/editor"],
+    transpilePackages: ["@mdxeditor/editor", "geist"],
     reactStrictMode: true,
+    experimental: {
+      optimizePackageImports: ["shiki"],
+    },
     redirects: async () => {
       return IS_UNDER_CONSTRUCTION
         ? [

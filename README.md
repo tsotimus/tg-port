@@ -9,3 +9,22 @@ First, run the development server:
 ```bash
 yarn dev
 ```
+
+### TODO:
+
+- [ ] Add a blog posts, create and edit and display
+- [ ] Add a projects, create and edit and display
+- [ ] Add a contact form
+- [ ] New Logo
+- [ ] Add memoji
+- [ ] Update footer
+- [ ] Update favicon
+- [ ] Update Mobile Menu
+
+### Optional:
+
+- [ ] Play around with the colors
+- [ ] Subscribe to newsletter
+- [ ] Switch to React Query
+- [ ] Add RSS feed
+- [ ] Migrate to Clerk

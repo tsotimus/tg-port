@@ -1,7 +1,6 @@
 import { ProjectModel } from "@/types/project";
 import mongoose from "mongoose";
 
-/* PetSchema will correspond to a collection in your MongoDB database. */
 const ProjectSchema = new mongoose.Schema<ProjectModel>(
   {
     title: {
@@ -17,7 +16,7 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
     description: {
       type: String,
       required: [true, "Please provide a description for this project."],
-      maxLength: [150, "Description cannot be more than 200 characters"],
+      maxLength: [150, "Description cannot be more than 150 characters"],
     },
     mdxContent: {
       type: String,
@@ -28,6 +27,10 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
       required: [true, "Please provide a project type."],
       enum: ["SHOWCASE", "LINK"],
     },
+    coverImage: {
+      type: String,
+      required: [true, "Please provide a cover image for this project."],
+    },
     publishedAt: {
       type: Date,
     },
@@ -36,27 +39,13 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
       default: false,
     },
   },
-  { timestamps: true }
-);
-
-ProjectSchema.pre("save", async function (next) {
-  if (this.isModified("featured") && this.featured) {
-    const alreadyFeatured = await this.model("Project").findOne({
-      featured: true,
-    });
-    if (alreadyFeatured) {
-      next(
-        new Error(
-          "A project is already featured. Only one project can be featured at a time."
-        )
-      );
-    } else {
-      next();
-    }
-  } else {
-    next();
+  {
+    timestamps: true,
+    toJSON: {
+      getters: true,
+    },
   }
-});
+);
 
 export default mongoose.models.Project ||
   mongoose.model<ProjectModel>("Project", ProjectSchema);

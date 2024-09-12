@@ -2,48 +2,38 @@
 @tailwind components;
 @tailwind utilities;
  
-@layer base {
-  :root {
-    --background: 222, 47%, 11%;
-    --foreground: 210 40% 98%;
- 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
- 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
- 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
- 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
- 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
- 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
- 
-    --radius: 0.5rem;
+@layer components {
+  .h-content {
+    min-height: calc(100vh - 416px - 96px - 96px - 64px - 24px);
+  }
+
+  @media (max-width: 640px) {
+    .h-content {
+      min-height: calc(100vh - 600px - 96px - 96px - 64px - 24px);
+    }
   }
 }
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
+.shiki span {
+  color: var(--shiki-light);
 }
+
+.dark .shiki span {
+  color: var(--shiki-dark);
+}
+
+pre.shiki {
+  font-size: 13px;
+}
+
+pre.shiki .highlighted {
+  margin: 0 -16px;
+  padding: 0 16px;
+  display: inline-block;
+  min-width: calc(100% + 32px);
+  background-color: theme('colors.primary.DEFAULT / 10%');
+}
+
 
 .prose .callout p {
   @apply m-0;

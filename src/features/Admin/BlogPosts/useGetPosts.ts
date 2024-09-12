@@ -3,10 +3,10 @@ import { ProjectContent } from "@/types/project";
 import { fetcher } from "@/utils/client/genericFetchers";
 import useSWR from "swr";
 
-const useGetProjects = () => {
+const useGetPosts = () => {
   const { data, isLoading, error } = useSWR<
     GenericApiResponse<ProjectContent[]>
-  >("/api/admin/v1/projects", (key: string) => fetcher(key));
+  >("/api/admin/v1/blog", (key: string) => fetcher(key));
 
   return {
     allProjects: data?.data || [],
@@ -15,4 +15,4 @@ const useGetProjects = () => {
   };
 };
 
-export default useGetProjects;
+export default useGetPosts;

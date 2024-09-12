@@ -1,10 +1,10 @@
 import { FullPageLoader } from "@/components/loaders/Loading";
-import useGetProjects from "./useGetProjects";
 import { DataTable } from "@/components/tables/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProjectContent } from "@/types/project";
 import { useRouter } from "next/router";
 import ButtonLink from "@/components/ButtonLink";
+import useGetPosts from "./useGetPosts";
 
 const COLUMNS: ColumnDef<ProjectContent, string | number>[] = [
   {
@@ -46,8 +46,8 @@ const COLUMNS: ColumnDef<ProjectContent, string | number>[] = [
   // },
 ];
 
-const MyProjects = () => {
-  const { allProjects, isLoading } = useGetProjects();
+const MyBlogPosts = () => {
+  const { allProjects, isLoading } = useGetPosts();
   const router = useRouter();
 
   return isLoading ? (
@@ -59,4 +59,4 @@ const MyProjects = () => {
   );
 };
 
-export default MyProjects;
+export default MyBlogPosts;
