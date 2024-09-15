@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 import { useInView, motion } from "framer-motion"
 import { Link } from "lucide-react"
 import { useRef } from "react"
-import Card from "./Card"
+import Card from "./ProjectCard"
 import { ProjectContentDisplay } from "@/types/project"
 
 

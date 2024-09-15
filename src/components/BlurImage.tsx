@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
-import NextImage from "next/image";
+import { CldImage } from "next-cloudinary";
 import { forwardRef, useState } from "react";
 
 type ImageProps = {
   imageClassName?: string;
   lazy?: boolean;
-} & React.ComponentPropsWithoutRef<typeof NextImage>;
+} & React.ComponentPropsWithoutRef<typeof CldImage>;
 
 export const BlurImage = forwardRef<HTMLImageElement, ImageProps>(
   (props, ref) => {
@@ -20,7 +20,7 @@ export const BlurImage = forwardRef<HTMLImageElement, ImageProps>(
           className
         )}
       >
-        <NextImage
+        <CldImage
           ref={ref}
           className={cn(
             isLoading && "scale-[1.02] blur-xl grayscale",

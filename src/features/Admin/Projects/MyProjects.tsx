@@ -55,7 +55,7 @@ const COLUMNS: ColumnDef<
     header: "Edit",
     cell: (cell) => {
       return (
-        <ButtonLink href={`/admin/projects/edit/${cell.row.original._id}`}>
+        <ButtonLink href={`/admin/projects/edit/${cell.row.original.id}`}>
           Edit
         </ButtonLink>
       );
