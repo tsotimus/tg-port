@@ -18,7 +18,7 @@ interface EditProjectProps {
 
 const EditProject = ({ project }: EditProjectProps) => {
   const router = useRouter();
-  const projectUrl = `/api/admin/v1/projects/${project._id}`;
+  const projectUrl = `/api/admin/v1/projects/${project.id}`;
 
   // Define the mutation functions
   const updateProject = async (data: ProjectContentDisplay) => {

@@ -12,6 +12,7 @@ export default async function handler(
     try {
       const body = req.body;
       try {
+        //TODO: Zod validation
         const validatedData = projectValidation.parse(body);
       } catch (err) {
         return res.status(400).json(createApiResponse(null, ["Bad Request"]));
@@ -32,7 +33,8 @@ export default async function handler(
     try {
       await dbConnect();
       const projects = await Project.find();
-      return res.status(200).json(createApiResponse(projects, []));
+      const allProjects = projects.map((project) => project.toJSON());
+      return res.status(200).json(createApiResponse(allProjects, []));
     } catch (err) {
       return res
         .status(500)

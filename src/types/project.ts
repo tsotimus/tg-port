@@ -46,7 +46,7 @@ export type ProjectModel = {
 export type ProjectContentDisplay = ProjectLinkDisplay | ProjectShowcaseDisplay;
 
 export type ProjectCommonDisplay = {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   slug: string;

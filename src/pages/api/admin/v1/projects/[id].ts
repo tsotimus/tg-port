@@ -13,15 +13,16 @@ export default async function handler(
       const { id } = req.query;
 
       await dbConnect();
-      const newProject = await Project.findOne({
+      const currentProject = await Project.findOne({
         _id: id,
       });
-      if (!newProject) {
+      if (!currentProject) {
         return res
           .status(404)
           .json(createApiResponse(null, ["Project not found"]));
       }
-      return res.status(201).json(createApiResponse(newProject, []));
+      const foundProject = currentProject.toJSON();
+      return res.status(201).json(createApiResponse(foundProject, []));
     } catch (err) {
       console.error(err);
       return res.status(500).json({ msg: "Internal Server Error" });
@@ -54,7 +55,10 @@ export default async function handler(
         },
         body
       );
-      return res.status(201).json(createApiResponse(updatedProject, []));
+
+      const recentlyUpdated = updatedProject.toJSON();
+
+      return res.status(201).json(createApiResponse(recentlyUpdated, []));
     } catch (err) {
       return res
         .status(500)
