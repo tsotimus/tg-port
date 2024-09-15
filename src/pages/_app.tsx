@@ -1,3 +1,4 @@
+import Providers from "@/components/layouts/Providers";
 import { cn } from "@/lib/utils";
 import { CalSans } from "@/styles/fonts";
 import "@/styles/globals.css";
@@ -15,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
         "scroll-smooth font-sans"
       )}
     >
-      <Component {...pageProps} />
+      <Providers>
+        <Component {...pageProps} />
+      </Providers>
     </div>
   );
 }
