@@ -47,6 +47,11 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
     timestamps: true,
     toJSON: {
       getters: true,
+      transform: function (doc, ret) {
+        delete ret._id;
+        ret.updatedAt = ret.updatedAt.toISOString();
+        ret.createdAt = ret.createdAt.toISOString();
+      },
     },
   }
 );

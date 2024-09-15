@@ -1,6 +1,11 @@
 import { Toaster } from "sonner";
 import { ThemeProvider, useTheme } from "next-themes";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryKey,
+} from "@tanstack/react-query";
+import { fetcher } from "@/utils/client/genericFetchers";
 
 type ProvidesProps = {
   children: React.ReactNode;

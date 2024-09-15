@@ -1,33 +1,63 @@
-import Typography from "@/components/Typography";
-import { FormLayout } from "@/components/form/FormLayout";
-import Stack from "@/components/layouts/Stack";
 import {
   FormSchema,
   ProjectContentDisplay,
-  ProjectLinkDisplay,
-  ProjectShowcaseDisplay,
   projectValidation,
 } from "@/types/project";
 import { FormProvider, useForm } from "react-hook-form";
 import ProjectForm from "./ProjectForm";
 import { zodResolver } from "@hookform/resolvers/zod";
-import useSWRMutation from "swr/mutation";
 import { deleteFetcher, updateFetcher } from "@/utils/client/genericFetchers";
+import { useRouter } from "next/router";
+import { useMutation } from "@tanstack/react-query";
+import { FormLayout } from "@/components/form/FormLayout";
+import { toast } from "sonner";
 
 interface EditProjectProps {
-  project: ProjectLinkDisplay | ProjectShowcaseDisplay;
+  project: ProjectContentDisplay;
 }
 
 const EditProject = ({ project }: EditProjectProps) => {
-  const { trigger: triggerUpdate } = useSWRMutation(
-    `/api/admin/v1/projects/${project._id}`,
-    updateFetcher
-  );
+  const router = useRouter();
+  const projectUrl = `/api/admin/v1/projects/${project._id}`;
 
-  const { trigger: triggerDelete } = useSWRMutation(
-    `/api/admin/v1/projects/${project._id}`,
-    deleteFetcher
-  );
+  // Define the mutation functions
+  const updateProject = async (data: ProjectContentDisplay) => {
+    return updateFetcher(projectUrl, data);
+  };
+
+  const deleteProject = async () => {
+    return deleteFetcher(projectUrl);
+  };
+
+  // Use the mutation hooks
+  const updateMutation = useMutation({
+    mutationFn: updateProject,
+    mutationKey: [projectUrl, "update"],
+    onSuccess: () => {
+      // Handle success, e.g., navigate to another page
+      toast.success("Project updated successfully");
+      router.push("/projects");
+    },
+    onError: (error) => {
+      // Handle error
+      console.error("Update failed", error);
+      toast.error("Failed to update project: " + error.message);
+    },
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteProject,
+    mutationKey: [projectUrl, "delete"],
+    onSuccess: () => {
+      // Handle success, e.g., navigate to another page
+      toast.success("Project deleted successfully");
+      router.push("/projects");
+    },
+    onError: (error) => {
+      // Handle error
+      toast.error("Failed to delete project: " + error.message);
+    },
+  });
 
   const methods = useForm<FormSchema>({
     mode: "onChange",
@@ -35,22 +65,20 @@ const EditProject = ({ project }: EditProjectProps) => {
     defaultValues: project,
   });
 
-  const onSubmit = (data: FormSchema) => {
-    triggerUpdate(data);
+  const handleUpdate = (data: ProjectContentDisplay) => {
+    updateMutation.mutate(data);
   };
 
   const handleDelete = () => {
-    triggerDelete();
+    deleteMutation.mutate();
   };
 
   return (
     <FormProvider {...methods}>
-      <FormLayout onSubmit={onSubmit}>
-        <Stack gap={12}>
-          <Typography variant="h1">Edit Project</Typography>
-          <ProjectForm isEditing handleDelete={handleDelete} />
-        </Stack>
+      <FormLayout onSubmit={handleUpdate}>
+        <ProjectForm isEditing handleDelete={handleDelete} />
       </FormLayout>
+      <button onClick={handleDelete}>Delete Project</button>
     </FormProvider>
   );
 };
