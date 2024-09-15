@@ -1,32 +1,30 @@
 import * as z from "zod";
 
-const MAX_FILE_SIZE = 500000;
-const ACCEPTED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-];
-
-export const projectValidation = z.object({
+//Used for creating a new project
+const baseSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
-  type: z.enum(["SHOWCASE", "LINK"]),
-  mdxContent: z.string(),
   featured: z.boolean(),
-  // file: z
-  //   .any()
-  //   .refine((files) => files?.length == 1, "Image is required.")
-  //   .refine(
-  //     (files) => files?.[0]?.size <= MAX_FILE_SIZE,
-  //     `Max file size is 5MB.`
-  //   )
-  //   .refine(
-  //     (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
-  //     ".jpg, .jpeg, .png and .webp files are accepted."
-  //   ),
+  coverImage: z.string(),
 });
+
+const showcaseSchema = baseSchema.extend({
+  type: z.literal("SHOWCASE"),
+  mdxContent: z.string(),
+  link: z.undefined(),
+});
+
+const linkSchema = baseSchema.extend({
+  type: z.literal("LINK"),
+  link: z.string(),
+  mdxContent: z.undefined(),
+});
+
+export const projectValidation = z.discriminatedUnion("type", [
+  showcaseSchema,
+  linkSchema,
+]);
 
 export type FormSchema = z.infer<typeof projectValidation>;
 
@@ -34,8 +32,9 @@ export type ProjectModel = {
   title: string;
   description: string;
   slug: string;
-  mdxContent: string;
   type: "SHOWCASE" | "LINK";
+  mdxContent?: string;
+  link?: string;
   createdAt: Date;
   updatedAt: Date;
   featured: boolean;
@@ -43,6 +42,24 @@ export type ProjectModel = {
   publishedAt?: Date;
 };
 
-export type ProjectContent = ProjectModel & {
+//Not sure what this is used for
+export type ProjectContentDisplay = ProjectLinkDisplay | ProjectShowcaseDisplay;
+
+export type ProjectCommonDisplay = {
   _id: string;
+  title: string;
+  description: string;
+  slug: string;
+  featured: boolean;
+  coverImage: string;
 };
+
+export type ProjectLinkDisplay = {
+  type: "LINK";
+  link: string;
+} & ProjectCommonDisplay;
+
+export type ProjectShowcaseDisplay = {
+  type: "SHOWCASE";
+  mdxContent: string;
+} & ProjectCommonDisplay;

@@ -20,7 +20,11 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
     },
     mdxContent: {
       type: String,
-      required: [true, "Please provide content for this project."],
+      required: false,
+    },
+    link: {
+      type: String,
+      required: false,
     },
     type: {
       type: String,

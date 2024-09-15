@@ -13,6 +13,7 @@ import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
 import { FormControl, FormLabel } from "../ui/form";
 import { FormRow } from "./FormLayout";
+import { Checkbox } from "@/components/ui/checkbox";
 
 type GenericInputProps = {
   name: string;
@@ -170,5 +171,32 @@ export const FileInput = ({ name, required, label }: FileInputProps) => {
         ref={fileElement}
       />
     </div>
+  );
+};
+
+export const CheckBoxInput = ({
+  name,
+  label,
+  rules,
+  defaultValue,
+}: TextInputProps) => {
+  const { control } = useFormContext();
+  return (
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      defaultValue={defaultValue || ""}
+      render={({ field: { onChange, value } }) => {
+        return (
+          <FormRow>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Checkbox onCheckedChange={onChange} value={value} />
+            </FormControl>
+          </FormRow>
+        );
+      }}
+    />
   );
 };

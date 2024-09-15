@@ -4,7 +4,7 @@ import { useInView, motion } from "framer-motion"
 import { Link } from "lucide-react"
 import { useRef } from "react"
 import Card from "./Card"
-import { ProjectContent } from "@/types/project"
+import { ProjectContentDisplay } from "@/types/project"
 
 
 const variants = {
@@ -19,7 +19,7 @@ const variants = {
   }
 
 interface ShowcaseProps {
-    projects: ProjectContent[]
+    projects: ProjectContentDisplay[]
 }
 
 const Showcase = ({projects}: ShowcaseProps) => {

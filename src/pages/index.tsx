@@ -6,11 +6,11 @@ import Showcase from "@/features/Public/Projects/Showcase";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import Head from "next/head";
-import { ProjectContent, ProjectModel } from "@/types/project";
+import { ProjectContentDisplay, ProjectModel } from "@/types/project";
 import { Document, HydratedDocument } from "mongoose";
 
 interface HomeProps {
-  allProjects: ProjectContent[];
+  allProjects: ProjectContentDisplay[];
 }
 
 export default function Home({ allProjects }: HomeProps) {
@@ -27,7 +27,7 @@ export default function Home({ allProjects }: HomeProps) {
 
 export async function getStaticProps() {
   await dbConnect();
-  const projects = await Project.find<HydratedDocument<ProjectContent>>({
+  const projects = await Project.find<HydratedDocument<ProjectContentDisplay>>({
     featured: true,
   });
   const allProjects = projects.map((project) => project.toJSON());

@@ -1,7 +1,13 @@
 import Typography from "@/components/Typography";
 import { FormLayout } from "@/components/form/FormLayout";
 import Stack from "@/components/layouts/Stack";
-import { FormSchema, Project, projectValidation } from "@/types/project";
+import {
+  FormSchema,
+  ProjectContentDisplay,
+  ProjectLinkDisplay,
+  ProjectShowcaseDisplay,
+  projectValidation,
+} from "@/types/project";
 import { FormProvider, useForm } from "react-hook-form";
 import ProjectForm from "./ProjectForm";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,7 +15,7 @@ import useSWRMutation from "swr/mutation";
 import { deleteFetcher, updateFetcher } from "@/utils/client/genericFetchers";
 
 interface EditProjectProps {
-  project: Project;
+  project: ProjectLinkDisplay | ProjectShowcaseDisplay;
 }
 
 const EditProject = ({ project }: EditProjectProps) => {

@@ -1,9 +1,8 @@
 import MDXEditor from "@/components/form/editor/MDXEditor";
 import { FormRow } from "@/components/form/FormLayout";
 import {
-  FileInput,
+  CheckBoxInput,
   SelectInput,
-  SwitchInput,
   TextInput,
 } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
@@ -17,17 +16,31 @@ interface ProjectFormProps {
 
 const ProjectForm = ({ isEditing, handleDelete }: ProjectFormProps) => {
   const {
-    formState: { isValid, isDirty },
+    formState: { isValid, isDirty, errors },
+    watch,
+    control,
   } = useFormContext();
+
+  const currentType = watch("type");
 
   return (
     <Stack gap={8}>
-      <TextInput name="title" label="Title" />
-      <TextInput name="description" label="Description" />
-      <TextInput name="slug" label="URL Slug" />
+      <TextInput name="title" label="Title" rules={{ required: true }} />
+      <TextInput
+        name="description"
+        label="Description"
+        rules={{ required: true }}
+      />
+      <TextInput name="slug" label="URL Slug" rules={{ required: true }} />
+      <TextInput
+        name="coverImage"
+        label="Cover Image URL"
+        rules={{ required: true }}
+      />
       <SelectInput
         name="type"
         label="Project Type"
+        rules={{ required: true }}
         options={[
           {
             label: "Showcase",
@@ -39,8 +52,14 @@ const ProjectForm = ({ isEditing, handleDelete }: ProjectFormProps) => {
           },
         ]}
       />
-      <SwitchInput name="featured" label="Featured" />
-      <MDXEditor name="mdxContent" rules={{ required: true }} />
+
+      <CheckBoxInput name="featured" label="Featured" />
+      {currentType === "SHOWCASE" && (
+        <MDXEditor name="mdxContent" rules={{ required: true }} />
+      )}
+      {currentType === "LINK" && (
+        <TextInput name="link" label="Link URL" rules={{ required: true }} />
+      )}
       <FormRow>
         <Button type="submit" disabled={!isValid || !isDirty}>
           {isEditing ? "Save" : "Create"}

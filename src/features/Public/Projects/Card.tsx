@@ -1,10 +1,10 @@
 import { Link } from "@/components/Link"
 import { ArrowUpRightIcon, LightbulbIcon } from "lucide-react"
 import { BlurImage } from "@/components/BlurImage"
-import { ProjectContent } from "@/types/project"
+import { ProjectContentDisplay } from "@/types/project"
 
 interface CardProps {
-    project: ProjectContent
+    project: ProjectContentDisplay
 }
 
 const Card = ({project}: CardProps) => {

@@ -1,12 +1,12 @@
 import { FullPageLoader } from "@/components/loaders/Loading";
 import { DataTable } from "@/components/tables/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
-import { ProjectContent } from "@/types/project";
+import { ProjectContentDisplay } from "@/types/project";
 import { useRouter } from "next/router";
 import ButtonLink from "@/components/ButtonLink";
 import useGetPosts from "./useGetPosts";
 
-const COLUMNS: ColumnDef<ProjectContent, string | number>[] = [
+const COLUMNS: ColumnDef<ProjectContentDisplay, string | number>[] = [
   {
     header: "Title",
     accessorKey: "title",
