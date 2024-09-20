@@ -33,6 +33,7 @@ export type ProjectModel = {
   description: string;
   slug: string;
   type: "SHOWCASE" | "LINK";
+  techStack: string[];
   mdxContent?: string;
   link?: string;
   createdAt: Date;
@@ -52,6 +53,7 @@ export type ProjectCommonDisplay = {
   slug: string;
   featured: boolean;
   coverImage: string;
+  techStack: string[];
 };
 
 export type ProjectLinkDisplay = {

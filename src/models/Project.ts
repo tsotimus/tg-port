@@ -31,6 +31,13 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
       required: [true, "Please provide a project type."],
       enum: ["SHOWCASE", "LINK"],
     },
+    techStack: {
+      type: [String],
+      required: [
+        true,
+        "Please provide at least one techstack for this project.",
+      ],
+    },
     coverImage: {
       type: String,
       required: [true, "Please provide a cover image for this project."],

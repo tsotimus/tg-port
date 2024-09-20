@@ -1,13 +1,11 @@
 import MainLayout from "@/components/layouts/MainLayout";
-import Stack from "@/components/layouts/Stack";
 import Hero from "@/features/Public/Home/Hero";
-import Intro from "@/features/Public/Home/Intro";
 import Showcase from "@/features/Public/Projects/Showcase";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import Head from "next/head";
-import { ProjectContentDisplay, ProjectModel } from "@/types/project";
-import { Document, HydratedDocument } from "mongoose";
+import { ProjectContentDisplay } from "@/types/project";
+import { HydratedDocument } from "mongoose";
 
 interface HomeProps {
   allProjects: ProjectContentDisplay[];
@@ -31,8 +29,6 @@ export async function getStaticProps() {
     featured: true,
   });
   const allProjects = projects.map((project) => project.toJSON());
-
-  console.log(allProjects);
 
   return {
     props: {

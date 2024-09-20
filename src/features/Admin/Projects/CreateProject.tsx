@@ -6,8 +6,10 @@ import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import axios from "axios";
 import { FormSchema, projectValidation } from "@/types/project";
+import { useRouter } from "next/router";
 
 const CreateProject = () => {
+  const router = useRouter();
   const methods = useForm<FormSchema>({
     mode: "onChange",
     resolver: zodResolver(projectValidation),
@@ -18,6 +20,8 @@ const CreateProject = () => {
       .post("/api/admin/v1/projects", data)
       .then((res) => {
         console.log(res);
+        const id = res.data.id;
+        router.push(`/admin/projects/${id}`);
       })
       .catch((err) => {
         console.error(err);
