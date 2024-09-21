@@ -89,7 +89,9 @@ export const getStaticProps = async ({ params }: StaticPropsProps) => {
 
 export const getStaticPaths = async () => {
   await dbConnect();
-  const allProjects = await Project.find();
+  const allProjects = await Project.find({
+    type: "PROJECT", //Disregard Link type projects
+  });
 
   // Map the path into the static paths object required by Next.js
   const paths = allProjects.map((project) => ({

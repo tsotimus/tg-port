@@ -18,14 +18,10 @@ const FullProjectCards = ({projects}: FullProjectCardsProps) => {
   )
 }
 
-const FullProjectCard = ({slug, title, coverImage, description, techStack}:ProjectContentDisplay) => {
-
+const CardContent = ({title, description, techStack, coverImage, slug}:ProjectContentDisplay) => {
   return (
-    <Link
-      href={`/projects/${slug}`}
-      className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
-    >
-      <BlurImage
+    <>
+    <BlurImage
         src={coverImage}
         width={1280}
         height={832}
@@ -51,6 +47,30 @@ const FullProjectCard = ({slug, title, coverImage, description, techStack}:Proje
           })}
         </div>
       </div>
+    </>
+  )
+} 
+
+const FullProjectCard = (project:ProjectContentDisplay) => {
+  const {slug, type} = project
+
+  if(type === "LINK") {
+    return (
+      <Link
+        href={project.link}
+        className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
+      >
+        <CardContent {...project} />
+      </Link>
+    )
+  }
+
+  return (
+    <Link
+      href={`/projects/${slug}`}
+      className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
+    >
+      <CardContent {...project} />
     </Link>
   )
 }
