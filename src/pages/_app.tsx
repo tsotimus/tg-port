@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
     >
       <Providers>
         <Component {...pageProps} />
+        <Analytics />
       </Providers>
     </div>
   );
