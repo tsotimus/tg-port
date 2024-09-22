@@ -13,10 +13,10 @@ const BlogPostSchema = new mongoose.Schema<BlogPostModel>(
       required: [true, "Please provide a slug for this blog post."],
       unique: true,
     },
-    description: {
+    summary: {
       type: String,
-      required: [true, "Please provide a description for this blog post."],
-      maxLength: [150, "Description cannot be more than 150 characters"],
+      required: [true, "Please provide a Summary for this blog post."],
+      maxLength: [150, "Summary cannot be more than 150 characters"],
     },
     mdxContent: {
       type: String,

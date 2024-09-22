@@ -1,5 +1,7 @@
 import { BlurImage } from "@/components/BlurImage"
+import EmptyPage from "@/components/layouts/EmptyPage"
 import { Link } from "@/components/Link"
+import Typography from "@/components/Typography"
 import { ProjectContentDisplay } from "@/types/project"
 
 
@@ -8,6 +10,16 @@ type FullProjectCardsProps = {
 }
 
 const FullProjectCards = ({projects}: FullProjectCardsProps) => {
+
+  if(projects.length === 0) {
+    return (
+      <EmptyPage>
+        <div className='text-center text-muted-foreground dark:text-muted-foreground-dark'>
+          <Typography>No projects to display</Typography>
+        </div>
+      </EmptyPage>
+    )
+  }
 
   return (
     <div className='grid gap-4 md:grid-cols-2'>

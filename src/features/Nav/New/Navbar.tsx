@@ -1,8 +1,8 @@
 import { usePathname } from "next/navigation";
 
 import { Link } from "@/components/Link";
-import { cn } from "@/lib/utils";
-import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/navigation";
+import { cn } from "@/utils/client/cn";
+import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
 
 interface NavbarProps {
   isAdmin: boolean;

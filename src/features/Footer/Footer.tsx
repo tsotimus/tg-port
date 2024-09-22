@@ -1,5 +1,5 @@
 import { Link } from "@/components/Link";
-import { FOOTER_LINKS } from "@/config/navigation";
+import { FOOTER_LINKS } from "@/config/links";
 
 const Footer = () => {
   return (

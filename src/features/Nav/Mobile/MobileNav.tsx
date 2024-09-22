@@ -4,7 +4,7 @@ import { Navigation } from "../Navigation";
 import { MobileToggle } from "./MobileToggle";
 import { useDimensions } from "@/hooks/useDimensions";
 import { NavItem } from "../types";
-import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/navigation";
+import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
 
 const sidebar = {
   open: (height = 1000) => ({

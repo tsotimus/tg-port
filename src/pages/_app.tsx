@@ -1,5 +1,5 @@
 import Providers from "@/components/layouts/Providers";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/client/cn";
 import { CalSans } from "@/styles/fonts";
 import "@/styles/globals.css";
 import { GeistMono } from "geist/font/mono";

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/client/cn";
 import { CldImage } from "next-cloudinary";
 import { forwardRef, useState } from "react";
 

@@ -1,10 +1,13 @@
 import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/client/cn";
 import { useInView, motion } from "framer-motion"
-import { Link } from "lucide-react"
 import { useRef } from "react"
 import Card from "./ProjectCard"
 import { ProjectContentDisplay } from "@/types/project"
+import EmptyPage from "@/components/layouts/EmptyPage"
+import Typography from "@/components/Typography"
+import { Link } from "@/components/Link";
+// import { Link } from "@/components/Link";
 
 
 const variants = {
@@ -19,14 +22,13 @@ const variants = {
   }
 
 interface ShowcaseProps {
-    projects: ProjectContentDisplay[]
+  featuredProjects: ProjectContentDisplay[]
 }
 
-const Showcase = ({projects}: ShowcaseProps) => {
+const Showcase = ({featuredProjects}: ShowcaseProps) => {
     const projectsRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
 
-    if(projects.length === 0) return null
   
     return (
       <motion.div
@@ -55,39 +57,50 @@ const Showcase = ({projects}: ShowcaseProps) => {
         >
           Pinned Projects
         </motion.h2>
-        <motion.div
-          className='mt-12 grid gap-4 md:grid-cols-2'
-          initial={{
-            y: 40,
-            opacity: 0
-          }}
-          animate={{
-            y: 0,
-            opacity: 1
-          }}
-          transition={{
-            duration: 0.3
-          }}
-        >
-          {projects
-            .filter((project) => project.featured)
-            .map((project) => (
-              <Card key={project.slug} project={project} />
-            ))}
-        </motion.div>
-        <div className='my-8 flex items-center justify-center'>
-          <Link
-            href='/projects'
-            className={cn(
-              buttonVariants({
-                variant: 'outline'
-              }),
-              'rounded-xl'
-            )}
-          >
-            See all projects
-          </Link>
-        </div>
+        {
+            featuredProjects.length === 0 ? (
+              <EmptyPage size="sm">
+                <div className='text-center text-muted-foreground dark:text-muted-foreground-dark'>
+                  <Typography>No projects to display</Typography>
+                </div>
+              </EmptyPage>
+            ) : (
+              <>
+                <motion.div
+                  className='mt-12 grid gap-4 md:grid-cols-2'
+                  initial={{
+                    y: 40,
+                    opacity: 0
+                  }}
+                  animate={{
+                    y: 0,
+                    opacity: 1
+                  }}
+                  transition={{
+                    duration: 0.3
+                  }}
+                >
+                  {featuredProjects
+                    .map((project) => (
+                      <Card key={project.slug} project={project} />
+                    ))}
+                </motion.div>
+                <div className='my-8 flex items-center justify-center'>
+                  <Link
+                    href='/projects'
+                    className={cn(
+                      buttonVariants({
+                        variant: 'outline'
+                      }),
+                      'rounded-xl'
+                    )}
+                  >
+                    See all projects
+                  </Link>
+                </div>
+              </>
+            )
+        }
       </motion.div>
     )
   }

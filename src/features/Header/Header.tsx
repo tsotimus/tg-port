@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 // import CommandMenu from "@/components/command-menu";
 // import MobileNav from "@/components/mobile-nav";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/client/cn";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@/components/Link";
 import { Logo } from "@/components/Logo";
 import MobileNav from "../Nav/Mobile/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "../Nav/New/Navbar";
-import { NAV_ITEMS } from "@/config/navigation";
+import { NAV_ITEMS } from "@/config/links";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
 
 interface HeaderProps {
