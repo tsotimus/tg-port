@@ -6,8 +6,9 @@ const generateConfig = async () => {
     transpilePackages: ["@mdxeditor/editor", "geist"],
     reactStrictMode: true,
     experimental: {
-      optimizePackageImports: ["shiki"],
+      optimizePackageImports: ["shiki", "@icons-pack/react-simple-icons"],
     },
+    poweredByHeader: false,
     redirects: async () => {
       return IS_UNDER_CONSTRUCTION
         ? [
