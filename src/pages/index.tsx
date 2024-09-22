@@ -16,7 +16,10 @@ interface HomeProps {
   recentPosts: PublishedBlogPost[];
 }
 
-export default function Home({ featuredProjects, recentPosts }: HomeProps) {
+export default function Home({
+  featuredProjects = [],
+  recentPosts = [],
+}: HomeProps) {
   return (
     <MainLayout>
       <Head>

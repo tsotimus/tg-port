@@ -65,7 +65,6 @@ const Hero = () => {
             <div className='inline-grid h-9 overflow-hidden sm:h-14'>
               <div ref={scope}>
                 {TEXTS.map(({ text, className }, i) => (
-                  // eslint-disable-next-line @eslint-react/no-array-index-key -- it's static
                   <div className={className} key={i}>
                     {text}
                   </div>
