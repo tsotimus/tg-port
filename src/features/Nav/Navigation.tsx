@@ -19,7 +19,7 @@ interface NavigationProps {
 
 const desktopClasses = "inline-flex flex-1 gap-12";
 const mobileClasses =
-  "flex flex-col gap-8 z-50 relative justify-center items-center p-20 ";
+  "flex flex-col gap-8 z-50 relative justify-center items-center p-20 mt-40 ";
 
 export const Navigation = ({ isMobile, navItems }: NavigationProps) => (
   <motion.ul

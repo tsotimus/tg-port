@@ -225,6 +225,9 @@ const config: Partial<Config> = {
         "3/4": "75vh",
         full: "100vh",
       },
+      inset: {
+        "4/5": "80%",
+      },
     },
   },
   future: {

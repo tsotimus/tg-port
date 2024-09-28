@@ -62,11 +62,11 @@ const Header = ({ isAdmin }: HeaderProps) => {
       >
         <span>Skip to main content</span>
       </a>
-      <Link href="/" className="flex items-center justify-center gap-1">
+      {/* <Link href="/" className="flex items-center justify-center gap-1">
         <span className="sr-only">Homepage</span>
         <Logo width={28} height={28} aria-hidden="true" />
-      </Link>
-      <div className="flex items-center gap-2">
+      </Link> */}
+      <div className="flex items-center gap-2 w-full h-full">
         {!isMobile && <Navbar isAdmin={isAdmin} />}
         <Separator orientation="vertical" className="h-6" />
         <ThemeToggle />
