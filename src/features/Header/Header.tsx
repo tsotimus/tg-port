@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-// import CommandMenu from "@/components/command-menu";
-// import MobileNav from "@/components/mobile-nav";
-
 import { cn } from "@/utils/client/cn";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@/components/Link";
@@ -13,14 +10,15 @@ import { Logo } from "@/components/Logo";
 import MobileNav from "../Nav/Mobile/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "../Nav/New/Navbar";
-import { NAV_ITEMS } from "@/config/links";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
+// import MobileNav2 from "../Nav/Mobile/v2/MobileNav";
 
 interface HeaderProps {
   isAdmin: boolean;
+  containerHeight: number;
 }
 
-const Header = ({ isAdmin }: HeaderProps) => {
+const Header = ({ isAdmin, containerHeight }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isMobile } = useBreakpoints();
 
@@ -62,15 +60,18 @@ const Header = ({ isAdmin }: HeaderProps) => {
       >
         <span>Skip to main content</span>
       </a>
-      {/* <Link href="/" className="flex items-center justify-center gap-1">
+      <Link href="/" className="flex items-center justify-center gap-1">
         <span className="sr-only">Homepage</span>
         <Logo width={28} height={28} aria-hidden="true" />
-      </Link> */}
-      <div className="flex items-center gap-2 w-full h-full">
+      </Link>
+      <div className="flex items-center gap-2 w-full h-full justify-end">
         {!isMobile && <Navbar isAdmin={isAdmin} />}
-        <Separator orientation="vertical" className="h-6" />
+        {/* {isMobile && <MobileNav2 />} */}
         <ThemeToggle />
-        {isMobile && <MobileNav isAdmin={isAdmin} />}
+        <Separator orientation="vertical" className="h-6" />
+        {isMobile && (
+          <MobileNav isAdmin={isAdmin} containerHeight={containerHeight} />
+        )}
       </div>
     </motion.header>
   );
