@@ -1,12 +1,4 @@
-import * as React from "react";
-import {
-  motion,
-  Variants,
-  Transition,
-  MotionConfig,
-  useAnimate,
-  useAnimation,
-} from "framer-motion";
+import { motion, Variants, Transition } from "framer-motion";
 
 type PathProps = {
   variants: Variants;

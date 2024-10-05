@@ -23,34 +23,6 @@ const variants = {
   },
 };
 
-// This we can maybe use or use specific variants for mobile
-const mobileVariants: Variants = {
-  open: {
-    scale: 1,
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: {
-      delayChildren: 0.05,
-      staggerChildren: 0.05,
-      when: "beforeChildren",
-      ease: [0.08, 0.65, 0.53, 0.96],
-      duration: 0.6,
-    },
-  },
-  closed: {
-    scale: 0.5,
-    opacity: 0,
-    filter: "blur(10px)",
-    transition: {
-      delayChildren: 0.05,
-      staggerChildren: 0.05,
-      when: "afterChildren",
-      ease: [0.08, 0.65, 0.53, 0.96],
-      duration: 0.6,
-    },
-  },
-};
-
 type MenuItemProps = {
   num: number;
   text: string;

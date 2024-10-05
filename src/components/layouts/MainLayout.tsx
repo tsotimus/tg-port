@@ -1,11 +1,9 @@
 import { ReactNode, useRef } from "react";
 import type { Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Providers from "./Providers";
 import Header from "@/features/Header/Header";
 import Footer from "@/features/Footer/Footer";
 import Image from "next/image";
-import { useDimensions } from "@/hooks/useDimensions";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -21,11 +19,9 @@ export const viewport: Viewport = {
 const MainLayout = ({ children }: MainLayoutProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const { height } = useDimensions(ref);
-
   return (
     <div className="relative" ref={ref}>
-      <Header isAdmin={false} containerHeight={height} />
+      <Header isAdmin={false} />
       <main
         id="skip-nav"
         className="mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8"

@@ -9,15 +9,14 @@ import { Link } from "@/components/Link";
 import { Logo } from "@/components/Logo";
 import MobileNav from "../Nav/Mobile/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
-import Navbar from "../Nav/New/Navbar";
+import Navbar from "../Nav/Navbar";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
 
 interface HeaderProps {
   isAdmin: boolean;
-  containerHeight: number;
 }
 
-const Header = ({ isAdmin, containerHeight }: HeaderProps) => {
+const Header = ({ isAdmin }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isMobile } = useBreakpoints();
 
