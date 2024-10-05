@@ -11,6 +11,7 @@ import MobileNav from "../Nav/Mobile/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "../Nav/Navbar";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
+import MyLogo from "@/components/MyLogo";
 
 interface HeaderProps {
   isAdmin: boolean;
@@ -60,7 +61,7 @@ const Header = ({ isAdmin }: HeaderProps) => {
       </a>
       <Link href="/" className="flex items-center justify-center gap-1">
         <span className="sr-only">Homepage</span>
-        <Logo width={28} height={28} aria-hidden="true" />
+        <MyLogo width={48} height={48} aria-hidden="true" />
       </Link>
       <div className="flex items-center gap-2 w-full justify-end">
         {!isMobile && <Navbar isAdmin={isAdmin} />}
