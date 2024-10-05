@@ -6,13 +6,17 @@ const variants = {
   open: {
     y: 0,
     opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
     transition: {
       y: { stiffness: 1000, velocity: -100 },
     },
   },
   closed: {
     y: 50,
+    scale: 0.5,
     opacity: 0,
+    filter: "blur(10px)",
     transition: {
       y: { stiffness: 1000 },
     },
@@ -47,24 +51,20 @@ const mobileVariants: Variants = {
   },
 };
 
-// const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
-
 type MenuItemProps = {
   num: number;
   text: string;
   href: string;
-  isMobile?: boolean;
 };
 
-export const MenuItem = ({ num, text, href, isMobile }: MenuItemProps) => {
-  // const style = { border: `2px solid ${colors[i]}` };
+export const MenuItem = ({ num, text, href }: MenuItemProps) => {
   return (
     <motion.li
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <Link className="text-black md:text-white" href={href}>
+      <Link className="dark:text-white text-black md:text-white" href={href}>
         {text}
       </Link>
     </motion.li>

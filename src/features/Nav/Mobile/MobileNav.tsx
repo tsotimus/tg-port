@@ -1,9 +1,8 @@
-import { Navigation } from "../Navigation";
 import { MobileToggle } from "./MobileToggle";
 import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
 import { motion, useCycle, Variants } from "framer-motion";
+import { MenuItem } from "./MenuItem";
 
-// Define nav variants
 const bgVariants: Variants = {
   open: {
     x: 0,
@@ -17,8 +16,19 @@ const bgVariants: Variants = {
   },
 };
 
+const ulVariants = {
+  open: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+  },
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+};
+
 const MobileNav = ({ isAdmin }: { isAdmin: boolean }) => {
   const [isOpen, cycleOpen] = useCycle(false, true);
+
+  const navItems = isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS;
 
   return (
     <motion.div
@@ -27,16 +37,20 @@ const MobileNav = ({ isAdmin }: { isAdmin: boolean }) => {
       animate={isOpen ? "open" : "closed"}
     >
       <div className="relative w-full h-full">
-        <MobileToggle toggle={() => cycleOpen()} isOpen={isOpen} />
+        <MobileToggle toggle={() => cycleOpen()} />
         <motion.div
-          className="fixed w-full h-[100vh] top-[-1rem] left-0 z-49 bg-white"
+          className="fixed w-full h-[100vh] top-[-1rem] left-0 z-49 bg-white dark:bg-gray-800"
           variants={bgVariants}
         >
           <motion.nav>
-            <Navigation
-              navItems={isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS}
-              isMobile
-            />
+            <motion.ul
+              variants={ulVariants}
+              className="flex flex-col gap-8 z-50 relative justify-center items-center p-20 "
+            >
+              {navItems.map((item) => (
+                <MenuItem key={`${item.text}_${item.num}`} {...item} />
+              ))}
+            </motion.ul>
           </motion.nav>
         </motion.div>
       </div>

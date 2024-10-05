@@ -25,30 +25,13 @@ const Path = (props: PathProps) => (
 
 type MobileToggleProps = {
   toggle: () => void;
-  isOpen: boolean;
 };
 
-export const MobileToggle = ({ toggle, isOpen }: MobileToggleProps) => {
+export const MobileToggle = ({ toggle }: MobileToggleProps) => {
   return (
     <button
       onClick={toggle}
-      className={`w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-gray-800 z-50 ${
-        isOpen ? "absolute top-0 left-0" : "static"
-      } `}
-      // variants={{
-      //   closed: {
-      //     position: "static",
-      //     transition: { position: { duration: 0 } },
-      //   },
-      //   open: {
-      //     // left: "0",
-      //     // top: "0",
-      //     transition: { position: { duration: 0 } },
-      //     onAnimationEnd: () => {
-      //       return { left: "0", top: "0" };
-      //     },
-      //   },
-      // }}
+      className="w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-gray-800 z-50 absolute top-0 left-0"
     >
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path
