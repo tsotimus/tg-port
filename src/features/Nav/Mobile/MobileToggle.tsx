@@ -1,5 +1,12 @@
 import * as React from "react";
-import { motion, Variants, Transition, MotionConfig } from "framer-motion";
+import {
+  motion,
+  Variants,
+  Transition,
+  MotionConfig,
+  useAnimate,
+  useAnimation,
+} from "framer-motion";
 
 type PathProps = {
   variants: Variants;
@@ -18,41 +25,56 @@ const Path = (props: PathProps) => (
 
 type MobileToggleProps = {
   toggle: () => void;
+  isOpen: boolean;
 };
 
-export const MobileToggle = ({ toggle }: MobileToggleProps) => (
-  <motion.button
-    onClick={toggle}
-    className="w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-gray-800 z-50"
-    variants={{
-      closed: { position: "static" },
-      open: { position: "absolute", left: "0", top: "0" },
-    }}
-  >
-    <svg width="23" height="23" viewBox="0 0 23 23">
-      <Path
-        className="stroke-black dark:stroke-white"
-        variants={{
-          closed: { d: "M 2 2.5 L 20 2.5" },
-          open: { d: "M 3 16.5 L 17 2.5" },
-        }}
-      />
-      <Path
-        className="stroke-black dark:stroke-white"
-        d="M 2 9.423 L 20 9.423"
-        variants={{
-          closed: { opacity: 1 },
-          open: { opacity: 0 },
-        }}
-        transition={{ duration: 0.1 }}
-      />
-      <Path
-        className="stroke-black dark:stroke-white"
-        variants={{
-          closed: { d: "M 2 16.346 L 20 16.346" },
-          open: { d: "M 3 2.5 L 17 16.346" },
-        }}
-      />
-    </svg>
-  </motion.button>
-);
+export const MobileToggle = ({ toggle, isOpen }: MobileToggleProps) => {
+  return (
+    <button
+      onClick={toggle}
+      className={`w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-gray-800 z-50 ${
+        isOpen ? "absolute top-0 left-0" : "static"
+      } `}
+      // variants={{
+      //   closed: {
+      //     position: "static",
+      //     transition: { position: { duration: 0 } },
+      //   },
+      //   open: {
+      //     // left: "0",
+      //     // top: "0",
+      //     transition: { position: { duration: 0 } },
+      //     onAnimationEnd: () => {
+      //       return { left: "0", top: "0" };
+      //     },
+      //   },
+      // }}
+    >
+      <svg width="23" height="23" viewBox="0 0 23 23">
+        <Path
+          className="stroke-black dark:stroke-white"
+          variants={{
+            closed: { d: "M 2 2.5 L 20 2.5" },
+            open: { d: "M 3 16.5 L 17 2.5" },
+          }}
+        />
+        <Path
+          className="stroke-black dark:stroke-white"
+          d="M 2 9.423 L 20 9.423"
+          variants={{
+            closed: { opacity: 1 },
+            open: { opacity: 0 },
+          }}
+          transition={{ duration: 0.1 }}
+        />
+        <Path
+          className="stroke-black dark:stroke-white"
+          variants={{
+            closed: { d: "M 2 16.346 L 20 16.346" },
+            open: { d: "M 3 2.5 L 17 16.346" },
+          }}
+        />
+      </svg>
+    </button>
+  );
+};
