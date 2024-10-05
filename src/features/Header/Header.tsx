@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { cn } from "@/utils/client/cn";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@/components/Link";
-import { Logo } from "@/components/Logo";
 import MobileNav from "../Nav/Mobile/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "../Nav/Navbar";

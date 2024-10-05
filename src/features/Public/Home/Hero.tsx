@@ -1,5 +1,6 @@
 
 import { BlurImage } from '@/components/BlurImage'
+import MyLogo from '@/components/MyLogo'
 import { motion, useAnimate } from 'framer-motion'
 import { useEffect } from 'react'
 
@@ -76,7 +77,7 @@ const Hero = () => {
           <div className='text-muted-foreground text-sm'>London</div>
         </motion.div>
         <motion.div
-          className='relative hidden size-48 md:block'
+          className='relative hidden size-48 md:flex items-center justify-center'
           initial={{
             scale: 0
           }}
@@ -87,14 +88,15 @@ const Hero = () => {
             duration: 0.3
           }}
         >
-          <BlurImage
+          {/* <BlurImage
             src='assets/important/avatar.png'
             className='rounded-full'
             width={300}
             height={300}
             alt='Tsotne'
             lazy={false}
-          />
+          /> */}
+          <MyLogo width={150} height={150} />
           <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-50 blur-2xl' />
         </motion.div>
       </div>

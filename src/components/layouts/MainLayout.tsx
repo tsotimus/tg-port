@@ -34,7 +34,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         width={1512}
         height={550}
         className="absolute left-1/2 top-0 -z-10 -translate-x-1/2"
-        src="/imgs/gradient-background-top.png"
+        src="/imgs/beam2.png"
         alt=""
         role="presentation"
         priority
