@@ -26,7 +26,7 @@ export const MobileToggle = ({ toggle }: MobileToggleProps) => (
     className="w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-gray-800 z-50"
     variants={{
       closed: { position: "static" },
-      open: { position: "absolute" },
+      open: { position: "absolute", left: "0", top: "0" },
     }}
   >
     <svg width="23" height="23" viewBox="0 0 23 23">
