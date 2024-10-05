@@ -11,6 +11,7 @@ import MobileNav from "../Nav/Mobile/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "../Nav/New/Navbar";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
+import MobileNav2 from "../Nav/Mobile/v2/MobileNav";
 // import MobileNav2 from "../Nav/Mobile/v2/MobileNav";
 
 interface HeaderProps {
@@ -64,14 +65,13 @@ const Header = ({ isAdmin, containerHeight }: HeaderProps) => {
         <span className="sr-only">Homepage</span>
         <Logo width={28} height={28} aria-hidden="true" />
       </Link>
-      <div className="flex items-center gap-2 w-full h-full justify-end">
+      <div className="flex items-center gap-2 w-full justify-end">
         {!isMobile && <Navbar isAdmin={isAdmin} />}
         {/* {isMobile && <MobileNav2 />} */}
         <ThemeToggle />
         <Separator orientation="vertical" className="h-6" />
-        {isMobile && (
-          <MobileNav isAdmin={isAdmin} containerHeight={containerHeight} />
-        )}
+        {isMobile && <MobileNav isAdmin={isAdmin} />}
+        {/* {isMobile && <MobileNav2 />} */}
       </div>
     </motion.header>
   );

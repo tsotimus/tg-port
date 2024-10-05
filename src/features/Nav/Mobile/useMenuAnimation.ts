@@ -1,7 +1,5 @@
+import { useEffect } from "react";
 import { stagger, useAnimate } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Menu } from "./Menu";
-import { MobileToggle } from "../MobileToggle";
 
 function useMenuAnimation(isOpen: boolean) {
   const [scope, animate] = useAnimate();
@@ -36,7 +34,7 @@ function useMenuAnimation(isOpen: boolean) {
               duration: 0.6,
             },
           ],
-          ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
+          ["nav", { transform: "translateX(100%)" }, { at: "-0.1" }],
         ];
 
     animate([
@@ -59,15 +57,4 @@ function useMenuAnimation(isOpen: boolean) {
   return scope;
 }
 
-export default function MobileNav2() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const scope = useMenuAnimation(isOpen);
-
-  return (
-    <div ref={scope}>
-      {isOpen && <Menu />}
-      <MobileToggle toggle={() => setIsOpen(!isOpen)} />
-    </div>
-  );
-}
+export default useMenuAnimation;

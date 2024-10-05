@@ -1,16 +1,16 @@
 import * as React from "react";
-import { motion, Variants, Transition } from "framer-motion";
+import { motion, Variants, Transition, MotionConfig } from "framer-motion";
 
 type PathProps = {
   variants: Variants;
   d?: string;
   transition?: Transition;
+  className?: string;
 };
 const Path = (props: PathProps) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
-    stroke="hsl(0, 0%, 18%)"
     strokeLinecap="round"
     {...props}
   />
@@ -21,18 +21,24 @@ type MobileToggleProps = {
 };
 
 export const MobileToggle = ({ toggle }: MobileToggleProps) => (
-  <button
+  <motion.button
     onClick={toggle}
-    className="flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-transparent z-50 cursor-pointer"
+    className="w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-gray-800 z-50"
+    variants={{
+      closed: { position: "static" },
+      open: { position: "absolute" },
+    }}
   >
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
+        className="stroke-black dark:stroke-white"
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5" },
           open: { d: "M 3 16.5 L 17 2.5" },
         }}
       />
       <Path
+        className="stroke-black dark:stroke-white"
         d="M 2 9.423 L 20 9.423"
         variants={{
           closed: { opacity: 1 },
@@ -41,11 +47,12 @@ export const MobileToggle = ({ toggle }: MobileToggleProps) => (
         transition={{ duration: 0.1 }}
       />
       <Path
+        className="stroke-black dark:stroke-white"
         variants={{
           closed: { d: "M 2 16.346 L 20 16.346" },
           open: { d: "M 3 2.5 L 17 16.346" },
         }}
       />
     </svg>
-  </button>
+  </motion.button>
 );
