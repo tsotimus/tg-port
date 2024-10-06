@@ -3,15 +3,17 @@ import CustomMDX from "@/components/mdx/CustomMDX";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import { HydratedDocument } from "mongoose";
-import { ProjectContentDisplay, ProjectShowcaseDisplay } from "@/types/project";
-import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
+import { ProjectShowcaseDisplay } from "@/types/project";
+// import matter from "gray-matter";
+// import { serialize } from "next-mdx-remote/serialize";
 
 type ProjectPageProps = {
   params: {
     slug: string;
   };
 };
+
+//TODO: Ensure security here in terms of DB access
 
 export async function generateStaticParams() {
   await dbConnect();
