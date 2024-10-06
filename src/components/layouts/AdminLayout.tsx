@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
-import Providers from "./Providers";
 import Header from "@/features/Header/Header";
-import Footer from "@/features/Footer/Footer";
 import Image from "next/image";
 
 interface MainLayoutProps {
@@ -11,7 +9,7 @@ interface MainLayoutProps {
 const AdminLayout = ({ children }: MainLayoutProps) => {
   return (
     <div className="relative">
-      <Header isAdmin={true} />
+      <Header />
       <main
         id="skip-nav"
         className="mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8"

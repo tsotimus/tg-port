@@ -1,3 +1,5 @@
+"use client";
+
 
 import { BlurImage } from '@/components/BlurImage'
 import MyLogo from '@/components/MyLogo'

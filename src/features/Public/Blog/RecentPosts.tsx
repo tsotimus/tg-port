@@ -1,13 +1,8 @@
+"use client";
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { PublishedBlogPost } from '@/types/blogpost'
-import { Link } from '@/components/Link'
-import { buttonVariants } from '@/components/ui/button'
-import { cn } from "@/utils/client/cn";
-import BlogCard from './BlogCard'
-import EmptyPage from '@/components/layouts/EmptyPage'
-import Typography from '@/components/Typography'
 import BlogGrid from './BlogGrid'
 
 const variants = {

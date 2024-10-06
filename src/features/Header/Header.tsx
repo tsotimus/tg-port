@@ -12,11 +12,7 @@ import Navbar from "../Nav/Navbar";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
 import MyLogo from "@/components/MyLogo";
 
-interface HeaderProps {
-  isAdmin: boolean;
-}
-
-const Header = ({ isAdmin }: HeaderProps) => {
+const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isMobile } = useBreakpoints();
 
@@ -63,10 +59,10 @@ const Header = ({ isAdmin }: HeaderProps) => {
         <MyLogo width={48} height={48} aria-hidden="true" />
       </Link>
       <div className="flex items-center gap-2 w-full justify-end">
-        {!isMobile && <Navbar isAdmin={isAdmin} />}
+        {!isMobile && <Navbar />}
         <ThemeToggle />
         <Separator orientation="vertical" className="h-6" />
-        {isMobile && <MobileNav isAdmin={isAdmin} />}
+        {isMobile && <MobileNav />}
       </div>
     </motion.header>
   );

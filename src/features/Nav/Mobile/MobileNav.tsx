@@ -1,7 +1,10 @@
+"use client";
+
 import { MobileToggle } from "./MobileToggle";
 import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
 import { motion, useCycle, Variants } from "framer-motion";
 import { MenuItem } from "./MenuItem";
+import { usePathname } from "next/navigation";
 
 const bgVariants: Variants = {
   open: {
@@ -25,8 +28,10 @@ const ulVariants = {
   },
 };
 
-const MobileNav = ({ isAdmin }: { isAdmin: boolean }) => {
+const MobileNav = () => {
   const [isOpen, cycleOpen] = useCycle(false, true);
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin");
 
   const navItems = isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS;
 
@@ -39,6 +44,8 @@ const MobileNav = ({ isAdmin }: { isAdmin: boolean }) => {
       <div className="relative w-full h-full">
         <MobileToggle toggle={() => cycleOpen()} />
         <motion.div
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
           className="fixed w-full h-[100vh] top-[-1rem] left-0 z-49 bg-white dark:bg-gray-800"
           variants={bgVariants}
         >

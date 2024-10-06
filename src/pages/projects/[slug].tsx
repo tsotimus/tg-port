@@ -3,7 +3,6 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import CustomLink from "@/components/CustomLink";
-import MainLayout from "@/components/layouts/MainLayout";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import { Callout } from "@/components/mdx/Callout";
@@ -27,7 +26,7 @@ type ProjectPageProps = {
 
 export default function ProjectPage({ source, title }: ProjectPageProps) {
   return (
-    <MainLayout>
+    <>
       <Head>
         <title>{title}</title>
       </Head>
@@ -51,7 +50,7 @@ export default function ProjectPage({ source, title }: ProjectPageProps) {
           <MDXRemote {...source} components={components} />
         </article>
       </main>
-    </MainLayout>
+    </>
   );
 }
 

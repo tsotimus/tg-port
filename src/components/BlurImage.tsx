@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/utils/client/cn";
 import { CldImage } from "next-cloudinary";
 import { forwardRef, useState } from "react";

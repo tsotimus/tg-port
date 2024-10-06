@@ -1,11 +1,11 @@
-import AdminLayout from "@/components/layouts/AdminLayout";
+import Stack from "@/components/layouts/Stack";
 import Welcome from "@/features/Admin/Home/Welcome";
 
 const HomeAdminPage = () => {
   return (
-    <AdminLayout>
+    <Stack>
       <Welcome />
-    </AdminLayout>
+    </Stack>
   );
 };
 

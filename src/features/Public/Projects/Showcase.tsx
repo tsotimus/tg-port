@@ -1,3 +1,5 @@
+"use client";
+
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/utils/client/cn";
 import { useInView, motion } from "framer-motion"

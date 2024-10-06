@@ -1,3 +1,5 @@
+import { useState, useEffect, useMemo } from "react";
+
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -6,13 +8,12 @@ function getWindowDimensions() {
   };
 }
 
-import { useState, useEffect, useMemo } from "react";
-
 export function useBreakpoints() {
   const [windowState, setWindowState] = useState(false);
-  const [windowDimensions, setWindowDimensions] = useState(
-    windowState ? getWindowDimensions() : { width: 0, height: 0 }
-  );
+  const [windowDimensions, setWindowDimensions] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
 
   useEffect(() => {
     setWindowState(true);
@@ -27,6 +28,19 @@ export function useBreakpoints() {
   }, []);
 
   return useMemo(() => {
+    if (windowDimensions === null) {
+      return {
+        dimensions: { width: 0, height: 0 },
+        isSm: false,
+        isMd: false,
+        isLg: false,
+        isXl: false,
+        is2xl: false,
+        isMobile: false,
+        isWindow: windowState,
+      };
+    }
+
     const isSm = windowDimensions.width < 640;
     const isMd = windowDimensions.width >= 640 && windowDimensions.width < 768;
     const isLg = windowDimensions.width >= 768 && windowDimensions.width < 1024;
@@ -45,8 +59,4 @@ export function useBreakpoints() {
       isWindow: windowState,
     };
   }, [windowState, windowDimensions]);
-}
-
-export function useLazyWindowDimensions() {
-  return [getWindowDimensions];
 }

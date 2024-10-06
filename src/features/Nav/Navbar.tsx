@@ -1,15 +1,13 @@
-import { usePathname } from "next/navigation";
+"use client";
 
+import { usePathname } from "next/navigation";
 import { Link } from "@/components/Link";
 import { cn } from "@/utils/client/cn";
 import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
 
-interface NavbarProps {
-  isAdmin: boolean;
-}
-
-const Navbar = ({ isAdmin }: NavbarProps) => {
+const Navbar = () => {
   const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin");
 
   return (
     <nav>

@@ -1,9 +1,8 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Stack from "@/components/layouts/Stack";
 import Head from "next/head";
 import ButtonLink from "@/components/ButtonLink";
+import "@/styles/globals.css";
 
 const ConstructionPage = () => {
   return (
