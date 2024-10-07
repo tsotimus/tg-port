@@ -10,24 +10,25 @@ const TEXTS = [
   {
     text: 'amazing',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
+      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#3782D1] to-[#8248C9]'
   },
   {
     text: 'stunning',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#0077ff] to-[#00e7df]'
+      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#FF4DA6] to-[#FF7F24]'
   },
   {
     text: 'fantastic',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#7f00de] to-[#ff007f]'
+      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#FF6347] to-[#FFD700]'
   },
   {
     text: 'amazing',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
+      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#3782D1] to-[#8248C9]'
   }
 ]
+
 
 const Hero = () => {
   const [scope, animate] = useAnimate()
@@ -99,6 +100,7 @@ const Hero = () => {
             lazy={false}
           /> */}
           <MyLogo width={150} height={150} />
+          {/* <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-50 blur-2xl' /> */}
           <div className='absolute inset-0 -z-10 bg-custom-gradient-all opacity-30 blur-2xl' />
         </motion.div>
       </div>
