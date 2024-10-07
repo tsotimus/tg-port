@@ -1,15 +1,15 @@
 import { Link } from "@/components/Link"
 import { ArrowUpRightIcon, LightbulbIcon } from "lucide-react"
 import { BlurImage } from "@/components/BlurImage"
-import { ProjectContentDisplay } from "@/types/project"
+import { ProjectDisplay } from "@/types/project"
 
 interface ProjectCardBodyProps {
-  project: ProjectContentDisplay
+  project: ProjectDisplay
   isLinkType: boolean
 }
 
 const ProjectCardBody = ({project, isLinkType}:ProjectCardBodyProps ) => {
-  const { coverImage, title, description, slug, type } = project
+  const { coverImage, title, description, slug } = project
   return (
     <>
       <div className='flex items-center justify-between p-4'>
@@ -39,23 +39,11 @@ const ProjectCardBody = ({project, isLinkType}:ProjectCardBodyProps ) => {
 }
 
 interface ProjectCardProps {
-  project: ProjectContentDisplay
+  project: ProjectDisplay
 }
 
 const ProjectCard = ({project}: ProjectCardProps) => {
-    const { slug, type } = project
-
-    if(type === "LINK") {
-      return (
-        <Link
-        key={slug}
-        href={project.link}
-        className='shadow-feature-card dark:shadow-feature-card-dark group relative rounded-xl p-2'
-      >
-        <ProjectCardBody project={project} isLinkType={true} />
-      </Link>
-      )
-    }
+    const { slug } = project
   
     return (
       <Link

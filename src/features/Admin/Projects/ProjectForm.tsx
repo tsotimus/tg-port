@@ -57,9 +57,7 @@ const ProjectForm = ({ isEditing, handleDelete }: ProjectFormProps) => {
       {currentType === "SHOWCASE" && (
         <MDXEditor name="mdxContent" rules={{ required: true }} />
       )}
-      {currentType === "LINK" && (
-        <TextInput name="link" label="Link URL" rules={{ required: true }} />
-      )}
+      <TextInput name="link" label="Link URL" />
       <FormRow>
         <Button type="submit" disabled={!isValid || !isDirty}>
           {isEditing ? "Save" : "Create"}

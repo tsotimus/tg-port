@@ -1,4 +1,4 @@
-import * as z from "zod";
+import z from "zod";
 
 //Used for creating a new project
 const baseSchema = z.object({
@@ -7,35 +7,22 @@ const baseSchema = z.object({
   slug: z.string(),
   featured: z.boolean(),
   coverImage: z.string(),
-});
-
-const showcaseSchema = baseSchema.extend({
   type: z.literal("SHOWCASE"),
   mdxContent: z.string(),
-  link: z.undefined(),
+  link: z.string().optional(),
+  github: z.string().optional(),
 });
 
-const linkSchema = baseSchema.extend({
-  type: z.literal("LINK"),
-  link: z.string(),
-  mdxContent: z.undefined(),
-});
-
-export const projectValidation = z.discriminatedUnion("type", [
-  showcaseSchema,
-  linkSchema,
-]);
-
-export type FormSchema = z.infer<typeof projectValidation>;
+export type FormSchema = z.infer<typeof baseSchema>;
 
 export type ProjectModel = {
   title: string;
   description: string;
   slug: string;
-  type: "SHOWCASE" | "LINK";
   techStack: string[];
-  mdxContent?: string;
+  mdxContent: string;
   link?: string;
+  github?: string;
   createdAt: Date;
   updatedAt: Date;
   featured: boolean;
@@ -43,10 +30,7 @@ export type ProjectModel = {
   publishedAt?: Date;
 };
 
-//Not sure what this is used for
-export type ProjectContentDisplay = ProjectLinkDisplay | ProjectShowcaseDisplay;
-
-export type ProjectCommonDisplay = {
+export type ProjectDisplay = {
   id: string;
   title: string;
   description: string;
@@ -54,19 +38,12 @@ export type ProjectCommonDisplay = {
   featured: boolean;
   coverImage: string;
   techStack: string[];
+  mdxContent: string;
+  link?: string;
+  github?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt?: Date;
 };
 
-export type ProjectLinkDisplay = {
-  type: "LINK";
-  link: string;
-} & ProjectCommonDisplay;
-
-export type ProjectShowcaseDisplay = {
-  type: "SHOWCASE";
-  mdxContent: string;
-} & ProjectCommonDisplay;
-
-export type ProjectShowcaseDisplayNoMDX = Omit<
-  ProjectShowcaseDisplay,
-  "mdxContent"
->;
+export type ProjectShowcaseDisplayNoMDX = Omit<ProjectDisplay, "mdxContent">;

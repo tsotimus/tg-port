@@ -44,9 +44,9 @@ export default function RootLayout({
             <Footer />
             <Image
               width={1512}
-              height={550}
+              height={447}
               className="absolute left-1/2 top-0 -z-10 -translate-x-1/2"
-              src="/imgs/gradient-background-top.png"
+              src="/imgs/gradient-header.png"
               alt=""
               role="presentation"
               priority
@@ -55,7 +55,7 @@ export default function RootLayout({
               width={1512}
               height={447}
               className="absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2"
-              src="/imgs/gradient-background-bottom.png"
+              src="/imgs/gradient-footer.png"
               alt=""
               role="presentation"
               priority

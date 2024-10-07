@@ -99,7 +99,7 @@ const Hero = () => {
             lazy={false}
           /> */}
           <MyLogo width={150} height={150} />
-          <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-50 blur-2xl' />
+          <div className='absolute inset-0 -z-10 bg-custom-gradient-all opacity-30 blur-2xl' />
         </motion.div>
       </div>
     </div>

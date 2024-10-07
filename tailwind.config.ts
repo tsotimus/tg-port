@@ -94,6 +94,16 @@ const config: Partial<Config> = {
           "radial-gradient(44.6% 825% at 50% 50%, rgb(255 28 28) 0%, rgb(255 72 109 / 0) 100%)",
         "email-button":
           "linear-gradient(180deg, rgb(210 10 30) 5%, rgb(239 90 90) 100%)",
+        "custom-gradient-1":
+          "linear-gradient(119deg, #3782D1 0%, #8248C9 100%)",
+        "custom-gradient-2":
+          "linear-gradient(119deg, #151F7A 0%, #2440C7 100%)",
+        "custom-gradient-3":
+          "linear-gradient(119deg, #DB4D65 0%, #8248C9 100%)",
+        "custom-gradient-4":
+          "linear-gradient(119deg, #3782D1 0%, #DB4D65 100%)",
+        "custom-gradient-all":
+          "linear-gradient(119deg, #3782D1 11%, #8248C9 33%, #151F7A 54%, #2440C7 74%, #DB4D65 90%)",
       },
       boxShadow: {
         "feature-card": "0 -1px 3px 0 rgb(0 0 0 / 0.05)",

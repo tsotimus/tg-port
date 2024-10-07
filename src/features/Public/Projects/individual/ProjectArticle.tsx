@@ -5,12 +5,12 @@ import { ProjectShowcaseDisplayNoMDX } from "@/types/project";
 import { ReactNode } from "react";
 import ArticleHeader from "./ArticleHeader";
 
-interface ProjectDisplayProps {
+interface ProjectArticleProps {
     mdxContent: ReactNode;
     project: ProjectShowcaseDisplayNoMDX
 }
 
-const ProjectDisplay = ({mdxContent, project}: ProjectDisplayProps) => {
+const ProjectArticle = ({mdxContent, project}: ProjectArticleProps) => {
     return (
         <article className="mx-auto max-w-3xl">
            <ArticleHeader project={project} />
@@ -29,4 +29,4 @@ const ProjectDisplay = ({mdxContent, project}: ProjectDisplayProps) => {
     );
 }
 
-export default ProjectDisplay;
+export default ProjectArticle;

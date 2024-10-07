@@ -3,11 +3,11 @@ import EmptyPage from "@/components/layouts/EmptyPage"
 import { Link } from "@/components/Link"
 import Pill from "@/components/Pill"
 import Typography from "@/components/Typography"
-import { ProjectContentDisplay } from "@/types/project"
+import { ProjectDisplay } from "@/types/project"
 
 
 type FullProjectCardsProps = {
-  projects: ProjectContentDisplay[]
+  projects: ProjectDisplay[]
 }
 
 const FullProjectCards = ({projects}: FullProjectCardsProps) => {
@@ -31,7 +31,7 @@ const FullProjectCards = ({projects}: FullProjectCardsProps) => {
   )
 }
 
-const CardContent = ({title, description, techStack, coverImage, slug}:ProjectContentDisplay) => {
+const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDisplay) => {
   return (
     <>
     <BlurImage
@@ -59,20 +59,8 @@ const CardContent = ({title, description, techStack, coverImage, slug}:ProjectCo
   )
 } 
 
-const FullProjectCard = (project:ProjectContentDisplay) => {
-  const {slug, type} = project
-
-  if(type === "LINK") {
-    return (
-      <Link
-        href={project.link}
-        className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
-      >
-        <CardContent {...project} />
-      </Link>
-    )
-  }
-
+const FullProjectCard = (project:ProjectDisplay) => {
+  const {slug} = project
   return (
     <Link
       href={`/projects/${slug}`}
