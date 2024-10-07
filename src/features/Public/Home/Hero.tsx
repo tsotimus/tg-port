@@ -8,22 +8,22 @@ import { useEffect } from 'react'
 
 const TEXTS = [
   {
-    text: 'amazing',
+    text: 'beautiful',
     className:
       'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#3782D1] to-[#8248C9]'
   },
   {
-    text: 'stunning',
-    className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#FF4DA6] to-[#FF7F24]'
-  },
-  {
-    text: 'fantastic',
+    text: 'efficient',
     className:
       'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#FF6347] to-[#FFD700]'
   },
   {
-    text: 'amazing',
+    text: 'reliable',
+    className:
+      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#FF4DA6] to-[#FF7F24]'
+  },
+  {
+    text: 'beautiful',
     className:
       'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#3782D1] to-[#8248C9]'
   }
@@ -75,7 +75,7 @@ const Hero = () => {
                 ))}
               </div>
             </div>{' '}
-            websites using React.
+            apps using Typescript.
           </h1>
           <div className='text-muted-foreground text-sm'>London</div>
         </motion.div>
