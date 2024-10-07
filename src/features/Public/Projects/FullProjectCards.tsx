@@ -1,6 +1,7 @@
 import { BlurImage } from "@/components/BlurImage"
 import EmptyPage from "@/components/layouts/EmptyPage"
 import { Link } from "@/components/Link"
+import Pill from "@/components/Pill"
 import Typography from "@/components/Typography"
 import { ProjectContentDisplay } from "@/types/project"
 
@@ -49,12 +50,7 @@ const CardContent = ({title, description, techStack, coverImage, slug}:ProjectCo
         <div className='mt-4 flex flex-wrap gap-2'>
           {techStack.map((tech) => {
             return (
-              <div
-                key={`${slug}-${tech}`}
-                className='rounded-full border bg-zinc-50 px-3 py-2 text-xs leading-4 dark:bg-zinc-900'
-              >
-                {tech}
-              </div>
+              <Pill text={tech} key={`${slug}-${tech}`} />
             )
           })}
         </div>

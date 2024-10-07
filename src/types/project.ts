@@ -65,3 +65,8 @@ export type ProjectShowcaseDisplay = {
   type: "SHOWCASE";
   mdxContent: string;
 } & ProjectCommonDisplay;
+
+export type ProjectShowcaseDisplayNoMDX = Omit<
+  ProjectShowcaseDisplay,
+  "mdxContent"
+>;
