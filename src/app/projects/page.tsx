@@ -4,8 +4,13 @@ import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import { ProjectDisplay } from "@/types/project";
 import { HydratedDocument } from "mongoose";
+import { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Projects",
+};
 
 async function fetchAllProjects() {
   await dbConnect();

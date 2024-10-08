@@ -6,8 +6,13 @@ import dbConnect from "@/lib/dbConnect";
 import BlogPost from "@/models/BlogPost";
 import { PublishedBlogPost } from "@/types/blogpost";
 import { HydratedDocument } from "mongoose";
+import { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Blog",
+};
 
 async function fetchAllBlogPosts() {
   await dbConnect();
