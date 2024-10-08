@@ -1,12 +1,14 @@
+"use client";
+
 import { FullPageLoader } from "@/components/loaders/Loading";
 import { DataTable } from "@/components/tables/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
-import { ProjectContentDisplay } from "@/types/project";
-import { useRouter } from "next/router";
+import { ProjectDisplay } from "@/types/project";
+// import { useRouter } from "next/navigation";
 import ButtonLink from "@/components/ButtonLink";
 import useGetPosts from "./useGetPosts";
 
-const COLUMNS: ColumnDef<ProjectContentDisplay, string | number>[] = [
+const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
   {
     header: "Title",
     accessorKey: "title",
@@ -48,7 +50,7 @@ const COLUMNS: ColumnDef<ProjectContentDisplay, string | number>[] = [
 
 const MyBlogPosts = () => {
   const { allProjects, isLoading } = useGetPosts();
-  const router = useRouter();
+  // const router = useRouter();
 
   return isLoading ? (
     <FullPageLoader />

@@ -1,22 +1,16 @@
+"use client";
+
 import { FullPageLoader } from "@/components/loaders/Loading";
 import useGetProjects from "./useGetProjects";
 import { DataTable } from "@/components/tables/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
-import {
-  ProjectContentDisplay,
-  ProjectLinkDisplay,
-  ProjectShowcaseDisplay,
-} from "@/types/project";
-import { useRouter } from "next/router";
 import ButtonLink from "@/components/ButtonLink";
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import { ArrowUpRightIcon } from "lucide-react";
+import { ProjectDisplay } from "@/types/project";
 
-const COLUMNS: ColumnDef<
-  ProjectLinkDisplay | ProjectShowcaseDisplay,
-  string | number
->[] = [
+const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
   {
     header: "Title",
     accessorKey: "title",
@@ -33,22 +27,11 @@ const COLUMNS: ColumnDef<
   {
     header: "View",
     cell: (cell) => {
-      if ("link" in cell.row.original) {
-        return (
-          <ButtonLink href={cell.row.original.link} external>
-            <Stack direction="row" align="center">
-              <Typography>View</Typography>
-              <ArrowUpRightIcon className="size-[18px] transition-opacity group-hover:opacity-100" />
-            </Stack>
-          </ButtonLink>
-        );
-      } else {
-        return (
-          <ButtonLink href={`/projects/${cell.row.original.slug}`}>
-            View
-          </ButtonLink>
-        );
-      }
+      return (
+        <ButtonLink href={`/projects/${cell.row.original.slug}`}>
+          View
+        </ButtonLink>
+      );
     },
   },
   {
@@ -73,7 +56,6 @@ const COLUMNS: ColumnDef<
 
 const MyProjects = () => {
   const { allProjects, isLoading } = useGetProjects();
-  const router = useRouter();
 
   return isLoading ? (
     <FullPageLoader />

@@ -1,5 +1,5 @@
 import { GenericApiResponse } from "@/types/api";
-import { ProjectContentDisplay } from "@/types/project";
+import { ProjectDisplay } from "@/types/project";
 import { fetcher } from "@/utils/client/genericFetchers";
 import { useQuery } from "@tanstack/react-query";
 
@@ -9,7 +9,7 @@ interface UseGetProject {
 
 const useGetProject = ({ id }: UseGetProject) => {
   const { data, isPending, isError, isSuccess, error } = useQuery<
-    GenericApiResponse<ProjectContentDisplay>
+    GenericApiResponse<ProjectDisplay>
   >({
     queryKey: ["project", id],
     queryFn: () => fetcher(`/api/admin/v1/projects/${id}`),

@@ -1,19 +1,15 @@
-import {
-  FormSchema,
-  ProjectContentDisplay,
-  projectValidation,
-} from "@/types/project";
+import { FormSchema, ProjectDisplay, ProjectSchema } from "@/types/project";
 import { FormProvider, useForm } from "react-hook-form";
 import ProjectForm from "./ProjectForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { deleteFetcher, updateFetcher } from "@/utils/client/genericFetchers";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { FormLayout } from "@/components/form/FormLayout";
 import { toast } from "sonner";
 
 interface EditProjectProps {
-  project: ProjectContentDisplay;
+  project: ProjectDisplay;
 }
 
 const EditProject = ({ project }: EditProjectProps) => {
@@ -21,7 +17,7 @@ const EditProject = ({ project }: EditProjectProps) => {
   const projectUrl = `/api/admin/v1/projects/${project.id}`;
 
   // Define the mutation functions
-  const updateProject = async (data: ProjectContentDisplay) => {
+  const updateProject = async (data: ProjectDisplay) => {
     return updateFetcher(projectUrl, data);
   };
 
@@ -61,11 +57,11 @@ const EditProject = ({ project }: EditProjectProps) => {
 
   const methods = useForm<FormSchema>({
     mode: "onChange",
-    resolver: zodResolver(projectValidation),
+    resolver: zodResolver(ProjectSchema),
     defaultValues: project,
   });
 
-  const handleUpdate = (data: ProjectContentDisplay) => {
+  const handleUpdate = (data: ProjectDisplay) => {
     updateMutation.mutate(data);
   };
 

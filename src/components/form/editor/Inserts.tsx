@@ -1,3 +1,5 @@
+"use client";
+
 import { usePublisher, insertJsx$, Button } from "@mdxeditor/editor";
 
 // a toolbar button that will insert a JSX element into the editor.

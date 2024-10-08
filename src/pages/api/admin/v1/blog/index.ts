@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
 import { createApiResponse } from "@/utils/server/createApiResponse";
-import { projectValidation } from "@/types/project";
+import { ProjectSchema } from "@/types/project";
 import BlogPost from "@/models/BlogPost";
 
 export default async function handler(
@@ -13,7 +13,7 @@ export default async function handler(
       const body = req.body;
       //   try {
       //     //TODO: Validate the incoming data with zod
-      //     const validatedData = projectValidation.parse(body);
+      //     const validatedData = ProjectSchema.parse(body);
       //   } catch (err) {
       //     return res.status(400).json(createApiResponse(null, ["Bad Request"]));
       //   }

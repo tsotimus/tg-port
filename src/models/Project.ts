@@ -26,10 +26,9 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
       type: String,
       required: false,
     },
-    type: {
+    github: {
       type: String,
-      required: [true, "Please provide a project type."],
-      enum: ["SHOWCASE", "LINK"],
+      required: false,
     },
     techStack: {
       type: [String],

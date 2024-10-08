@@ -1,3 +1,5 @@
+"use client";
+
 import { GenericJsxEditor, JsxComponentDescriptor } from "@mdxeditor/editor";
 import { ReactNode } from "react";
 

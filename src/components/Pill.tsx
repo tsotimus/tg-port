@@ -1,3 +1,5 @@
+"use client";
+
 interface PillProps {
   text: string;
 }

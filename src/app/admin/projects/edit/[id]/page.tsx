@@ -5,11 +5,12 @@ import { FullPageLoader } from "@/components/loaders/Loading";
 import EditProject from "@/features/Admin/Projects/EditProject";
 import useGetProject from "@/features/Admin/Projects/useGetProject";
 import { routerQueryParse } from "@/utils/client/routerQuery";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 const EditPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  const searchParams = useSearchParams();
+  const id = searchParams?.get("id");
+
   const idValue = routerQueryParse(id);
   const { isSuccess, isPending, project, isError, error } = useGetProject({
     id: idValue,

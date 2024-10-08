@@ -1,3 +1,5 @@
+"use client";
+
 import cn from "clsx";
 import type { ComponentProps, ReactElement } from "react";
 

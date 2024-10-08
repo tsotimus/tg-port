@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useMemo } from "react";

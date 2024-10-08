@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/utils/client/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 import NextLink from "next/link";

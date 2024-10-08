@@ -1,3 +1,5 @@
+"use client";
+
 import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
 import {
   Accept,

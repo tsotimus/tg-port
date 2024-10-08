@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/utils/client/cn";
 import { PropsWithChildren, ReactNode } from "react";
 

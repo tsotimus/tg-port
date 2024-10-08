@@ -1,3 +1,5 @@
+"use client";
+
 import { FormLayout } from "@/components/form/FormLayout";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -5,14 +7,14 @@ import ProjectForm from "./ProjectForm";
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import axios from "axios";
-import { FormSchema, projectValidation } from "@/types/project";
-import { useRouter } from "next/router";
+import { FormSchema, ProjectSchema } from "@/types/project";
+import { useRouter } from "next/navigation";
 
 const CreateProject = () => {
   const router = useRouter();
   const methods = useForm<FormSchema>({
     mode: "onChange",
-    resolver: zodResolver(projectValidation),
+    resolver: zodResolver(ProjectSchema),
   });
 
   const onSubmit = (data: FormSchema) => {

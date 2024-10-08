@@ -5,7 +5,7 @@ import { cn } from "@/utils/client/cn";
 import { useInView, motion } from "framer-motion"
 import { useRef } from "react"
 import Card from "./ProjectCard"
-import { ProjectContentDisplay } from "@/types/project"
+import { ProjectDisplay } from "@/types/project"
 import EmptyPage from "@/components/layouts/EmptyPage"
 import Typography from "@/components/Typography"
 import { Link } from "@/components/Link";
@@ -24,7 +24,7 @@ const variants = {
   }
 
 interface ShowcaseProps {
-  featuredProjects: ProjectContentDisplay[]
+  featuredProjects: ProjectDisplay[]
 }
 
 const Showcase = ({featuredProjects}: ShowcaseProps) => {

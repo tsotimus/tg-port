@@ -6,7 +6,7 @@ import RecentPosts from "@/features/Public/Blog/RecentPosts";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import BlogPost from "@/models/BlogPost";
-import { ProjectContentDisplay } from "@/types/project";
+import { ProjectDisplay } from "@/types/project";
 import { PublishedBlogPost } from "@/types/blogpost";
 import { HydratedDocument } from "mongoose";
 import { Metadata } from "next";
@@ -15,7 +15,7 @@ export const revalidate = 60;
 
 async function fetchFeaturedProjects() {
   await dbConnect();
-  const projects = await Project.find<HydratedDocument<ProjectContentDisplay>>({
+  const projects = await Project.find<HydratedDocument<ProjectDisplay>>({
     featured: true,
   }).limit(2);
   return projects.map((project) => project.toJSON());

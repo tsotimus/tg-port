@@ -1,3 +1,4 @@
+"use client";
 import { PropsWithChildren } from "react";
 import { FieldValues, useFormContext } from "react-hook-form";
 

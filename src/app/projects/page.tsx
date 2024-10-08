@@ -2,16 +2,14 @@ import Typography from "@/components/Typography";
 import FullProjectCards from "@/features/Public/Projects/FullProjectCards";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
-import { ProjectContentDisplay } from "@/types/project";
+import { ProjectDisplay } from "@/types/project";
 import { HydratedDocument } from "mongoose";
 
 export const revalidate = 60;
 
 async function fetchAllProjects() {
   await dbConnect();
-  const projects = await Project.find<
-    HydratedDocument<ProjectContentDisplay>
-  >();
+  const projects = await Project.find<HydratedDocument<ProjectDisplay>>();
   return projects.map((project) => project.toJSON());
 }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { Option } from "@/types/options";
 import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
 import {

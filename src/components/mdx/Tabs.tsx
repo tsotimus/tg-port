@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Tab as HeadlessTab } from "@headlessui/react";
 import cn from "clsx";

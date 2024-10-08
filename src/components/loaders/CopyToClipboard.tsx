@@ -1,3 +1,5 @@
+"use client";
+
 import copy from "copy-to-clipboard";
 import { MotionConfig, AnimatePresence, motion } from "framer-motion";
 import { useState, useCallback } from "react";

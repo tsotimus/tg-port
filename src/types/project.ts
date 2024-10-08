@@ -1,7 +1,7 @@
 import z from "zod";
 
 //Used for creating a new project
-const baseSchema = z.object({
+export const ProjectSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
@@ -13,7 +13,7 @@ const baseSchema = z.object({
   github: z.string().optional(),
 });
 
-export type FormSchema = z.infer<typeof baseSchema>;
+export type FormSchema = z.infer<typeof ProjectSchema>;
 
 export type ProjectModel = {
   title: string;
