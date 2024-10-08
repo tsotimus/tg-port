@@ -40,7 +40,7 @@ const MyStacks = () => {
     <div className='shadow-feature-card dark:shadow-feature-card-dark flex h-60 flex-col gap-2 overflow-hidden rounded-xl p-4 lg:p-6'>
       <div className='flex items-center gap-2'>
         <ZapIcon className='size-[18px]' />
-        <h2 className='text-sm font-light'>Stack</h2>
+        <h2 className='text-sm font-light'>My Stacks</h2>
       </div>
       <Marquee gap='20px' className='py-4' fade pauseOnHover>
         <SiHtml5 className='size-10' />
