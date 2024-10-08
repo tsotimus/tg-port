@@ -1,5 +1,6 @@
 // File: app/blog/page.tsx
 
+import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import FilteredPosts from "@/features/Public/Blog/FiltertedPosts";
 import dbConnect from "@/lib/dbConnect";
@@ -24,9 +25,9 @@ export default async function AllBlogPostsPage() {
   const allBlogPosts = await fetchAllBlogPosts();
 
   return (
-    <>
+    <Stack gap={4}>
       <Typography variant="h1">All Blog Posts</Typography>
       <FilteredPosts posts={allBlogPosts} />
-    </>
+    </Stack>
   );
 }

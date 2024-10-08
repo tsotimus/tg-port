@@ -1,3 +1,4 @@
+import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import FullProjectCards from "@/features/Public/Projects/FullProjectCards";
 import dbConnect from "@/lib/dbConnect";
@@ -22,9 +23,9 @@ export default async function AllProjectsPage() {
   const allProjects = await fetchAllProjects();
 
   return (
-    <>
+    <Stack gap={4}>
       <Typography variant="h1">All Projects</Typography>
       <FullProjectCards projects={allProjects} />
-    </>
+    </Stack>
   );
 }
