@@ -11,10 +11,94 @@ import "@/styles/globals.css";
 import Providers from "@/components/layouts/Providers";
 
 import type { Metadata } from "next";
+import {
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/config/constants";
 
 export const metadata: Metadata = {
-  title: "Tsot",
-  icons: "/logo.png",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  // manifest: "/favicon/site.webmanifest",
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: "@tsotimus",
+    // siteId: "",
+    // creator: "",
+    // creatorId: "",
+    images: [
+      {
+        url: "/images/tsotne_gvadzabia.png",
+        width: 1200,
+        height: 630,
+        alt: SITE_DESCRIPTION,
+      },
+    ],
+  },
+  keywords: SITE_KEYWORDS,
+  creator: "Tsotne Gvadzabia",
+  openGraph: {
+    url: SITE_URL,
+    type: "website",
+    title: SITE_TITLE,
+    siteName: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en-US",
+    images: [
+      {
+        url: "/imgs/tsotne_gvadzabia.png",
+        width: 1200,
+        height: 630,
+        alt: SITE_DESCRIPTION,
+        type: "image/png",
+      },
+    ],
+  },
+  // icons: {
+  //   icon: "/imgs/favicon.svg",
+  //   shortcut: "/imgs/favicon.svg",
+  //   apple: [
+  //     {
+  //       url: "/imgs/apple-touch-icon.png",
+  //       sizes: "180x180",
+  //       type: "image/png",
+  //     },
+  //   ],
+  //   other: [
+  //     {
+  //       rel: "icon",
+  //       type: "image/png",
+  //       sizes: "16x16",
+  //       url: "/imgs/favicon-16x16.png",
+  //     },
+  //     {
+  //       rel: "icon",
+  //       type: "image/png",
+  //       sizes: "32x32",
+  //       url: "/imgs/favicon-32x32.png",
+  //     },
+  //   ],
+  // },
 };
 
 export default function RootLayout({

@@ -1,7 +1,11 @@
-export const SITE_NAME = "Tsotne";
-export const SITE_TITLE = "Tsotne - A Full Stack Engineer";
-export const SITE_DESCRIPTION = "Tsotne Gvadzabia | Full Stack Engineer";
+export const SITE_TITLE = "Tsotne Gvadzabia | Software Engineer";
+export const SITE_NAME = "Tsotne Gvadzabia";
+export const SITE_DESCRIPTION = "Tsotne Gvadzabia a Software Engineer";
+export const SITE_URL = process.env.NEXT_PUBLIC_URL ?? "http://localhost:3000";
 export const SITE_KEYWORDS = [
+  "Tsotne",
+  "Gvadzabia",
+  "Tsotne Gvadzabia",
   "RockiRider",
   "Next.js",
   "React",
