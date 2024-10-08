@@ -35,6 +35,8 @@ const MobileNav = () => {
 
   const navItems = isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS;
 
+  const closeMenu = () => cycleOpen(0);
+
   return (
     <motion.div
       className={`inset-0 relative w-[48px] h-[48px]`}
@@ -46,7 +48,7 @@ const MobileNav = () => {
         <motion.div
           initial={false}
           animate={isOpen ? "open" : "closed"}
-          className="fixed w-full h-[100vh] top-[-1rem] left-0 z-49 bg-white dark:bg-gray-800"
+          className="fixed w-full h-[100vh] top-[-1rem] left-0 z-49 bg-white dark:bg-night"
           variants={bgVariants}
         >
           <motion.nav>
@@ -55,7 +57,11 @@ const MobileNav = () => {
               className="flex flex-col gap-8 z-50 relative justify-center items-center p-20 "
             >
               {navItems.map((item) => (
-                <MenuItem key={`${item.text}_${item.num}`} {...item} />
+                <MenuItem
+                  key={`${item.text}_${item.num}`}
+                  onClick={closeMenu}
+                  {...item}
+                />
               ))}
             </motion.ul>
           </motion.nav>

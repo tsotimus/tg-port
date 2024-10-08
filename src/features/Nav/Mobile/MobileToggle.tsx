@@ -23,7 +23,7 @@ export const MobileToggle = ({ toggle }: MobileToggleProps) => {
   return (
     <button
       onClick={toggle}
-      className="w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-gray-800 z-50 absolute top-0 left-0"
+      className="w-[48px] h-[48px] flex justify-center items-center outline-none border-none select-none cursor-pointer inset-4/5 w-12 h-12 rounded-full bg-white dark:bg-night z-50 absolute top-0 left-0"
     >
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path

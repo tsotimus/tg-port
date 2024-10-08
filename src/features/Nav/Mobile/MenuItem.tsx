@@ -27,16 +27,22 @@ type MenuItemProps = {
   num: number;
   text: string;
   href: string;
+  onClick?: () => void;
 };
 
-export const MenuItem = ({ num, text, href }: MenuItemProps) => {
+export const MenuItem = ({ text, href, onClick }: MenuItemProps) => {
   return (
     <motion.li
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
+      className="cursor-pointer"
     >
-      <Link className="dark:text-white text-black md:text-white" href={href}>
+      <Link
+        className="dark:text-white text-black md:text-white"
+        href={href}
+        onClick={onClick}
+      >
         {text}
       </Link>
     </motion.li>

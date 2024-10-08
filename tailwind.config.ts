@@ -144,6 +144,9 @@ const config: Partial<Config> = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        night: {
+          DEFAULT: "#1A202C",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
