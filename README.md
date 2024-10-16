@@ -15,7 +15,7 @@ yarn dev
 - [ ] Add a blog posts, create and edit and display
 - [ ] Add a projects, create and edit and display
 - [ ] Add a contact form
-- [ ] New Logo
+- [x] New Logo
 - [x] Add memoji
 - [ ] Update footer
 - [ ] Update favicon
