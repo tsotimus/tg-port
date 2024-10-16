@@ -74,31 +74,37 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // icons: {
-  //   icon: "/imgs/favicon.svg",
-  //   shortcut: "/imgs/favicon.svg",
-  //   apple: [
-  //     {
-  //       url: "/imgs/apple-touch-icon.png",
-  //       sizes: "180x180",
-  //       type: "image/png",
-  //     },
-  //   ],
-  //   other: [
-  //     {
-  //       rel: "icon",
-  //       type: "image/png",
-  //       sizes: "16x16",
-  //       url: "/imgs/favicon-16x16.png",
-  //     },
-  //     {
-  //       rel: "icon",
-  //       type: "image/png",
-  //       sizes: "32x32",
-  //       url: "/imgs/favicon-32x32.png",
-  //     },
-  //   ],
-  // },
+  icons: {
+    icon: [
+      {
+        url: "/imgs/logo/favicon-48x48.png",
+        type: "image/png",
+        sizes: "48x48",
+      },
+      {
+        url: "/imgs/logo/favicon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    shortcut: "/imgs/logo/favicon.ico",
+    apple: [
+      {
+        url: "/imgs/logo/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    other: [
+      {
+        rel: "manifest",
+        url: "/imgs/logo/site.webmanifest",
+      },
+    ],
+  },
+  appleWebApp: {
+    title: "Tsotne",
+    statusBarStyle: "black-translucent",
+  },
 };
 
 export default function RootLayout({
