@@ -89,9 +89,9 @@ const config: Partial<Config> = {
         "pinned-dark":
           "linear-gradient(119deg, rgb(75 87 196) 0%, rgb(31 133 206) 30%, rgb(125 20 166) 42%, rgb(134 15 60) 63%, rgb(18 8 45) 73%)",
         "nav-link-indicator":
-          "radial-gradient(44.6% 825% at 50% 50%, rgb(255 133 133) 0%, rgb(255 72 109 / 0) 100%)",
+          "radial-gradient(44.6% 825% at 50% 50%, rgb(122 151 255) 0%, rgb(72 109 255 / 0) 100%)",
         "nav-link-indicator-dark":
-          "radial-gradient(44.6% 825% at 50% 50%, rgb(255 28 28) 0%, rgb(255 72 109 / 0) 100%)",
+          "radial-gradient(44.6% 825% at 50% 50%, rgb(29 72 223) 0%, rgb(72 109 255 / 0) 100%)",
         "email-button":
           "linear-gradient(180deg, rgb(210 10 30) 5%, rgb(239 90 90) 100%)",
         "custom-gradient-1":
