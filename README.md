@@ -18,12 +18,12 @@ yarn dev
 - [x] New Logo
 - [x] Add memoji
 - [ ] Update footer
-- [ ] Update favicon
-- [ ] Update Mobile Menu
+- [x] Update favicon
+- [x] Update Mobile Menu
 
 ### Optional:
 
-- [ ] Play around with the colors
+- [x] Play around with the colors
 - [ ] Subscribe to newsletter
 - [ ] Switch to React Query
 - [ ] Add RSS feed
