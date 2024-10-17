@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/utils/client/cn";
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren, ReactNode, ElementType } from "react";
 
 interface StackProps {
   direction?: "row" | "col";
@@ -9,15 +9,7 @@ interface StackProps {
   justify?: "start" | "end" | "center" | "between" | "around";
   align?: "start" | "end" | "center" | "between" | "around";
   className?: string;
-  component?:
-    | "div"
-    | "section"
-    | "article"
-    | "aside"
-    | "main"
-    | "header"
-    | "form"
-    | "footer";
+  component?: ElementType;
   children: ReactNode;
 }
 
@@ -27,7 +19,7 @@ const Stack = ({
   justify,
   className = "",
   align,
-  component = "div",
+  component: Component = "div",
   children,
 }: PropsWithChildren<StackProps>) => {
   const justifyClass = justify ? `justify-${justify}` : "";
@@ -39,35 +31,7 @@ const Stack = ({
     className
   );
 
-  if (component === "section") {
-    return <section className={computedCname}>{children}</section>;
-  }
-
-  if (component === "article") {
-    return <article className={computedCname}>{children}</article>;
-  }
-
-  if (component === "aside") {
-    return <aside className={computedCname}>{children}</aside>;
-  }
-
-  if (component === "main") {
-    return <main className={computedCname}>{children}</main>;
-  }
-
-  if (component === "header") {
-    return <header className={computedCname}>{children}</header>;
-  }
-
-  if (component === "footer") {
-    return <footer className={computedCname}>{children}</footer>;
-  }
-
-  if (component === "form") {
-    return <form className={computedCname}>{children}</form>;
-  }
-
-  return <div className={computedCname}>{children}</div>;
+  return <Component className={computedCname}>{children}</Component>;
 };
 
 export default Stack;

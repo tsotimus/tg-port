@@ -9,7 +9,7 @@ import { ProjectDisplay } from "@/types/project";
 import { PublishedBlogPost } from "@/types/blogpost";
 import { HydratedDocument } from "mongoose";
 
-export const revalidate = 60;
+export const revalidate = 21600;
 
 async function fetchFeaturedProjects() {
   await dbConnect();

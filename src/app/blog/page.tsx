@@ -1,5 +1,3 @@
-// File: app/blog/page.tsx
-
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import FilteredPosts from "@/features/Public/Blog/FiltertedPosts";
@@ -9,7 +7,7 @@ import { PublishedBlogPost } from "@/types/blogpost";
 import { HydratedDocument } from "mongoose";
 import { Metadata } from "next";
 
-export const revalidate = 60;
+export const revalidate = 21600;
 
 export const metadata: Metadata = {
   title: "Blog",

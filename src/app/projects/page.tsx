@@ -7,7 +7,7 @@ import { ProjectDisplay } from "@/types/project";
 import { HydratedDocument } from "mongoose";
 import { Metadata } from "next";
 
-export const revalidate = 60;
+export const revalidate = 21600;
 
 export const metadata: Metadata = {
   title: "Projects",

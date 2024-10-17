@@ -9,6 +9,7 @@ export const linkVariants = cva("", {
   variants: {
     variant: {
       muted: "text-muted-foreground hover:text-foreground transition-colors",
+      text: "text-blue-500 hover:text-blue-700 transition-colors",
     },
   },
 });
