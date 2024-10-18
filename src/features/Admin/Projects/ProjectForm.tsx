@@ -1,27 +1,22 @@
+"use client";
+
 import MDXEditor from "@/components/form/editor/MDXEditor";
 import { FormRow } from "@/components/form/FormLayout";
-import {
-  CheckBoxInput,
-  SelectInput,
-  TextInput,
-} from "@/components/form/Inputs";
+import { CheckBoxInput, TextInput } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import { useFormContext } from "react-hook-form";
+import { PillInput } from "@/components/form/PillInput";
 
 interface ProjectFormProps {
   isEditing?: boolean;
   handleDelete?: () => void;
 }
 
-const ProjectForm = ({ isEditing, handleDelete }: ProjectFormProps) => {
+const ProjectForm = ({ isEditing = false, handleDelete }: ProjectFormProps) => {
   const {
-    formState: { isValid, isDirty, errors },
-    watch,
-    control,
+    formState: { isValid, isDirty },
   } = useFormContext();
-
-  const currentType = watch("type");
 
   return (
     <Stack gap={8}>
@@ -37,31 +32,25 @@ const ProjectForm = ({ isEditing, handleDelete }: ProjectFormProps) => {
         label="Cover Image URL"
         rules={{ required: true }}
       />
-      <SelectInput
-        name="type"
-        label="Project Type"
-        rules={{ required: true }}
-        options={[
-          {
-            label: "Showcase",
-            value: "SHOWCASE",
-          },
-          {
-            label: "Link",
-            value: "LINK",
-          },
-        ]}
-      />
-
       <CheckBoxInput name="featured" label="Featured" />
-      {currentType === "SHOWCASE" && (
-        <MDXEditor name="mdxContent" rules={{ required: true }} />
-      )}
       <TextInput name="link" label="Link URL" />
+      <TextInput name="github" label="GitHub URL" />
+      <PillInput
+        name="techStack"
+        label="Tech Stack Tags"
+        rules={{ required: true }}
+      />
+      <MDXEditor name="mdxContent" rules={{ required: true }} />
       <FormRow>
-        <Button type="submit" disabled={!isValid || !isDirty}>
-          {isEditing ? "Save" : "Create"}
-        </Button>
+        {isEditing ? (
+          <Button type="submit" disabled={!isValid || !isDirty}>
+            Save
+          </Button>
+        ) : (
+          <Button type="submit" disabled={!isValid}>
+            Create
+          </Button>
+        )}
       </FormRow>
       {isEditing && (
         <FormRow>

@@ -21,9 +21,11 @@ export default async function handler(
       await dbConnect();
       const newProject = await Project.create(body);
 
-      await newProject.save();
-      return res.status(201).json(createApiResponse("Success", []));
+      const savedProject = await newProject.save();
+
+      return res.status(201).json(createApiResponse(savedProject, []));
     } catch (err) {
+      console.error(err);
       return res
         .status(500)
         .json(createApiResponse(null, ["Internal Server Error"]));
@@ -36,6 +38,7 @@ export default async function handler(
       const allProjects = projects.map((project) => project.toJSON());
       return res.status(200).json(createApiResponse(allProjects, []));
     } catch (err) {
+      console.error(err);
       return res
         .status(500)
         .json(createApiResponse(null, ["Internal Server Error"]));

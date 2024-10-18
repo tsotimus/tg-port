@@ -21,8 +21,7 @@ const CreateProject = () => {
     axios
       .post("/api/admin/v1/projects", data)
       .then((res) => {
-        console.log(res);
-        const id = res.data.id;
+        const id = res.data.data.id;
         router.push(`/admin/projects/${id}`);
       })
       .catch((err) => {
@@ -33,7 +32,7 @@ const CreateProject = () => {
   return (
     <FormProvider {...methods}>
       <FormLayout onSubmit={onSubmit}>
-        <Stack gap={12}>
+        <Stack gap={8}>
           <Typography variant="h1">Create Project</Typography>
           <ProjectForm />
         </Stack>

@@ -1,3 +1,5 @@
+"use client";
+
 import { FormSchema, ProjectDisplay, ProjectSchema } from "@/types/project";
 import { FormProvider, useForm } from "react-hook-form";
 import ProjectForm from "./ProjectForm";

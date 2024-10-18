@@ -7,7 +7,7 @@ export const ProjectSchema = z.object({
   slug: z.string(),
   featured: z.boolean(),
   coverImage: z.string(),
-  type: z.literal("SHOWCASE"),
+  techStack: z.array(z.string()),
   mdxContent: z.string(),
   link: z.string().optional(),
   github: z.string().optional(),
