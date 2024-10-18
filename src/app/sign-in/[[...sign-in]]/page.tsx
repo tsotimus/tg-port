@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default async function SignInPage() {
   return (
     <Stack justify="center" align="center" className="py-32">
-      <SignIn forceRedirectUrl={"/admin"} fallbackRedirectUrl={"/admin"} />
+      <SignIn fallbackRedirectUrl={"/admin"} />
     </Stack>
   );
 }
