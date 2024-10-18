@@ -4,16 +4,22 @@ import { usePathname } from "next/navigation";
 import { Link } from "@/components/Link";
 import { cn } from "@/utils/client/cn";
 import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
+import { SignOutButton, useAuth } from "@clerk/nextjs";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const isAdmin = pathname?.startsWith("/admin");
+  const { isSignedIn, isLoaded } = useAuth();
 
   return (
     <nav>
       <ul className="hidden gap-2 md:flex">
-        {(isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS).map((link) => {
+        {(isLoaded && isSignedIn ? ADMIN_NAV_ITEMS : NAV_ITEMS).map((link) => {
           const isActive = link.href === pathname;
+
+          if (link.text === "Logout") {
+            // Exception for logout button
+            return <SignOutButton key="logout">Logout</SignOutButton>;
+          }
 
           return (
             <li
@@ -34,6 +40,7 @@ const Navbar = () => {
               >
                 {link.text}
               </Link>
+
               {isActive ? (
                 <>
                   <div className="bg-nav-link-indicator dark:bg-nav-link-indicator-dark absolute bottom-0 left-1/2 h-px w-12 -translate-x-1/2" />

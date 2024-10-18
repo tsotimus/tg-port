@@ -2,7 +2,6 @@ import {
   SiGithub,
   SiLinkedin,
   SiNpm,
-  SiReddit,
   SiX,
 } from "@icons-pack/react-simple-icons";
 import {
@@ -15,23 +14,33 @@ import {
 export const ADMIN_NAV_ITEMS = [
   {
     text: "Projects",
-    href: "/admin/projects",
+    href: "/projects",
     num: 0,
   },
   {
     text: "Blog",
-    href: "/admin/blog",
+    href: "/blog",
     num: 1,
   },
   {
-    text: "Media",
-    href: "/admin/media",
+    text: "My Projects",
+    href: "/admin/projects",
     num: 2,
+  },
+  {
+    text: "My Blog",
+    href: "/admin/blog",
+    num: 3,
+  },
+  {
+    text: "My Media",
+    href: "/admin/media",
+    num: 4,
   },
   {
     text: "Logout",
     href: "/",
-    num: 3,
+    num: 5,
   },
 ];
 

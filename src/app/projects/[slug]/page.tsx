@@ -24,24 +24,30 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = params;
+async function getProject(slug: string) {
   await dbConnect();
-  const project = await Project.findOne<ProjectDisplay>({
+  const foundProject = await Project.findOne<HydratedDocument<ProjectDisplay>>({
     slug: slug,
   });
-
-  if (!project) {
-    return <div>Project not found</div>;
+  if (!foundProject) {
+    return null;
   }
+  const project = foundProject.toJSON();
+  return project;
+}
 
-  const mdxSource = project.mdxContent;
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = params;
+  const currentProject = await getProject(slug);
+  if (!currentProject) {
+    return <>Project not found</>;
+  }
 
   return (
     <Suspense fallback={<>Loading...</>}>
       <ProjectArticle
-        project={project}
-        mdxContent={<CustomMDX source={mdxSource} />}
+        project={currentProject}
+        mdxContent={<CustomMDX source={currentProject.mdxContent} />}
       />
     </Suspense>
   );
