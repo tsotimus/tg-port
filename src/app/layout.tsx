@@ -18,6 +18,7 @@ import {
   SITE_TITLE,
   SITE_URL,
 } from "@/config/constants";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -107,13 +108,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           GeistSans.variable,

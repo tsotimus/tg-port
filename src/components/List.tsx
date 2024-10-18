@@ -16,7 +16,14 @@ const List = ({ items }: ListProps) => {
   return (
     <ul>
       {items.map(({ id, decorative = "•", component }) => (
-        <Stack direction="row" gap={2} component="li" key={id} justify="start">
+        <Stack
+          direction="row"
+          gap={4}
+          component="li"
+          key={id}
+          justify="start"
+          className="py-1"
+        >
           {typeof decorative === "string" ? (
             <Typography>{decorative}</Typography>
           ) : (

@@ -63,26 +63,38 @@ const LIST_ONE = [
   },
 ];
 
-const LANGUAGE_LIST = [
-  {
-    id: "english",
-    decorative: "🇬🇧",
-    component: <Typography>English - Native</Typography>,
-  },
-  {
-    id: "kartuli",
-    decorative: "🇬🇪",
-    component: <Typography>Georgian - Fluent</Typography>,
-  },
-];
+// const LANGUAGE_LIST = [
+//   {
+//     id: "english",
+//     decorative: "🇬🇧",
+//     component: <Typography>English - Native</Typography>,
+//   },
+//   {
+//     id: "kartuli",
+//     decorative: "🇬🇪",
+//     component: <Typography>Georgian - Fluent</Typography>,
+//   },
+// ];
 
 //TODO: Make this component responsive, regarding the image
 
 const MainDescription = () => {
   return (
-    <Stack gap={4}>
-      <Stack gap={4} direction="row" align="end" justify="between">
-        <Stack>
+    <Stack gap={4} className="py-10">
+      <Typography variant="h1">About Me</Typography>
+      <Stack
+        gap={8}
+        className="flex flex-col md:flex-row items-start justify-between py-10"
+      >
+        <BlurImage
+          src="assets/important/avatar.png"
+          className="rounded-full mx-auto md:mx-0"
+          width={300}
+          height={300}
+          alt="Tsotne"
+          lazy={false}
+        />
+        <Stack gap={6} className="flex">
           <Typography>
             Hi, I&apos;m Tsot (short for Tsotne, the T is silent 😉).
           </Typography>
@@ -92,28 +104,25 @@ const MainDescription = () => {
           </Typography>
           <List items={LIST_ONE} />
         </Stack>
-        <BlurImage
-          src="assets/important/avatar.png"
-          className="rounded-full"
-          width={300}
-          height={300}
-          alt="Tsotne"
-          lazy={false}
-        />
       </Stack>
-      <Typography>Spoken languages:</Typography>
-      <List items={LANGUAGE_LIST} />
-      <Typography>
-        Explore my projects on my{" "}
-        <Link variant="text" href="/projects">
-          portfolio
-        </Link>{" "}
-        or for the latest updates, visit my{" "}
-        <Link variant="text" href={SITE_GITHUB_URL}>
-          GitHub
-        </Link>
-        .
-      </Typography>
+      <Stack gap={4}>
+        {/* <Typography>Spoken languages:</Typography>
+      <List items={LANGUAGE_LIST} /> */}
+        <Typography>
+          Explore my projects on my{" "}
+          <Link variant="text" href="/projects">
+            portfolio
+          </Link>{" "}
+          or for the latest updates, visit my{" "}
+          <Link variant="text" href={SITE_GITHUB_URL}>
+            GitHub
+          </Link>
+          .
+        </Typography>
+      </Stack>
+      <Stack className="py-5">
+        <Typography> </Typography>
+      </Stack>
     </Stack>
   );
 };

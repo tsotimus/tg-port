@@ -8,10 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default async function AllBlogPostsPage() {
-  return (
-    <Stack gap={4}>
-      <Typography variant="h1">About Me</Typography>
-      <MainDescription />
-    </Stack>
-  );
+  return <MainDescription />;
 }
