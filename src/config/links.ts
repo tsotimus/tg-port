@@ -1,8 +1,14 @@
-import { SiGithub, SiNpm, SiReddit, SiX } from "@icons-pack/react-simple-icons";
+import {
+  SiGithub,
+  SiLinkedin,
+  SiNpm,
+  SiReddit,
+  SiX,
+} from "@icons-pack/react-simple-icons";
 import {
   SITE_GITHUB_URL,
+  SITE_LINKEDIN_URL,
   SITE_NPM_URL,
-  SITE_REDDIT_URL,
   SITE_X_URL,
 } from "./constants";
 
@@ -75,6 +81,11 @@ type SocialLink = {
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
+    title: "LinkedIn",
+    href: SITE_LINKEDIN_URL,
+    icon: SiLinkedin,
+  },
+  {
     href: SITE_GITHUB_URL,
     title: "GitHub",
     icon: SiGithub,
@@ -88,10 +99,5 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: SITE_X_URL,
     title: "X",
     icon: SiX,
-  },
-  {
-    href: SITE_REDDIT_URL,
-    title: "Reddit",
-    icon: SiReddit,
   },
 ];

@@ -18,4 +18,3 @@ export const SITE_LINKEDIN_URL =
   "https://www.linkedin.com/in/tsotne-gvadzabia/";
 export const SITE_X_URL = "https://x.com/tsotimus";
 export const SITE_NPM_URL = "https://www.npmjs.com/~tsotrocki";
-export const SITE_REDDIT_URL = "https://www.reddit.com/user/RockiRider/";
