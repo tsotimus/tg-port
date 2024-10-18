@@ -10,7 +10,9 @@ export const SITE_KEYWORDS = [
   "Next.js",
   "React",
   "TypeScript",
-  "Node.js",
+  "Fullstack",
+  "Software Engineer",
+  "Developer",
 ];
 
 export const SITE_GITHUB_URL = "https://github.com/RockiRider";
