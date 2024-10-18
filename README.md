@@ -27,4 +27,4 @@ yarn dev
 - [ ] Subscribe to newsletter
 - [ ] Switch to React Query
 - [ ] Add RSS feed
-- [ ] Migrate to Clerk
+- [x] Migrate to Clerk
