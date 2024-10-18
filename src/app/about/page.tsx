@@ -1,5 +1,3 @@
-import Stack from "@/components/layouts/Stack";
-import Typography from "@/components/Typography";
 import MainDescription from "@/features/About/MainDescription";
 import { Metadata } from "next";
 
