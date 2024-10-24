@@ -76,7 +76,6 @@ const EditProject = ({ project }: EditProjectProps) => {
       <FormLayout onSubmit={handleUpdate}>
         <ProjectForm isEditing handleDelete={handleDelete} />
       </FormLayout>
-      <button onClick={handleDelete}>Delete Project</button>
     </FormProvider>
   );
 };

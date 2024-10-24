@@ -1,4 +1,17 @@
 import { ObjectId } from "mongoose";
+import z from "zod"
+
+
+export const CreateBlogPostSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  summary: z.string().min(1, "Summary is required"),
+  slug: z.string().min(1, "Slug is required"),
+  mdxContent: z.string().min(1, "Content is required"),
+  coverImage: z.string().min(1, "Cover image cloudinary key is required"),
+  tags: z.array(z.string().min(1, "Tag cannot be empty")),
+  status: z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]),
+});
+
 
 export type BlogPostModel = {
   title: string;

@@ -12,8 +12,9 @@ yarn dev
 
 ### TODO:
 
+- [ ] Tags functionality, create and update - Used in Projects and Blog Posts
 - [ ] Add a blog posts, create and edit and display
-- [ ] Add a projects, create and edit and display
+- [x] Add a projects, create and edit and display
 - [ ] Add a contact form
 - [x] New Logo
 - [x] Add memoji
