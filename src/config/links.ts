@@ -38,9 +38,14 @@ export const ADMIN_NAV_ITEMS = [
     num: 4,
   },
   {
+    text: "My Tags",
+    href: "/admin/tags",
+    num: 5,
+  },
+  {
     text: "Logout",
     href: "/",
-    num: 5,
+    num: 6,
   },
 ];
 

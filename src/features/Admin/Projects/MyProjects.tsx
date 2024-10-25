@@ -5,9 +5,6 @@ import useGetProjects from "./useGetProjects";
 import { DataTable } from "@/components/tables/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import ButtonLink from "@/components/ButtonLink";
-import Stack from "@/components/layouts/Stack";
-import Typography from "@/components/Typography";
-import { ArrowUpRightIcon } from "lucide-react";
 import { ProjectDisplay } from "@/types/project";
 
 const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [

@@ -1,6 +1,15 @@
 const generateConfig = async () => {
   const IS_UNDER_CONSTRUCTION = process.env.IS_UNDER_CONSTRUCTION === "true";
 
+
+  const REDIRECTS = [
+    {
+      source: "/admin/tags",
+      destination: "/admin/tags/0",
+      permanent: true,
+    }
+  ]
+
   /** @type {import('next').NextConfig} */
   const nextConfig = {
     transpilePackages: ["@mdxeditor/editor", "geist"],
@@ -18,7 +27,7 @@ const generateConfig = async () => {
               permanent: false,
             },
           ]
-        : [];
+        : [...REDIRECTS];
     },
   };
   return nextConfig;
