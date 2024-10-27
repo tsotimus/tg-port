@@ -31,15 +31,12 @@ const TagsPage = async({params}: {params: {page: string}}) => {
     const page = result.data;
 
     const tags = await getTags(page);
-    console.log(tags)
 
-    // Fetch tags and other logic can go here
 
     return (
-        <Stack>
+        <Stack gap={8}>
             <Typography variant="h1">Manage Tags</Typography>
-            <Typography>Page: {page}</Typography>
-            <TagsDisplay />
+            <TagsDisplay tags={tags} />
         </Stack>
     );
 }

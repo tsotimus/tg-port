@@ -7,6 +7,7 @@ const TagSchema = new mongoose.Schema<TagModel>(
       type: String,
       required: [true, "Please provide a name for this tag."],
       maxLength: [60, "Name cannot be more than 60 characters"],
+      unique: true,
     },
     slug: {
       type: String,

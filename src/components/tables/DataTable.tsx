@@ -4,6 +4,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -15,20 +16,25 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "../ui/button";
+import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationEllipsis, PaginationNext } from "../ui/pagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  pagination?: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  pagination = false
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel:  pagination ? getPaginationRowModel() : undefined,
   });
 
   return (
@@ -75,6 +81,26 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
+      {
+        pagination && (
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious href="#" />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">1</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext href="#" />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        )
+      }
     </div>
   );
 }
