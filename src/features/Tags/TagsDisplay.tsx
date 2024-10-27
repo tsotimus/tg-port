@@ -26,16 +26,10 @@ const COLUMNS: ColumnDef<TagDisplay, string | number>[] = [
     {
       header: "Date Created",
       accessorKey: "createdAt",
-      sortDescFirst: false,
       id: "createdAt",
-      sortingFn: (a, b) => {
-        console.log(a.getValue("createdAt"), b.getValue("createdAt"));
-        return new Date(a.getValue("createdAt")).getTime() - new Date(b.getValue("createdAt")).getTime();
-      },
       cell: (cell) => {
         return new Date(cell.row.original.createdAt).toLocaleDateString();
       },
-      enableSorting: true,
     },
     {
         header: "Date Updated",

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { FormSchema, TagSchema } from "@/types/tag";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import {  FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -16,7 +15,6 @@ interface CreateTagFormProps {
 }
 
 const CreateTagForm = ({afterSubmit}:CreateTagFormProps) => {
-    const router = useRouter();
     const methods = useForm<FormSchema>({
         mode: "onChange",
         resolver: zodResolver(TagSchema),
@@ -26,8 +24,8 @@ const CreateTagForm = ({afterSubmit}:CreateTagFormProps) => {
 
     const onSubmit = (data: FormSchema) => {
         axios.post("/api/admin/v1/tags", data).then(() => {
+            toast.success("Tag created successfully");
             afterSubmit();
-            router.refresh();
         }).catch((error) => {
             toast.error("Failed to create tag");
             console.error(error);
