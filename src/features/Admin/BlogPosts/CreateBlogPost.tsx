@@ -6,9 +6,9 @@ import Typography from "@/components/Typography";
 import { FormSchema, ProjectSchema } from "@/types/project";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useForm, FormProvider } from "react-hook-form";
-import ProjectForm from "../Projects/ProjectForm";
+import BlogPostForm from "./BlogPostForm";
 
 const CreateBlogPost = () => {
 
@@ -34,7 +34,7 @@ const CreateBlogPost = () => {
         <FormLayout onSubmit={onSubmit}>
           <Stack gap={8}>
             <Typography variant="h1">Create Blog Post</Typography>
-            <ProjectForm />
+            <BlogPostForm />
           </Stack>
         </FormLayout>
       </FormProvider>
