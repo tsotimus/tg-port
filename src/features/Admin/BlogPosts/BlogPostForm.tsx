@@ -18,7 +18,7 @@ const BlogPostForm = () => {
                 <TextInput name="slug" label="Slug" rules={{required: true}} />
             </FormRow>
             <div className="pt-10">
-                <MDXEditor name="mdxContent" rules={{required: true}}/>=
+                <MDXEditor name="mdxContent" rules={{required: true}}/>
             </div>
         </Stack>
     )

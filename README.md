@@ -26,6 +26,5 @@ yarn dev
 
 - [x] Play around with the colors
 - [ ] Subscribe to newsletter
-- [ ] Switch to React Query
 - [ ] Add RSS feed
 - [x] Migrate to Clerk

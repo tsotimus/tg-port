@@ -2,7 +2,6 @@
 
 import { Toaster } from "sonner";
 import { ThemeProvider, useTheme } from "next-themes";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ClerkProvider } from "@clerk/nextjs";
 
 type ProvidesProps = {
@@ -11,7 +10,6 @@ type ProvidesProps = {
 
 type Theme = "system" | "light" | "dark";
 
-const queryClient = new QueryClient();
 
 const Providers = (props: ProvidesProps) => {
   const { children } = props;
@@ -26,7 +24,6 @@ const Providers = (props: ProvidesProps) => {
       disableTransitionOnChange
     >
       <ClerkProvider>
-        <QueryClientProvider client={queryClient}>
           {children}
           <Toaster
             toastOptions={{
@@ -36,7 +33,6 @@ const Providers = (props: ProvidesProps) => {
             theme={theme as Theme}
             expand
           />
-        </QueryClientProvider>
       </ClerkProvider>
     </ThemeProvider>
   );
