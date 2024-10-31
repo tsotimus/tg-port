@@ -1,6 +1,6 @@
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
-import TagsDisplay from "@/features/Tags/TagsDisplay";
+import TagsDisplay from "@/features/Admin/Tags/TagsDisplay";
 import dbConnect from "@/lib/dbConnect";
 import Tag from "@/models/Tag";
 import { z } from "zod";
@@ -31,8 +31,6 @@ const TagsPage = async({params}: {params: {page: string}}) => {
     const page = result.data;
 
     const tags = await getTags(page);
-
-
     return (
         <Stack gap={8}>
             <Typography variant="h1">Manage Tags</Typography>
