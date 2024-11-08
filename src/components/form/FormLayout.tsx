@@ -1,6 +1,6 @@
 "use client";
-import { PropsWithChildren } from "react";
-import { FieldValues, useFormContext } from "react-hook-form";
+import { type PropsWithChildren } from "react";
+import { type FieldValues, useFormContext } from "react-hook-form";
 
 type FormLayoutProps<T extends FieldValues> = {
   onSubmit: (data: T) => void;

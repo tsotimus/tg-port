@@ -7,7 +7,7 @@ import ProjectForm from "./ProjectForm";
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import axios from "axios";
-import { FormSchema, ProjectSchema } from "@/types/project";
+import { type FormSchema, ProjectSchema } from "@/types/project";
 import { useRouter } from "next/navigation";
 
 const CreateProject = () => {

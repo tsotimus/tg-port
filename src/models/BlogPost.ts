@@ -1,4 +1,4 @@
-import { BlogPostModel } from "@/types/blogpost";
+import { type BlogPostModel } from "@/types/blogpost";
 import mongoose from "mongoose";
 
 const BlogPostSchema = new mongoose.Schema<BlogPostModel>(

@@ -2,7 +2,7 @@
 
 import { MobileToggle } from "./MobileToggle";
 import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
-import { motion, useCycle, Variants } from "framer-motion";
+import { motion, useCycle, type Variants } from "framer-motion";
 import { MenuItem } from "./MenuItem";
 import { usePathname } from "next/navigation";
 

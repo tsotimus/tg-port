@@ -3,9 +3,9 @@ import Typography from "@/components/Typography";
 import FilteredPosts from "@/features/Public/Blog/FiltertedPosts";
 import dbConnect from "@/lib/dbConnect";
 import BlogPost from "@/models/BlogPost";
-import { PublishedBlogPost } from "@/types/blogpost";
-import { HydratedDocument } from "mongoose";
-import { Metadata } from "next";
+import { type PublishedBlogPost } from "@/types/blogpost";
+import { type HydratedDocument } from "mongoose";
+import { type Metadata } from "next";
 
 export const revalidate = 21600;
 

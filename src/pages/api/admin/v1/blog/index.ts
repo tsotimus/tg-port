@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
 import { createApiResponse } from "@/utils/server/createApiResponse";
 import { ProjectSchema } from "@/types/project";

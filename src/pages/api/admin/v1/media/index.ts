@@ -1,8 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import cloudinary from "@/lib/cloudinary";
 import { createApiResponse } from "@/utils/server/createApiResponse";
-import { GenericErrorResponse } from "@/types/api";
-import { GetMediaResponse } from "@/features/Admin/Media/types";
+import { type GenericErrorResponse } from "@/types/api";
+import { type GetMediaResponse } from "@/features/Admin/Media/types";
 
 export default async function handler(
   req: NextApiRequest,

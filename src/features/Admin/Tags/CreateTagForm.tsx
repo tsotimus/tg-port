@@ -4,7 +4,7 @@ import { FormLayout, FormRow } from "@/components/form/FormLayout";
 import { TextInput } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
-import { FormSchema, TagSchema } from "@/types/tag";
+import { type FormSchema, TagSchema } from "@/types/tag";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import {  FormProvider, useForm } from "react-hook-form";

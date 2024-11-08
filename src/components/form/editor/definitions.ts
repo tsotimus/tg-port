@@ -1,7 +1,6 @@
 "use client";
 
-import { GenericJsxEditor, JsxComponentDescriptor } from "@mdxeditor/editor";
-import { ReactNode } from "react";
+import { GenericJsxEditor, type JsxComponentDescriptor } from "@mdxeditor/editor";
 
 const genericProps = {
   Editor: GenericJsxEditor,

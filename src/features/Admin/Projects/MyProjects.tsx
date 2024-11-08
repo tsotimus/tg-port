@@ -3,9 +3,9 @@
 import { FullPageLoader } from "@/components/loaders/Loading";
 import useGetProjects from "./useGetProjects";
 import { DataTable } from "@/components/tables/DataTable";
-import { ColumnDef } from "@tanstack/react-table";
+import { type ColumnDef } from "@tanstack/react-table";
 import ButtonLink from "@/components/ButtonLink";
-import { ProjectDisplay } from "@/types/project";
+import { type ProjectDisplay } from "@/types/project";
 
 const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
   {

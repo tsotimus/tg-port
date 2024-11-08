@@ -1,11 +1,11 @@
 "use client";
 
-import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
+import { Controller, type RegisterOptions, useFormContext } from "react-hook-form";
 import {
-  Accept,
+  type Accept,
   useDropzone,
-  FileRejection,
-  FileWithPath,
+  type FileRejection,
+  type FileWithPath,
 } from "react-dropzone";
 import { useMemo } from "react";
 import Typography from "@/components/Typography";

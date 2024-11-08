@@ -5,9 +5,9 @@ import CreateTagForm from "./CreateTagForm";
 import { Button } from "@/components/ui/button";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useCallback } from "react";
-import { TagDisplay } from "@/types/tag";
+import { type TagDisplay } from "@/types/tag";
 import { DataTable } from "@/components/tables/DataTable";
-import { ColumnDef } from "@tanstack/react-table";
+import { type ColumnDef } from "@tanstack/react-table";
 
 interface TagDisplayProps {
     tags: TagDisplay[];

@@ -18,7 +18,7 @@ import {
   toolbarPlugin,
   jsxPlugin,
 } from "@mdxeditor/editor";
-import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
+import { Controller, type RegisterOptions, useFormContext } from "react-hook-form";
 import { InsertAccordion, InsertCallout } from "./Inserts";
 
 const ImportedEditor = dynamic(

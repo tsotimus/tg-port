@@ -1,4 +1,4 @@
-import { ProjectModel } from "@/types/project";
+import { type ProjectModel } from "@/types/project";
 import mongoose from "mongoose";
 
 const ProjectSchema = new mongoose.Schema<ProjectModel>(

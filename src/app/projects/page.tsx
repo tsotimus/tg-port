@@ -3,9 +3,9 @@ import Typography from "@/components/Typography";
 import FullProjectCards from "@/features/Public/Projects/FullProjectCards";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
-import { ProjectDisplay } from "@/types/project";
-import { HydratedDocument } from "mongoose";
-import { Metadata } from "next";
+import { type ProjectDisplay } from "@/types/project";
+import { type HydratedDocument } from "mongoose";
+import { type Metadata } from "next";
 
 export const revalidate = 21600;
 

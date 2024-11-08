@@ -8,14 +8,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ChangeEvent, useRef } from "react";
+import { type ChangeEvent, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { FormControl, FormLabel } from "@/components/ui/form";
 import { FormRow } from "./FormLayout";
 import { Checkbox } from "@/components/ui/checkbox";
-import { FileInputProps, SelectInputProps, SwitchInputProps, TextInputProps } from "./inputs/types";
+import { type FileInputProps, type SelectInputProps, type SwitchInputProps, type TextInputProps } from "./inputs/types";
 
 
 export const TextInput = ({

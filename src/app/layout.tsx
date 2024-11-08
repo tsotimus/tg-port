@@ -18,7 +18,7 @@ import {
   SITE_TITLE,
   SITE_URL,
 } from "@/config/constants";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

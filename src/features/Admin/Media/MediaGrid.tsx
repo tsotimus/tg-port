@@ -1,5 +1,5 @@
 import { CldImage } from "next-cloudinary";
-import { Media } from "./types";
+import { type Media } from "./types";
 import Stack from "@/components/layouts/Stack";
 import { useState } from "react";
 import Typography from "@/components/Typography";

@@ -1,4 +1,4 @@
-import { GenericApiResponse } from "@/types/api";
+import { type GenericApiResponse } from "@/types/api";
 
 export function createApiResponse<T>(
   data: T,

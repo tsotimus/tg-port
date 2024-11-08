@@ -1,5 +1,5 @@
-import { GenericApiResponse } from "@/types/api";
-import { ProjectDisplay } from "@/types/project";
+import { type GenericApiResponse } from "@/types/api";
+import { type ProjectDisplay } from "@/types/project";
 import { fetcher } from "@/utils/client/genericFetchers";
 import useSWR from "swr";
 

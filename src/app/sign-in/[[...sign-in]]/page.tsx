@@ -1,6 +1,6 @@
 import Stack from "@/components/layouts/Stack";
 import { SignIn } from "@clerk/nextjs";
-import { Metadata } from "next";
+import { type Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sign in",

@@ -1,4 +1,4 @@
-import { motion, Variants, Transition } from "framer-motion";
+import { motion, type Variants, type Transition } from "framer-motion";
 
 type PathProps = {
   variants: Variants;

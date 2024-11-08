@@ -1,5 +1,5 @@
 import cloudinary from "@/lib/cloudinary";
-import { File, VolatileFile } from "formidable";
+import { type File, type VolatileFile } from "formidable";
 import { PassThrough } from "stream";
 
 export type VolatileFileType = InstanceType<typeof VolatileFile>;

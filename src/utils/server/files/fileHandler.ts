@@ -1,5 +1,5 @@
-import { Options, Files, Fields, Formidable } from "formidable";
-import { NextApiRequest } from "next";
+import { type Options, type Files, type Fields, Formidable } from "formidable";
+import { type NextApiRequest } from "next";
 
 const getFileExtension = (filename: string) => {
   const ext = (/[^./\\]*$/.exec(filename) || [""])[0];

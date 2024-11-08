@@ -1,6 +1,6 @@
 "use client";
 
-import { FormSchema, ProjectDisplay, ProjectSchema } from "@/types/project";
+import { type FormSchema, type ProjectDisplay, ProjectSchema } from "@/types/project";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import ProjectForm from "./ProjectForm";
 import { zodResolver } from "@hookform/resolvers/zod";

@@ -3,7 +3,7 @@
 import { FormLabel, FormControl } from "@/components/ui/form";
 import { Controller, useFormContext } from "react-hook-form";
 import { FormRow } from "../FormLayout";
-import { ScrollableSelectProps } from "./types";
+import { type ScrollableSelectProps } from "./types";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useRef } from "react";
 import { Spinner } from "@/components/loaders/Loading";

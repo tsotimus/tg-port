@@ -1,5 +1,5 @@
-import { RegisterOptions } from "react-hook-form";
-import { Option } from "@/types/options";
+import { type RegisterOptions } from "react-hook-form";
+import { type Option } from "@/types/options";
 
 export type GenericInputProps = {
     name: string;

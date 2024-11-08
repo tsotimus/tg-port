@@ -3,7 +3,7 @@
 import { FormLayout } from "@/components/form/FormLayout";
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
-import { FormSchema, ProjectSchema } from "@/types/project";
+import { type FormSchema, ProjectSchema } from "@/types/project";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";

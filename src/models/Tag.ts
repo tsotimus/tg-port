@@ -1,4 +1,4 @@
-import { TagModel } from "@/types/tag";
+import { type TagModel } from "@/types/tag";
 import mongoose from "mongoose";
 
 const TagSchema = new mongoose.Schema<TagModel>(

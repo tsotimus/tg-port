@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import CustomMDX from "@/components/mdx/CustomMDX";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
-import { HydratedDocument } from "mongoose";
-import { ProjectDisplay } from "@/types/project";
+import { type HydratedDocument } from "mongoose";
+import { type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
 
 type ProjectPageProps = {

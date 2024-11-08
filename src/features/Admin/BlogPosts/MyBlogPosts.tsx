@@ -2,8 +2,8 @@
 
 import { FullPageLoader } from "@/components/loaders/Loading";
 import { DataTable } from "@/components/tables/DataTable";
-import { ColumnDef } from "@tanstack/react-table";
-import { ProjectDisplay } from "@/types/project";
+import { type ColumnDef } from "@tanstack/react-table";
+import { type ProjectDisplay } from "@/types/project";
 // import { useRouter } from "next/navigation";
 import ButtonLink from "@/components/ButtonLink";
 import useGetPosts from "./useGetPosts";

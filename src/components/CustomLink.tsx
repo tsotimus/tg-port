@@ -1,5 +1,5 @@
 "use client"
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 
 //TODO: Probably remove or change this!
 const CustomLink = ({ children }: PropsWithChildren) => {

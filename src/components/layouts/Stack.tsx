@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/utils/client/cn";
-import { PropsWithChildren, ReactNode, ElementType } from "react";
+import { type PropsWithChildren, type ReactNode, type ElementType } from "react";
 
 interface StackProps {
   direction?: "row" | "col";

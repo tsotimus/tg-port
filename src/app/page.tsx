@@ -5,9 +5,9 @@ import RecentPosts from "@/features/Public/Blog/RecentPosts";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import BlogPost from "@/models/BlogPost";
-import { ProjectDisplay } from "@/types/project";
-import { PublishedBlogPost } from "@/types/blogpost";
-import { HydratedDocument } from "mongoose";
+import { type ProjectDisplay } from "@/types/project";
+import { type PublishedBlogPost } from "@/types/blogpost";
+import { type HydratedDocument } from "mongoose";
 
 export const revalidate = 21600;
 

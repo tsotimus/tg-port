@@ -2,8 +2,8 @@ import Stack from "@/components/layouts/Stack";
 import EditProject from "@/features/Admin/Projects/EditProject";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
-import { ProjectDisplay } from "@/types/project";
-import { HydratedDocument } from "mongoose";
+import { type ProjectDisplay } from "@/types/project";
+import { type HydratedDocument } from "mongoose";
 
 async function getProject(id: string | null | undefined) {
   if (!id) {

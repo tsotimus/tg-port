@@ -1,15 +1,15 @@
-import { GenericErrorResponse } from "@/types/api";
+import { type GenericErrorResponse } from "@/types/api";
 import { createApiResponse } from "@/utils/server/createApiResponse";
 import {
   formidablePromise,
   removeFileExtension,
 } from "@/utils/server/files/fileHandler";
 import {
-  MyVolatileFile,
+  type MyVolatileFile,
   createCloudinaryStreamForImage,
   createCloudinaryStreamForVideo,
 } from "@/utils/server/files/fileStream";
-import { NextApiRequest, NextApiResponse } from "next";
+import { type NextApiRequest, type NextApiResponse } from "next";
 
 type ResponseData = {
   message: string;
@@ -24,7 +24,7 @@ export default async function handler(
       const { files } = await formidablePromise(req, {
         fileWriteStreamHandler: (file) => {
           const currentFile = file as MyVolatileFile; // Formidable VolatileFile type is not correct
-          const fileName = currentFile.originalFilename as string;
+          const fileName = currentFile.originalFilename!;
           const parseFileName = removeFileExtension(fileName);
           if (currentFile.mimetype?.includes("video")) {
             return createCloudinaryStreamForVideo(parseFileName);
