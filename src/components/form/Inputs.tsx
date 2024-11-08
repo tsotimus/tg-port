@@ -1,7 +1,6 @@
 "use client";
 
-import { Option } from "@/types/options";
-import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -9,24 +8,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { FormControl, FormLabel } from "@/components/ui/form";
 import { FormRow } from "./FormLayout";
 import { Checkbox } from "@/components/ui/checkbox";
-import Pill from "../Pill";
-import Typography from "../Typography";
+import { FileInputProps, SelectInputProps, SwitchInputProps, TextInputProps } from "./inputs/types";
 
-type GenericInputProps = {
-  name: string;
-  label?: string;
-  rules?: RegisterOptions;
-  defaultValue?: string;
-};
-
-type TextInputProps = GenericInputProps;
 
 export const TextInput = ({
   name,
@@ -61,9 +51,6 @@ export const TextInput = ({
   );
 };
 
-type SelectInputProps = GenericInputProps & {
-  options: Option[];
-};
 
 export const SelectInput = ({
   name,
@@ -102,9 +89,6 @@ export const SelectInput = ({
   );
 };
 
-type SwitchInputProps = GenericInputProps & {
-  disabled?: boolean;
-};
 
 export const SwitchInput = ({
   name,
@@ -121,7 +105,7 @@ export const SwitchInput = ({
       rules={rules}
       disabled={disabled}
       defaultValue={defaultValue || ""}
-      render={({ field: { onChange, onBlur, value } }) => {
+      render={({ field: { onChange, value } }) => {
         return (
           <FormRow>
             <FormLabel>{label}</FormLabel>
@@ -140,9 +124,7 @@ export const SwitchInput = ({
   );
 };
 
-type FileInputProps = Omit<GenericInputProps, "rules"> & {
-  required?: boolean;
-};
+
 
 export const FileInput = ({ name, required, label }: FileInputProps) => {
   const { register, setValue } = useFormContext();

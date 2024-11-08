@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import Tag from "@/models/Tag";
-import { createApiResponse } from "@/utils/server/createApiResponse";
+import { TagDisplay } from "@/types/tag";
+import { createApiResponse, createPaginatedApiResponse } from "@/utils/server/createApiResponse";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
@@ -37,16 +38,17 @@ export default async function handler(
       // Calculate total pages
       const totalPages = Math.ceil(totalCount / limit);
 
-      // Return paginated response
-      return res.status(200).json(createApiResponse({
-        data: tags.map((tag) => tag.toJSON()),
-        meta: {
-          totalCount,
-          totalPages,
-          currentPage: page,
-          pageSize: limit
-        }
-      }, []));
+
+      const formattedTags = tags.map((tag) => tag.toJSON())
+
+      const meta = {
+        totalCount,
+        totalPages,
+        currentPage: page,
+        pageSize: limit
+      }
+
+      return res.status(200).json(createPaginatedApiResponse<TagDisplay>(formattedTags,meta , []));
     } catch (err) {
       return res
         .status(500)

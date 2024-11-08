@@ -6,3 +6,15 @@ export type GenericApiResponse<T> = {
 export type GenericErrorResponse = {
   message: string;
 };
+
+
+export type GenericPaginatedApiResponse<T> = {
+  data: T[];
+  meta: {
+    totalCount: number;
+    totalPages: number;
+    currentPage: number;
+    pageSize: number;
+  };
+  errors: string[];
+};
