@@ -4,7 +4,7 @@ import { FormLabel, FormControl } from "@/components/ui/form";
 import { Controller, useFormContext } from "react-hook-form";
 import { FormRow } from "../FormLayout";
 import { type ScrollableSelectProps } from "./types";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

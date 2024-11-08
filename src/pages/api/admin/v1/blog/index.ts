@@ -1,8 +1,8 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
 import { createApiResponse } from "@/utils/server/createApiResponse";
-import { ProjectSchema } from "@/types/project";
 import BlogPost from "@/models/BlogPost";
+import { CreateBlogPostSchema } from "@/types/blogpost";
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,14 +11,15 @@ export default async function handler(
   if (req.method === "POST") {
     try {
       const body = req.body;
-      //   try {
-      //     //TODO: Validate the incoming data with zod
-      //     const validatedData = ProjectSchema.parse(body);
-      //   } catch (err) {
-      //     return res.status(400).json(createApiResponse(null, ["Bad Request"]));
-      //   }
+        try {
+          //TODO: Validate the incoming data with zod
+          const validatedData = CreateBlogPostSchema.parse(body);
+        } catch (err) {
+          return res.status(400).json(createApiResponse(null, ["Bad Request"]));
+        }
 
       await dbConnect();
+      console.log(body);
       const newPost = await BlogPost.create(body);
 
       await newPost.save();

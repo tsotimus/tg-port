@@ -49,3 +49,4 @@ export type PublishedBlogPost = {
   createdAt: Date;
   updatedAt: Date;
 };
+
