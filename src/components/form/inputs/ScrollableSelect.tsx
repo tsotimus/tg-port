@@ -6,6 +6,7 @@ import { FormRow } from "../FormLayout";
 import { ScrollableSelectProps } from "./types";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useRef } from "react";
+import { Spinner } from "@/components/loaders/Loading";
 
 const ScrollableSelect = ({name, rules, label, options, onScroll, isLoading}: ScrollableSelectProps) => {
 
@@ -47,9 +48,7 @@ const ScrollableSelect = ({name, rules, label, options, onScroll, isLoading}: Sc
                   ))}
                   {
                     isLoading && (
-                        <SelectItem key="loading" value="loading">
-                            Loading...
-                        </SelectItem>
+                        <Spinner />
                     )
                   }
                 </SelectContent>

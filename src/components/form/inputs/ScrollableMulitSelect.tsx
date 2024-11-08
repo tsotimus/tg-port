@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { Spinner } from "@/components/loaders/Loading";
 
 
 const ScrollableMultiSelect = ({
@@ -92,9 +93,9 @@ const ScrollableMultiSelect = ({
                     </DropdownMenuCheckboxItem>
                   ))}
                   {isLoading && (
-                    <DropdownMenuCheckboxItem key="loading">
-                      Loading...
-                    </DropdownMenuCheckboxItem>
+                    <div className="flex justify-center">
+                      <Spinner />
+                    </div>
                   )}
                   <div ref={ref} className="h-1"></div>
                 </DropdownMenuContent>
