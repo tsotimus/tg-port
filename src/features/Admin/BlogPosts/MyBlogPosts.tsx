@@ -25,14 +25,14 @@ const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
   {
     header: "View",
     cell: (cell) => (
-      <ButtonLink href={`/projects/${cell.row.original.slug}`}>View</ButtonLink>
+      <ButtonLink href={`/blog/${cell.row.original.slug}`}>View</ButtonLink>
     ),
   },
   {
     header: "Edit",
     cell: (cell) => {
       return (
-        <ButtonLink href={`/admin/projects/edit/${cell.row.original.id}`}>
+        <ButtonLink href={`/admin/blog/edit/${cell.row.original.id}`}>
           Edit
         </ButtonLink>
       );

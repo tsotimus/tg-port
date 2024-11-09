@@ -22,8 +22,9 @@ export default async function handler(
       console.log(body);
       const newPost = await BlogPost.create(body);
 
-      await newPost.save();
-      return res.status(201).json(createApiResponse("Success", []));
+      const savedPost = await newPost.save();
+      const formattedPost = savedPost.toJSON();
+      return res.status(201).json(createApiResponse(formattedPost, []));
     } catch (err) {
       return res
         .status(500)

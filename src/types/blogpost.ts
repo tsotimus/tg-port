@@ -42,6 +42,7 @@ export type PublishedBlogPost = {
   title: string;
   summary: string;
   slug: string;
+  mdxContent: string;
   coverImage: string;
   tags: string[];
   status: "PUBLISHED";
