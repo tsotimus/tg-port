@@ -2,9 +2,9 @@
 import Stack from "@/components/layouts/Stack";
 import dbConnect from "@/lib/dbConnect";
 import BlogPost from "@/models/BlogPost";
-import { ProjectDisplay } from "@/types/project";
+import { type ProjectDisplay } from "@/types/project";
 import { serverParamSchema } from "@/utils/server/validation";
-import { HydratedDocument } from "mongoose";
+import { type HydratedDocument } from "mongoose";
 
 async function getBlogPost(id: string | null | undefined) {
   if (!id) {

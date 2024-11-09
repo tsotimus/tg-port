@@ -6,7 +6,7 @@ import { type HydratedDocument } from "mongoose";
 import { type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
 import BlogPost from "@/models/BlogPost";
-import { PublishedBlogPost } from "@/types/blogpost";
+import { type PublishedBlogPost } from "@/types/blogpost";
 import { serverParamSchema } from "@/utils/server/validation";
 import BlogArticle from "@/features/Public/Blog/BlogArticle";
 

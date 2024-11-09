@@ -147,10 +147,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               role="presentation"
               priority
             />
-            <Analytics />
-            <SpeedInsights />
           </div>
         </Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
