@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /** @type {import("eslint").Linter.Config} */
 const config = {
   "parser": "@typescript-eslint/parser",
