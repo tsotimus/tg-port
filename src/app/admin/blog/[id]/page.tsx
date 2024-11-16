@@ -1,8 +1,8 @@
 
-import Stack from "@/components/layouts/Stack";
+import EditBlogPost from "@/features/Admin/BlogPosts/EditBlogPost";
 import dbConnect from "@/lib/dbConnect";
 import BlogPost from "@/models/BlogPost";
-import { type ProjectDisplay } from "@/types/project";
+import { type BlogPostDisplay } from "@/types/blogpost";
 import { serverParamSchema } from "@/utils/server/validation";
 import { type HydratedDocument } from "mongoose";
 
@@ -15,15 +15,15 @@ async function getBlogPost(id: string | null | undefined) {
     
     await dbConnect();
 
-    const foundPost = await BlogPost.findOne<HydratedDocument<ProjectDisplay>>({
+    const foundPost = await BlogPost.findOne<HydratedDocument<BlogPostDisplay>>({
       _id: parsedId,
-    });
+    }).populate("tags");
 
     if (!foundPost) {
       return null;
     }
     
-    const blogPost = foundPost.toJSON();
+    const blogPost = foundPost.toJSON() as BlogPostDisplay;
     return blogPost;
   } catch (err) {
     return null;
@@ -31,7 +31,7 @@ async function getBlogPost(id: string | null | undefined) {
 }
 
 
-export default async function EditBlogPost({ params }: { params: { id: string } }) {
+export default async function EditBlogPostPage({ params }: { params: { id: string } }) {
 
   const post = await getBlogPost(params.id);
 
@@ -41,9 +41,9 @@ export default async function EditBlogPost({ params }: { params: { id: string } 
 
 
   return (
-    <Stack justify="center" align="center" className="pt-6" gap={8}>
-      <>Hello this is editing</>
-    </Stack>
+    <div className="w-full mt-10">
+      <EditBlogPost id={params.id} post={post} />
+    </div>
   );
 };
 

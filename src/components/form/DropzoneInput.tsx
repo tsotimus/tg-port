@@ -4,7 +4,7 @@ import { Controller, type RegisterOptions, useFormContext } from "react-hook-for
 import {
   type Accept,
   useDropzone,
-  type FileRejection,
+  // type FileRejection,
   type FileWithPath,
 } from "react-dropzone";
 import { useMemo } from "react";
@@ -22,9 +22,9 @@ interface DropzoneProps {
   maxSize?: number;
 }
 
-interface FileRejectionWithPath extends FileRejection {
-  path: string;
-}
+// interface FileRejectionWithPath extends FileRejection {
+//   path: string;
+// }
 
 const DropzoneInput = ({
   name,
@@ -42,7 +42,7 @@ const DropzoneInput = ({
     isDragAccept,
     isDragReject,
     isFocused,
-    acceptedFiles,
+    // acceptedFiles,
     fileRejections,
   } = useDropzone({
     accept: allowedFiles,

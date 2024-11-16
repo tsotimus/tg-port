@@ -1,4 +1,5 @@
 import {
+  type IconType,
   SiGithub,
   SiLinkedin,
   SiNpm,
@@ -90,7 +91,7 @@ export const FOOTER_LINKS = [
 type SocialLink = {
   href: string;
   title: string;
-  icon: any;
+  icon: IconType;
 };
 
 export const SOCIAL_LINKS: SocialLink[] = [

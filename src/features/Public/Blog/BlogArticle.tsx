@@ -1,9 +1,9 @@
 import Typography from "@/components/Typography";
-import { PublishedBlogPost } from "@/types/blogpost";
+import { PublishedBlogPostDisplay } from "@/types/blogpost";
 import { ReactNode } from "react";
 
 interface BlogArticleProps {
-    post: PublishedBlogPost;
+    post: PublishedBlogPostDisplay;
     mdxContent: ReactNode;
 }
 const BlogArticle = ({post, mdxContent}: BlogArticleProps) => {

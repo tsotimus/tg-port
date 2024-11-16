@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { PublishedBlogPost } from '@/types/blogpost'
+import { PublishedBlogPostDisplay } from '@/types/blogpost'
 import BlogGrid from './BlogGrid'
 
 const variants = {
@@ -17,7 +17,7 @@ const variants = {
 }
 
 interface RecentPostsProps {
-  posts: PublishedBlogPost[]
+  posts: PublishedBlogPostDisplay[]
 }
 
 const RecentPosts = ({posts}: RecentPostsProps) => {

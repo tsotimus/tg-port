@@ -1,5 +1,6 @@
 import { type ObjectId } from "mongoose";
 import z from "zod"
+import { type TagDisplay } from "./tag";
 
 
 export const CreateBlogPostSchema = z.object({
@@ -26,25 +27,27 @@ export type BlogPostModel = {
   updatedAt: Date;
 };
 
-export type BlogPost = {
+export type BlogPostDisplay = {
+  id: string;
   title: string;
   summary: string;
   slug: string;
   coverImage: string;
-  tags: string[];
+  mdxContent: string;
+  tags: TagDisplay[];
   status: "DRAFT" | "PUBLISHED" | "ARCHIVED";
-  publishedAt?: Date;
-  createdAt: Date;
-  updatedAt: Date;
+  publishedAt?: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
-export type PublishedBlogPost = {
+export type PublishedBlogPostDisplay = {
   title: string;
   summary: string;
   slug: string;
   mdxContent: string;
   coverImage: string;
-  tags: string[];
+  tags: TagDisplay[];
   status: "PUBLISHED";
   publishedAt: string;
   createdAt: string;

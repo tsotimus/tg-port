@@ -1,12 +1,9 @@
 import { Suspense } from "react";
 import CustomMDX from "@/components/mdx/CustomMDX";
 import dbConnect from "@/lib/dbConnect";
-import Project from "@/models/Project";
 import { type HydratedDocument } from "mongoose";
-import { type ProjectDisplay } from "@/types/project";
-import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
 import BlogPost from "@/models/BlogPost";
-import { type PublishedBlogPost } from "@/types/blogpost";
+import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { serverParamSchema } from "@/utils/server/validation";
 import BlogArticle from "@/features/Public/Blog/BlogArticle";
 
@@ -18,7 +15,7 @@ type ProjectPageProps = {
 
 export async function generateStaticParams() {
   await dbConnect();
-  const allPosts = await BlogPost.find<HydratedDocument<PublishedBlogPost>>({
+  const allPosts = await BlogPost.find<HydratedDocument<PublishedBlogPostDisplay>>({
     status: "PUBLISHED",
   });
 
@@ -35,7 +32,7 @@ async function getBlogPost(slug: string) {
 
     const parsedSlug = serverParamSchema.parse(slug);
 
-    const foundPost = await BlogPost.findOne<HydratedDocument<PublishedBlogPost>>({
+    const foundPost = await BlogPost.findOne<HydratedDocument<PublishedBlogPostDisplay>>({
       slug: parsedSlug,
     });
     if (!foundPost) {

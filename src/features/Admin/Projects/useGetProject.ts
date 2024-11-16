@@ -14,7 +14,7 @@ const useGetProject = ({ id }: UseGetProject) => {
   );
 
   return {
-    project: data?.data || undefined,
+    project: data?.data ?? undefined,
     isPending: !error && !data,
     isError: !!error,
     isSuccess: !!data,

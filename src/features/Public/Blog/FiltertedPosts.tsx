@@ -3,14 +3,14 @@
 
 import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
-import { PublishedBlogPost } from '@/types/blogpost'
+import { PublishedBlogPostDisplay } from '@/types/blogpost'
 import BlogGrid from './BlogGrid'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 
 type FilteredPostsProps = {
-  posts: PublishedBlogPost[]
+  posts: PublishedBlogPostDisplay[]
 }
 
 const FilteredPosts = ({posts}: FilteredPostsProps) => {

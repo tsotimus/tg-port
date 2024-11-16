@@ -61,7 +61,7 @@ const Folder = memo<FolderProps>(
       setIsOpen(!isOpen);
     }, [isOpen, onToggle]);
 
-    const isFolderOpen = open === undefined ? isOpen : open;
+    const isFolderOpen = open ?? isOpen;
 
     return (
       <li className="nx-flex nx-list-none nx-flex-col">

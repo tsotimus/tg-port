@@ -6,7 +6,7 @@ import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import BlogPost from "@/models/BlogPost";
 import { type ProjectDisplay } from "@/types/project";
-import { type PublishedBlogPost } from "@/types/blogpost";
+import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { type HydratedDocument } from "mongoose";
 
 export const revalidate = 21600;
@@ -21,7 +21,7 @@ async function fetchFeaturedProjects() {
 
 async function fetchRecentPosts() {
   await dbConnect();
-  const posts = await BlogPost.find<HydratedDocument<PublishedBlogPost>>({
+  const posts = await BlogPost.find<HydratedDocument<PublishedBlogPostDisplay>>({
     published: true,
   })
     .limit(2)

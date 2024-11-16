@@ -57,7 +57,7 @@ const MDXEditor = ({ name, rules, defaultValue }: EditorProps) => {
       control={control}
       name={name}
       rules={rules}
-      defaultValue={defaultValue || ""}
+      defaultValue={defaultValue ?? ""}
       render={({ field: { value, onChange } }) => {
         return (
           <ImportedEditor

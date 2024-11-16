@@ -3,11 +3,11 @@
 import { BlurImage } from "@/components/BlurImage"
 import { Link } from "@/components/Link"
 import useFormattedDate from "@/hooks/useFormattedDate"
-import { PublishedBlogPost } from "@/types/blogpost"
+import { PublishedBlogPostDisplay } from "@/types/blogpost"
 import { ArrowUpRightIcon, PencilIcon } from "lucide-react"
 
 type BlogCardProps = {
-    post: PublishedBlogPost
+    post: PublishedBlogPostDisplay
   }
   
   const BlogCard = ({post}: BlogCardProps) => {

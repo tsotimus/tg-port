@@ -3,7 +3,7 @@ import Typography from "@/components/Typography";
 import FilteredPosts from "@/features/Public/Blog/FiltertedPosts";
 import dbConnect from "@/lib/dbConnect";
 import BlogPost from "@/models/BlogPost";
-import { type PublishedBlogPost } from "@/types/blogpost";
+import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { type HydratedDocument } from "mongoose";
 import { type Metadata } from "next";
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 async function fetchAllBlogPosts() {
   await dbConnect();
-  const posts = await BlogPost.find<HydratedDocument<PublishedBlogPost>>({status: "PUBLISHED"}).populate("tags")
+  const posts = await BlogPost.find<HydratedDocument<PublishedBlogPostDisplay>>({status: "PUBLISHED"}).populate("tags")
   const allPosts = posts.map((post) => post.toJSON());
   return allPosts
 }

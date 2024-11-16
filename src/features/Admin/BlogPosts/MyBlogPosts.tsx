@@ -32,7 +32,7 @@ const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
     header: "Edit",
     cell: (cell) => {
       return (
-        <ButtonLink href={`/admin/blog/edit/${cell.row.original.id}`}>
+        <ButtonLink href={`/admin/blog/${cell.row.original.id}`}>
           Edit
         </ButtonLink>
       );

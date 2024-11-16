@@ -1,8 +1,6 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { useTheme } from "next-themes";
-import { useMemo } from "react";
 
 interface MyLogoProps {
   width?: number;

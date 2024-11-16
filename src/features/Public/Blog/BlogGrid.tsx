@@ -2,7 +2,7 @@
 
 import Typography from "@/components/Typography"
 import { buttonVariants } from "@/components/ui/button"
-import { PublishedBlogPost } from "@/types/blogpost"
+import { PublishedBlogPostDisplay } from "@/types/blogpost"
 import { cn } from "@/utils/client/cn"
 import { motion } from "framer-motion"
 import BlogCard from "./BlogCard"
@@ -10,7 +10,7 @@ import { Link } from "@/components/Link"
 import EmptyPage from "@/components/layouts/EmptyPage"
 
 interface BlogGridProps {
-    posts: PublishedBlogPost[]
+    posts: PublishedBlogPostDisplay[]
     displayLink?: boolean
     emptyPageSize?: 'sm' | 'md' | 'lg'
 }

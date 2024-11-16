@@ -9,7 +9,7 @@ const useGetProjects = () => {
   >("/api/admin/v1/projects", (key: string) => fetcher(key));
 
   return {
-    allProjects: data?.data || [],
+    allProjects: data?.data ?? [],
     isLoading,
     error,
   };

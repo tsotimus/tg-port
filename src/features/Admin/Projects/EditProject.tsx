@@ -1,7 +1,7 @@
 "use client";
 
 import { type FormSchema, type ProjectDisplay, ProjectSchema } from "@/types/project";
-import { FieldValues, FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import ProjectForm from "./ProjectForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { deleteFetcher, updateFetcher } from "@/utils/client/genericFetchers";
