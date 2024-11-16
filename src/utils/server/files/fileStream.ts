@@ -16,7 +16,7 @@ export const createCloudinaryStreamForImage = (
   }
   const cloudinaryStream = cloudinary.uploader.upload_stream(
     { public_id: `${PREFIX}${publicId}` },
-    (error, result) => {
+    (error) => {
       if (error) {
         console.error("Upload to Cloudinary failed:", error);
       }
@@ -37,7 +37,7 @@ export const createCloudinaryStreamForVideo = (
 
   const cloudinaryStream = cloudinary.uploader.upload_chunked_stream(
     { public_id: `${PREFIX}${publicId}` },
-    (error, result) => {
+    (error) => {
       if (error) {
         console.error("Upload to Cloudinary failed:", error);
       }
