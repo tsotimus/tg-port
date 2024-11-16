@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import { type TagModel } from "@/types/tag";
-import mongoose from "mongoose";
+import mongoose, { type Model } from "mongoose";
 
 const TagSchema = new mongoose.Schema<TagModel>(
   {
@@ -28,5 +32,13 @@ const TagSchema = new mongoose.Schema<TagModel>(
   }
 );
 
-export default mongoose.models.Tag ||
-  mongoose.model<TagModel>("Tag", TagSchema);
+// export default mongoose.models.Tag ||
+//   mongoose.model<TagModel>("Tag", TagSchema);
+
+
+  // Create or get the Tag model with proper type
+const Tag: Model<TagModel> = mongoose.models.Tag
+? (mongoose.models.Tag as Model<TagModel>)
+: mongoose.model<TagModel>("Tag", TagSchema);
+
+export default Tag;

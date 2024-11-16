@@ -1,3 +1,5 @@
+"use client";
+
 import { BlurImage } from "@/components/BlurImage"
 import { Link } from "@/components/Link"
 import useFormattedDate from "@/hooks/useFormattedDate"
@@ -10,7 +12,8 @@ type BlogCardProps = {
   
   const BlogCard = ({post}: BlogCardProps) => {
     const { slug, title, summary, publishedAt } = post
-    const formattedDate = useFormattedDate(publishedAt)
+    console.log(publishedAt)
+    const formattedDate = useFormattedDate(new Date(publishedAt))
   
     return (
       <Link

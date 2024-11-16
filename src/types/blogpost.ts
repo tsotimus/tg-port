@@ -46,8 +46,8 @@ export type PublishedBlogPost = {
   coverImage: string;
   tags: string[];
   status: "PUBLISHED";
-  publishedAt: Date;
-  createdAt: Date;
-  updatedAt: Date;
+  publishedAt: string;
+  createdAt: string;
+  updatedAt: string;
 };
 

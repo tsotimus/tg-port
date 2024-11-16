@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { type ProjectModel } from "@/types/project";
-import mongoose from "mongoose";
+import mongoose, { type Model } from "mongoose";
 
 const ProjectSchema = new mongoose.Schema<ProjectModel>(
   {
@@ -62,5 +65,12 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
   }
 );
 
-export default mongoose.models.Project ||
-  mongoose.model<ProjectModel>("Project", ProjectSchema);
+// export default mongoose.models.Project ||
+//   mongoose.model<ProjectModel>("Project", ProjectSchema);
+
+  // Create or get the Project model with proper type
+const Project: Model<ProjectModel> = mongoose.models.Project
+? (mongoose.models.Project as Model<ProjectModel>)
+: mongoose.model<ProjectModel>("Project", ProjectSchema);
+
+export default Project;

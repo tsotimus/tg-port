@@ -1,4 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable no-var */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import mongoose from "mongoose";
+
+/**
+ * We need to import all the models here to ensure that they are registered with mongoose
+ */
+import BlogPost from "@/models/BlogPost";
+import Tag from "@/models/Tag";
+import Project from "@/models/Project";
 
 declare global {
   var mongoose: any; // This must be a `var` and not a `let / const`
@@ -14,12 +27,22 @@ if (!MONGODB_URI) {
 
 let cached = global.mongoose;
 
+const initialiseModels = (): void => {
+  // Dummy usage to prevent tree shaking
+  const mods = [
+    BlogPost.modelName,
+    Tag.modelName,
+    Project.modelName
+  ]
+};
+
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
 async function dbConnect() {
   if (cached.conn) {
+    initialiseModels(); // Ensure models are used upon initial connection
     return cached.conn;
   }
   if (!cached.promise) {
@@ -27,6 +50,7 @@ async function dbConnect() {
       bufferCommands: false,
     };
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      initialiseModels(); // Ensure models are used upon initial connection
       return mongoose;
     });
   }

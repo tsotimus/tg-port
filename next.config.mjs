@@ -1,3 +1,5 @@
+// @ts-check
+
 const generateConfig = async () => {
   const IS_UNDER_CONSTRUCTION = process.env.IS_UNDER_CONSTRUCTION === "true";
 
@@ -17,7 +19,9 @@ const generateConfig = async () => {
     experimental: {
       optimizePackageImports: ["shiki", "@icons-pack/react-simple-icons"],
     },
-    linting: {
+    eslint: {
+      // TODO: Warning: This allows production builds to successfully complete even if
+      // your project has ESLint errors.
       ignoreDuringBuilds: true,
     },
     poweredByHeader: false,

@@ -13,10 +13,13 @@ export const metadata: Metadata = {
   title: "Blog",
 };
 
+//TODO: Implement Schema population for tags in a Blogpost
+
 async function fetchAllBlogPosts() {
   await dbConnect();
-  const posts = await BlogPost.find<HydratedDocument<PublishedBlogPost>>();
-  return posts.map((post) => post.toJSON());
+  const posts = await BlogPost.find<HydratedDocument<PublishedBlogPost>>({status: "PUBLISHED"}).populate("tags")
+  const allPosts = posts.map((post) => post.toJSON());
+  return allPosts
 }
 
 export default async function AllBlogPostsPage() {

@@ -1,6 +1,6 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
-import { createApiResponse } from "@/utils/server/createApiResponse";
+import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
 import BlogPost from "@/models/BlogPost";
 import { CreateBlogPostSchema } from "@/types/blogpost";
 
@@ -10,22 +10,32 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
-      const body = req.body;
-        try {
-          //TODO: Validate the incoming data with zod
-          const validatedData = CreateBlogPostSchema.parse(body);
-        } catch (err) {
-          return res.status(400).json(createApiResponse(null, ["Bad Request"]));
-        }
+      const validatedData = CreateBlogPostSchema.safeParse(req.body);
+
+      if(!validatedData.success){
+        return res.status(400).json(createApiResponse(null, formatZodErrors(validatedData.error.errors)));
+      }
 
       await dbConnect();
-      console.log(body);
-      const newPost = await BlogPost.create(body);
 
-      const savedPost = await newPost.save();
-      const formattedPost = savedPost.toJSON();
-      return res.status(201).json(createApiResponse(formattedPost, []));
+      if(validatedData.data.status === "PUBLISHED"){
+        // We should add the publishedAt date if the status is PUBLISHED
+        const structuredData = {
+          ...validatedData.data,
+          publishedAt: new Date()
+        }
+        const newPost= await BlogPost.create(structuredData);
+        const savedPost = await newPost.save();
+        const formattedPost = savedPost.toJSON();
+        return res.status(201).json(createApiResponse(formattedPost, []));
+      } else {
+        const newPost= await BlogPost.create(validatedData.data);
+        const savedPost = await newPost.save();
+        const formattedPost = savedPost.toJSON();
+        return res.status(201).json(createApiResponse(formattedPost, []));
+      }
     } catch (err) {
+      console.log(err);
       return res
         .status(500)
         .json(createApiResponse(null, ["Internal Server Error"]));
@@ -37,6 +47,7 @@ export default async function handler(
       const posts = await BlogPost.find();
       return res.status(200).json(createApiResponse(posts, []));
     } catch (err) {
+      console.log(err);
       return res
         .status(500)
         .json(createApiResponse(null, ["Internal Server Error"]));

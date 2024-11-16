@@ -1,3 +1,5 @@
+"use client";
+
 import Typography from "@/components/Typography"
 import { buttonVariants } from "@/components/ui/button"
 import { PublishedBlogPost } from "@/types/blogpost"
@@ -31,19 +33,19 @@ const BlogGrid = ({posts, displayLink, emptyPageSize}:BlogGridProps) => {
             <motion.div
                 className='mt-12 grid gap-4 md:grid-cols-2'
                 initial={{
-                y: 40,
-                opacity: 0
+                    y: 40,
+                    opacity: 0
                 }}
                 animate={{
-                y: 0,
-                opacity: 1
+                    y: 0,
+                    opacity: 1
                 }}
                 transition={{
-                duration: 0.3
+                    duration: 0.3
                 }}
             >
                 {posts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
+                    <BlogCard key={post.slug} post={post} />
                 ))}
             </motion.div>
             {

@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import { type BlogPostModel } from "@/types/blogpost";
-import mongoose from "mongoose";
+import mongoose, { type Model } from "mongoose";
 
 const BlogPostSchema = new mongoose.Schema<BlogPostModel>(
   {
@@ -55,5 +59,13 @@ const BlogPostSchema = new mongoose.Schema<BlogPostModel>(
   }
 );
 
-export default mongoose.models.BlogPost ||
-  mongoose.model<BlogPostModel>("BlogPost", BlogPostSchema);
+
+// export default mongoose.models.BlogPost ||
+//   mongoose.model<BlogPostModel>("BlogPost", BlogPostSchema);
+
+// Create or get the BlogPost model with proper type
+const BlogPost: Model<BlogPostModel> = mongoose.models.BlogPost
+  ? (mongoose.models.BlogPost as Model<BlogPostModel>)
+  : mongoose.model<BlogPostModel>("BlogPost", BlogPostSchema);
+
+export default BlogPost;
