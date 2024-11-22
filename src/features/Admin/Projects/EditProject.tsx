@@ -28,9 +28,9 @@ const EditProject = ({ project }: EditProjectProps) => {
   const { trigger: triggerUpdate } = useSWRMutation(projectUrl, updateFetcher);
   const { trigger: triggerDelete } = useSWRMutation(projectUrl, deleteFetcher);
 
-  const handleUpdate = (data: FormSchema) => {
+  const handleUpdate = async(data: FormSchema) => {
     try {
-      triggerUpdate({ data }).then(() => {
+      await triggerUpdate({ data }).then(() => {
         toast.success("Project updated successfully");
         router.push("/projects");
       });
@@ -46,6 +46,7 @@ const EditProject = ({ project }: EditProjectProps) => {
       toast.success("Project deleted successfully");
       router.push("/projects");
     } catch (error) {
+      console.error("Delete failed", error);
       toast.error("Failed to delete project: ");
     }
   };

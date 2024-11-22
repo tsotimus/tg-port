@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment -- Not properly loading in cloudinary types */
 import { type NextApiRequest, type NextApiResponse } from "next";
 import cloudinary from "@/lib/cloudinary";
 import { createApiResponse } from "@/utils/server/createApiResponse";

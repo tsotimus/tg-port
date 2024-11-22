@@ -1,5 +1,5 @@
 "use client";
-import { type PropsWithChildren } from "react";
+import { ReactNode, type PropsWithChildren } from "react";
 import { type FieldValues, useFormContext } from "react-hook-form";
 
 type FormLayoutProps<T extends FieldValues> = {
@@ -21,6 +21,9 @@ export const FormLayout = <T extends FieldValues>({
   );
 };
 
-export const FormRow = ({ children }: PropsWithChildren<{}>) => {
+type FormRowProps = {
+  children: ReactNode;
+}
+export const FormRow = ({ children }: FormRowProps) => {
   return <div className="w-[280px] flex flex-col gap-4">{children}</div>;
 };

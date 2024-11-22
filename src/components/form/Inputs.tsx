@@ -30,7 +30,7 @@ export const TextInput = ({
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue || ""}
+      defaultValue={defaultValue ?? ""}
       render={({ field: { onChange, onBlur, value } }) => {
         return (
           <FormRow>
@@ -104,7 +104,7 @@ export const SwitchInput = ({
       control={control}
       rules={rules}
       disabled={disabled}
-      defaultValue={defaultValue || ""}
+      defaultValue={defaultValue ?? ""}
       render={({ field: { onChange, value } }) => {
         return (
           <FormRow>
@@ -172,7 +172,7 @@ export const CheckBoxInput = ({
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue || ""}
+      defaultValue={defaultValue ?? ""}
       render={({ field: { onChange, value } }) => {
         return (
           <FormRow>

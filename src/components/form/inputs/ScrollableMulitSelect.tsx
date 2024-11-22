@@ -77,7 +77,7 @@ const ScrollableMultiSelect = ({
                       className="w-full"
                       key={option.value}
                       checked={isOptionSelected(option.value, selectedItems)}
-                      onCheckedChange={(e) => {
+                      onCheckedChange={() => {
                         if(Array.isArray(selectedItems)) {
                           if (selectedItems.includes(option.value)) {
                             onChange(selectedItems.filter((item) => item !== option.value));

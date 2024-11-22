@@ -9,7 +9,7 @@ const useGetPosts = () => {
   >("/api/admin/v1/blog", (key: string) => fetcher(key));
 
   return {
-    allProjects: data?.data || [],
+    allProjects: data?.data ?? [],
     isLoading,
     error,
   };
