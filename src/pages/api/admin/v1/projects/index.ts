@@ -1,7 +1,7 @@
 import Project from "@/models/Project";
 import { type NextApiRequest, type NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
-import { createApiResponse } from "@/utils/server/createApiResponse";
+import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
 import { ProjectSchema } from "@/types/project";
 
 export default async function handler(
@@ -10,16 +10,18 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
-      const body = req.body;
-      try {
-        //TODO: Zod validation
-        const validatedData = ProjectSchema.parse(body);
-      } catch (err) {
-        return res.status(400).json(createApiResponse(null, ["Bad Request"]));
+
+      const validatedData = ProjectSchema.safeParse(req.body);
+
+      if (!validatedData.success) {
+        return res
+          .status(400)
+          .json(createApiResponse(null, formatZodErrors(validatedData.error.errors)));
       }
 
+
       await dbConnect();
-      const newProject = await Project.create(body);
+      const newProject = await Project.create(validatedData.data);
 
       const savedProject = await newProject.save();
 

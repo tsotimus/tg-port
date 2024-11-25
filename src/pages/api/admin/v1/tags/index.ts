@@ -1,6 +1,6 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
-import { createApiResponse } from "@/utils/server/createApiResponse";
+import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
 import { TagSchema } from "@/types/tag";
 import Tag from "@/models/Tag";
 
@@ -10,19 +10,19 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
-      const body = req.body;
-      try {
-        //TODO: Zod validation
-        const validatedData = TagSchema.parse(body);
-      } catch (err) {
-        return res.status(400).json(createApiResponse(null, ["Bad Request"]));
-      }
+        const validatedData = TagSchema.safeParse(req.body);
 
-      await dbConnect();
-      const newTag = await Tag.create(body);
-      const savedTag = await newTag.save();
+        if (!validatedData.success) {
+          return res
+            .status(400)
+            .json(createApiResponse(null, formatZodErrors(validatedData.error.errors)));
+        }
 
-      return res.status(201).json(createApiResponse(savedTag, []));
+        await dbConnect();
+        const newTag = await Tag.create(validatedData.data);
+        const savedTag = await newTag.save();
+  
+        return res.status(201).json(createApiResponse(savedTag, []));
     } catch (err) {
       console.error(err);
       return res

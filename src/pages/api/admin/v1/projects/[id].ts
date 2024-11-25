@@ -1,7 +1,9 @@
 import Project from "@/models/Project";
 import { type NextApiRequest, type NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
-import { createApiResponse } from "@/utils/server/createApiResponse";
+import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
+import { serverParamSchema } from "@/utils/server/validation";
+import { ProjectSchema } from "@/types/project";
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,12 +11,17 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     try {
-      //TODO: Zod validation
       const { id } = req.query;
+
+      const validatedParam = serverParamSchema.safeParse(id);
+
+      if(!validatedParam.success){
+        return res.status(400).json(createApiResponse(null, formatZodErrors(validatedParam.error.errors)));
+      }
 
       await dbConnect();
       const currentProject = await Project.findOne({
-        _id: id,
+        _id: validatedParam.data,
       });
       if (!currentProject) {
         return res
@@ -46,15 +53,33 @@ export default async function handler(
   if (req.method === "PATCH") {
     try {
       const { id } = req.query;
-      const body = req.body;
+
+      const validatedParam = serverParamSchema.safeParse(id);
+
+      if(!validatedParam.success){
+        return res.status(400).json(createApiResponse(null, formatZodErrors(validatedParam.error.errors)));
+      }
+
+      const validatedData = ProjectSchema.safeParse(req.body);
+
+      if(!validatedData.success){
+        return res.status(400).json(createApiResponse(null, formatZodErrors(validatedData.error.errors)));
+      }
+      
 
       await dbConnect();
       const updatedProject = await Project.findOneAndUpdate(
         {
-          _id: id,
+          _id: validatedParam.data,
         },
-        body
+        validatedData.data,
       );
+      
+      if (!updatedProject) {
+        return res
+          .status(404)
+          .json(createApiResponse(null, ["Project not found"]));
+      }
 
       const recentlyUpdated = updatedProject.toJSON();
 
