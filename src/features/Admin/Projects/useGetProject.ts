@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { type GenericApiResponse } from "@/types/api";
+import { type GenericApiResponse, type Errors } from "@/types/api";
 import { type ProjectDisplay } from "@/types/project";
 import { fetcher } from "@/utils/client/genericFetchers";
 
@@ -8,7 +8,7 @@ interface UseGetProject {
 }
 
 const useGetProject = ({ id }: UseGetProject) => {
-  const { data, error } = useSWR<GenericApiResponse<ProjectDisplay>>(
+  const { data, error } = useSWR<GenericApiResponse<ProjectDisplay>, Errors>(
     id ? `/api/admin/v1/projects/${id}` : null,
     fetcher
   );

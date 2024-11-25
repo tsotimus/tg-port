@@ -18,6 +18,7 @@ const CreateProject = () => {
   });
 
   const onSubmit = (data: FormSchema) => {
+    //TODO: Implement Type safe API call 
     axios
       .post("/api/admin/v1/projects", data)
       .then((res) => {

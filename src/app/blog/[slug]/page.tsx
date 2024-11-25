@@ -41,6 +41,7 @@ async function getBlogPost(slug: string) {
     const post = foundPost.toJSON();
     return post;
   } catch (err) {
+    console.error(err);
     return null;
   }  
 }

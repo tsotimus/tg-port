@@ -26,6 +26,7 @@ async function getBlogPost(id: string | null | undefined) {
     const blogPost = foundPost.toJSON() as BlogPostDisplay;
     return blogPost;
   } catch (err) {
+    console.error(err);
     return null;
   }
 }

@@ -18,8 +18,7 @@ export default async function handler(
           .status(400)
           .json(createApiResponse(null, formatZodErrors(validatedData.error.errors)));
       }
-
-
+      
       await dbConnect();
       const newProject = await Project.create(validatedData.data);
 

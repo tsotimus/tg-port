@@ -1,12 +1,11 @@
-import { type GenericApiResponse } from "@/types/api";
+import { type GenericApiResponse, type Errors } from "@/types/api";
 import { type ProjectDisplay } from "@/types/project";
 import { fetcher } from "@/utils/client/genericFetchers";
 import useSWR from "swr";
 
 const useGetProjects = () => {
   const { data, isLoading, error } = useSWR<
-    GenericApiResponse<ProjectDisplay[]>
-  >("/api/admin/v1/projects", (key: string) => fetcher(key));
+    GenericApiResponse<ProjectDisplay[]>, Errors>("/api/admin/v1/projects", (key: string) => fetcher(key));
 
   return {
     allProjects: data?.data ?? [],

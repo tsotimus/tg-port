@@ -1,6 +1,8 @@
+export type Errors = string[];
+
 export type GenericApiResponse<T> = {
   data: T;
-  errors: string[];
+  errors: Errors;
 };
 
 export type GenericErrorResponse = {
@@ -16,5 +18,5 @@ export type GenericPaginatedApiResponse<T> = {
     currentPage: number;
     pageSize: number;
   };
-  errors: string[];
+  errors: Errors;
 };

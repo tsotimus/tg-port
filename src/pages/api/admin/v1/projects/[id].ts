@@ -45,6 +45,7 @@ export default async function handler(
       });
       return res.status(201).json(createApiResponse("Success", []));
     } catch (err) {
+      console.error(err);
       return res
         .status(500)
         .json(createApiResponse(null, ["Internal Server Error"]));
@@ -85,6 +86,7 @@ export default async function handler(
 
       return res.status(201).json(createApiResponse(recentlyUpdated, []));
     } catch (err) {
+      console.error(err);
       return res
         .status(500)
         .json(createApiResponse(null, ["Internal Server Error"]));

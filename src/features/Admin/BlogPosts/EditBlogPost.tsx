@@ -34,6 +34,7 @@ const EditBlogPost = ({id, post}: EditBlogPostProps) => {
     const { formState: {isValid} } = methods;
 
     const onSubmit = (data: FormSchema) => {
+      //TODO: Implement Type safe API call 
         axios
         .patch(`/api/admin/v1/blog/${id}`, data)
         .then((res) => {

@@ -23,6 +23,7 @@ const CreateBlogPost = () => {
     const { formState: {isValid} } = methods;
 
     const onSubmit = (data: FormSchema) => {
+      //TODO: Implement Type safe API call 
         axios
         .post("/api/admin/v1/blog", data)
         .then((res) => {

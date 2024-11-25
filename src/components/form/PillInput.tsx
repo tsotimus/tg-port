@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useFormContext, Controller, RegisterOptions } from "react-hook-form";
+import { useFormContext, Controller, type RegisterOptions } from "react-hook-form";
 import { FormLabel, FormControl } from "../ui/form";
 import { Input } from "../ui/input";
 import { FormRow } from "./FormLayout";
