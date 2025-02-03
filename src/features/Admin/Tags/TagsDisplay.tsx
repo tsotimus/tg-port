@@ -40,6 +40,8 @@ const COLUMNS: ColumnDef<TagDisplay, string | number>[] = [
     },
 ];
 
+//TODO: Replace with Nuqs
+
 const TagsDisplay = ({tags}:TagDisplayProps) => {
     const router = useRouter();
     const pathname = usePathname();

@@ -3,13 +3,15 @@ import Typography from "@/components/Typography";
 import TagsDisplay from "@/features/Admin/Tags/TagsDisplay";
 import dbConnect from "@/lib/dbConnect";
 import Tag from "@/models/Tag";
+import { type TagDisplay } from "@/types/tag";
+import { type HydratedDocument } from "mongoose";
 import { z } from "zod";
 
 const getTags = async (page: number) => {
     const limit = 25;
     const skip = page * limit; // Adjusted for 0-based page index
     await dbConnect();
-    const tags = await Tag.find({}).skip(skip).limit(limit);
+    const tags = await Tag.find<HydratedDocument<TagDisplay>>({}).skip(skip).limit(limit);
 
     const currentTags = tags.map((tag) => tag.toJSON());
 

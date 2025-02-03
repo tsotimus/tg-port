@@ -1,6 +1,8 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-const isProtectedRoute = createRouteMatcher(["/admin(.*)", "/api/admin(.*)"]);
+const PROTECTED_ROUTES = ["/admin(.*)", "/api/admin(.*)"] 
+const CURRENTLY_PROTECTED_ROUTES = process.env.IS_OFFLINE_DEV === "true" ? [] : PROTECTED_ROUTES
+const isProtectedRoute = createRouteMatcher(CURRENTLY_PROTECTED_ROUTES);
 
 export default clerkMiddleware((auth, req) => {
   if (isProtectedRoute(req)) auth().protect();

@@ -1,6 +1,5 @@
 "use client";
 
-import Stack from "@/components/layouts/Stack";
 import { Link } from "@/components/Link";
 import {
   Card,
@@ -30,14 +29,24 @@ const ACTIONS = [
     description: "View all your blog posts and their details.",
     link: "/admin/blog",
   },
+  {
+    title: "Create a new tag",
+    description: "Create a new tag to use for projects and posts",
+    link: `/admin/tags/0?createTag=true`,
+  },
+  {
+    title: "View all tags",
+    description: "View and manage all your tags and their details.",
+    link: "/admin/tags",
+  },
 ];
 
 const SuggestedActions = () => {
   return (
-    <Stack direction="row" className="py-5">
+    <div className="py-5 flex flex-wrap gap-4 justify-center">
       {ACTIONS.map(({ link, title, description }) => (
         <Link key={link} href={link}>
-          <Card>
+          <Card className="max-w-[250px]">
             <CardHeader>
               <CardTitle>{title}</CardTitle>
               <CardDescription>{description}</CardDescription>
@@ -45,7 +54,7 @@ const SuggestedActions = () => {
           </Card>
         </Link>
       ))}
-    </Stack>
+    </div>
   );
 };
 
