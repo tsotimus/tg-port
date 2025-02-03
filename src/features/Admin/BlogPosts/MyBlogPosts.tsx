@@ -7,21 +7,41 @@ import { type ColumnDef } from "@tanstack/react-table";
 import ButtonLink from "@/components/ButtonLink";
 import useGetPosts from "./useGetPosts";
 import {type BlogPostDisplay } from "@/types/blogpost";
-
+import { formatDate } from "@/utils/client/dates";
 //TODO: Use ts pattern match
-const COLUMNS: ColumnDef<BlogPostDisplay, string | number>[] = [
+const COLUMNS: ColumnDef<BlogPostDisplay, string>[] = [
   {
     header: "Title",
     accessorKey: "title",
   },
   {
+    header: "Status",
+    accessorKey: "status"
+  },
+  {
     header: "Date Created",
+    accessorKey: "createdAt",
+    cell: (cell) => {
+      return formatDate(cell.getValue())
+    }
   },
   {
     header: "Date Posted",
+    accessorKey: "publishedAt",
+    cell: (cell) => {
+      if(cell.getValue()){
+        return formatDate(cell.getValue())
+      } else {
+        return "N/A"
+      }
+    }
   },
   {
     header: "Date Updated",
+    accessorKey: "updatedAt",
+    cell: (cell) => {
+      return formatDate(cell.getValue())
+    }
   },
   {
     header: "View",
@@ -64,7 +84,7 @@ const MyBlogPosts = () => {
   return isLoading ? (
     <FullPageLoader />
   ) : (
-    <div className="px-40 w-full mt-20">
+    <div className="px-20 w-full mt-20">
       <DataTable columns={COLUMNS} data={allProjects} />
     </div>
   );

@@ -49,10 +49,10 @@ const EditBlogPost = ({id, post}: EditBlogPostProps) => {
       <FormProvider {...methods}>
         <FormLayout onSubmit={onSubmit}>
           <Stack gap={8}>
-            <Typography variant="h1">Create Blog Post</Typography>
+            <Typography variant="h1">Edit Blog Post</Typography>
             <BlogPostForm />
             <FormRow>
-              <Button type="submit" disabled={!isValid}>Create</Button>
+              <Button type="submit" disabled={!isValid}>Save</Button>
             </FormRow>
           </Stack>
         </FormLayout>
