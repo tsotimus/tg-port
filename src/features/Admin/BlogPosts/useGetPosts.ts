@@ -1,11 +1,11 @@
 import { type Errors, type GenericApiResponse } from "@/types/api";
-import { type ProjectDisplay } from "@/types/project";
+import { type BlogPostDisplay } from "@/types/blogpost";
 import { fetcher } from "@/utils/client/genericFetchers";
 import useSWR from "swr";
 
 const useGetPosts = () => {
   const { data, isLoading, error } = useSWR<
-    GenericApiResponse<ProjectDisplay[]>, Errors
+    GenericApiResponse<BlogPostDisplay[]>, Errors
   >("/api/admin/v1/blog", (key: string) => fetcher(key));
 
   return {

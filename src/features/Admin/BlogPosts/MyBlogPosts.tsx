@@ -3,12 +3,13 @@
 import { FullPageLoader } from "@/components/loaders/Loading";
 import { DataTable } from "@/components/tables/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
-import { type ProjectDisplay } from "@/types/project";
 // import { useRouter } from "next/navigation";
 import ButtonLink from "@/components/ButtonLink";
 import useGetPosts from "./useGetPosts";
+import {type BlogPostDisplay } from "@/types/blogpost";
 
-const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
+//TODO: Use ts pattern match
+const COLUMNS: ColumnDef<BlogPostDisplay, string | number>[] = [
   {
     header: "Title",
     accessorKey: "title",
@@ -24,9 +25,17 @@ const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
   },
   {
     header: "View",
-    cell: (cell) => (
-      <ButtonLink href={`/blog/${cell.row.original.slug}`}>View</ButtonLink>
-    ),
+    cell: (cell) => {
+      if(cell.row.original.status === "PUBLISHED"){
+        return (
+          <ButtonLink href={`/blog/${cell.row.original.slug}`}>View</ButtonLink>
+        )
+      } else {
+        return (
+          <ButtonLink href={`/admin/blog/${cell.row.original.id}/preview`}>Preview</ButtonLink>
+        )
+      }
+    }
   },
   {
     header: "Edit",

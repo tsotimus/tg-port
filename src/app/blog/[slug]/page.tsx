@@ -7,7 +7,7 @@ import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { serverParamSchema } from "@/utils/server/validation";
 import BlogArticle from "@/features/Public/Blog/BlogArticle";
 
-type ProjectPageProps = {
+type BlogPageProps = {
   params: {
     slug: string;
   };
@@ -46,7 +46,7 @@ async function getBlogPost(slug: string) {
   }  
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default async function BlogPage({ params }: BlogPageProps) {
   const { slug } = params;
   const currentPost = await getBlogPost(slug);
   if (!currentPost) {
