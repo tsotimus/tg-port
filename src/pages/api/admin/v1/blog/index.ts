@@ -53,5 +53,6 @@ export default async function handler(
         .json(createApiResponse(null, ["Internal Server Error"]));
     }
   }
+
   return res.status(400).json(createApiResponse(null, ["Bad Request"]));
 }
