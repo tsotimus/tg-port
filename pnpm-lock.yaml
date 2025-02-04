@@ -131,6 +131,9 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.2.9)(react-dom@18.3.1)(react@18.3.1)
+  nuqs:
+    specifier: ^2.3.2
+    version: 2.3.2(next@14.2.9)(react@18.3.1)
   react:
     specifier: ^18
     version: 18.3.1
@@ -164,6 +167,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.10)
+  ts-pattern:
+    specifier: ^5.6.2
+    version: 5.6.2
   zod:
     specifier: ^3.23.8
     version: 3.23.8
@@ -6263,6 +6269,10 @@ packages:
     resolution: {integrity: sha512-oGZRv2OT1lO2UF1zUcwdTb3wqUwI0kBGTgt/T7OdSj6M6N5m3o5uPf0AIW6lVxGGoiWUR7e2AwTE+xiwK8WQig==}
     engines: {node: '>=16 || 14 >=14.17'}
 
+  /mitt@3.0.1:
+    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+    dev: false
+
   /mongodb-connection-string-url@3.0.0:
     resolution: {integrity: sha512-t1Vf+m1I5hC2M5RJx/7AtxgABy1cZmIPQRMXw+gEIPn/cZNF3Oiy+l0UIypUwVB5trcWHq3crg2g3uAR9aAwsQ==}
     dependencies:
@@ -6473,6 +6483,29 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /nuqs@2.3.2(next@14.2.9)(react@18.3.1):
+    resolution: {integrity: sha512-WeG78r8e3a30JY3P8npldvNiAZwGIk499lnpeRs3UYA3PpSvs2/PLunKGgjuF/JMw4BOowD3K2xgGEOZ3PeODA==}
+    peerDependencies:
+      '@remix-run/react': '>=2'
+      next: '>=14.2.0'
+      react: '>=18.2.0 || ^19.0.0-0'
+      react-router: ^6 || ^7
+      react-router-dom: ^6 || ^7
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      next:
+        optional: true
+      react-router:
+        optional: true
+      react-router-dom:
+        optional: true
+    dependencies:
+      mitt: 3.0.1
+      next: 14.2.9(react-dom@18.3.1)(react@18.3.1)
+      react: 18.3.1
+    dev: false
 
   /object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -7530,6 +7563,10 @@ packages:
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+
+  /ts-pattern@5.6.2:
+    resolution: {integrity: sha512-d4IxJUXROL5NCa3amvMg6VQW2HVtZYmUTPfvVtO7zJWGYLJ+mry9v2OmYm+z67aniQoQ8/yFNadiEwtNS9qQiw==}
+    dev: false
 
   /tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}

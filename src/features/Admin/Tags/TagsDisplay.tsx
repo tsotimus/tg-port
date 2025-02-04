@@ -3,11 +3,10 @@
 import Stack from "@/components/layouts/Stack";
 import CreateTagForm from "./CreateTagForm";
 import { Button } from "@/components/ui/button";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { useCallback } from "react";
 import { type TagDisplay } from "@/types/tag";
 import { DataTable } from "@/components/tables/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
+import { parseAsBoolean, useQueryState } from "nuqs";
 
 interface TagDisplayProps {
     tags: TagDisplay[];
@@ -40,45 +39,22 @@ const COLUMNS: ColumnDef<TagDisplay, string | number>[] = [
     },
 ];
 
-//TODO: Replace with Nuqs
 
 const TagsDisplay = ({tags}:TagDisplayProps) => {
-    const router = useRouter();
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
-    const showCreateTag = searchParams?.has("createTag");
 
-    const createQueryString = useCallback(
-        (name: string, value: string) => {
-            const params = new URLSearchParams(searchParams?.toString());
-            if (value === "false") {
-                params.delete(name);
-            } else {
-                params.set(name, value);
-            }
-            return params.toString();
-        },
-        [searchParams]
-    );
 
-    const showCreateTagForm = () => {
-        router.push(pathname + '?' + createQueryString('createTag', 'true'));
-    };
-
-    const hideCreateTagForm = () => {
-        router.push(pathname + '?' + createQueryString('createTag', 'false'));
-    };
+    const [createTag, setShowCreateTag] = useQueryState("createTag", parseAsBoolean.withDefault(false));
 
     return (
         <Stack gap={8}>
-            {!showCreateTag && (
+            {!createTag && (
                 <div>
-                    <Button onClick={showCreateTagForm}>
+                    <Button onClick={() => setShowCreateTag(true)}>
                         Create Tag
                     </Button>
                 </div>
             )}
-            {showCreateTag && <CreateTagForm afterSubmit={hideCreateTagForm} />}
+            {createTag && <CreateTagForm afterSubmit={() => setShowCreateTag(false)} />}
             <DataTable columns={COLUMNS} data={tags} />
         </Stack>
     );
