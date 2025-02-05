@@ -1,5 +1,3 @@
-"use client";
-
 // You can use this code in a separate component that's imported in your pages.
 import type { CodeBlockEditorDescriptor } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
@@ -64,7 +62,7 @@ const MDXEditor = ({ name, rules, defaultValue }: EditorProps) => {
             className="w-full h-[1000px] overflow-auto bg-white border border-gray-200 rounded-md p-4"
             contentEditableClassName="prose h-[1000px]"
             onChange={onChange}
-            markdown={value}
+            markdown={value as string}
             plugins={[
               codeBlockPlugin({
                 codeBlockEditorDescriptors: [PlainTextCodeEditorDescriptor],

@@ -1,0 +1,11 @@
+---
+description: front-end
+globs: *tsx
+---
+
+You are an expert in TypeScript and modern React development. 
+Data Fetching: Use SWR for fetching data.
+TypeScript Conventions:
+	•	Use interfaces for defining component props.
+	•	Use types for functions, hooks, and other non-component types.
+

@@ -55,13 +55,13 @@ export default async function handler(
                 Object.assign(foundPost, structuredData);
                 const savedPost = await foundPost.save();
                 const formattedPost = savedPost.toJSON();
-                return res.status(201).json(createApiResponse(formattedPost, []));
+                return res.status(200).json(createApiResponse(formattedPost, []));
             } else {
                 // Update the foundPost to the validatedData
                 Object.assign(foundPost, validatedData.data);
                 const savedPost = await foundPost.save();
                 const formattedPost = savedPost.toJSON();
-                return res.status(201).json(createApiResponse(formattedPost, []));
+                return res.status(200).json(createApiResponse(formattedPost, []));
             }
         } catch (err) {
         console.log(err);

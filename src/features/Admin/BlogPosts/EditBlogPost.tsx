@@ -7,10 +7,11 @@ import { type BlogPostDisplay, CreateBlogPostSchema } from "@/types/blogpost";
 import { type FormSchema } from "@/types/project";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useForm, FormProvider } from "react-hook-form";
 import BlogPostForm from "./BlogPostForm";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface EditBlogPostProps {
     id: string;
@@ -18,7 +19,7 @@ interface EditBlogPostProps {
 }
 
 const EditBlogPost = ({id, post}: EditBlogPostProps) => {
-    // const router = useRouter();
+    const router = useRouter();
 
     const defaultPost = {
         ...post,
@@ -31,18 +32,22 @@ const EditBlogPost = ({id, post}: EditBlogPostProps) => {
         resolver: zodResolver(CreateBlogPostSchema),
     });
 
-    const { formState: {isValid} } = methods;
+    const { formState: {isValid, isDirty} } = methods;
 
     const onSubmit = (data: FormSchema) => {
       //TODO: Implement Type safe API call 
         axios
         .patch(`/api/admin/v1/blog/${id}`, data)
         .then((res) => {
-            const id = res.data.data.id;
+            console.log(res.data);
+            //Reset the form
+            methods.reset();
+            toast.success("Blog post updated successfully");
             // router.push(`/admin/blog/${id}`);
         })
         .catch((err) => {
-            console.error(err);
+          console.error(err);
+          toast.error("Failed to update blog post");
         });
     };
     return (
@@ -52,7 +57,8 @@ const EditBlogPost = ({id, post}: EditBlogPostProps) => {
             <Typography variant="h1">Edit Blog Post</Typography>
             <BlogPostForm />
             <FormRow>
-              <Button type="submit" disabled={!isValid}>Save</Button>
+              <Button type="submit" disabled={!isValid || !isDirty}>Save</Button>
+              <Button variant="outline" onClick={() => router.push(`/admin/blog/${id}/preview`)}>Preview</Button>
             </FormRow>
           </Stack>
         </FormLayout>

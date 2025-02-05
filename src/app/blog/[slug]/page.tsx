@@ -6,6 +6,7 @@ import BlogPost from "@/models/BlogPost";
 import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { serverParamSchema } from "@/utils/server/validation";
 import BlogArticle from "@/features/Public/Blog/BlogArticle";
+import { readingTime } from 'reading-time-estimator'
 
 type BlogPageProps = {
   params: {
@@ -53,9 +54,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
     return <>Project not found</>;
   }
 
+  const estimatedReadingTime = readingTime(currentPost.mdxContent)
+  console.log(estimatedReadingTime)
+
   return (
     <Suspense fallback={<>Loading...</>}>
-      <BlogArticle post={currentPost} mdxContent={<CustomMDX source={currentPost.mdxContent} />} />
+      <BlogArticle post={currentPost} mdxContent={<CustomMDX source={currentPost.mdxContent} />} estimatedReadingTime={estimatedReadingTime.text} />
     </Suspense>
   );
 }

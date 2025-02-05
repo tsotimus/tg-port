@@ -24,7 +24,6 @@ const Providers = (props: ProvidesProps) => {
       disableTransitionOnChange
     >
       <ClerkProvider>
-          {children}
           <Toaster
             toastOptions={{
               duration: 2500,
@@ -33,6 +32,7 @@ const Providers = (props: ProvidesProps) => {
             theme={theme as Theme}
             expand
           />
+          {children}
       </ClerkProvider>
     </ThemeProvider>
   );

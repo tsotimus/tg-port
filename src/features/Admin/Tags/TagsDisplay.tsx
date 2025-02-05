@@ -41,8 +41,6 @@ const COLUMNS: ColumnDef<TagDisplay, string | number>[] = [
 
 
 const TagsDisplay = ({tags}:TagDisplayProps) => {
-
-
     const [createTag, setShowCreateTag] = useQueryState("createTag", parseAsBoolean.withDefault(false));
 
     return (

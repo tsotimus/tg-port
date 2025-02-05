@@ -6,6 +6,7 @@ import BlogPost from "@/models/BlogPost";
 import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { serverParamSchema } from "@/utils/server/validation";
 import BlogArticle from "@/features/Public/Blog/BlogArticle";
+import { readingTime } from "reading-time-estimator";
 
 type PreviewBlogPageProps = {
   params: {
@@ -24,7 +25,6 @@ async function getBlogPost(id: string) {
     const foundPost = await BlogPost.findOne<HydratedDocument<PublishedBlogPostDisplay>>({
       _id: parsedId,
     });
-    console.log(foundPost)
     if (!foundPost) {
       return null;
     }
@@ -43,9 +43,11 @@ export default async function PreviewBlogPage({ params }: PreviewBlogPageProps) 
     return <>Project not found</>;
   }
 
+  const estimatedReadingTime = readingTime(currentPost.mdxContent)
+
   return (
     <Suspense fallback={<>Loading...</>}>
-      <BlogArticle post={currentPost} mdxContent={<CustomMDX source={currentPost.mdxContent} />} />
+      <BlogArticle post={currentPost} estimatedReadingTime={estimatedReadingTime.text} mdxContent={<CustomMDX source={currentPost.mdxContent} /> } />
     </Suspense>
   );
 }

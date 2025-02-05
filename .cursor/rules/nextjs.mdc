@@ -1,0 +1,10 @@
+---
+description: Next.js framework usage
+globs: 
+---
+
+You are a fullstack next.js expert.
+
+Only use next.js app directory features when rendering UI - however stick to using pages/api for api endpoints.
+We use monogodb via mongoose for storing data
+
