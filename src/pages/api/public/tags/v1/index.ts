@@ -1,7 +1,8 @@
 import dbConnect from "@/lib/dbConnect";
 import Tag from "@/models/Tag";
-import { TagDisplay } from "@/types/tag";
+import { TagDisplay, TagModel } from "@/types/tag";
 import { createApiResponse, createPaginatedApiResponse } from "@/utils/server/createApiResponse";
+import { HydratedDocument } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
@@ -30,7 +31,7 @@ export default async function handler(
       const skip = (page - 1) * limit;
 
       // Fetch paginated results
-      const tags = await Tag.find().skip(skip).limit(limit);
+      const tags = await Tag.find<HydratedDocument<TagDisplay>>().skip(skip).limit(limit);
 
       // Get total count of documents
       const totalCount = await Tag.countDocuments();
