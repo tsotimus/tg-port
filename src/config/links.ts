@@ -3,6 +3,7 @@ import {
   SiGithub,
   SiLinkedin,
   SiNpm,
+  SiReddit,
   SiX,
 } from "@icons-pack/react-simple-icons";
 import {
@@ -10,7 +11,9 @@ import {
   SITE_LINKEDIN_URL,
   SITE_NPM_URL,
   SITE_X_URL,
+  SITE_REDDIT_URL,
 } from "./constants";
+
 
 export const ADMIN_NAV_ITEMS = [
   {
@@ -114,5 +117,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: SITE_X_URL,
     title: "X",
     icon: SiX,
+  },
+  {
+    href: SITE_REDDIT_URL,
+    title: "Reddit",
+    icon: SiReddit,
+
   },
 ];
