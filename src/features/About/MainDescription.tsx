@@ -44,7 +44,7 @@ const LIST_ONE = [
         <Link variant="text" href={SITE_LINKEDIN_URL}>
           LinkedIn
         </Link>{" "}
-        or check out my{" "}
+        or contact me through my{" "}
         <Link variant="text" href="/contact">
           website
         </Link>
