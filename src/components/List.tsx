@@ -1,5 +1,4 @@
 import React from "react";
-import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 
 interface ListItem {
@@ -16,13 +15,9 @@ const List = ({ items }: ListProps) => {
   return (
     <ul>
       {items.map(({ id, decorative = "•", component }) => (
-        <Stack
-          direction="row"
-          gap={4}
-          component="li"
+        <li
           key={id}
-          justify="start"
-          className="py-1"
+          className="flex flex-row space-x-4 justify-start"
         >
           {typeof decorative === "string" ? (
             <Typography>{decorative}</Typography>
@@ -30,7 +25,7 @@ const List = ({ items }: ListProps) => {
             decorative
           )}
           {component}
-        </Stack>
+        </li>
       ))}
     </ul>
   );
