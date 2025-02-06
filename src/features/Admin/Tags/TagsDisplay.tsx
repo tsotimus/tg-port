@@ -7,6 +7,7 @@ import { type TagDisplay } from "@/types/tag";
 import { DataTable } from "@/components/tables/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
 import { parseAsBoolean, useQueryState } from "nuqs";
+import EmptyPage from "@/components/layouts/EmptyPage";
 
 interface TagDisplayProps {
     tags: TagDisplay[];
@@ -54,6 +55,7 @@ const TagsDisplay = ({tags}:TagDisplayProps) => {
             )}
             {createTag && <CreateTagForm afterSubmit={() => setShowCreateTag(false)} />}
             <DataTable columns={COLUMNS} data={tags} />
+            <EmptyPage size="sm"/>
         </Stack>
     );
 };

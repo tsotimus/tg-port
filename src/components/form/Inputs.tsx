@@ -172,13 +172,16 @@ export const CheckBoxInput = ({
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue ?? ""}
+      defaultValue={defaultValue ?? false}
       render={({ field: { onChange, value } }) => {
         return (
           <FormRow>
             <FormLabel>{label}</FormLabel>
             <FormControl>
-              <Checkbox onCheckedChange={onChange} value={value} />
+              <Checkbox 
+                onCheckedChange={(checked) => onChange(checked)}
+                value={value ? "true" : "false"}
+              />
             </FormControl>
           </FormRow>
         );

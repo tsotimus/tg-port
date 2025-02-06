@@ -1,7 +1,7 @@
 "use client";
 
 import { FormLayout, FormRow } from "@/components/form/FormLayout";
-import { TextInput } from "@/components/form/Inputs";
+import { CheckBoxInput, TextInput } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import { type FormSchema, TagSchema } from "@/types/tag";
@@ -9,6 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import {  FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { DevTool } from "@hookform/devtools"
+
 
 interface CreateTagFormProps {
     afterSubmit: () => void;
@@ -35,6 +37,7 @@ const CreateTagForm = ({afterSubmit}:CreateTagFormProps) => {
     return (
         <FormProvider {...methods}>
             <FormLayout onSubmit={onSubmit}>
+                <DevTool control={methods.control}/>
                 <Stack gap={8}>
                     <TextInput
                         name="name"
@@ -46,6 +49,7 @@ const CreateTagForm = ({afterSubmit}:CreateTagFormProps) => {
                         label="slug"
                         rules={{ required: true }}
                     />
+                    <CheckBoxInput label="Is this a piece of technology? e.g. React" name="isTech"/>
                     <FormRow>
                         <Button type="submit" disabled={!isValid}>Create</Button>
                         <Button type="button" onClick={afterSubmit}>Cancel</Button>

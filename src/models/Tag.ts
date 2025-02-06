@@ -18,6 +18,10 @@ const TagSchema = new mongoose.Schema<TagModel>(
       required: [true, "Please provide a slug for this tag."],
       unique: true,
     },
+    isTech: {
+      type: Boolean,
+      required: [true, "Please specify if this is a piece of tech or not"]
+    }
   },
   {
     timestamps: true,
