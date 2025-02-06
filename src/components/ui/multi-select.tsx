@@ -223,7 +223,7 @@ export const MultiSelect = React.forwardRef<
                         {IconComponent && (
                           <IconComponent className="h-4 w-4 mr-2" />
                         )}
-                        <span className="capitalize">{option?.label}</span>
+                        <span>{option?.label}</span>
                         <XCircle
                           className="ml-2 h-4 w-4 cursor-pointer"
                           onClick={(event) => {
@@ -330,7 +330,7 @@ export const MultiSelect = React.forwardRef<
                       {option.icon && (
                         <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                       )}
-                      <span className="capitalize">{option.label}</span>
+                      <span>{option.label}</span>
                     </CommandItem>
                   );
                 })}

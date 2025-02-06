@@ -1,4 +1,5 @@
 import DropzoneInput from "@/components/form/DropzoneInput";
+import EmptyPage from "@/components/layouts/EmptyPage";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import { MEDIA_HEADERS } from "@/utils/client/headers";
@@ -50,7 +51,7 @@ const UploadMediaForm = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack className="items-center" gap={12}>
+        <div className="items-center space-y-8 flex flex-col mt-8" >
           <DropzoneInput
             name="media"
             rules={{ required: "Media is required" }}
@@ -59,7 +60,8 @@ const UploadMediaForm = () => {
           <Button type="submit" disabled={!isValid}>
             Submit
           </Button>
-        </Stack>
+          <EmptyPage size="sm"/>
+        </div>
       </form>
     </FormProvider>
   );

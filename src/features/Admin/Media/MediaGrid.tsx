@@ -32,7 +32,7 @@ const MediaGrid = ({ data }: MediaGridProps) => {
           </Stack>
         </Stack>
       )}
-      <div className="flex flex-wrap w-full">
+      <div className="flex flex-wrap w-full space-x-4">
         {data.map((media) => {
           return (
             <div

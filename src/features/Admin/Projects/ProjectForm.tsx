@@ -15,7 +15,7 @@ interface ProjectFormProps {
   techTagOptions: Option[]
 }
 
-const ProjectForm = ({ isEditing = false, handleDelete }: ProjectFormProps) => {
+const ProjectForm = ({ isEditing = false, handleDelete, techTagOptions }: ProjectFormProps) => {
   const {
     formState: { isValid, isDirty },
   } = useFormContext();
@@ -37,7 +37,7 @@ const ProjectForm = ({ isEditing = false, handleDelete }: ProjectFormProps) => {
       <CheckBoxInput name="featured" label="Is this Project Featured?" />
       <TextInput name="link" label="Link URL" />
       <TextInput name="github" label="GitHub URL" />
-      <MultiSelectInput name="techStack" label="Tech Stack Tags" rules={{required: true}} options={[{value: "iasjkhdkjahsd", label: "react"}]} />
+      <MultiSelectInput name="techStack" label="Tech Stack Tags" rules={{required: true}} options={techTagOptions} />
       <MDXEditor name="mdxContent" rules={{ required: true }} />
       <FormRow>
         {isEditing ? (

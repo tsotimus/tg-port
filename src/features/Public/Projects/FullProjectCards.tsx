@@ -3,11 +3,11 @@ import EmptyPage from "@/components/layouts/EmptyPage"
 import { Link } from "@/components/Link"
 import Pill from "@/components/Pill"
 import Typography from "@/components/Typography"
-import { ProjectDisplay } from "@/types/project"
+import { ProjectDisplay, ProjectDisplayWithTags } from "@/types/project"
 
 
 type FullProjectCardsProps = {
-  projects: ProjectDisplay[]
+  projects: ProjectDisplayWithTags[]
 }
 
 const FullProjectCards = ({projects}: FullProjectCardsProps) => {
@@ -31,7 +31,7 @@ const FullProjectCards = ({projects}: FullProjectCardsProps) => {
   )
 }
 
-const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDisplay) => {
+const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDisplayWithTags) => {
   return (
     <>
     <BlurImage
@@ -48,9 +48,9 @@ const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDi
           <div className='text-muted-foreground'>{description}</div>
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
-          {techStack.map((tech) => {
+          {techStack.map((tag) => {
             return (
-              <Pill text={tech} key={`${slug}-${tech}`} />
+              <Pill text={tag.name} key={tag.id} />
             )
           })}
         </div>
@@ -59,7 +59,7 @@ const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDi
   )
 } 
 
-const FullProjectCard = (project:ProjectDisplay) => {
+const FullProjectCard = (project:ProjectDisplayWithTags) => {
   const {slug} = project
   return (
     <Link

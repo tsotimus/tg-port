@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { FormLayout } from "@/components/form/FormLayout";
 import { toast } from "sonner";
 import useSWRMutation from 'swr/mutation';
+import useGetTechTags from "../Tags/useGetTechTags";
 
 interface EditProjectProps {
   project: ProjectDisplay;
@@ -17,6 +18,9 @@ interface EditProjectProps {
 const EditProject = ({ project }: EditProjectProps) => {
   const router = useRouter();
   const projectUrl = `/api/admin/v1/projects/${project.id}`;
+
+  const {tagOptions} = useGetTechTags()
+
 
 
   const methods = useForm<FormSchema>({
@@ -55,7 +59,7 @@ const EditProject = ({ project }: EditProjectProps) => {
   return (
     <FormProvider {...methods}>
       <FormLayout onSubmit={handleUpdate}>
-        <ProjectForm isEditing handleDelete={handleDelete} />
+        <ProjectForm isEditing handleDelete={handleDelete} techTagOptions={tagOptions}/>
       </FormLayout>
     </FormProvider>
   );

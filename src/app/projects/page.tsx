@@ -3,7 +3,7 @@ import Typography from "@/components/Typography";
 import FullProjectCards from "@/features/Public/Projects/FullProjectCards";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
-import { type ProjectDisplay } from "@/types/project";
+import { ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import { type HydratedDocument } from "mongoose";
 import { type Metadata } from "next";
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 async function fetchAllProjects() {
   await dbConnect();
-  const projects = await Project.find<HydratedDocument<ProjectDisplay>>();
+  const projects = await Project.find<HydratedDocument<ProjectDisplayWithTags>>().populate("techStack");
   return projects.map((project) => project.toJSON());
 }
 

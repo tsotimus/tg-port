@@ -1,11 +1,13 @@
 "use client";
 
+import { Link } from "@/components/Link";
 import Pill from "@/components/Pill";
 import { buttonVariants } from "@/components/ui/button"
-import { ProjectShowcaseDisplayNoMDX } from "@/types/project"
+import { ProjectDisplay, ProjectDisplayWithTags} from "@/types/project"
 import { cn } from "@/utils/client/cn"
 import { motion } from "framer-motion"
-import { Link, ArrowUpRightIcon } from "lucide-react"
+import { ArrowUpRightIcon } from "lucide-react"
+
 
 const animation = {
     hide: {
@@ -19,7 +21,7 @@ const animation = {
   }
 
 interface ArticleHeaderProps {
-    project: ProjectShowcaseDisplayNoMDX
+    project: ProjectDisplayWithTags
 } 
 
 const ArticleHeader = ({project}:ArticleHeaderProps) => {
@@ -34,9 +36,9 @@ const ArticleHeader = ({project}:ArticleHeaderProps) => {
           <h1 className='text-3xl font-bold'>{project.title}</h1>
           <h2 className='text-muted-foreground'>{project.description}</h2>
           <div className="w-fit flex flex-wrap gap-2 ">
-                {project.techStack.map((tech) => (
-                    <Pill text={tech} key={`${project.slug}-${tech}`} />
-                ))}
+            {project.techStack.map((tag) => (
+                <Pill text={tag.name} key={tag.id} />
+            ))}
           </div>
         </div>
       </motion.div>
@@ -46,16 +48,23 @@ const ArticleHeader = ({project}:ArticleHeaderProps) => {
         animate={animation.show}
         transition={{ delay: 0.1 }}
       >
-        {/* {homepage ? (
-          <Link href={homepage} className={cn(buttonVariants(), 'group')}>
-            Visit Website
+        {
+          project.link && (
+            <Link href={project.link} className={cn(buttonVariants(), 'group')}>
+              Visit
+              <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
+            </Link>
+          )
+        }
+        {
+          project.github && (
+          <Link href={project.github} className={cn(buttonVariants(), 'group')}>
+            {/* {GITHUB_USERNAME}/{repo} */}
+            Todo
             <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
           </Link>
-        ) : null}
-        <Link href={github} className={cn(buttonVariants(), 'group')}>
-          {GITHUB_USERNAME}/{repo}
-          <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
-        </Link> */}
+          )
+        }
       </motion.div>
     </div>
     )

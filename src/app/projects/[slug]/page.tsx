@@ -3,7 +3,7 @@ import CustomMDX from "@/components/mdx/CustomMDX";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import { type HydratedDocument } from "mongoose";
-import { type ProjectDisplay } from "@/types/project";
+import { ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
 
 type ProjectPageProps = {
@@ -26,9 +26,10 @@ export async function generateStaticParams() {
 
 async function getProject(slug: string) {
   await dbConnect();
-  const foundProject = await Project.findOne<HydratedDocument<ProjectDisplay>>({
+  const foundProject = await Project.findOne<HydratedDocument<ProjectDisplayWithTags>>({
     slug: slug,
-  });
+  }).populate('techStack');
+
   if (!foundProject) {
     return null;
   }

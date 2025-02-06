@@ -1,4 +1,5 @@
 import z from "zod";
+import { type TagDisplay } from "./tag";
 
 //Used for creating a new project
 export const ProjectSchema = z.object({
@@ -46,4 +47,7 @@ export type ProjectDisplay = {
   publishedAt?: Date;
 };
 
-export type ProjectShowcaseDisplayNoMDX = Omit<ProjectDisplay, "mdxContent">;
+export type ProjectDisplayWithTags = Omit<ProjectDisplay, "techStack"> & {
+  techStack: TagDisplay[]
+}
+

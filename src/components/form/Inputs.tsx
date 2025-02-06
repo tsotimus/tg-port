@@ -202,7 +202,7 @@ export const MultiSelectInput = ({name, rules, defaultValue, label, options, pla
         name={name}
         control={control}
         rules={rules}
-        defaultValue={defaultValue ?? false}
+        defaultValue={defaultValue ?? []}
         render={({ field: { onChange, value } }) => {
           return (
             <FormRow>
@@ -212,7 +212,7 @@ export const MultiSelectInput = ({name, rules, defaultValue, label, options, pla
                   <MultiSelect
                     options={options}
                     onValueChange={onChange}
-                    defaultValue={[]}
+                    defaultValue={value}
                     placeholder={placeholder ?? "Select"}
                     variant="default"
                     maxCount={3}

@@ -1,13 +1,13 @@
 "use client";
 
 import { BlurImage } from "@/components/BlurImage";
-import { ProjectShowcaseDisplayNoMDX } from "@/types/project";
+import { ProjectDisplayWithTags } from "@/types/project";
 import { ReactNode } from "react";
 import ArticleHeader from "./ArticleHeader";
 
 interface ProjectArticleProps {
     mdxContent: ReactNode;
-    project: ProjectShowcaseDisplayNoMDX
+    project: ProjectDisplayWithTags
 }
 
 const ProjectArticle = ({mdxContent, project}: ProjectArticleProps) => {
