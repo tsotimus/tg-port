@@ -9,6 +9,7 @@ import Typography from "@/components/Typography";
 import axios from "axios";
 import { type FormSchema, ProjectSchema } from "@/types/project";
 import { useRouter } from "next/navigation";
+import useGetTechTags from "../Tags/useGetTechTags";
 
 const CreateProject = () => {
   const router = useRouter();
@@ -16,6 +17,8 @@ const CreateProject = () => {
     mode: "onChange",
     resolver: zodResolver(ProjectSchema),
   });
+
+  const {tagOptions} = useGetTechTags()
 
   const onSubmit = (data: FormSchema) => {
     //TODO: Implement Type safe API call 
@@ -30,12 +33,14 @@ const CreateProject = () => {
       });
   };
 
+
+
   return (
     <FormProvider {...methods}>
       <FormLayout onSubmit={onSubmit}>
         <Stack gap={8}>
           <Typography variant="h1">Create Project</Typography>
-          <ProjectForm />
+          <ProjectForm techTagOptions={tagOptions} />
         </Stack>
       </FormLayout>
     </FormProvider>

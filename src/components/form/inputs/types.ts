@@ -6,6 +6,7 @@ export type GenericInputProps = {
     label?: string;
     rules?: RegisterOptions;
     defaultValue?: string;
+    placeholder?:string;
   };
 
   
@@ -26,4 +27,12 @@ disabled?: boolean;
   
 export type FileInputProps = Omit<GenericInputProps, "rules"> & {
     required?: boolean;
+};
+
+export type CheckBoxProps = Omit<GenericInputProps, "label"> & {
+    label: string
+}
+
+export type MultiSelectInputProps = GenericInputProps & {
+    options: Option[];
 };

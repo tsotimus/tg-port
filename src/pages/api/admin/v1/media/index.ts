@@ -4,6 +4,9 @@ import cloudinary from "@/lib/cloudinary";
 import { createApiResponse } from "@/utils/server/createApiResponse";
 import { type GenericErrorResponse } from "@/types/api";
 import { type GetMediaResponse } from "@/features/Admin/Media/types";
+import { FEATURE_FLAGS } from "@/utils/server/features";
+
+const FOLDER_LOCATION = FEATURE_FLAGS.IS_PROD ? "assets/media" : "assets/dev-media" ;
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,7 +15,7 @@ export default async function handler(
   if (req.method === "GET") {
     try {
       const { resources } = await cloudinary.search
-        .expression("folder:assets/media")
+        .expression(`folder:${FOLDER_LOCATION}`)
         .sort_by("public_id", "desc")
         .max_results(30)
         .execute();

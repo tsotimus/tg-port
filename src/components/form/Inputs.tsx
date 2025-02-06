@@ -15,7 +15,8 @@ import { Switch } from "@/components/ui/switch";
 import { FormControl, FormLabel } from "@/components/ui/form";
 import { FormRow } from "./FormLayout";
 import { Checkbox } from "@/components/ui/checkbox";
-import { type FileInputProps, type SelectInputProps, type SwitchInputProps, type TextInputProps } from "./inputs/types";
+import { MultiSelectInputProps, type CheckBoxProps, type FileInputProps, type SelectInputProps, type SwitchInputProps, type TextInputProps } from "./inputs/types";
+import { MultiSelect } from "../ui/multi-select";
 
 
 export const TextInput = ({
@@ -40,7 +41,7 @@ export const TextInput = ({
                 type="text"
                 placeholder={label}
                 onChange={onChange}
-                value={value}
+                value={value as string}
                 onBlur={onBlur}
               />
             </FormControl>
@@ -165,7 +166,7 @@ export const CheckBoxInput = ({
   label,
   rules,
   defaultValue,
-}: TextInputProps) => {
+}: CheckBoxProps) => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -176,12 +177,14 @@ export const CheckBoxInput = ({
       render={({ field: { onChange, value } }) => {
         return (
           <FormRow>
-            <FormLabel>{label}</FormLabel>
             <FormControl>
-              <Checkbox 
-                onCheckedChange={(checked) => onChange(checked)}
-                value={value ? "true" : "false"}
-              />
+              <fieldset className="flex space-x-2 items-center">
+                <Checkbox 
+                  onCheckedChange={(checked) => onChange(checked)}
+                  value={value ? "true" : "false"}
+                  />
+                  <FormLabel>{label}</FormLabel>
+              </fieldset>
             </FormControl>
           </FormRow>
         );
@@ -189,3 +192,36 @@ export const CheckBoxInput = ({
     />
   );
 };
+
+
+export const MultiSelectInput = ({name, rules, defaultValue, label, options, placeholder}:MultiSelectInputProps) => {
+  const { control } = useFormContext();
+
+    return (
+      <Controller
+        name={name}
+        control={control}
+        rules={rules}
+        defaultValue={defaultValue ?? false}
+        render={({ field: { onChange, value } }) => {
+          return (
+            <FormRow>
+              <FormControl>
+                <fieldset>
+                  <FormLabel>{label}</FormLabel>
+                  <MultiSelect
+                    options={options}
+                    onValueChange={onChange}
+                    defaultValue={[]}
+                    placeholder={placeholder ?? "Select"}
+                    variant="default"
+                    maxCount={3}
+                  />
+                </fieldset>
+              </FormControl>
+            </FormRow>
+          );
+        }}
+      />
+  )
+}

@@ -33,13 +33,13 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
       type: String,
       required: false,
     },
-    techStack: {
-      type: [String],
-      required: [
-        true,
-        "Please provide at least one techstack for this project.",
-      ],
-    },
+    techStack: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Tag",
+        required: [true, "Please provide at least one tag for this Project"],
+      },
+    ],
     coverImage: {
       type: String,
       required: [true, "Please provide a cover image for this project."],

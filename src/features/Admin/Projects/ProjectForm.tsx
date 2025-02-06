@@ -2,15 +2,17 @@
 
 import MDXEditor from "@/components/form/editor/MDXEditor";
 import { FormRow } from "@/components/form/FormLayout";
-import { CheckBoxInput, TextInput } from "@/components/form/Inputs";
+import { CheckBoxInput, TextInput , MultiSelectInput } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
+import { type Option } from "@/types/options";
 import { useFormContext } from "react-hook-form";
-import { PillInput } from "@/components/form/PillInput";
+
 
 interface ProjectFormProps {
   isEditing?: boolean;
   handleDelete?: () => void;
+  techTagOptions: Option[]
 }
 
 const ProjectForm = ({ isEditing = false, handleDelete }: ProjectFormProps) => {
@@ -32,14 +34,10 @@ const ProjectForm = ({ isEditing = false, handleDelete }: ProjectFormProps) => {
         label="Cover Image URL"
         rules={{ required: true }}
       />
-      <CheckBoxInput name="featured" label="Featured" />
+      <CheckBoxInput name="featured" label="Is this Project Featured?" />
       <TextInput name="link" label="Link URL" />
       <TextInput name="github" label="GitHub URL" />
-      <PillInput
-        name="techStack"
-        label="Tech Stack Tags"
-        rules={{ required: true }}
-      />
+      <MultiSelectInput name="techStack" label="Tech Stack Tags" rules={{required: true}} options={[{value: "iasjkhdkjahsd", label: "react"}]} />
       <MDXEditor name="mdxContent" rules={{ required: true }} />
       <FormRow>
         {isEditing ? (
