@@ -16,7 +16,7 @@ const ConstructionPage = () => {
       <CldImage
         width="600"
         height="600"
-        src="assets/important/construction-svg"
+        src="assets/important/construction"
         alt="Under construction illustration"
       />
       <h1 className="mb-4 text-3xl font-bold text-gray-800">

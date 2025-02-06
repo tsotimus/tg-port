@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   title: "About Me",
 };
 
-export default async function AllBlogPostsPage() {
+export default async function AboutMePage() {
   return <MainDescription />;
 }

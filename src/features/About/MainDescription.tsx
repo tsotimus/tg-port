@@ -87,7 +87,7 @@ const MainDescription = () => {
         className="flex flex-col md:flex-row items-start justify-between py-10"
       >
         <BlurImage
-          src="assets/important/avatar.png"
+          src="assets/important/tsotimus"
           className="rounded-full mx-auto md:mx-0"
           width={300}
           height={300}
@@ -106,8 +106,6 @@ const MainDescription = () => {
         </Stack>
       </Stack>
       <Stack gap={4}>
-        {/* <Typography>Spoken languages:</Typography>
-      <List items={LANGUAGE_LIST} /> */}
         <Typography>
           Explore my projects on my{" "}
           <Link variant="text" href="/projects">

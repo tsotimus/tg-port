@@ -15,7 +15,7 @@ export const createCloudinaryStreamForImage = (
     throw new Error("public_id is required");
   }
   const cloudinaryStream = cloudinary.uploader.upload_stream(
-    { public_id: `${PREFIX}${publicId}` },
+    { public_id: `${publicId}`, folder: "assets/media" },
     (error) => {
       if (error) {
         console.error("Upload to Cloudinary failed:", error);

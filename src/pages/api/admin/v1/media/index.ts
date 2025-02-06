@@ -12,7 +12,7 @@ export default async function handler(
   if (req.method === "GET") {
     try {
       const { resources } = await cloudinary.search
-        .expression("folder:assets")
+        .expression("folder:assets/media")
         .sort_by("public_id", "desc")
         .max_results(30)
         .execute();
