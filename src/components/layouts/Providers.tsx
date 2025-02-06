@@ -3,6 +3,7 @@
 import { Toaster } from "sonner";
 import { ThemeProvider, useTheme } from "next-themes";
 import { ClerkProvider } from "@clerk/nextjs";
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 type ProvidesProps = {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ const Providers = (props: ProvidesProps) => {
       disableTransitionOnChange
     >
       <ClerkProvider>
+        <NuqsAdapter>
           <Toaster
             toastOptions={{
               duration: 2500,
@@ -33,6 +35,7 @@ const Providers = (props: ProvidesProps) => {
             expand
           />
           {children}
+        </NuqsAdapter>
       </ClerkProvider>
     </ThemeProvider>
   );
