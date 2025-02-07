@@ -1,14 +1,13 @@
 import { Link } from "@/components/Link"
 import { ArrowUpRightIcon, LightbulbIcon } from "lucide-react"
 import { BlurImage } from "@/components/BlurImage"
-import { ProjectDisplay } from "@/types/project"
+import { ProjectDisplay, ProjectDisplayWithTags } from "@/types/project"
 
 interface ProjectCardBodyProps {
   project: ProjectDisplay
-  isLinkType: boolean
 }
 
-const ProjectCardBody = ({project, isLinkType}:ProjectCardBodyProps ) => {
+const ProjectCardBody = ({project}:ProjectCardBodyProps ) => {
   const { coverImage, title, description, slug } = project
   return (
     <>
@@ -17,11 +16,6 @@ const ProjectCardBody = ({project, isLinkType}:ProjectCardBodyProps ) => {
             <LightbulbIcon className='size-[18px]' />
             <h2 className='font-light'>Project</h2>
           </div>
-          {
-            isLinkType && (
-              <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
-            )
-          }
         </div>
         <BlurImage
           width={1280}
@@ -51,7 +45,7 @@ const ProjectCard = ({project}: ProjectCardProps) => {
         href={`/projects/${slug}`}
         className='shadow-feature-card dark:shadow-feature-card-dark group relative rounded-xl p-2'
       >
-           <ProjectCardBody project={project} isLinkType={false}/>
+           <ProjectCardBody project={project}/>
       </Link>
     )
   }

@@ -5,6 +5,7 @@ import Pill from "@/components/Pill";
 import { buttonVariants } from "@/components/ui/button"
 import { ProjectDisplay, ProjectDisplayWithTags} from "@/types/project"
 import { cn } from "@/utils/client/cn"
+import { SiGithub } from "@icons-pack/react-simple-icons";
 import { motion } from "framer-motion"
 import { ArrowUpRightIcon } from "lucide-react"
 
@@ -60,8 +61,11 @@ const ArticleHeader = ({project}:ArticleHeaderProps) => {
           project.github && (
           <Link href={project.github} className={cn(buttonVariants(), 'group')}>
             {/* {GITHUB_USERNAME}/{repo} */}
-            Todo
-            <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
+            <div className="flex space-x-4">
+              <SiGithub/>
+              <p>View code</p>
+              <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
+            </div>
           </Link>
           )
         }

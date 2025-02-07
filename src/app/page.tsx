@@ -5,7 +5,7 @@ import RecentPosts from "@/features/Public/Blog/RecentPosts";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import BlogPost from "@/models/BlogPost";
-import { type ProjectDisplay } from "@/types/project";
+import { ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { type HydratedDocument } from "mongoose";
 
@@ -26,7 +26,9 @@ async function fetchRecentPosts() {
   })
     .limit(2)
     .populate("tags");
+
   return posts.map((post) => post.toJSON());
+
 }
 
 export default async function Home() {
