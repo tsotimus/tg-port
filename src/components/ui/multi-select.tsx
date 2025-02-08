@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
@@ -27,6 +26,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import { Spinner } from "../loaders/Loading";
 
 /**
  * Variants for the multi-select component to handle different styles.
@@ -116,6 +116,14 @@ interface MultiSelectProps
    * Optional, can be used to add custom styles.
    */
   className?: string;
+
+  /** Indicates if more options are being loaded. */
+  isLoading?: boolean;
+
+  /**
+   * Callback function triggered when the user scrolls to the bottom of the options list.
+   */
+  onScroll?: () => void;
 }
 
 export const MultiSelect = React.forwardRef<
@@ -134,6 +142,8 @@ export const MultiSelect = React.forwardRef<
       modalPopover = false,
       asChild = false,
       className,
+      isLoading,
+      onScroll,
       ...props
     },
     ref
@@ -289,78 +299,93 @@ export const MultiSelect = React.forwardRef<
               placeholder="Search..."
               onKeyDown={handleInputKeyDown}
             />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup>
-                <CommandItem
-                  key="all"
-                  onSelect={toggleAll}
-                  className="cursor-pointer"
-                >
-                  <div
-                    className={cn(
-                      "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                      selectedValues.length === options.length
-                        ? "bg-primary text-primary-foreground"
-                        : "opacity-50 [&_svg]:invisible"
-                    )}
-                  >
-                    <CheckIcon className="h-4 w-4" />
-                  </div>
-                  <span>(Select All)</span>
-                </CommandItem>
-                {options.map((option) => {
-                  const isSelected = selectedValues.includes(option.value);
-                  return (
-                    <CommandItem
-                      key={option.value}
-                      onSelect={() => toggleOption(option.value)}
-                      className="cursor-pointer"
-                    >
-                      <div
-                        className={cn(
-                          "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                          isSelected
-                            ? "bg-primary text-primary-foreground"
-                            : "opacity-50 [&_svg]:invisible"
-                        )}
-                      >
-                        <CheckIcon className="h-4 w-4" />
-                      </div>
-                      {option.icon && (
-                        <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-                      )}
-                      <span>{option.label}</span>
-                    </CommandItem>
-                  );
-                })}
-              </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup>
-                <div className="flex items-center justify-between">
-                  {selectedValues.length > 0 && (
-                    <>
-                      <CommandItem
-                        onSelect={handleClear}
-                        className="flex-1 justify-center cursor-pointer"
-                      >
-                        Clear
-                      </CommandItem>
-                      <Separator
-                        orientation="vertical"
-                        className="flex min-h-6 h-full"
-                      />
-                    </>
-                  )}
+            <div
+              className="max-h-40 overflow-y-auto"
+              onScroll={(e) => {
+                const target = e.target as HTMLElement;
+                if (target.scrollTop + target.clientHeight >= target.scrollHeight) {
+                  onScroll?.();
+                }
+              }}
+            >
+              <CommandList>
+                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandGroup>
                   <CommandItem
-                    onSelect={() => setIsPopoverOpen(false)}
-                    className="flex-1 justify-center cursor-pointer max-w-full"
+                    key="all"
+                    onSelect={toggleAll}
+                    className="cursor-pointer"
                   >
-                    Close
+                    <div
+                      className={cn(
+                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                        selectedValues.length === options.length
+                          ? "bg-primary text-primary-foreground"
+                          : "opacity-50 [&_svg]:invisible"
+                      )}
+                    >
+                      <CheckIcon className="h-4 w-4" />
+                    </div>
+                    <span>(Select All)</span>
                   </CommandItem>
-                </div>
-              </CommandGroup>
-            </CommandList>
+                  {options.map((option) => {
+                    const isSelected = selectedValues.includes(option.value);
+                    return (
+                      <CommandItem
+                        key={option.value}
+                        onSelect={() => toggleOption(option.value)}
+                        className="cursor-pointer"
+                      >
+                        <div
+                          className={cn(
+                            "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                            isSelected
+                              ? "bg-primary text-primary-foreground"
+                              : "opacity-50 [&_svg]:invisible"
+                          )}
+                        >
+                          <CheckIcon className="h-4 w-4" />
+                        </div>
+                        {option.icon && (
+                          <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+                        )}
+                        <span>{option.label}</span>
+                      </CommandItem>
+                    );
+                  })}
+                  {isLoading && (
+                    <div className="flex justify-center">
+                      <Spinner />
+                    </div>
+                  )}
+                </CommandGroup>
+                <CommandSeparator />
+                <CommandGroup>
+                  <div className="flex items-center justify-between">
+                    {selectedValues.length > 0 && (
+                      <>
+                        <CommandItem
+                          onSelect={handleClear}
+                          className="flex-1 justify-center cursor-pointer"
+                        >
+                          Clear
+                        </CommandItem>
+                        <Separator
+                          orientation="vertical"
+                          className="flex min-h-6 h-full"
+                        />
+                      </>
+                    )}
+                    <CommandItem
+                      onSelect={() => setIsPopoverOpen(false)}
+                      className="flex-1 justify-center cursor-pointer max-w-full"
+                    >
+                      Close
+                    </CommandItem>
+                  </div>
+                </CommandGroup>
+              </CommandList>
+            </div>
           </Command>
         </PopoverContent>
         {animation > 0 && selectedValues.length > 0 && (

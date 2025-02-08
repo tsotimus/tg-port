@@ -2,8 +2,8 @@
 
 import { useGetTagsInfinite } from "./useGetTags"
 import { useMemo } from "react"
-import ScrollableMultiSelect from "@/components/form/inputs/ScrollableMulitSelect";
 import { RegisterOptions } from "react-hook-form";
+import { MultiSelectInput } from "@/components/form/Inputs";
 
 
 interface TagsSelectProps {
@@ -32,7 +32,7 @@ const TagsSelect = ({name, label}: TagsSelectProps) => {
 
 
     return (
-        <ScrollableMultiSelect name={name} label={label} options={options} isLoading={isLoading} onScroll={handleScroll}/>
+        <MultiSelectInput name={name} label={label} options={options} onScroll={handleScroll} isLoading={isLoading} />
     )
 }
 

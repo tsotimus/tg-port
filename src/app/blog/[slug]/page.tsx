@@ -37,7 +37,9 @@ async function getBlogPost(slug: string) {
 
     const foundPost = await BlogPost.findOne<HydratedDocument<PublishedBlogPostDisplay>>({
       slug: parsedSlug,
-    });
+    }).populate("tags");
+
+
     if (!foundPost) {
       return null;
     }

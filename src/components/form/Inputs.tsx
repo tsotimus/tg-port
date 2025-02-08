@@ -194,7 +194,7 @@ export const CheckBoxInput = ({
 };
 
 
-export const MultiSelectInput = ({name, rules, defaultValue, label, options, placeholder}:MultiSelectInputProps) => {
+export const MultiSelectInput = ({name, rules, defaultValue, label, options, placeholder, onScroll, isLoading}:MultiSelectInputProps) => {
   const { control } = useFormContext();
 
     return (
@@ -216,6 +216,8 @@ export const MultiSelectInput = ({name, rules, defaultValue, label, options, pla
                     placeholder={placeholder ?? "Select"}
                     variant="default"
                     maxCount={3}
+                    onScroll={onScroll}
+                    isLoading={isLoading}
                   />
                 </fieldset>
               </FormControl>

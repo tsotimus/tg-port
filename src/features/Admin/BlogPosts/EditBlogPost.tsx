@@ -12,6 +12,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import BlogPostForm from "./BlogPostForm";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { match } from "ts-pattern";
 
 interface EditBlogPostProps {
     id: string;
@@ -39,7 +40,6 @@ const EditBlogPost = ({id, post}: EditBlogPostProps) => {
         axios
         .patch(`/api/admin/v1/blog/${id}`, data)
         .then((res) => {
-            console.log(res.data);
             //Reset the form
             methods.reset();
             toast.success("Blog post updated successfully");
@@ -58,7 +58,15 @@ const EditBlogPost = ({id, post}: EditBlogPostProps) => {
             <BlogPostForm />
             <FormRow>
               <Button type="submit" disabled={!isValid || !isDirty}>Save</Button>
-              <Button variant="outline" onClick={() => router.push(`/admin/blog/${id}/preview`)}>Preview</Button>
+              {
+                match(post.status)
+                .with("PUBLISHED", () => (
+                  <Button type="button" variant="outline" onClick={() => router.push(`/blog/${post.slug}`)}>View</Button>
+                ))
+                .otherwise(() => (
+                  <Button type="button" variant="outline" onClick={() => router.push(`/admin/blog/${id}/preview`)}>Preview</Button>
+                ))
+              }
             </FormRow>
           </Stack>
         </FormLayout>

@@ -35,4 +35,6 @@ export type CheckBoxProps = Omit<GenericInputProps, "label"> & {
 
 export type MultiSelectInputProps = GenericInputProps & {
     options: Option[];
+    onScroll?: () => void
+    isLoading?: boolean
 };

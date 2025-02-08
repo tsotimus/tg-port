@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import {  FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { DevTool } from "@hookform/devtools"
 
 
 interface CreateTagFormProps {
@@ -37,7 +36,6 @@ const CreateTagForm = ({afterSubmit}:CreateTagFormProps) => {
     return (
         <FormProvider {...methods}>
             <FormLayout onSubmit={onSubmit}>
-                <DevTool control={methods.control}/>
                 <Stack gap={8}>
                     <TextInput
                         name="name"

@@ -23,7 +23,8 @@ async function getBlogPost(id: string) {
 
     const foundPost = await BlogPost.findOne<HydratedDocument<PublishedBlogPostDisplay>>({
       _id: parsedId,
-    });
+    }).populate("tags");
+    
     if (!foundPost) {
       return null;
     }

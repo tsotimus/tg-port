@@ -5,6 +5,7 @@ import { FormRow } from "@/components/form/FormLayout";
 import { CheckBoxInput, TextInput , MultiSelectInput } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
+import TagsSelect from "@/features/Public/Tags/TagsSelect";
 import { type Option } from "@/types/options";
 import { useFormContext } from "react-hook-form";
 
@@ -37,7 +38,7 @@ const ProjectForm = ({ isEditing = false, handleDelete, techTagOptions }: Projec
       <CheckBoxInput name="featured" label="Is this Project Featured?" />
       <TextInput name="link" label="Link URL" />
       <TextInput name="github" label="GitHub URL" />
-      <MultiSelectInput name="techStack" label="Tech Stack Tags" rules={{required: true}} options={techTagOptions} />
+      <TagsSelect name="techStack" label="Tech Stack Tags" rules={{required: true}}/>
       <MDXEditor name="mdxContent" rules={{ required: true }} />
       <FormRow>
         {isEditing ? (

@@ -12,7 +12,6 @@ type BlogCardProps = {
   
   const BlogCard = ({post}: BlogCardProps) => {
     const { slug, title, summary, publishedAt } = post
-    console.log(publishedAt)
     const formattedDate = useFormattedDate(new Date(publishedAt))
   
     return (
