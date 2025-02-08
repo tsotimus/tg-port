@@ -54,7 +54,15 @@ const BlogPostSchema = new mongoose.Schema<BlogPostModel>(
       transform: function (doc, ret) {
         delete ret._id;
         if (Array.isArray(ret.tags)) {
-          ret.tags = ret.tags.map((id) => id.toString());
+          ret.tags = ret.tags.map((tag) => {
+            // Check if the tag is a valid ObjectId
+            if (mongoose.isObjectIdOrHexString(tag)) {
+              return tag.toString();
+            } else {
+              const { json } = SuperJSON.serialize(tag);
+              return json;
+            }
+          });
         }
         
         const { json } = SuperJSON.serialize(ret);

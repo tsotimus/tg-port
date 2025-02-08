@@ -14,11 +14,12 @@ yarn dev
 
 - [x] Tags functionality, create and update - Used in Projects and Blog Posts
 - [x] Delete media
-- [ ] superjson instead of toJSON
+- [x] superjson instead of toJSON
 - [ ] Blog post and project styling
 - [x] Add a blog posts, create and edit and display
 - [ ] MDX Components + Toolbar
 - [ ] CSP Policy
+- [ ] SiteMap
 - [ ] Sort out Nav and Footer (Socials + About me)
 - [x] Add a projects, create and edit and display
 - [x] New Logo

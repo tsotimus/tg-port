@@ -14,9 +14,7 @@ type ProjectPageProps = {
 
 export async function generateStaticParams() {
   await dbConnect();
-  const allProjects = await Project.find<HydratedDocument<ProjectDisplay>>({
-    type: "SHOWCASE",
-  });
+  const allProjects = await Project.find<HydratedDocument<ProjectDisplay>>().lean();
 
   return allProjects.map((project) => ({
     slug: project.slug,
@@ -33,6 +31,7 @@ async function getProject(slug: string) {
     slug: slug,
   }).populate('techStack');
 
+
   if (!foundProject) {
     return null;
   }
@@ -46,13 +45,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!currentProject) {
     return <>Project not found</>;
   }
+  
 
   return (
-    <Suspense fallback={<>Loading...</>}>
-      <ProjectArticle
-        project={currentProject}
-        mdxContent={<CustomMDX source={currentProject.mdxContent} />}
-      />
-    </Suspense>
+    <ProjectArticle
+      project={currentProject}
+      mdxContent={<CustomMDX source={currentProject.mdxContent} />}
+    />
   );
 }

@@ -59,11 +59,17 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
       getters: true,
       transform: function (doc, ret) {
         delete ret._id;
-
         if (Array.isArray(ret.techStack)) {
-          ret.techStack = ret.techStack.map((id) => id.toString());
-        }
-        
+          ret.techStack = ret.techStack.map((techStag) => {
+            // Check if the tag is a valid ObjectId
+            if (mongoose.isObjectIdOrHexString(techStag)) {
+              return techStag.toString();
+            } else {
+              const { json } = SuperJSON.serialize(techStag);
+              return json;
+            }
+          });
+        }        
         const { json } = SuperJSON.serialize(ret);
         return json; // Return the serialized object
       },
