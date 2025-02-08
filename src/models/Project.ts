@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { type ProjectModel } from "@/types/project";
 import mongoose, { type Model } from "mongoose";
+import SuperJSON from "superjson";
 
 const ProjectSchema = new mongoose.Schema<ProjectModel>(
   {
@@ -58,8 +59,13 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
       getters: true,
       transform: function (doc, ret) {
         delete ret._id;
-        ret.updatedAt = ret.updatedAt.toISOString();
-        ret.createdAt = ret.createdAt.toISOString();
+
+        if (Array.isArray(ret.techStack)) {
+          ret.techStack = ret.techStack.map((id) => id.toString());
+        }
+        
+        const { json } = SuperJSON.serialize(ret);
+        return json; // Return the serialized object
       },
     },
   }

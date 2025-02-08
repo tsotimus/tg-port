@@ -29,7 +29,7 @@ type BlogCardProps = {
         <BlurImage
           width={1200}
           height={630}
-          src={`/images/blog/${slug}/cover.png`}
+          src={post.coverImage}
           alt={title}
           className='rounded-lg'
         />

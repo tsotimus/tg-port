@@ -4,6 +4,7 @@
 
 import { type BlogPostModel } from "@/types/blogpost";
 import mongoose, { type Model } from "mongoose";
+import SuperJSON from "superjson";
 
 const BlogPostSchema = new mongoose.Schema<BlogPostModel>(
   {
@@ -52,8 +53,12 @@ const BlogPostSchema = new mongoose.Schema<BlogPostModel>(
       getters: true,
       transform: function (doc, ret) {
         delete ret._id;
-        ret.updatedAt = ret.updatedAt.toISOString();
-        ret.createdAt = ret.createdAt.toISOString();
+        if (Array.isArray(ret.tags)) {
+          ret.tags = ret.tags.map((id) => id.toString());
+        }
+        
+        const { json } = SuperJSON.serialize(ret);
+        return json; // Return the serialized object
       },
     },
   }

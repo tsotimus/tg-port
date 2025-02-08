@@ -5,29 +5,31 @@ import RecentPosts from "@/features/Public/Blog/RecentPosts";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import BlogPost from "@/models/BlogPost";
-import { ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
+import { type ProjectDisplay } from "@/types/project";
 import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { type HydratedDocument } from "mongoose";
 
-export const revalidate = 21600;
+export const revalidate = 21600
 
 async function fetchFeaturedProjects() {
   await dbConnect();
   const projects = await Project.find<HydratedDocument<ProjectDisplay>>({
     featured: true,
   }).limit(2);
-  return projects.map((project) => project.toJSON());
+
+  const serialisedProjects = projects.map((project) => project.toJSON())
+  return serialisedProjects
 }
 
 async function fetchRecentPosts() {
   await dbConnect();
   const posts = await BlogPost.find<HydratedDocument<PublishedBlogPostDisplay>>({
-    published: true,
-  })
-    .limit(2)
-    .populate("tags");
+    status: "PUBLISHED",
+  }).limit(2);
 
-  return posts.map((post) => post.toJSON());
+
+  const serialisedPosts = posts.map((post) => post.toJSON())
+  return serialisedPosts;
 
 }
 

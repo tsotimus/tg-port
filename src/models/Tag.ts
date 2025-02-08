@@ -4,6 +4,7 @@
 
 import { type TagModel } from "@/types/tag";
 import mongoose, { type Model } from "mongoose";
+import SuperJSON from "superjson";
 
 const TagSchema = new mongoose.Schema<TagModel>(
   {
@@ -29,8 +30,8 @@ const TagSchema = new mongoose.Schema<TagModel>(
       getters: true,
       transform: function (doc, ret) {
         delete ret._id;
-        ret.updatedAt = ret.updatedAt.toISOString();
-        ret.createdAt = ret.createdAt.toISOString();
+        const { json } = SuperJSON.serialize(ret);
+        return json;
       },
     },
   }
