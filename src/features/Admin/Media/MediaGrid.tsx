@@ -1,9 +1,13 @@
 import { CldImage } from "next-cloudinary";
 import { type Media } from "./types";
-import Stack from "@/components/layouts/Stack";
 import { useState } from "react";
 import Typography from "@/components/Typography";
 import CopyToClipboard from "@/components/loaders/CopyToClipboard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { truncateString } from "@/utils/client/utils";
+import { DeleteDialog } from "@/components/ui/delete-dialog";
+import axios from "axios";
+import { toast } from "sonner";
 
 interface MediaGridProps {
   data: Media[];
@@ -15,22 +19,29 @@ const MediaGrid = ({ data }: MediaGridProps) => {
     setSelectedMedia(media);
   };
 
+  const handleDelete = () => {
+    if (selectedMedia) {
+      axios.delete(`/api/admin/v1/media?publicId=${encodeURIComponent(selectedMedia.public_id)}`).then(() => {
+        toast.success("Successfully deleted")
+      }).catch(() => {
+        toast.error("Failed to delete")
+      });
+    }
+  }
+
   return (
-    <Stack gap={2} className="mt-10" align="center">
+    <div className="mt-10 flex flex-col space-y-8 items-center" >
       {selectedMedia && (
-        <Stack
-          direction="row"
-          justify="center"
-          align="center"
-          className="mb-5 w-1/2"
-          gap={4}
-        >
-          <Typography>Source: </Typography>
-          <Stack direction="row" gap={2} align="center">
-            <Typography>{selectedMedia.public_id}</Typography>
+        <Card>
+          <CardHeader>
+            <CardTitle>Media Source</CardTitle>
+          </CardHeader>
+          <CardContent className="flex space-x-4 items-center">
+            <Typography>{truncateString(selectedMedia.public_id, 20, true)}</Typography>
             <CopyToClipboard text={selectedMedia.public_id} />
-          </Stack>
-        </Stack>
+            <DeleteDialog deleteAction={handleDelete}/>
+          </CardContent>
+        </Card>
       )}
       <div className="flex flex-wrap w-full space-x-4">
         {data.map((media) => {
@@ -50,7 +61,7 @@ const MediaGrid = ({ data }: MediaGridProps) => {
           );
         })}
       </div>
-    </Stack>
+    </div>
   );
 };
 

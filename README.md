@@ -26,8 +26,6 @@ yarn dev
 - [x] Update favicon
 - [x] Update Mobile Menu
 
-
-
 #### Later
 
 - [ ] Clickable Tags
@@ -35,8 +33,7 @@ yarn dev
 - [ ] Add a contact form with Resend
 - [ ] Live/Events
 
-
-### Optional:
+### Optional
 
 - [x] Play around with the colors
 - [ ] Subscribe to newsletter

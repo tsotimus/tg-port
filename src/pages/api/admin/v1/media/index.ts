@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment -- Not properly loading in cloudinary types */
 import { type NextApiRequest, type NextApiResponse } from "next";
 import cloudinary from "@/lib/cloudinary";
-import { createApiResponse } from "@/utils/server/createApiResponse";
+import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
 import { type GenericErrorResponse } from "@/types/api";
 import { type GetMediaResponse } from "@/features/Admin/Media/types";
-import { FEATURE_FLAGS } from "@/utils/server/features";
+import { FOLDER_LOCATION } from "@/utils/server/files/constants";
+import { z } from "zod";
 
-const FOLDER_LOCATION = FEATURE_FLAGS.IS_PROD ? "assets/media" : "assets/dev-media" ;
+const DeleteSchema = z.object({
+  publicId: z.string()
+})
 
 export default async function handler(
   req: NextApiRequest,
@@ -36,5 +39,21 @@ export default async function handler(
           ])
         );
     }
+  }
+  if (req.method === "DELETE"){
+
+    const parsedId = DeleteSchema.safeParse(req.query);
+
+    if(!parsedId.success){
+        return res.status(400).json(createApiResponse(null, formatZodErrors(parsedId.error.errors)));
+    }
+    try{
+      await cloudinary.uploader.destroy(parsedId.data.publicId, { invalidate: true });
+      return res.status(204);
+    }catch(e){
+      console.log(e)
+      return res.status(500).json(createApiResponse(null, ["Media Delete failed"]));
+    }
+    
   }
 }
