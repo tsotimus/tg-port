@@ -55,7 +55,6 @@ const TagsDisplay = ({tags}:TagDisplayProps) => {
             )}
             {createTag && <CreateTagForm afterSubmit={() => setShowCreateTag(false)} />}
             <DataTable columns={COLUMNS} data={tags} />
-            <EmptyPage size="sm"/>
         </Stack>
     );
 };

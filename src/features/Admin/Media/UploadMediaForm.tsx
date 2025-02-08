@@ -60,7 +60,6 @@ const UploadMediaForm = () => {
           <Button type="submit" disabled={!isValid}>
             Submit
           </Button>
-          <EmptyPage size="sm"/>
         </div>
       </form>
     </FormProvider>

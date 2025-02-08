@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Header />
             <main
               id="skip-nav"
-              className="mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8"
+              className="mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8 min-h-[80vh]"
             >
               {children}
             </main>

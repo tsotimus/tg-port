@@ -23,9 +23,9 @@ export default async function AllProjectsPage() {
   const allProjects = await fetchAllProjects();
 
   return (
-    <Stack gap={4}>
+    <div className="flex flex-col space-y-8">
       <Typography variant="h1">All Projects</Typography>
       <FullProjectCards projects={allProjects} />
-    </Stack>
+    </div>
   );
 }

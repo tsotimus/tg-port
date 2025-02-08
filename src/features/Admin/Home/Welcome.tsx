@@ -11,7 +11,6 @@ const Welcome = () => {
       <Separator />
       <Typography variant="h2">Suggested Actions</Typography>
       <SuggestedActions />
-      <EmptyPage size="sm" />
     </Stack>
   );
 };
