@@ -1,7 +1,9 @@
-import Typography from "@/components/Typography";
+"use client";
+
 import { PublishedBlogPostDisplay } from "@/types/blogpost";
 import { ReactNode } from "react";
-import { readingTime } from 'reading-time-estimator'
+import BlogArticleHeader from "./individual/BlogArticleHeader";
+import { BlurImage } from "@/components/BlurImage";
 
 interface BlogArticleProps {
     post: PublishedBlogPostDisplay;
@@ -10,9 +12,16 @@ interface BlogArticleProps {
 }
 const BlogArticle = ({post, mdxContent, estimatedReadingTime}: BlogArticleProps) => {
     return (
-        <div className="py-8">
-            <Typography variant="h1">{post.title}</Typography>
-
+        <div className="mx-auto max-w-3xl">
+            <BlogArticleHeader post={post}/>
+            <BlurImage
+                src={post.coverImage}
+                width={1280}
+                height={832}
+                alt={post.title}
+                className="my-12 rounded-lg"
+                lazy={false}
+            />
             <div className="py-4 space-y-4">
                 {mdxContent}
             </div>

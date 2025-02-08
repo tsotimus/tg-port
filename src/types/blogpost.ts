@@ -41,16 +41,7 @@ export type BlogPostDisplay = {
   updatedAt: string;
 };
 
-export type PublishedBlogPostDisplay = {
-  title: string;
-  summary: string;
-  slug: string;
-  mdxContent: string;
-  coverImage: string;
-  tags: TagDisplay[];
+export type PublishedBlogPostDisplay = Omit<BlogPostDisplay, "publishedAt" | "status"> & {
   status: "PUBLISHED";
   publishedAt: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
+}

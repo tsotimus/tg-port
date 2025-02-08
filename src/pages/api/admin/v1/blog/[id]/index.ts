@@ -44,7 +44,8 @@ export default async function handler(
             }
 
 
-            if(validatedData.data.status === "PUBLISHED"){
+
+            if(validatedData.data.status === "PUBLISHED" && foundPost.status !== "PUBLISHED"){
                 // We should add the publishedAt date if the status is PUBLISHED
                 const structuredData = {
                     ...validatedData.data,

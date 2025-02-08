@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import CustomMDX from "@/components/mdx/CustomMDX";
 import dbConnect from "@/lib/dbConnect";
 import { type HydratedDocument } from "mongoose";
@@ -46,8 +45,6 @@ export default async function PreviewBlogPage({ params }: PreviewBlogPageProps) 
   const estimatedReadingTime = readingTime(currentPost.mdxContent)
 
   return (
-    <Suspense fallback={<>Loading...</>}>
-      <BlogArticle post={currentPost} estimatedReadingTime={estimatedReadingTime.text} mdxContent={<CustomMDX source={currentPost.mdxContent} /> } />
-    </Suspense>
+    <BlogArticle post={currentPost} estimatedReadingTime={estimatedReadingTime.text} mdxContent={<CustomMDX source={currentPost.mdxContent} /> } />
   );
 }

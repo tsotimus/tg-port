@@ -28,6 +28,8 @@ export async function generateStaticParams() {
 
 async function getBlogPost(slug: string) {
 
+  await new Promise((resolve) => setTimeout(resolve,2000))
+
   try {
     await dbConnect();
 
@@ -55,11 +57,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   const estimatedReadingTime = readingTime(currentPost.mdxContent)
-  console.log(estimatedReadingTime)
 
   return (
-    <Suspense fallback={<>Loading...</>}>
-      <BlogArticle post={currentPost} mdxContent={<CustomMDX source={currentPost.mdxContent} />} estimatedReadingTime={estimatedReadingTime.text} />
-    </Suspense>
+    <BlogArticle post={currentPost} mdxContent={<CustomMDX source={currentPost.mdxContent} />} estimatedReadingTime={estimatedReadingTime.text} />
   );
 }
