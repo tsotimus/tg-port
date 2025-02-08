@@ -13,10 +13,10 @@ yarn dev
 ### TODO:
 
 - [x] Tags functionality, create and update - Used in Projects and Blog Posts
-- [ ] Delete media
+- [x] Delete media
 - [ ] superjson instead of toJSON
 - [ ] Blog post and project styling
-- [ ] Add a blog posts, create and edit and display
+- [x] Add a blog posts, create and edit and display
 - [ ] MDX Components + Toolbar
 - [ ] CSP Policy
 - [ ] Sort out Nav and Footer (Socials + About me)

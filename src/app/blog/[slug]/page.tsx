@@ -27,8 +27,8 @@ export async function generateStaticParams() {
 }
 
 async function getBlogPost(slug: string) {
-
-  await new Promise((resolve) => setTimeout(resolve,2000))
+  //TODO: Remove
+  await new Promise((resolve) => setTimeout(resolve,1000))
 
   try {
     await dbConnect();

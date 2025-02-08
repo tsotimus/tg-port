@@ -25,6 +25,9 @@ export async function generateStaticParams() {
 }
 
 async function getProject(slug: string) {
+  //TODO: Remove
+  await new Promise((resolve) => setTimeout(resolve,1000))
+
   await dbConnect();
   const foundProject = await Project.findOne<HydratedDocument<ProjectDisplayWithTags>>({
     slug: slug,

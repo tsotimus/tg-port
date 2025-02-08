@@ -64,6 +64,7 @@
     "remark": "^15.0.1",
     "remark-mdx": "^3.0.1",
     "sonner": "^1.4.41",
+    "superjson": "^2.2.2",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
