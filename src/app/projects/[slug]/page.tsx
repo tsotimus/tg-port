@@ -4,7 +4,6 @@ import Project from "@/models/Project";
 import { type HydratedDocument } from "mongoose";
 import { ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
-import { ShikiMDX } from "@/components/mdx/ShikiMDX";
 
 type ProjectPageProps = {
   params: {
