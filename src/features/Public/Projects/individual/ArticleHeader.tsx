@@ -34,7 +34,7 @@ const ArticleHeader = ({project}:ArticleHeaderProps) => {
         animate={animation.show}
       >
         <div className='flex flex-col gap-3'>
-          <h1 className='text-3xl font-bold'>{project.title}</h1>
+          <h1 className='text-4xl font-bold'>{project.title}</h1>
           <h2 className='text-muted-foreground'>{project.description}</h2>
           <div className="w-fit flex flex-wrap gap-2 ">
             {project.techStack.map((tag) => (

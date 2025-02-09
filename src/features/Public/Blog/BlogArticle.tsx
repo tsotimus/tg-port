@@ -4,6 +4,8 @@ import { PublishedBlogPostDisplay } from "@/types/blogpost";
 import { ReactNode } from "react";
 import BlogArticleHeader from "./individual/BlogArticleHeader";
 import { BlurImage } from "@/components/BlurImage";
+import "@/styles/article.css";
+
 
 interface BlogArticleProps {
     post: PublishedBlogPostDisplay;
@@ -11,6 +13,9 @@ interface BlogArticleProps {
     estimatedReadingTime: string;
 }
 const BlogArticle = ({post, mdxContent, estimatedReadingTime}: BlogArticleProps) => {
+
+
+
     return (
         <div className="mx-auto max-w-3xl">
             <BlogArticleHeader post={post}/>
@@ -22,7 +27,7 @@ const BlogArticle = ({post, mdxContent, estimatedReadingTime}: BlogArticleProps)
                 className="my-12 rounded-lg"
                 lazy={false}
             />
-            <div className="py-4 space-y-4">
+            <div className="py-4 space-y-4 article">
                 {mdxContent}
             </div>
         </div>

@@ -2,8 +2,9 @@
 
 import { BlurImage } from "@/components/BlurImage";
 import { ProjectDisplayWithTags } from "@/types/project";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import ArticleHeader from "./ArticleHeader";
+import "@/styles/article.css";
 
 interface ProjectArticleProps {
     mdxContent: ReactNode;
@@ -11,6 +12,8 @@ interface ProjectArticleProps {
 }
 
 const ProjectArticle = ({mdxContent, project}: ProjectArticleProps) => {
+
+
     return (
         <article className="mx-auto max-w-3xl">
            <ArticleHeader project={project} />
@@ -22,7 +25,7 @@ const ProjectArticle = ({mdxContent, project}: ProjectArticleProps) => {
                 className="my-12 rounded-lg"
                 lazy={false}
             />
-            <div>
+            <div className="py-4 space-y-4 article">
                 {mdxContent}
             </div>
         </article>

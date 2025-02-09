@@ -1,4 +1,4 @@
-import CustomMDX from "@/components/mdx/CustomMDX";
+import CustomMDX from "@/components/mdx/RenderMDX";
 import dbConnect from "@/lib/dbConnect";
 import { type HydratedDocument } from "mongoose";
 import BlogPost from "@/models/BlogPost";
