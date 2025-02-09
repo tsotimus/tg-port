@@ -1,5 +1,5 @@
-import { ArticleLoading } from "@/features/Loading/Loading";
+import { ArticleSkeleton } from "@/features/Loading/ArticleSkeleton";
 
 export default function Loading() {
-    return <ArticleLoading type="PROJECT" />
+    return <ArticleSkeleton type="PROJECT" />
 }

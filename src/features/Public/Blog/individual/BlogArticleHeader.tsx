@@ -19,15 +19,15 @@ const animation = {
 
 const BlogArticleHeader = ({post}:BlogArticleHeaderProps) => {
     return (
-      <div className='space-y-8 pt-10'>
+      <div className='space-y-4 pt-10'>
         <motion.div
-          className='flex items-center gap-3'
+          className='flex items-center space-x-3'
           initial={animation.hide}
           animate={animation.show}
         >
-          <div className='flex flex-col gap-3'>
+          <div className='flex flex-col space-y-3'>
             <h1 className='text-3xl font-bold'>{post.title}</h1>
-            <div className="w-fit flex flex-wrap gap-2 ">
+            <div className="w-fit flex flex-wrap space-x-2 ">
               {post.tags.map((tag) => (
                   <Pill text={tag.name} key={tag.id} />
               ))}

@@ -2,8 +2,8 @@
 
 import { BlurImage } from "@/components/BlurImage";
 import { ProjectDisplayWithTags } from "@/types/project";
-import { ReactNode, useEffect } from "react";
-import ArticleHeader from "./ArticleHeader";
+import { ReactNode } from "react";
+import ArticleHeader from "./ProjectArticleHeader";
 import "@/styles/article.css";
 
 interface ProjectArticleProps {
