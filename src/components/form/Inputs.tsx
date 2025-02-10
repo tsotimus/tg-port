@@ -165,7 +165,6 @@ export const CheckBoxInput = ({
   name,
   label,
   rules,
-  defaultValue,
 }: CheckBoxProps) => {
   const { control } = useFormContext();
   return (
@@ -173,7 +172,6 @@ export const CheckBoxInput = ({
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue ?? false}
       render={({ field: { onChange, value } }) => {
         return (
           <FormRow>
@@ -182,6 +180,7 @@ export const CheckBoxInput = ({
                 <Checkbox 
                   onCheckedChange={(checked) => onChange(checked)}
                   value={value ? "true" : "false"}
+                  checked={value ? true : false}
                   />
                   <FormLabel>{label}</FormLabel>
               </fieldset>

@@ -2,23 +2,21 @@
 
 import MDXEditor from "@/components/form/editor/MDXEditor";
 import { FormRow } from "@/components/form/FormLayout";
-import { CheckBoxInput, TextInput , MultiSelectInput } from "@/components/form/Inputs";
+import { CheckBoxInput, TextInput } from "@/components/form/Inputs";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import TagsSelect from "@/features/Public/Tags/TagsSelect";
-import { type Option } from "@/types/options";
 import { useFormContext } from "react-hook-form";
 
 
 interface ProjectFormProps {
   isEditing?: boolean;
   handleDelete?: () => void;
-  techTagOptions: Option[]
 }
 
-const ProjectForm = ({ isEditing = false, handleDelete, techTagOptions }: ProjectFormProps) => {
+const ProjectForm = ({ isEditing = false, handleDelete }: ProjectFormProps) => {
   const {
-    formState: { isValid, isDirty },
+    formState: { isValid, isDirty }
   } = useFormContext();
 
   return (

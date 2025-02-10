@@ -29,7 +29,7 @@ export type FileInputProps = Omit<GenericInputProps, "rules"> & {
     required?: boolean;
 };
 
-export type CheckBoxProps = Omit<GenericInputProps, "label"> & {
+export type CheckBoxProps = Omit<GenericInputProps, "label" | "defaultValue"> & {
     label: string
 }
 
