@@ -4,7 +4,6 @@ import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/utils/client/cn";
 import { useInView, motion } from "framer-motion"
 import { useRef } from "react"
-// import ProjectCard from "./ProjectCard"
 import { ProjectDisplay, ProjectDisplayWithTags } from "@/types/project"
 import EmptyPage from "@/components/layouts/EmptyPage"
 import Typography from "@/components/Typography"
@@ -84,8 +83,7 @@ const Showcase = ({featuredProjects}: ShowcaseProps) => {
                 >
                   {featuredProjects
                     .map((project) => (
-                      // <ProjectCard key={project.slug} project={project} />
-                      <FullProjectCard key={project.slug} {...project} />
+                      <FullProjectCard key={project.slug} project={project} showIcon={true} />
                     ))}
                 </motion.div>
                 <div className='my-8 flex items-center justify-center'>

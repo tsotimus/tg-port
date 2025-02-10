@@ -4,6 +4,7 @@ import { Link } from "@/components/Link"
 import Pill from "@/components/Pill"
 import Typography from "@/components/Typography"
 import { ProjectDisplay, ProjectDisplayWithTags } from "@/types/project"
+import { LightbulbIcon } from "lucide-react"
 
 
 type FullProjectCardsProps = {
@@ -25,15 +26,30 @@ export const FullProjectCards = ({projects}: FullProjectCardsProps) => {
   return (
     <div className='grid gap-4 md:grid-cols-2'>
       {projects.map((project) => (
-        <FullProjectCard key={project.slug} {...project} />
+        <FullProjectCard key={project.slug} project={project} />
       ))}
     </div>
   )
 }
 
-const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDisplayWithTags) => {
+interface CardContentProps {
+  project: ProjectDisplayWithTags
+  showIcon?: boolean;
+}
+
+const CardContent = ({project,showIcon = false}:CardContentProps) => {
+
+  const {title, description, techStack, coverImage} = project
   return (
-    <>
+    <div>
+      {
+        showIcon && (
+          <div className='flex items-center p-4 space-x-2'>
+            <LightbulbIcon className='size-[18px]' />
+            <h2 className='font-light'>Project</h2>
+          </div>
+        )
+      }
     <BlurImage
         src={coverImage}
         width={1280}
@@ -55,18 +71,20 @@ const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDi
           })}
         </div>
       </div>
-    </>
+    </div>
   )
 } 
 
-export const FullProjectCard = (project:ProjectDisplayWithTags) => {
+
+
+export const FullProjectCard = ({project, showIcon}:CardContentProps) => {
   const {slug} = project
   return (
     <Link
       href={`/projects/${slug}`}
       className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
     >
-      <CardContent {...project} />
+      <CardContent project={project} showIcon={showIcon} />
     </Link>
   )
 }
