@@ -1,5 +1,5 @@
 import Typography from "@/components/Typography";
-import FullProjectCards from "@/features/Public/Projects/FullProjectCards";
+import {FullProjectCards } from "@/features/Public/Projects/FullProjectCards";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import { type ProjectDisplayWithTags } from "@/types/project";

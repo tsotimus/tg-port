@@ -4,11 +4,12 @@ import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/utils/client/cn";
 import { useInView, motion } from "framer-motion"
 import { useRef } from "react"
-import Card from "./ProjectCard"
+// import ProjectCard from "./ProjectCard"
 import { ProjectDisplay, ProjectDisplayWithTags } from "@/types/project"
 import EmptyPage from "@/components/layouts/EmptyPage"
 import Typography from "@/components/Typography"
 import { Link } from "@/components/Link";
+import { FullProjectCard } from "./FullProjectCards";
 
 
 const variants = {
@@ -23,7 +24,7 @@ const variants = {
   }
 
 interface ShowcaseProps {
-  featuredProjects: ProjectDisplay[]
+  featuredProjects: ProjectDisplayWithTags[]
 }
 
 const Showcase = ({featuredProjects}: ShowcaseProps) => {
@@ -83,7 +84,8 @@ const Showcase = ({featuredProjects}: ShowcaseProps) => {
                 >
                   {featuredProjects
                     .map((project) => (
-                      <Card key={project.slug} project={project} />
+                      // <ProjectCard key={project.slug} project={project} />
+                      <FullProjectCard key={project.slug} {...project} />
                     ))}
                 </motion.div>
                 <div className='my-8 flex items-center justify-center'>

@@ -20,7 +20,7 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
     description: {
       type: String,
       required: [true, "Please provide a description for this project."],
-      maxLength: [60, "Description cannot be more than 60 characters"],
+      maxLength: [100, "Description cannot be more than 100 characters"],
     },
     mdxContent: {
       type: String,

@@ -10,7 +10,7 @@ type FullProjectCardsProps = {
   projects: ProjectDisplayWithTags[]
 }
 
-const FullProjectCards = ({projects}: FullProjectCardsProps) => {
+export const FullProjectCards = ({projects}: FullProjectCardsProps) => {
 
   if(projects.length === 0) {
     return (
@@ -59,7 +59,7 @@ const CardContent = ({title, description, techStack, coverImage, slug}:ProjectDi
   )
 } 
 
-const FullProjectCard = (project:ProjectDisplayWithTags) => {
+export const FullProjectCard = (project:ProjectDisplayWithTags) => {
   const {slug} = project
   return (
     <Link
@@ -70,5 +70,3 @@ const FullProjectCard = (project:ProjectDisplayWithTags) => {
     </Link>
   )
 }
-
-export default FullProjectCards

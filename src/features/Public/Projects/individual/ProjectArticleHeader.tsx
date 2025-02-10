@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { ProjectDisplayWithTags} from "@/types/project"
 import { cn } from "@/utils/client/cn"
 import { SiGithub } from "@icons-pack/react-simple-icons";
+import { format } from "date-fns";
 import { motion } from "framer-motion"
 import { ArrowUpRightIcon } from "lucide-react"
 
@@ -34,13 +35,18 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
         initial={animation.hide}
         animate={animation.show}
       >
-        <div className='flex flex-col space-y-2'>
-          <h1 className='text-4xl font-bold'>{project.title}</h1>
-          <h2 className='text-muted-foreground'>{project.description}</h2>
-          <div className="w-fit flex flex-wrap space-x-2 ">
-            {project.techStack.map((tag) => (
-                <Pill text={tag.name} key={tag.id} />
-            ))}
+        <div className='flex flex-col space-y-2 sm:flex-row sm:justify-between'>
+          <div className='flex flex-col space-y-2'>
+            <h1 className='text-4xl font-bold'>{project.title}</h1>
+            <h2 className='text-muted-foreground'>{project.description}</h2>
+            <div className="w-fit flex flex-wrap space-x-2 ">
+              {project.techStack.map((tag) => (
+                  <Pill text={tag.name} key={tag.id} />
+              ))}
+            </div>
+          </div>
+          <div className='flex items-center'>
+            <span className='text-muted-foreground'>{format(project.projectDate, "PPP")}</span>
           </div>
         </div>
       </motion.div>
@@ -65,7 +71,6 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
           </IconLink>
           )
         }
-       
       </motion.div>
     </div>
     )

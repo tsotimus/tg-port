@@ -45,6 +45,7 @@ export type ProjectDisplay = {
   mdxContent: string;
   link?: string;
   github?: string;
+  projectDate: Date;
   createdAt: Date;
   updatedAt: Date;
   publishedAt?: Date;
