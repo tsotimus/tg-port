@@ -1,11 +1,10 @@
 "use client"
-import { type PropsWithChildren } from "react";
+import { type PropsWithChildren, type AnchorHTMLAttributes } from "react";
 
-//TODO: Probably remove or change this!
-const CustomLink = ({ children }: PropsWithChildren) => {
+const CustomLink = ({ children, href, ...props }: PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>>) => {
   return (
     // eslint-disable-next-line @next/next/no-html-link-for-pages
-    <a className="text-blue-500">{children}</a>
+    <a className="text-blue-500" href={href} {...props}>{children}</a>
   );
 };
 

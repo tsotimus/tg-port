@@ -15,7 +15,11 @@ yarn dev
 - [x] Tags functionality, create and update - Used in Projects and Blog Posts
 - [x] Delete media
 - [x] superjson instead of toJSON
-- [ ] Blog post and project styling
+- [x] Blog post and project styling
+- [ ] Article typography styling
+- [ ] Is this project featured?
+- [ ] Images in Markdown
+- [ ] Links in Markdown
 - [x] Add a blog posts, create and edit and display
 - [ ] MDX Components + Toolbar
 - [ ] CSP Policy
