@@ -1,13 +1,12 @@
-import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import FullProjectCards from "@/features/Public/Projects/FullProjectCards";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
-import { ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
+import { type ProjectDisplayWithTags } from "@/types/project";
 import { type HydratedDocument } from "mongoose";
 import { type Metadata } from "next";
 
-export const revalidate = 21600;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Projects",

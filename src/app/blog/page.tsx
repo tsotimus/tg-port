@@ -7,7 +7,7 @@ import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { type HydratedDocument } from "mongoose";
 import { type Metadata } from "next";
 
-export const revalidate = 21600;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog",

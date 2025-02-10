@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import CustomMDX from "@/components/mdx/RenderMDX";
 import dbConnect from "@/lib/dbConnect";
 import { type HydratedDocument } from "mongoose";
@@ -7,6 +6,8 @@ import { type PublishedBlogPostDisplay } from "@/types/blogpost";
 import { serverParamSchema } from "@/utils/server/validation";
 import BlogArticle from "@/features/Public/Blog/BlogArticle";
 import { readingTime } from 'reading-time-estimator'
+
+export const revalidate = 60;
 
 type BlogPageProps = {
   params: {

@@ -5,6 +5,8 @@ import { type HydratedDocument } from "mongoose";
 import { type ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
 
+export const revalidate = 60;
+
 type ProjectPageProps = {
   params: {
     slug: string;
