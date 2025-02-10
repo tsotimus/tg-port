@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 async function fetchAllProjects() {
   await dbConnect();
-  const projects = await Project.find<HydratedDocument<ProjectDisplayWithTags>>().populate("techStack");
+  const projects = await Project.find<HydratedDocument<ProjectDisplayWithTags>>().sort({projectDate: -1}).populate("techStack");
   return projects.map((project) => project.toJSON());
 }
 

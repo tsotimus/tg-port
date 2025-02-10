@@ -1,5 +1,6 @@
 import z from "zod";
 import { type TagDisplay } from "./tag";
+import { type Types } from 'mongoose';
 
 //Used for creating a new project
 export const ProjectSchema = z.object({
@@ -9,6 +10,7 @@ export const ProjectSchema = z.object({
   featured: z.boolean(),
   coverImage: z.string(),
   techStack: z.array(z.string()),
+  projectDate: z.union([z.date(), z.string().transform((dateString) => new Date(dateString))]),
   mdxContent: z.string(),
   link: z.string().optional(),
   github: z.string().optional(),
@@ -20,14 +22,15 @@ export type ProjectModel = {
   title: string;
   description: string;
   slug: string;
-  techStack: string[];
+  techStack: Types.ObjectId[];
   mdxContent: string;
   link?: string;
   github?: string;
-  createdAt: Date;
-  updatedAt: Date;
   featured: boolean;
   coverImage: string;
+  projectDate: Date;
+  createdAt: Date;
+  updatedAt: Date;
   publishedAt?: Date;
 };
 

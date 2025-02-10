@@ -15,7 +15,7 @@ async function fetchFeaturedProjects() {
   await dbConnect();
   const projects = await Project.find<HydratedDocument<ProjectDisplay>>({
     featured: true,
-  }).limit(2);
+  }).limit(2).sort({projectDate: -1});
 
   const serialisedProjects = projects.map((project) => project.toJSON())
   return serialisedProjects
@@ -25,7 +25,7 @@ async function fetchRecentPosts() {
   await dbConnect();
   const posts = await BlogPost.find<HydratedDocument<PublishedBlogPostDisplay>>({
     status: "PUBLISHED",
-  }).limit(2);
+  }).limit(2).sort({publishedAt: -1});
 
 
   const serialisedPosts = posts.map((post) => post.toJSON())

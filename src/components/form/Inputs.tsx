@@ -15,7 +15,7 @@ import { Switch } from "@/components/ui/switch";
 import { FormControl, FormLabel } from "@/components/ui/form";
 import { FormRow } from "./FormLayout";
 import { Checkbox } from "@/components/ui/checkbox";
-import { MultiSelectInputProps, type CheckBoxProps, type FileInputProps, type SelectInputProps, type SwitchInputProps, type TextInputProps } from "./inputs/types";
+import { type MultiSelectInputProps, type CheckBoxProps, type FileInputProps, type SelectInputProps, type SwitchInputProps, type GenericInputProps } from "./inputs/types";
 import { MultiSelect } from "../ui/multi-select";
 
 
@@ -24,7 +24,7 @@ export const TextInput = ({
   label,
   rules,
   defaultValue,
-}: TextInputProps) => {
+}: GenericInputProps) => {
   const { control } = useFormContext();
   return (
     <Controller

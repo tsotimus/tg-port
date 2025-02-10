@@ -20,7 +20,7 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
     description: {
       type: String,
       required: [true, "Please provide a description for this project."],
-      maxLength: [150, "Description cannot be more than 150 characters"],
+      maxLength: [60, "Description cannot be more than 60 characters"],
     },
     mdxContent: {
       type: String,
@@ -48,6 +48,10 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
     publishedAt: {
       type: Date,
     },
+    projectDate: {
+      type: Date,
+      required: [true, "Please provide a Project Date"]
+    },
     featured: {
       type: Boolean,
       default: false,
@@ -63,7 +67,7 @@ const ProjectSchema = new mongoose.Schema<ProjectModel>(
           ret.techStack = ret.techStack.map((techStag) => {
             // Check if the tag is a valid ObjectId
             if (mongoose.isObjectIdOrHexString(techStag)) {
-              return techStag.toString();
+              return techStag.toString() as string;
             } else {
               const { json } = SuperJSON.serialize(techStag);
               return json;

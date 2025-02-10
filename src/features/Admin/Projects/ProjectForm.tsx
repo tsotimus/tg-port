@@ -3,6 +3,7 @@
 import MDXEditor from "@/components/form/editor/MDXEditor";
 import { FormRow } from "@/components/form/FormLayout";
 import { CheckBoxInput, TextInput } from "@/components/form/Inputs";
+import CalendarInput from "@/components/form/inputs/DatePickerInput";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import TagsSelect from "@/features/Public/Tags/TagsSelect";
@@ -33,6 +34,7 @@ const ProjectForm = ({ isEditing = false, handleDelete }: ProjectFormProps) => {
         label="Cover Image URL"
         rules={{ required: true }}
       />
+      <CalendarInput name="projectDate" label="When was this?" />
       <CheckBoxInput name="featured" label="Is this Project Featured?" />
       <TextInput name="link" label="Link URL" />
       <TextInput name="github" label="GitHub URL" />

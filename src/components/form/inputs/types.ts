@@ -1,40 +1,39 @@
 import { type RegisterOptions } from "react-hook-form";
 import { type Option } from "@/types/options";
 
-export type GenericInputProps = {
+export interface GenericInputProps {
     name: string;
     label?: string;
     rules?: RegisterOptions;
     defaultValue?: string;
-    placeholder?:string;
-  };
-
-  
-export type TextInputProps = GenericInputProps;
-
-export type SelectInputProps = GenericInputProps & {
-    options: Option[];
+    placeholder?: string;
 };
 
-export type ScrollableSelectProps = SelectInputProps & {
+  
+
+export interface SelectInputProps extends GenericInputProps {
+    options: Option[];
+}
+
+export interface ScrollableSelectProps extends SelectInputProps {
     isLoading: boolean;
     onScroll: () => void;
 }
 
-export type SwitchInputProps = GenericInputProps & {
-disabled?: boolean;
-};
+export interface SwitchInputProps extends GenericInputProps {
+    disabled?: boolean;
+}
   
-export type FileInputProps = Omit<GenericInputProps, "rules"> & {
+export interface FileInputProps extends Omit<GenericInputProps, "rules"> {
     required?: boolean;
-};
-
-export type CheckBoxProps = Omit<GenericInputProps, "label" | "defaultValue"> & {
-    label: string
 }
 
-export type MultiSelectInputProps = GenericInputProps & {
+export interface CheckBoxProps extends Omit<GenericInputProps, "label" | "defaultValue"> {
+    label: string;
+}
+
+export interface MultiSelectInputProps extends GenericInputProps {
     options: Option[];
-    onScroll?: () => void
-    isLoading?: boolean
-};
+    onScroll?: () => void;
+    isLoading?: boolean;
+}
