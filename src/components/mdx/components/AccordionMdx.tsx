@@ -1,5 +1,6 @@
 "use client";
-import SimpleAccordion from "../ui/accordion/SimpleAccordion";
+
+import SimpleAccordion from "@/components/ui/accordion/SimpleAccordion";
 
 const AccordionMdx = SimpleAccordion;
 

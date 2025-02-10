@@ -39,10 +39,6 @@ pre.shiki .highlighted {
   @apply m-0;
 }
 
-.mdxeditor-popup-container{
-  display: none;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;

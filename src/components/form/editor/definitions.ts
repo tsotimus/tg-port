@@ -12,7 +12,7 @@ const MDX_COMPONENTS: JsxComponentDescriptor[] = [
     kind: "flow", // 'text' for inline, 'flow' for block
     // the source field is used to construct the import statement at the top of the markdown document.
     // it won't be actually sourced.
-    source: "@/components/mdx/Callout",
+    source: "@/components/mdx/components/Callout",
     // Used to construct the property popover of the generic editor
     props: [
       { name: "type", type: "string" },
@@ -27,7 +27,7 @@ const MDX_COMPONENTS: JsxComponentDescriptor[] = [
   {
     name: "Accordion",
     kind: "flow",
-    source: "@/components/mdx/Accordion",
+    source: "@/components/mdx/components/Accordion",
     props: [
       {
         name: "type",
@@ -41,6 +41,22 @@ const MDX_COMPONENTS: JsxComponentDescriptor[] = [
       },
     ],
     hasChildren: false,
+    ...genericProps,
+  },
+  {
+    name: "FlexRow",
+    kind: "flow",
+    source: "@/components/mdx/components/FlexRow",
+    props: [],
+    hasChildren: true,
+    ...genericProps,
+  },
+  {
+    name: "FlexCol",
+    kind: "flow",
+    source: "@/components/mdx/components/FlexCol",
+    props: [],
+    hasChildren: true,
     ...genericProps,
   },
 ];

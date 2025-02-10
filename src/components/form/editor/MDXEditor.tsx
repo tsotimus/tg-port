@@ -15,9 +15,17 @@ import {
   diffSourcePlugin,
   toolbarPlugin,
   jsxPlugin,
+  UndoRedo,
+  BoldItalicUnderlineToggles,
+  CodeToggle,
+  ListsToggle,
+  CreateLink,
+  BlockTypeSelect,
+  Separator,
+  imagePlugin
 } from "@mdxeditor/editor";
 import { Controller, type RegisterOptions, useFormContext } from "react-hook-form";
-import { InsertAccordion, InsertCallout } from "./Inserts";
+import SelectComponent from "./SelectComponent";
 
 const ImportedEditor = dynamic(
   () => import("@mdxeditor/editor").then((mod) => mod.MDXEditor),
@@ -71,6 +79,7 @@ const MDXEditor = ({ name, rules, defaultValue }: EditorProps) => {
               listsPlugin(),
               linkPlugin(),
               quotePlugin(),
+              imagePlugin(),
               markdownShortcutPlugin(),
               diffSourcePlugin({
                 viewMode: "source",
@@ -79,8 +88,16 @@ const MDXEditor = ({ name, rules, defaultValue }: EditorProps) => {
               toolbarPlugin({
                 toolbarContents: () => (
                   <>
-                    <InsertCallout />
-                    <InsertAccordion />
+                    <UndoRedo/>
+                    <BlockTypeSelect/>
+                    <BoldItalicUnderlineToggles/>
+                    <Separator/>
+                    <CreateLink/>
+                    <ListsToggle/>
+                    <Separator/>
+                    <CodeToggle/>
+                    <Separator/>
+                    <SelectComponent/>
                   </>
                 ),
               }),

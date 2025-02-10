@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "cloudinary"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
     
 }

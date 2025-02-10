@@ -1,45 +1,49 @@
 "use client";
 
-import { usePublisher, insertJsx$, Button } from "@mdxeditor/editor";
+import { type JsxProperties } from "@mdxeditor/editor";
 
-// a toolbar button that will insert a JSX element into the editor.
-export const InsertCallout = () => {
-  const insertJsx = usePublisher(insertJsx$);
 
-  return (
-    <Button
-      onClick={() =>
-        insertJsx({
-          name: "Callout",
-          kind: "flow",
-          props: {},
-        })
-      }
-    >
-      Callout
-    </Button>
-  );
-};
+type InsertProps = {
+    kind: "text";
+    name: string;
+    props: JsxProperties;
+    children?: undefined;
+} | {
+    kind: "flow";
+    name: string;
+    props: JsxProperties;
+    children?: undefined;
+}
 
-export const InsertAccordion = () => {
-  const insertJsx = usePublisher(insertJsx$);
-  return (
-    <Button
-      onClick={() =>
-        insertJsx({
-          name: "Accordion",
-          kind: "flow",
-          props: {
-            name: "single",
-            content: {
-              type: "expression",
-              value: `() => ([{ title: "Title", description: "Description" }])`,
-            },
-          },
-        })
-      }
-    >
-      Accordion
-    </Button>
-  );
-};
+export const ALL_MDX_INSERTS: Record<string, InsertProps> = {
+  "Accordion": {
+    name: "Accordion",
+    kind: "flow",
+    props: {
+      name: "single",
+      content: {
+        type: "expression",
+        value: `() => ([{ title: "Title", description: "Description" }])`,
+      },
+    },
+  },
+  "Callout": {
+    name: 'Callout',
+    kind: 'text',
+    props: { type: 'default' },
+  },
+  "FlexRow": {
+    name: "FlexRow",
+    kind: "flow",
+    props: {
+      //No props
+    },
+  },
+  "FlexCol": {
+    name: "FlexCol",
+    kind: "flow",
+    props: {
+      //No props
+    },
+  },
+}

@@ -6,7 +6,7 @@ import tokyo from "shiki/themes/tokyo-night.mjs"
 import owl from "shiki/themes/night-owl.mjs"
 // import light from "shiki/themes/light-plus.mjs"
 // import oneLight from "shiki/themes/l"
-import useMDXComponents from './useMDXComponents'
+import useMDXComponents from './components/useMDXComponents'
 import remarkGfm from 'remark-gfm'
 
 interface ConfigProps{
