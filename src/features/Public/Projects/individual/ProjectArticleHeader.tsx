@@ -4,6 +4,7 @@ import IconLink from "@/components/IconLink";
 import { Link } from "@/components/Link";
 import Pill from "@/components/Pill";
 import { buttonVariants } from "@/components/ui/button"
+import useFormattedDate from "@/hooks/useFormattedDate";
 import { ProjectDisplayWithTags} from "@/types/project"
 import { cn } from "@/utils/client/cn"
 import { SiGithub } from "@icons-pack/react-simple-icons";
@@ -28,6 +29,8 @@ interface ProjectArticleHeaderProps {
 } 
 
 const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
+
+
     return (
     <div className='space-y-4 pt-10'>
       <motion.div
@@ -45,9 +48,14 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
               ))}
             </div>
           </div>
-          <div className='flex items-center'>
-            <span className='text-muted-foreground'>{format(project.projectDate, "PPP")}</span>
-          </div>
+          {
+            //TODO: Remove this if later
+            project.projectDate && (
+              <div className='flex items-center'>
+                <span className='text-muted-foreground'>{format(project.projectDate, "PPP")}</span>
+              </div>
+            )
+          }
         </div>
       </motion.div>
       <motion.div
