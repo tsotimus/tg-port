@@ -4,13 +4,14 @@ import { BlurImage } from "@/components/BlurImage"
 import { Link } from "@/components/Link"
 import useFormattedDate from "@/hooks/useFormattedDate"
 import { PublishedBlogPostDisplay } from "@/types/blogpost"
-import { ArrowUpRightIcon, PencilIcon } from "lucide-react"
+import { PencilIcon } from "lucide-react"
 
 type BlogCardProps = {
     post: PublishedBlogPostDisplay
+    showIcon?: boolean
   }
   
-  const BlogCard = ({post}: BlogCardProps) => {
+  const BlogCard = ({post, showIcon}: BlogCardProps) => {
     const { slug, title, summary, publishedAt } = post
     const formattedDate = useFormattedDate(new Date(publishedAt))
   
@@ -19,13 +20,16 @@ type BlogCardProps = {
         href={`/blog/${slug}`}
         className='shadow-feature-card dark:shadow-feature-card-dark group relative rounded-xl p-2'
       >
-        <div className='flex items-center justify-between p-4'>
-          <div className='flex items-center gap-3'>
-            <PencilIcon className='size-[18px]' />
-            <h2 className='font-light'>Blog</h2>
-          </div>
-          <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
-        </div>
+        {
+          showIcon && (
+            <div className='flex items-center justify-between p-4'>
+                <div className='flex items-center gap-3'>
+                  <PencilIcon className='size-[18px]' />
+                  <h2 className='font-light'>Blog</h2>
+                </div>
+            </div>
+          )
+        }
         <BlurImage
           width={1200}
           height={630}

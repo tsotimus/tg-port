@@ -51,7 +51,7 @@ const RecentPosts = ({posts}: RecentPostsProps) => {
       >
         Latest Posts
       </motion.h2>
-      <BlogGrid posts={posts} displayLink emptyPageSize='sm'/>
+      <BlogGrid posts={posts} isHomePage emptyPageSize='sm'/>
     </motion.div>
   )
 }

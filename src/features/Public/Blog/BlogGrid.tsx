@@ -11,11 +11,11 @@ import EmptyPage from "@/components/layouts/EmptyPage"
 
 interface BlogGridProps {
     posts: PublishedBlogPostDisplay[]
-    displayLink?: boolean
+    isHomePage?: boolean
     emptyPageSize?: 'sm' | 'md' | 'lg'
 }
 
-const BlogGrid = ({posts, displayLink, emptyPageSize}:BlogGridProps) => {
+const BlogGrid = ({posts, isHomePage = false, emptyPageSize}:BlogGridProps) => {
 
 
     if(posts.length === 0) {
@@ -45,11 +45,11 @@ const BlogGrid = ({posts, displayLink, emptyPageSize}:BlogGridProps) => {
                 }}
             >
                 {posts.map((post) => (
-                    <BlogCard key={post.slug} post={post} />
+                    <BlogCard key={post.slug} post={post} showIcon={isHomePage} />
                 ))}
             </motion.div>
             {
-                displayLink && (
+                isHomePage && (
                     <div className='my-8 flex items-center justify-center'>
                         <Link
                         href='/blog'
