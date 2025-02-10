@@ -2,7 +2,7 @@ import RenderMDX from "@/components/mdx/RenderMDX";
 import dbConnect from "@/lib/dbConnect";
 import Project from "@/models/Project";
 import { type HydratedDocument } from "mongoose";
-import { ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
+import { type ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
 
 type ProjectPageProps = {
@@ -46,15 +46,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
 
   return (
-    <>
-      <ProjectArticle
-        project={currentProject}
-        mdxContent={<RenderMDX source={currentProject.mdxContent} />}
-      />
-      {/* <ProjectArticle
-        project={currentProject}
-        mdxContent={<ShikiMDX source={currentProject.mdxContent} />}
-      /> */}
-    </>
+    <ProjectArticle
+      project={currentProject}
+      mdxContent={<RenderMDX source={currentProject.mdxContent} />}
+    />
   );
 }

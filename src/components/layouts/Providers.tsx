@@ -14,12 +14,12 @@ type Theme = "system" | "light" | "dark";
 
 const Providers = (props: ProvidesProps) => {
   const { children } = props;
-  const { theme = "system" } = useTheme();
+  const { theme = "dark" } = useTheme();
 
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       enableSystem
       enableColorScheme
       disableTransitionOnChange
