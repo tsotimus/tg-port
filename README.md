@@ -20,6 +20,7 @@ yarn dev
 - [ ] Is this project featured?
 - [ ] Images in Markdown
 - [ ] Links in Markdown
+- [ ] Lists in Markdown
 - [x] Add a blog posts, create and edit and display
 - [ ] MDX Components + Toolbar
 - [ ] CSP Policy
