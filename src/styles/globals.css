@@ -34,6 +34,10 @@ pre.shiki .highlighted {
   background-color: theme('colors.primary.DEFAULT / 10%');
 }
 
+.mdxeditor-popup-container {
+  z-index: 9999;
+}
+
 
 .prose .callout p {
   @apply m-0;

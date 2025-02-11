@@ -22,15 +22,17 @@ import {
   CreateLink,
   BlockTypeSelect,
   Separator,
-  imagePlugin
+  imagePlugin,
+  DiffSourceToggleWrapper
 } from "@mdxeditor/editor";
 import { Controller, type RegisterOptions, useFormContext } from "react-hook-form";
 import SelectComponent from "./SelectComponent";
+import { ForwardRefEditor } from "./ForwardedRefEditor";
 
-const ImportedEditor = dynamic(
-  () => import("@mdxeditor/editor").then((mod) => mod.MDXEditor),
-  { ssr: false }
-);
+// const ImportedEditor = dynamic(
+//   () => import("@mdxeditor/editor").then((mod) => mod.MDXEditor),
+//   { ssr: false }
+// );
 
 const PlainTextCodeEditorDescriptor: CodeBlockEditorDescriptor = {
   match: () => true,
@@ -66,8 +68,8 @@ const MDXEditor = ({ name, rules, defaultValue }: EditorProps) => {
       defaultValue={defaultValue ?? ""}
       render={({ field: { value, onChange } }) => {
         return (
-          <ImportedEditor
-            className="w-full h-[1000px] overflow-auto bg-white border border-gray-200 rounded-md p-4"
+          <ForwardRefEditor
+            className="w-full overflow-auto bg-white border border-gray-200 rounded-md p-4"
             contentEditableClassName="prose h-[1000px]"
             onChange={onChange}
             markdown={value as string}
@@ -81,14 +83,14 @@ const MDXEditor = ({ name, rules, defaultValue }: EditorProps) => {
               quotePlugin(),
               imagePlugin(),
               markdownShortcutPlugin(),
-              diffSourcePlugin({
-                viewMode: "source",
-              }),
+              diffSourcePlugin(),
               jsxPlugin({ jsxComponentDescriptors: MDX_COMPONENTS }),
               toolbarPlugin({
                 toolbarContents: () => (
                   <>
-                    <UndoRedo/>
+                    <DiffSourceToggleWrapper options={["rich-text", "source"]}>
+                      <UndoRedo />
+                    </DiffSourceToggleWrapper>
                     <BlockTypeSelect/>
                     <BoldItalicUnderlineToggles/>
                     <Separator/>
