@@ -17,10 +17,12 @@ yarn dev
 - [x] superjson instead of toJSON
 - [x] Blog post and project styling
 - [ ] Article typography styling
-- [ ] Is this project featured?
-- [ ] Images in Markdown
-- [ ] Links in Markdown
-- [ ] Lists in Markdown
+- [x] Is this project featured?
+- [x] Images in Markdown
+- [x] Links in Markdown
+- [ ] Lists in Markdown (Needs styling)
+- [ ] Default checkbox not working
+- [ ] Project date issue
 - [x] Add a blog posts, create and edit and display
 - [ ] MDX Components + Toolbar
 - [ ] CSP Policy

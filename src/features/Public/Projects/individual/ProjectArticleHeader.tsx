@@ -37,7 +37,7 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
         initial={animation.hide}
         animate={animation.show}
       >
-        <div className='flex flex-col space-y-2 sm:flex-row sm:justify-between'>
+        <div className='flex w-full flex-col space-y-2 sm:flex-row sm:justify-between'>
           <div className='flex flex-col space-y-2'>
             <h1 className='text-4xl font-bold'>{project.title}</h1>
             <h2 className='text-muted-foreground'>{project.description}</h2>
@@ -48,7 +48,7 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
             </div>
           </div>
           <div className='flex items-center'>
-            <span className='text-muted-foreground'>{format(project.projectDate, "PPP")}</span>
+            <span className='text-muted-foreground'>{format(project.projectDate, "PP")}</span>
           </div>
         </div>
       </motion.div>
