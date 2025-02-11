@@ -30,7 +30,6 @@ interface ProjectArticleHeaderProps {
 
 const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
 
-
     return (
     <div className='space-y-4 pt-10'>
       <motion.div

@@ -8,6 +8,8 @@ import { truncateString } from "@/utils/client/utils";
 import { DeleteDialog } from "@/components/ui/delete-dialog";
 import axios from "axios";
 import { toast } from "sonner";
+import IconButton from "@/components/IconButton";
+import { XCircleIcon } from "lucide-react";
 
 interface MediaGridProps {
   data: Media[];
@@ -33,8 +35,11 @@ const MediaGrid = ({ data }: MediaGridProps) => {
     <div className="mt-10 flex flex-col space-y-8 items-center" >
       {selectedMedia && (
         <Card>
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center space-y-0 justify-between">
             <CardTitle>Media Source</CardTitle>
+            <IconButton className="p-0 m-0 flex flex-row items-start" onClick={() => setSelectedMedia(null)}>
+              <XCircleIcon/>
+            </IconButton>
           </CardHeader>
           <CardContent className="flex space-x-4 items-center">
             <Typography>{truncateString(selectedMedia.public_id, 20, true)}</Typography>
@@ -43,7 +48,7 @@ const MediaGrid = ({ data }: MediaGridProps) => {
           </CardContent>
         </Card>
       )}
-      <div className="flex flex-wrap w-full space-x-4">
+      <div className="flex flex-wrap w-full gap-8">
         {data.map((media) => {
           return (
             <div
