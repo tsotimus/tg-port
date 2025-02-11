@@ -30,7 +30,7 @@ const LIST_ONE = [
     decorative: "💼",
     component: (
       <Typography>
-        Passionate about Security, Analytics, AI, and Fintech. I love
+        Passionate about Security, Analytics, and AI. I love
         incorporating these into my work!
       </Typography>
     ),
