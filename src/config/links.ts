@@ -17,6 +17,11 @@ import {
 
 export const ADMIN_NAV_ITEMS = [
   {
+    text: "About",
+    href: "/about",
+    num: 0,
+  },
+  {
     text: "Projects",
     href: "/projects",
     num: 0,
@@ -55,8 +60,8 @@ export const ADMIN_NAV_ITEMS = [
 
 export const NAV_ITEMS = [
   {
-    text: "Home",
-    href: "/",
+    text: "About",
+    href: "/about",
     num: 0,
   },
   {

@@ -5,6 +5,7 @@ import { Link } from "@/components/Link";
 import { cn } from "@/utils/client/cn";
 import { ADMIN_NAV_ITEMS, NAV_ITEMS } from "@/config/links";
 import { SignOutButton, useAuth } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -18,7 +19,11 @@ const Navbar = () => {
 
           if (link.text === "Logout") {
             // Exception for logout button
-            return <SignOutButton key="logout">Logout</SignOutButton>;
+            return (
+            <div key="logout" className="flex items-center justify-center">
+              <SignOutButton><Button variant="outline">Logout</Button></SignOutButton>
+            </div>
+            )
           }
 
           return (
