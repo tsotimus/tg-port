@@ -13,7 +13,6 @@ yarn dev
 ### TODO:
 
 - [ ] Article typography styling
-- [ ] Default checkbox not working
 - [ ] Video Component for MDX
 - [ ] CSP Policy
 - [ ] SiteMap
