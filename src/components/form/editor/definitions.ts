@@ -70,6 +70,11 @@ const MDX_COMPONENTS: JsxComponentDescriptor[] = [
         required: true
       },
       {
+        name: "size",
+        type: "string",
+        required: false
+      },
+      {
         name: "alt",
         type: "string",
         required: false

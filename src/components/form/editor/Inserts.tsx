@@ -51,7 +51,8 @@ export const ALL_MDX_INSERTS: Record<string, InsertProps> = {
     kind: "flow",
     props: {
       src: "/image/src",
-      alt: "Image Alt"
+      alt: "Image Alt",
+      size: "normal"
     },
   },
 }

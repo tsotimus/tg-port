@@ -14,8 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { FormControl, FormLabel } from "@/components/ui/form";
 import { FormRow } from "./FormLayout";
-import { Checkbox } from "@/components/ui/checkbox";
-import { type MultiSelectInputProps, type CheckBoxProps, type FileInputProps, type SelectInputProps, type SwitchInputProps, type GenericInputProps } from "./inputs/types";
+import { type MultiSelectInputProps, type FileInputProps, type SelectInputProps, type SwitchInputProps, type GenericInputProps } from "./inputs/types";
 import { MultiSelect } from "../ui/multi-select";
 
 
