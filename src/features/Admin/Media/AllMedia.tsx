@@ -1,3 +1,5 @@
+"use client";
+
 import useMyMedia from "./useMyMedia";
 import { FullPageLoader } from "@/components/loaders/Loading";
 import MediaGrid from "./MediaGrid";

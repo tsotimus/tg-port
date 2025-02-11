@@ -5,7 +5,12 @@ import dbConnect from "@/lib/dbConnect";
 import Tag from "@/models/Tag";
 import { type TagDisplay } from "@/types/tag";
 import { type HydratedDocument } from "mongoose";
+import { Metadata } from "next";
 import { z } from "zod";
+
+export const metadata: Metadata = {
+    title: "My Tags"
+  };
 
 const getTags = async (page: number) => {
     const limit = 25;

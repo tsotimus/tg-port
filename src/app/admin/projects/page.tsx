@@ -2,7 +2,12 @@ import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import { Button } from "@/components/ui/button";
 import MyProjects from "@/features/Admin/Projects/MyProjects";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "My Projects"
+};
 
 const MyProjectsPage = () => {
   return (

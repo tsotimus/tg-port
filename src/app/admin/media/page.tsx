@@ -1,10 +1,13 @@
-"use client";
-
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import { Button } from "@/components/ui/button";
 import AllMedia from "@/features/Admin/Media/AllMedia";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Media"
+};
 
 const MediaPage = () => {
   return (
