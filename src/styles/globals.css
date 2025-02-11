@@ -38,8 +38,15 @@ pre.shiki .highlighted {
   z-index: 9999;
 }
 
-.mdxeditor-rich-text-editor blockquote span{
-  color: black
+.mdxeditor-rich-text-editor blockquote span, 
+.mdxeditor-rich-text-editor strong, 
+.mdxeditor-rich-text-editor h1, 
+.mdxeditor-rich-text-editor h2, 
+.mdxeditor-rich-text-editor h3, 
+.mdxeditor-rich-text-editor h4, 
+.mdxeditor-rich-text-editor h5, 
+.mdxeditor-rich-text-editor h6 {
+  color: black;
 }
 
 
