@@ -161,38 +161,6 @@ export const FileInput = ({ name, required, label }: FileInputProps) => {
   );
 };
 
-export const CheckBoxInput = ({
-  name,
-  label,
-  rules,
-}: CheckBoxProps) => {
-  const { control } = useFormContext();
-  return (
-    <Controller
-      name={name}
-      control={control}
-      rules={rules}
-      render={({ field: { onChange, value } }) => {
-        return (
-          <FormRow>
-            <FormControl>
-              <fieldset className="flex space-x-2 items-center">
-                <Checkbox 
-                  onCheckedChange={(checked) => onChange(checked)}
-                  value={value ? "true" : "false"}
-                  checked={value ? true : false}
-                  />
-                  <FormLabel>{label}</FormLabel>
-              </fieldset>
-            </FormControl>
-          </FormRow>
-        );
-      }}
-    />
-  );
-};
-
-
 export const MultiSelectInput = ({name, rules, defaultValue, label, options, placeholder, onScroll, isLoading}:MultiSelectInputProps) => {
   const { control } = useFormContext();
 

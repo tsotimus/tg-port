@@ -1,7 +1,8 @@
 "use client";
 
 import { FormLayout, FormRow } from "@/components/form/FormLayout";
-import { CheckBoxInput, TextInput } from "@/components/form/Inputs";
+import { TextInput } from "@/components/form/Inputs";
+import CheckBoxInput from "@/components/form/inputs/CheckBoxInput";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import { type FormSchema, TagSchema } from "@/types/tag";

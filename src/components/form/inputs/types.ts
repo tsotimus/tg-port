@@ -28,7 +28,7 @@ export interface FileInputProps extends Omit<GenericInputProps, "rules"> {
     required?: boolean;
 }
 
-export interface CheckBoxProps extends Omit<GenericInputProps, "label" | "defaultValue"> {
+export interface CheckBoxProps extends Omit<GenericInputProps, "label"> {
     label: string;
 }
 
