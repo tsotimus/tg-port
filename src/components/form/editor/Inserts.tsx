@@ -46,4 +46,12 @@ export const ALL_MDX_INSERTS: Record<string, InsertProps> = {
       //No props
     },
   },
+  "CloudImage": {
+    name: "CloudImage",
+    kind: "flow",
+    props: {
+      src: "/image/src",
+      alt: "Image Alt"
+    },
+  },
 }

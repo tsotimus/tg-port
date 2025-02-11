@@ -59,6 +59,25 @@ const MDX_COMPONENTS: JsxComponentDescriptor[] = [
     hasChildren: true,
     ...genericProps,
   },
+  {
+    name: "CloudImage",
+    kind: "flow",
+    source: "@/components/mdx/components/CloudImage",
+    props: [
+      {
+        name: "src",
+        type: "string",
+        required: true
+      },
+      {
+        name: "alt",
+        type: "string",
+        required: false
+      },
+    ],
+    hasChildren: false,
+    ...genericProps
+  }
 ];
 
 export default MDX_COMPONENTS;

@@ -38,6 +38,10 @@ pre.shiki .highlighted {
   z-index: 9999;
 }
 
+.mdxeditor-rich-text-editor blockquote span{
+  color: black
+}
+
 
 .prose .callout p {
   @apply m-0;

@@ -1,6 +1,6 @@
 "use client";
 
-import { type PropsWithChildren, type AnchorHTMLAttributes, type LiHTMLAttributes, type HTMLAttributes } from "react";
+import { type PropsWithChildren, type AnchorHTMLAttributes, type HTMLAttributes } from "react";
 
 export const CustomLink = ({ children, href, ...props }: PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>>) => {
   return (

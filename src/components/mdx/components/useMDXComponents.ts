@@ -2,6 +2,7 @@ import {CustomOl, CustomUl, CustomLink, CustomBlockquote} from "./CustomElements
 import AccordionMdx from "./AccordionMdx";
 import { Callout } from "./Callout";
 import { FlexCol, FlexRow } from "./FlexBox";
+import { CloudImage } from "./CloudImage";
 
 const useMDXComponents = () => {
     return {
@@ -14,6 +15,7 @@ const useMDXComponents = () => {
         FlexRow: FlexRow,
         FlexCol: FlexCol, 
         Accordion: AccordionMdx,
+        CloudImage: CloudImage
     }
 }
 
