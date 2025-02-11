@@ -53,7 +53,7 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
         </div>
       </motion.div>
       <motion.div
-        className='flex flex-col items-start sm:flex-row sm:space-y-4'
+        className='flex flex-col items-center sm:flex-row sm:space-x-4'
         initial={animation.hide}
         animate={animation.show}
         transition={{ delay: 0.1 }}
