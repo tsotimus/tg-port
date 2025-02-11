@@ -47,14 +47,9 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
               ))}
             </div>
           </div>
-          {
-            //TODO: Remove this if later
-            project.projectDate && (
-              <div className='flex items-center'>
-                <span className='text-muted-foreground'>{format(project.projectDate, "PPP")}</span>
-              </div>
-            )
-          }
+          <div className='flex items-center'>
+            <span className='text-muted-foreground'>{format(project.projectDate, "PPP")}</span>
+          </div>
         </div>
       </motion.div>
       <motion.div
