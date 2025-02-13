@@ -4,7 +4,7 @@ import cloudinary from "@/lib/cloudinary";
 import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
 import { type GenericErrorResponse } from "@/types/api";
 import { type GetMediaResponse } from "@/features/Admin/Media/types";
-import { FOLDER_LOCATION } from "@/utils/server/files/constants";
+import { CLOUD_FOLDER_LOCATION } from "@/utils/server/files/constants";
 import { z } from "zod";
 
 const DeleteSchema = z.object({
@@ -18,7 +18,7 @@ export default async function handler(
   if (req.method === "GET") {
     try {
       const { resources } = await cloudinary.search
-        .expression(`folder:${FOLDER_LOCATION}`)
+        .expression(`folder:${CLOUD_FOLDER_LOCATION}`)
         .sort_by("public_id", "desc")
         .max_results(30)
         .execute();
