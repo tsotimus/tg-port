@@ -12,8 +12,8 @@ const DeleteSchema = z.object({
 })
 
 const PaginationSchema = z.object({
-    limit: z.number(),
-    nextToken: z.string()
+    limit: z.string().transform((val) => parseInt(val, 10)),
+    nextToken: z.string().optional()
 })
 
 export default async function handler(
