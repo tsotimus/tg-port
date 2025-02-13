@@ -4,7 +4,7 @@ import AllMedia from "./AllMedia"
 
 const MediaDisplay = () => {
     return (
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-8 mt-8">
             <div className="flex justify-between">
                 <Typography>General Media - images, video etc - stored in Cloudinary</Typography>
                 <ButtonLink href="/admin/media/upload">

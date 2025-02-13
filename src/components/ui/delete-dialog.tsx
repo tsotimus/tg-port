@@ -18,7 +18,7 @@ export const DeleteDialog = ({description = "This will permanently delete this i
     
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger>
+            <DialogTrigger asChild>
                 <DeleteButton/>
             </DialogTrigger>
             <DialogContent>
@@ -29,7 +29,7 @@ export const DeleteDialog = ({description = "This will permanently delete this i
                 </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                    <DialogClose>
+                    <DialogClose asChild>
                         <Button variant="outline">No</Button>
                     </DialogClose>
                     <Button variant="destructive" onClick={handleDelete}>Yes</Button>
