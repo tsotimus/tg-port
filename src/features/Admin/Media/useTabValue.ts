@@ -14,7 +14,12 @@ const useTabValue = () => {
 
     const lastValue = splitPath[splitPath.length -1]
 
-    return match(lastValue).with("downloads", () => "downloads").otherwise(() => "general")
+    return match(lastValue)
+    .with("downloads", () => "downloads")
+    .with("upload", () => {
+        if(splitPath.includes("downloads")) return "downloads"
+        return "general"
+    }).otherwise(() => "general")
 }
 
 export default useTabValue

@@ -21,15 +21,13 @@ export default async function handler(
         fileWriteStreamHandler: (file) => {
           const currentFile = file as MyVolatileFile; // Formidable VolatileFile type is not correct
           const fileName = currentFile.originalFilename!;
-          const parseFileName = removeFileExtension(fileName);
-          return createS3Stream(parseFileName)
+          return createS3Stream(fileName)
         },
         keepExtensions: true,
         allowEmptyFiles: false,
       });
 
       if (files) {
-        console.log("Here");
         
         return res
           .status(200)

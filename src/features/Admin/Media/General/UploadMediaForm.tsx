@@ -65,7 +65,7 @@ const UploadMediaForm = ({isDownloads = false}:UploadMediaFormProps) => {
             allowedFiles={isDownloads ? undefined : acceptedFiles}
           />
           <div className="flex space-x-4">
-            <ButtonLink variant="outline" href="/admin/media/general">
+            <ButtonLink variant="outline" href={isDownloads ? "/admin/media/downloads": "/admin/media/general"}>
               Back
             </ButtonLink>
             <Button type="submit" disabled={!isValid}>
