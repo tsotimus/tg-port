@@ -1,11 +1,11 @@
 import { type Errors, type GenericApiResponse } from "@/types/api";
 import { fetcher } from "@/utils/client/genericFetchers";
 import useSWR from "swr";
-import { type GetMediaResponse } from "../types";
+import { type GetGeneralMediaResponse } from "../types";
 
 const useMyGeneralMedia = () => {
   const { data, error, isLoading } = useSWR<
-    GenericApiResponse<GetMediaResponse>, Errors
+    GenericApiResponse<GetGeneralMediaResponse>, Errors
   >("/api/admin/v1/media", fetcher , {revalidateOnMount: true});
 
   return {

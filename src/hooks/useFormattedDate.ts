@@ -1,7 +1,10 @@
 import { format } from "date-fns";
 
-const useFormattedDate = (date: Date): string => {
-  return format(date, "PP");
+const useFormattedDate = () => {
+
+  const handleFormat = (date:Date) => format(date, "PP")
+  
+  return handleFormat;
 };
 
 export default useFormattedDate;

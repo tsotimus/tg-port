@@ -1,5 +1,5 @@
 import { CldImage } from "next-cloudinary";
-import { type Media } from "../types";
+import { type GeneralMedia } from "../types";
 import { useState } from "react";
 import Typography from "@/components/Typography";
 import CopyToClipboard from "@/components/loaders/CopyToClipboard";
@@ -12,12 +12,12 @@ import IconButton from "@/components/IconButton";
 import { XCircleIcon } from "lucide-react";
 
 interface MediaGridProps {
-  data: Media[];
+  data: GeneralMedia[];
 }
 const MediaGrid = ({ data }: MediaGridProps) => {
-  const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
+  const [selectedMedia, setSelectedMedia] = useState<GeneralMedia | null>(null);
 
-  const handleMediaClick = (media: Media) => {
+  const handleMediaClick = (media: GeneralMedia) => {
     setSelectedMedia(media);
   };
 

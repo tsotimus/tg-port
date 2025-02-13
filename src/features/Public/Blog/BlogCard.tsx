@@ -13,7 +13,7 @@ type BlogCardProps = {
   
   const BlogCard = ({post, showIcon}: BlogCardProps) => {
     const { slug, title, summary, publishedAt } = post
-    const formattedDate = useFormattedDate(new Date(publishedAt))
+    const format = useFormattedDate()
   
     return (
       <Link
@@ -38,7 +38,7 @@ type BlogCardProps = {
           className='rounded-lg'
         />
         <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
-          {formattedDate}
+          {format(new Date(publishedAt))}
         </div>
         <div className='flex flex-col px-2 py-4 transition-transform ease-out group-hover:translate-x-0.5'>
           <h3 className='font-title text-2xl font-bold'>{title}</h3>

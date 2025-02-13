@@ -1,4 +1,4 @@
-export type Media = {
+export type GeneralMedia = {
   asset_id: string;
   public_id: string;
   filename: string;
@@ -29,9 +29,20 @@ export type Media = {
   };
 };
 
-export type GetMediaResponse = {
-  data: Array<Media>;
+export type GetGeneralMediaResponse = {
+  data: Array<GeneralMedia>;
   meta: {
     page: number;
   };
 };
+
+export type DownloadsMedia = {
+  key:string;
+  lastModified: string;
+  size: number;
+}
+
+export type GetDownloadsMedia = {
+  files: Array<DownloadsMedia>
+  nextToken: null | string
+}

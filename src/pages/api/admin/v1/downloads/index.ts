@@ -38,14 +38,14 @@ export default async function handler(
     
         const response = await s3.send(command);
     
-        return res.status(200).json({
-            files: response.Contents?.map((obj) => ({
-                key: obj.Key,
-                size: obj.Size,
-                lastModified: obj.LastModified,
-            })) ?? [],
-            nextToken: response.NextContinuationToken ?? null, // Token for the next page
-        })
+        return res.status(200).json(createApiResponse({
+          files: response.Contents?.map((obj) => ({
+              key: obj.Key,
+              size: obj.Size,
+              lastModified: obj.LastModified,
+          })) ?? [],
+          nextToken: response.NextContinuationToken ?? null, // Token for the next page
+        }))
     } catch (err) {
       console.error(err);
       return res
