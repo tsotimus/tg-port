@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button, ButtonProps } from "./ui/button";
 import { type PropsWithChildren } from "react";
 
 interface ButtonLinkProps {
   href: string;
+  variant?: ButtonProps["variant"]
   className?: string;
   external?: boolean;
 }
@@ -15,9 +16,10 @@ const ButtonLink = ({
   children,
   className,
   external,
+  variant,
 }: PropsWithChildren<ButtonLinkProps>) => {
   return (
-    <Button asChild className={className}>
+    <Button asChild variant={variant} className={className}>
       <Link
         href={href}
         target={external ? "_blank" : undefined}

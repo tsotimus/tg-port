@@ -1,17 +1,16 @@
 "use client";
 
-import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
 import UploadMediaForm from "@/features/Admin/Media/General/UploadMediaForm";
 
 const UploadMediaPage = () => {
   return (
-    <Stack gap={12}>
+    <div className="flex flex-col space-y-12">
       <Typography variant="h1" className="text-center">
-        Upload Media
+        Upload General Media
       </Typography>
       <UploadMediaForm />
-    </Stack>
+    </div>
   );
 };
 

@@ -1,17 +1,14 @@
 import cloudinary from "@/lib/cloudinary";
 import { type File, type VolatileFile } from "formidable";
 import { PassThrough } from "stream";
-// import { FEATURE_FLAGS } from "../features";
 import { s3 } from "@/lib/s3";
-import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { CLOUD_FOLDER_LOCATION } from "./constants";
+import { CLOUD_FOLDER_LOCATION, DOWNLOAD_BUCKET } from "./constants";
+import { Upload } from "@aws-sdk/lib-storage";
 
 export type VolatileFileType = InstanceType<typeof VolatileFile>;
 
 export interface MyVolatileFile extends VolatileFileType, File {}
 
-// const CLOUD_FOLDER_LOCATION = FEATURE_FLAGS.IS_PROD ? "assets/media" : "assets/dev-media" ;
-const BUCKET_NAME = "my-portfolio-downloads-eu-2"
 
 export const createCloudinaryStreamForImage = (
   publicId: string | undefined,
@@ -63,16 +60,18 @@ export const createS3Stream = (fileKey: string) => {
 
   const passThrough = new PassThrough();
 
-  s3.send(
-    new PutObjectCommand({
-      Bucket: BUCKET_NAME,
-      Key: `${CLOUD_FOLDER_LOCATION}/${fileKey}`,
+  const upload = new Upload({
+    client: s3,
+    params: {
+      Bucket: DOWNLOAD_BUCKET,
+      Key: fileKey,
       Body: passThrough,
-      // ContentType: contentType,
-      ACL: "private", // Ensure objects are private unless you change this
-    })
-  ).catch((error) => {
-    console.error("Upload to S3 failed:", error);
+      ACL: "private",
+    },
+  });
+
+  upload.done().catch((error) => {
+    throw new Error("Upload failed", error)
   });
 
   return passThrough;

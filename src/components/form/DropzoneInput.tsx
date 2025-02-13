@@ -17,7 +17,7 @@ const baseClassNames =
 interface DropzoneProps {
   name: string;
   rules: RegisterOptions;
-  allowedFiles: Accept;
+  allowedFiles: Accept | undefined;
   maxFiles?: number;
   maxSize?: number;
 }

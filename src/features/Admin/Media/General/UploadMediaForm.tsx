@@ -1,11 +1,13 @@
+import ButtonLink from "@/components/ButtonLink";
 import DropzoneInput from "@/components/form/DropzoneInput";
 import { Button } from "@/components/ui/button";
 import { MEDIA_HEADERS } from "@/utils/client/headers";
 import axios from "axios";
+import { Accept } from "react-dropzone";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-const acceptedFiles = {
+const acceptedFiles: Accept = {
   "image/*": [".png", ".gif", ".jpeg", ".jpg"],
   "video/*": [".mp4", ".webm", ".ogg"],
 };
@@ -14,7 +16,11 @@ type FormData = {
   media: FileList;
 };
 
-const UploadMediaForm = () => {
+interface UploadMediaFormProps {
+  isDownloads?:boolean
+}
+
+const UploadMediaForm = ({isDownloads = false}:UploadMediaFormProps) => {
   const methods = useForm<FormData>({
     mode: "onChange",
   });
@@ -26,13 +32,16 @@ const UploadMediaForm = () => {
   } = methods;
 
   const onSubmit = (data: FormData) => {
+
+    const endpoint = isDownloads ? "/api/admin/v1/downloads/upload" : "/api/admin/v1/media/upload"
+
     const formData = new FormData();
     for (let i = 0; i < data.media.length; i++) {
       formData.append(`media${i}`, data.media[i]);
     }
 
     axios
-      .post("/api/admin/v1/media/upload", formData, {
+      .post(endpoint, formData, {
         headers: {
           ...MEDIA_HEADERS,
         },
@@ -53,11 +62,17 @@ const UploadMediaForm = () => {
           <DropzoneInput
             name="media"
             rules={{ required: "Media is required" }}
-            allowedFiles={acceptedFiles}
+            allowedFiles={isDownloads ? undefined : acceptedFiles}
           />
-          <Button type="submit" disabled={!isValid}>
-            Submit
-          </Button>
+          <div className="flex space-x-4">
+            <ButtonLink variant="outline" href="/admin/media/general">
+              Back
+            </ButtonLink>
+            <Button type="submit" disabled={!isValid}>
+              Submit
+            </Button>
+          </div>
+          
         </div>
       </form>
     </FormProvider>
