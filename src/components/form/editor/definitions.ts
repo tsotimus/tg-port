@@ -82,6 +82,30 @@ const MDX_COMPONENTS: JsxComponentDescriptor[] = [
     ],
     hasChildren: false,
     ...genericProps
+  },
+  {
+    name: "DownloadButton",
+    kind: "flow",
+    source:"@/components/mdx/DownloadButton",
+    props: [
+      {
+        name: "href",
+        type: "string",
+        required: true
+      },
+      {
+        name: "text",
+        type: "string",
+        required: true
+      },
+      {
+        name: "variant",
+        type: "string",
+        required: false
+      },
+    ],
+    hasChildren: false,
+    ...genericProps
   }
 ];
 

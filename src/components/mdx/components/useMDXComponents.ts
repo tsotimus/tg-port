@@ -3,11 +3,11 @@ import AccordionMdx from "./AccordionMdx";
 import { Callout } from "./Callout";
 import { FlexCol, FlexRow } from "./FlexBox";
 import { CloudImage } from "./CloudImage";
+import DownloadButton from "./DownloadButton";
 
 const useMDXComponents = () => {
     return {
         a: CustomLink,
-        // li: CustomLi,
         blockquote: CustomBlockquote,
         ol: CustomOl,
         ul: CustomUl,
@@ -15,7 +15,8 @@ const useMDXComponents = () => {
         FlexRow: FlexRow,
         FlexCol: FlexCol, 
         Accordion: AccordionMdx,
-        CloudImage: CloudImage
+        CloudImage: CloudImage,
+        DownloadButton: DownloadButton
     }
 }
 

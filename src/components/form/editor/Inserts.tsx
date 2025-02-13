@@ -55,4 +55,13 @@ export const ALL_MDX_INSERTS: Record<string, InsertProps> = {
       size: "normal"
     },
   },
+  "DownloadButton": {
+    name: "DownloadButton",
+    kind: "flow",
+    props: {
+      href: "",
+      text: "Click here",
+      variant: "default",
+    },
+  }
 }

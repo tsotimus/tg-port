@@ -2,7 +2,6 @@ import { type Errors, type GenericApiResponse } from "@/types/api";
 import { fetcher } from "@/utils/client/genericFetchers";
 import useSWR from "swr";
 import { GetDownloadsMedia } from "../types";
-// import { type GetMediaResponse } from "../types";
 
 const useMyDownloadsMedia = () => {
   const { data, error, isLoading } = useSWR<
