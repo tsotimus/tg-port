@@ -2,13 +2,15 @@ import cloudinary from "@/lib/cloudinary";
 import { type File, type VolatileFile } from "formidable";
 import { PassThrough } from "stream";
 import { FEATURE_FLAGS } from "../features";
+import { s3 } from "@/lib/s3";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 
 export type VolatileFileType = InstanceType<typeof VolatileFile>;
 
 export interface MyVolatileFile extends VolatileFileType, File {}
 
 const FOLDER_LOCATION = FEATURE_FLAGS.IS_PROD ? "assets/media" : "assets/dev-media" ;
-
+const BUCKET_NAME = "my-portfolio-downloads-eu-2"
 
 export const createCloudinaryStreamForImage = (
   publicId: string | undefined,
@@ -49,5 +51,28 @@ export const createCloudinaryStreamForVideo = (
 
   const passThrough = new PassThrough();
   passThrough.pipe(cloudinaryStream);
+  return passThrough;
+};
+
+
+export const createS3Stream = (fileKey: string) => {
+  if (!fileKey) {
+    throw new Error("fileKey is required");
+  }
+
+  const passThrough = new PassThrough();
+
+  s3.send(
+    new PutObjectCommand({
+      Bucket: BUCKET_NAME,
+      Key: `${FOLDER_LOCATION}/${fileKey}`,
+      Body: passThrough,
+      // ContentType: contentType,
+      ACL: "private", // Ensure objects are private unless you change this
+    })
+  ).catch((error) => {
+    console.error("Upload to S3 failed:", error);
+  });
+
   return passThrough;
 };
