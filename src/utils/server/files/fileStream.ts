@@ -70,9 +70,9 @@ export const createS3Stream = (fileKey: string) => {
     },
   });
 
-  upload.done().catch((error) => {
-    throw new Error("Upload failed", error)
-  });
+  upload.done().catch((err) => {
+    console.log("Error uploading to S3", err)
+  })
 
   return passThrough;
 };

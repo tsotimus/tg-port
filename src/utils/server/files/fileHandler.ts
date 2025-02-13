@@ -12,8 +12,13 @@ const formidablePromise = (
   req: NextApiRequest,
   opts: Options
 ): Promise<FormidablePromise> => {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     const form = new Formidable(opts);
+    const uploadPromises: Promise<void>[] = []; // Array to hold upload promises
+
+    const fieldStore: Fields = {}; // Object to store fields
+    const fileStore:Files = {}; // Object to store files
+
     form.on("error", (err) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (err?.httpCode === 413) {
@@ -22,9 +27,17 @@ const formidablePromise = (
         reject(new Error("Unknown error: " + err));
       }
     });
-    form.parse(req, function (err, fields, files) {
+
+    form.on("end", () => {
+      Promise.all(uploadPromises)
+        .then(() => resolve({ fields: fieldStore, files: fileStore })) // Resolve with fields and files
+        .catch(reject); 
+    });
+
+    form.parse(req, (err, fields, files) => {
       if (err) return reject(new Error("Body parser: " + err));
-      resolve({ fields: fields, files: files });
+      Object.assign(fieldStore, fields); // Store fields in the object
+      Object.assign(fileStore, files); // Store files in the object
     });
   });
 };

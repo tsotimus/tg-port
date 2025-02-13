@@ -29,6 +29,8 @@ export default async function handler(
       });
 
       if (files) {
+        console.log("Here");
+        
         return res
           .status(200)
           .json(createApiResponse<ResponseData>({ message: "Success" }));
