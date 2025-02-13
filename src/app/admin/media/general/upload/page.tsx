@@ -2,7 +2,7 @@
 
 import Stack from "@/components/layouts/Stack";
 import Typography from "@/components/Typography";
-import UploadMediaForm from "@/features/Admin/Media/UploadMediaForm";
+import UploadMediaForm from "@/features/Admin/Media/General/UploadMediaForm";
 
 const UploadMediaPage = () => {
   return (

@@ -1,11 +1,12 @@
 "use client";
 
-import useMyMedia from "./useMyMedia";
+
 import { FullPageLoader } from "@/components/loaders/Loading";
 import MediaGrid from "./MediaGrid";
+import useMyGeneralMedia from "./useMyGeneralMedia";
 
 const AllMedia = () => {
-  const { data, isLoading } = useMyMedia();
+  const { data, isLoading } = useMyGeneralMedia();
 
   return isLoading && data ? <FullPageLoader /> : <MediaGrid data={data} />;
 };

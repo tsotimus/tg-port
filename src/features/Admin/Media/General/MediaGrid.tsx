@@ -1,5 +1,5 @@
 import { CldImage } from "next-cloudinary";
-import { type Media } from "./types";
+import { type Media } from "../types";
 import { useState } from "react";
 import Typography from "@/components/Typography";
 import CopyToClipboard from "@/components/loaders/CopyToClipboard";

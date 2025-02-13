@@ -1,6 +1,4 @@
 import DropzoneInput from "@/components/form/DropzoneInput";
-import EmptyPage from "@/components/layouts/EmptyPage";
-import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import { MEDIA_HEADERS } from "@/utils/client/headers";
 import axios from "axios";
