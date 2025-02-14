@@ -62,6 +62,7 @@ export const ALL_MDX_INSERTS: Record<string, InsertProps> = {
       href: "",
       text: "Click here",
       variant: "default",
+      eventName: "SpaceGoblinGame"
     },
   }
 }

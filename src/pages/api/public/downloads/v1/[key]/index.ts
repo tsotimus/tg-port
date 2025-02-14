@@ -1,3 +1,4 @@
+// import { getDistinctId, serverTrack } from "@/features/Analytics/ServerTracking";
 import { s3 } from "@/lib/s3";
 import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
 import { DOWNLOAD_BUCKET } from "@/utils/server/files/constants";
@@ -15,8 +16,14 @@ export default async function handler(
   
         const validatedParam = fileNameSchema.safeParse(key);
 
-        console.log(key);
 
+        // const posthogId = getDistinctId(req)
+
+        // console.log(posthogId)
+
+        // serverTrack({distinct_id: posthogId, event: "Downloading"})
+
+        
   
         if(!validatedParam.success){
           return res.status(400).json(createApiResponse(null, formatZodErrors(validatedParam.error.errors)));

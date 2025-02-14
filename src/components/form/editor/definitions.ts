@@ -99,6 +99,11 @@ const MDX_COMPONENTS: JsxComponentDescriptor[] = [
         required: true
       },
       {
+        name: "eventName",
+        type: "string",
+        required: true
+      },
+      {
         name: "variant",
         type: "string",
         required: false
