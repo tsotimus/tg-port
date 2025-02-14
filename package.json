@@ -58,6 +58,8 @@
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.2.1",
     "nuqs": "^2.3.2",
+    "posthog-js": "^1.217.4",
+    "posthog-node": "^4.6.0",
     "react": "^18",
     "react-day-picker": "8.10.1",
     "react-dom": "^18",

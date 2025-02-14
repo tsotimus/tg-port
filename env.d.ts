@@ -7,6 +7,8 @@ declare namespace NodeJS {
       MONGODB_URI: string;
       CLOUDINARY_URL: string;
       NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: string;
+      NEXT_PUBLIC_POSTHOG_KEY: string;
+      NEXT_PUBLIC_POSTHOG_HOST: string;
       IS_UNDER_CONSTRUCTION: 'true' | 'false';
       IS_OFFLINE_DEV: 'true' | 'false';
     }
