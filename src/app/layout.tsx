@@ -19,6 +19,7 @@ import {
   SITE_URL,
 } from "@/config/constants";
 import { type ReactNode } from "react";
+import TrackPageView from "@/features/Analytics/TrackPageView";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -122,6 +123,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Providers>
           <div className="relative">
             <Header />
+            <TrackPageView/>
             <main
               id="skip-nav"
               className="mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8 min-h-[80vh]"

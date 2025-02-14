@@ -7,4 +7,4 @@ const nodePosthog = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
 })
 
 export default nodePosthog;
-  
+

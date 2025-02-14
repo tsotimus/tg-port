@@ -3,7 +3,7 @@ import { type NextApiRequest, type NextApiResponse } from "next";
 import cloudinary from "@/lib/cloudinary";
 import { createApiResponse, formatZodErrors } from "@/utils/server/createApiResponse";
 import { type GenericErrorResponse } from "@/types/api";
-import { type GetMediaResponse } from "@/features/Admin/Media/types";
+import { type GetGeneralMediaResponse } from "@/features/Admin/Media/types";
 import { CLOUD_FOLDER_LOCATION } from "@/utils/server/files/constants";
 import { z } from "zod";
 
@@ -24,7 +24,7 @@ export default async function handler(
         .execute();
 
       return res.status(200).json(
-        createApiResponse<GetMediaResponse>({
+        createApiResponse<GetGeneralMediaResponse>({
           data: resources,
           meta: { page: 0 },
         })

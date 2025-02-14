@@ -36,6 +36,22 @@ const generateConfig = async () => {
           ]
         : [...REDIRECTS];
     },
+    async rewrites() {
+      return [
+        {
+          source: "/digestion/static/:path*",
+          destination: "https://eu.i.posthog.com/static/:path*",
+        },
+        {
+          source: "/digestion/:path*",
+          destination: "https://eu.i.posthog.com/:path*",
+        },
+        {
+          source: "/digestion/decide",
+          destination: "https://eu.i.posthog.com/decide",
+        },
+      ];
+    },
   };
   return nextConfig;
 };
