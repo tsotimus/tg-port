@@ -1,9 +1,9 @@
 "use client";
 
+import { MultiSelectInput } from "@/components/form/inputs/MultiSelectInput";
 import { useGetTagsInfinite } from "./useGetTags"
 import { useMemo } from "react"
 import { RegisterOptions } from "react-hook-form";
-import { MultiSelectInput } from "@/components/form/Inputs";
 
 
 interface TagsSelectProps {

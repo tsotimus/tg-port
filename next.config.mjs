@@ -19,11 +19,6 @@ const generateConfig = async () => {
     experimental: {
       optimizePackageImports: ["shiki", "@icons-pack/react-simple-icons"],
     },
-    eslint: {
-      // TODO: Warning: This allows production builds to successfully complete even if
-      // your project has ESLint errors.
-      ignoreDuringBuilds: true,
-    },
     poweredByHeader: false,
     redirects: async () => {
       return IS_UNDER_CONSTRUCTION
