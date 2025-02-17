@@ -4,7 +4,7 @@ import Project from "@/models/Project";
 import { type HydratedDocument } from "mongoose";
 import { type ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
-import { Metadata, ResolvingMetadata } from "next";
+import { type Metadata, ResolvingMetadata } from "next";
 
 export const revalidate = 60;
 

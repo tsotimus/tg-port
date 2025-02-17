@@ -2,7 +2,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import useFormattedDate from "@/hooks/useFormattedDate"
 import Typography from "@/components/Typography"
 import CopyToClipboard from "@/components/loaders/CopyToClipboard"
-import { ListBlobResultBlob } from "@vercel/blob"
+import { type ListBlobResultBlob } from "@vercel/blob"
 import useFormattedFileSize from "@/hooks/useFormattedFileSize"
 import { truncateString } from "@/utils/client/utils"
 

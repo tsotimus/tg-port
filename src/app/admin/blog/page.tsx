@@ -3,7 +3,7 @@ import { Link } from "@/components/Link";
 import Typography from "@/components/Typography";
 import { Button } from "@/components/ui/button";
 import MyBlogPosts from "@/features/Admin/BlogPosts/MyBlogPosts";
-import { Metadata } from "next";
+import { type Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "My Blog"

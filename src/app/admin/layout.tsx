@@ -1,6 +1,6 @@
 import { SITE_SHORT_NAME, SITE_NAME, } from "@/config/constants";
-import { Metadata } from "next";
-import { ReactNode } from "react";
+import { type Metadata } from "next";
+import { type ReactNode } from "react";
 
 export const metadata: Metadata = {
     title: {

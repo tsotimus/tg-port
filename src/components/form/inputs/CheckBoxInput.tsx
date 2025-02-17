@@ -1,5 +1,5 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { CheckBoxProps } from "./types";
+import { type CheckBoxProps } from "./types";
 import { FormRow } from "../FormLayout";
 import { FormControl, FormLabel } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";

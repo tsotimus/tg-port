@@ -1,7 +1,7 @@
 import { type Errors, type GenericApiResponse } from "@/types/api";
 import { fetcher } from "@/utils/client/genericFetchers";
 import useSWR from "swr";
-import { ListBlobResultBlob } from "@vercel/blob";
+import { type ListBlobResultBlob } from "@vercel/blob";
 
 const useMyLargeMedia = () => {
   const { data, error, isLoading } = useSWR<

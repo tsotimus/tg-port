@@ -5,7 +5,7 @@ import DropzoneInput from "@/components/form/DropzoneInput";
 import { Button } from "@/components/ui/button";
 import { MEDIA_HEADERS } from "@/utils/client/headers";
 import axios from "axios";
-import { Accept } from "react-dropzone";
+import { type Accept } from "react-dropzone";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 

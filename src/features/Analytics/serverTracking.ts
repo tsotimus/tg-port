@@ -1,5 +1,5 @@
 import nodePosthog from "@/lib/posthog";
-import { NextApiRequest } from "next";
+import { type NextApiRequest } from "next";
 import { v7 as uuid } from 'uuid';
 
 /**

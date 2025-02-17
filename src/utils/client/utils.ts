@@ -1,6 +1,6 @@
 import {match} from "ts-pattern"
 
-export const truncateString = (str: string, maxLength: number, reverse: boolean = false) => {
+export const truncateString = (str: string, maxLength: number, reverse = false) => {
     return match(str.length > maxLength)
         .with(true, () => 
             match(reverse)

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button, ButtonProps } from "./ui/button";
+import { Button, type ButtonProps } from "./ui/button";
 import { type PropsWithChildren } from "react";
 
 interface ButtonLinkProps {
