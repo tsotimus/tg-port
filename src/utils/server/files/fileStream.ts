@@ -1,9 +1,7 @@
 import cloudinary from "@/lib/cloudinary";
 import { type File, type VolatileFile } from "formidable";
 import { PassThrough } from "stream";
-import { s3 } from "@/lib/s3";
-import { CLOUD_FOLDER_LOCATION, DOWNLOAD_BUCKET } from "./constants";
-import { Upload } from "@aws-sdk/lib-storage";
+import { CLOUD_FOLDER_LOCATION } from "./constants";
 
 export type VolatileFileType = InstanceType<typeof VolatileFile>;
 
@@ -50,29 +48,4 @@ export const createCloudinaryStreamForVideo = (
   const passThrough = new PassThrough();
   passThrough.pipe(cloudinaryStream);
   return passThrough;
-};
-
-
-export const createS3Stream = (fileKey: string) => {
-  if (!fileKey) {
-    throw new Error("fileKey is required");
-  }
-
-  const passThrough = new PassThrough();
-
-  const upload = new Upload({
-    client: s3,
-    params: {
-      Bucket: DOWNLOAD_BUCKET,
-      Key: fileKey,
-      Body: passThrough,
-      ACL: "private",
-    },
-  });
-
-  const uploadPromise = upload.done()
-    .then(() => console.log(`✅ S3 upload complete: ${fileKey}`))
-    .catch((err) => console.error(`❌ S3 upload error: ${fileKey}`, err));
-
-  return { stream: passThrough, uploadPromise };
 };
