@@ -23,7 +23,7 @@ const CreateProject = () => {
     //TODO: Implement Type safe API call 
     axios
       .post("/api/admin/v1/projects", data)
-      .then((res) => {
+      .then(() => {
         // const id = res.data.data.id;
         toast.success("It worked!")
         // router.push(`/admin/projects/${id}`);

@@ -4,7 +4,7 @@ import Project from "@/models/Project";
 import { type HydratedDocument } from "mongoose";
 import { type ProjectDisplayWithTags, type ProjectDisplay } from "@/types/project";
 import ProjectArticle from "@/features/Public/Projects/individual/ProjectArticle";
-import { type Metadata, ResolvingMetadata } from "next";
+import { type Metadata } from "next";
 
 export const revalidate = 60;
 
@@ -29,11 +29,8 @@ async function getProject(slug: string) {
   return project;
 }
 
-export async function generateMetadata(
-  { params }: ProjectPageProps,
-  // parent: ResolvingMetadata
-): Promise<Metadata> {
-  // read route params
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  // eslint-disable-next-line @typescript-eslint/await-thenable
   const slug = (await params).slug
  
   // fetch data

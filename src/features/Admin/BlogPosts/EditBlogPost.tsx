@@ -39,7 +39,7 @@ const EditBlogPost = ({id, post}: EditBlogPostProps) => {
       //TODO: Implement Type safe API call 
         axios
         .patch(`/api/admin/v1/blog/${id}`, data)
-        .then((res) => {
+        .then(() => {
             //Reset the form
             methods.reset();
             toast.success("Blog post updated successfully");

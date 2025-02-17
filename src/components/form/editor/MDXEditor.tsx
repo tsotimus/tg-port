@@ -1,7 +1,6 @@
 // You can use this code in a separate component that's imported in your pages.
 import type { CodeBlockEditorDescriptor } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
-import dynamic from "next/dynamic";
 import MDX_COMPONENTS from "./definitions";
 
 import {
@@ -28,11 +27,6 @@ import {
 import { Controller, type RegisterOptions, useFormContext } from "react-hook-form";
 import SelectComponent from "./SelectComponent";
 import { ForwardRefEditor } from "./ForwardedRefEditor";
-
-// const ImportedEditor = dynamic(
-//   () => import("@mdxeditor/editor").then((mod) => mod.MDXEditor),
-//   { ssr: false }
-// );
 
 const PlainTextCodeEditorDescriptor: CodeBlockEditorDescriptor = {
   match: () => true,

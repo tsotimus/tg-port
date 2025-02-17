@@ -1,19 +1,14 @@
-import { getHighlighter, type HighlighterCoreOptions } from 'shiki'
 import type { MDXRemoteProps } from 'next-mdx-remote/rsc'
 import rehypePrettyCode from 'rehype-pretty-code'
-import oneDarkPro from 'shiki/themes/one-dark-pro.mjs'
-import tokyo from "shiki/themes/tokyo-night.mjs"
 import owl from "shiki/themes/night-owl.mjs"
-// import light from "shiki/themes/light-plus.mjs"
-// import oneLight from "shiki/themes/l"
 import useMDXComponents from './components/useMDXComponents'
 import remarkGfm from 'remark-gfm'
 
-interface ConfigProps{
+interface UseMDXConfigProps {
     source: string
 }
 
-const config = ({source}:ConfigProps): MDXRemoteProps => {
+const useMDXConfig = ({source}:UseMDXConfigProps): MDXRemoteProps => {
   const components = useMDXComponents()
 
   const config: MDXRemoteProps = {
@@ -48,4 +43,4 @@ const config = ({source}:ConfigProps): MDXRemoteProps => {
   return config
 }
 
-export default config
+export default useMDXConfig

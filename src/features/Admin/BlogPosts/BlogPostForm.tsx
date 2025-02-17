@@ -2,7 +2,7 @@
 
 import MDXEditor from "@/components/form/editor/MDXEditor"
 import { FormRow } from "@/components/form/FormLayout"
-import { MultiSelectInput, SelectInput, TextInput } from "@/components/form/Inputs"
+import { SelectInput, TextInput } from "@/components/form/Inputs"
 import Stack from "@/components/layouts/Stack"
 import TagsSelect from "@/features/Public/Tags/TagsSelect"
 import { BLOG_STATUS_OPTIONS } from "./constants"

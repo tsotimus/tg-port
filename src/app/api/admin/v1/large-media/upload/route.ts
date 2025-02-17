@@ -8,11 +8,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     const jsonResponse = await handleUpload({
       body,
       request,
-      onBeforeGenerateToken: async (
-        pathname: string,
-      ) => {
-      
- 
+      onBeforeGenerateToken: async () => {
         return {
           allowedContentTypes: undefined,
           addRandomSuffix: false,

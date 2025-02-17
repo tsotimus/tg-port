@@ -30,7 +30,7 @@ export const getDistinctId = (req: NextApiRequest): string | null => {
         const data = JSON.parse(dataString) as PostHogCookie;
         console.log(data);
         return data.distinct_id;
-    } catch (error) {
+    } catch {
         return null;
     }
 };

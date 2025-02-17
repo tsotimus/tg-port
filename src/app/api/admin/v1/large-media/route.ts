@@ -26,7 +26,7 @@ export async function GET(request: Request) {
     const { blobs } = await list({
         prefix: BLOB_LOCATION,
         limit: params.data.limit,
-        cursor: params.data.nextToken || undefined
+        cursor: params.data.nextToken ?? undefined
     });
     
     return Response.json(createApiResponse(blobs));

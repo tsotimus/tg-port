@@ -2,7 +2,6 @@ import Typography from "@/components/Typography";
 import Stack from "@/components/layouts/Stack";
 import { Separator } from "@/components/ui/separator";
 import SuggestedActions from "./SuggestedActions";
-import EmptyPage from "@/components/layouts/EmptyPage";
 
 const Welcome = () => {
   return (

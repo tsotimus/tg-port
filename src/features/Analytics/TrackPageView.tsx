@@ -14,6 +14,7 @@ const TrackPageView = () => {
         track(title);
     }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   return null;
