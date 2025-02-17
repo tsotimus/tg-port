@@ -8,9 +8,9 @@ import BlogArticle from "@/features/Public/Blog/BlogArticle";
 import { readingTime } from "reading-time-estimator";
 
 type PreviewBlogPageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 
@@ -36,7 +36,8 @@ async function getBlogPost(id: string) {
   }  
 }
 
-export default async function PreviewBlogPage({ params }: PreviewBlogPageProps) {
+export default async function PreviewBlogPage(props: PreviewBlogPageProps) {
+  const params = await props.params;
   const { id } = params;
   const currentPost = await getBlogPost(id);
   if (!currentPost) {

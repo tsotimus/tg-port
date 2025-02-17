@@ -10,9 +10,9 @@ import { readingTime } from 'reading-time-estimator'
 export const revalidate = 60;
 
 type BlogPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -50,7 +50,8 @@ async function getBlogPost(slug: string) {
   }  
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage(props: BlogPageProps) {
+  const params = await props.params;
   const { slug } = params;
   const currentPost = await getBlogPost(slug);
   if (!currentPost) {

@@ -30,7 +30,7 @@ function _Tabs({
   onChange?: (index: number) => void;
   children: ReactNode;
   storageKey?: string;
-}): ReactElement {
+}): ReactElement<any> {
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
 
   useEffect(() => {
@@ -116,7 +116,7 @@ function _Tabs({
 export function Tab({
   children,
   ...props
-}: ComponentProps<typeof HeadlessTab.Panel>): ReactElement {
+}: ComponentProps<typeof HeadlessTab.Panel>): ReactElement<any> {
   return (
     <HeadlessTab.Panel {...props} className="nx-rounded nx-pt-6">
       {children}

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, type RefObject } from "react";
 
-export const useDimensions = (ref: RefObject<HTMLElement>) => {
+export const useDimensions = (ref: RefObject<HTMLElement | null>) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {

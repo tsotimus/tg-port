@@ -9,9 +9,9 @@ import { type Metadata } from "next";
 export const revalidate = 60;
 
 type ProjectPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 async function getProject(slug: string) {
@@ -58,7 +58,8 @@ export async function generateStaticParams() {
 
 
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default async function ProjectPage(props: ProjectPageProps) {
+  const params = await props.params;
   const { slug } = params;
   const currentProject = await getProject(slug);
   if (!currentProject) {

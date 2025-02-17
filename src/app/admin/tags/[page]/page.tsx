@@ -23,7 +23,8 @@ const getTags = async (page: number) => {
     return currentTags;
 };
 
-const TagsPage = async({params}: {params: {page: string}}) => {
+const TagsPage = async (props: {params: Promise<{page: string}>}) => {
+    const params = await props.params;
     const pageSchema = z.coerce.number().int().nonnegative();
     const result = pageSchema.safeParse(params.page);
 

@@ -29,7 +29,7 @@ export function Callout({
   children,
   type = "default",
   emoji = TypeToEmoji[type],
-}: CalloutProps): ReactElement {
+}: CalloutProps): ReactElement<any> {
   return (
     <div
       className={cn(

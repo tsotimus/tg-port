@@ -7,7 +7,7 @@ export function Steps({
   children,
   className,
   ...props
-}: ComponentProps<"div">): ReactElement {
+}: ComponentProps<"div">): ReactElement<any> {
   return (
     <div
       className={cn(

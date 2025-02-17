@@ -52,16 +52,16 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.439.0",
     "mongoose": "^8.2.4",
-    "next": "^14.2.9",
+    "next": "15.1.7",
     "next-cloudinary": "^6.5.0",
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.2.1",
     "nuqs": "^2.3.2",
     "posthog-js": "^1.217.4",
     "posthog-node": "^4.6.0",
-    "react": "^18",
+    "react": "19.0.0",
     "react-day-picker": "8.10.1",
-    "react-dom": "^18",
+    "react-dom": "19.0.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.51.2",
     "react-simplemde-editor": "^5.2.0",
@@ -84,17 +84,23 @@
     "@hookform/devtools": "^4.3.1",
     "@types/formidable": "^3",
     "@types/node": "^20",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "15.1.7",
     "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@8.15.6"
+  "packageManager": "pnpm@8.15.6",
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.0.10",
+      "@types/react-dom": "19.0.4"
+    }
+  }
 }

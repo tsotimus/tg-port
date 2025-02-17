@@ -32,7 +32,8 @@ async function getBlogPost(id: string | null | undefined) {
 }
 
 
-export default async function EditBlogPostPage({ params }: { params: { id: string } }) {
+export default async function EditBlogPostPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
 
   const post = await getBlogPost(params.id);
 

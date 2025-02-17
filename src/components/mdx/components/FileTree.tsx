@@ -12,7 +12,7 @@ function useIndent() {
 
 interface FolderProps {
   name: string;
-  label?: ReactElement;
+  label?: ReactElement<any>;
   open?: boolean;
   defaultOpen?: boolean;
   onToggle?: (open: boolean) => void;
@@ -21,11 +21,11 @@ interface FolderProps {
 
 interface FileProps {
   name: string;
-  label?: ReactElement;
+  label?: ReactElement<any>;
   active?: boolean;
 }
 
-function Tree({ children }: { children: ReactNode }): ReactElement {
+function Tree({ children }: { children: ReactNode }): ReactElement<any> {
   return (
     <div
       className={cn(
@@ -40,7 +40,7 @@ function Tree({ children }: { children: ReactNode }): ReactElement {
   );
 }
 
-function Ident(): ReactElement {
+function Ident(): ReactElement<any> {
   const length = useIndent();
   return (
     <>

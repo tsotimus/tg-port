@@ -23,7 +23,8 @@ async function getProject(id: string | null | undefined) {
   return project;
 }
 
-export default async function EditPage({ params }: { params: { id: string } }) {
+export default async function EditPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const project = await getProject(params.id);
 
   if (!project) {
