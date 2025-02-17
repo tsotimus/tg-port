@@ -1,8 +1,8 @@
 import ButtonLink from "@/components/ButtonLink"
 import Typography from "@/components/Typography"
-import AllDownloads from "./AllDownloads"
+import AllLargeMedia from "./AllLargeMedia"
 
-const DownloadsDisplay = () => {
+const LargeMediaDisplay = () => {
     return (
         <div className="flex flex-col space-y-8 mt-8">
             <div className="flex justify-between">
@@ -12,9 +12,9 @@ const DownloadsDisplay = () => {
                 </ButtonLink>
             </div>
             {/* <AllMedia/> */}
-            <AllDownloads/>
+            <AllLargeMedia/>
         </div>
     )
 }
 
-export default DownloadsDisplay
+export default LargeMediaDisplay

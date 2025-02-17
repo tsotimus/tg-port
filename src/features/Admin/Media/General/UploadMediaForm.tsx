@@ -1,3 +1,5 @@
+"use client";
+
 import ButtonLink from "@/components/ButtonLink";
 import DropzoneInput from "@/components/form/DropzoneInput";
 import { Button } from "@/components/ui/button";
@@ -16,11 +18,9 @@ type FormData = {
   media: FileList;
 };
 
-interface UploadMediaFormProps {
-  isDownloads?:boolean
-}
 
-const UploadMediaForm = ({isDownloads = false}:UploadMediaFormProps) => {
+
+const UploadMediaForm = () => {
   const methods = useForm<FormData>({
     mode: "onChange",
   });
@@ -31,17 +31,17 @@ const UploadMediaForm = ({isDownloads = false}:UploadMediaFormProps) => {
     reset,
   } = methods;
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async(data: FormData) => {
 
-    const endpoint = isDownloads ? "/api/admin/v1/downloads/upload" : "/api/admin/v1/media/upload"
 
     const formData = new FormData();
     for (let i = 0; i < data.media.length; i++) {
       formData.append(`media${i}`, data.media[i]);
     }
 
-    axios
-      .post(endpoint, formData, {
+
+      axios
+      .post("/api/admin/v1/media/upload", formData, {
         headers: {
           ...MEDIA_HEADERS,
         },
@@ -53,7 +53,8 @@ const UploadMediaForm = ({isDownloads = false}:UploadMediaFormProps) => {
       .catch(() => {
         toast.error("Something went wrong");
       });
-  };
+    }
+    
 
   return (
     <FormProvider {...methods}>
@@ -62,17 +63,16 @@ const UploadMediaForm = ({isDownloads = false}:UploadMediaFormProps) => {
           <DropzoneInput
             name="media"
             rules={{ required: "Media is required" }}
-            allowedFiles={isDownloads ? undefined : acceptedFiles}
+            allowedFiles={acceptedFiles}
           />
           <div className="flex space-x-4">
-            <ButtonLink variant="outline" href={isDownloads ? "/admin/media/downloads": "/admin/media/general"}>
+            <ButtonLink variant="outline" href="/admin/media/general">
               Back
             </ButtonLink>
             <Button type="submit" disabled={!isValid}>
               Submit
             </Button>
           </div>
-          
         </div>
       </form>
     </FormProvider>

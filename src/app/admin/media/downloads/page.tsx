@@ -1,10 +1,10 @@
 import { TabsContent } from "@/components/ui/tabs";
-import DownloadsDisplay from "@/features/Admin/Media/Downloads/DownloadsDisplay";
+import LargeMediaDisplay from "@/features/Admin/Media/Large/LargeMediaDisplay";
 
 const GeneralMediaPage = () => {
   return (
     <TabsContent value="downloads">
-      <DownloadsDisplay/>
+      <LargeMediaDisplay/>
     </TabsContent>
   );
 };

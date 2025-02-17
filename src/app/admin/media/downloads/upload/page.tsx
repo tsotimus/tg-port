@@ -1,15 +1,14 @@
-"use client";
 
 import Typography from "@/components/Typography";
-import UploadMediaForm from "@/features/Admin/Media/General/UploadMediaForm";
+import UploadLargeMediaForm from "@/features/Admin/Media/Large/UploadLargeMediaForm";
 
 const UploadMediaPage = () => {
   return (
     <div className="flex flex-col space-y-12">
       <Typography variant="h1" className="text-center">
-        Upload Download Media
+        Upload Large Media
       </Typography>
-      <UploadMediaForm isDownloads={true} />
+      <UploadLargeMediaForm/>
     </div>
   );
 };

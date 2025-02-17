@@ -35,14 +35,3 @@ export type GetGeneralMediaResponse = {
     page: number;
   };
 };
-
-export type DownloadsMedia = {
-  key:string;
-  lastModified: string;
-  size: number;
-}
-
-export type GetDownloadsMedia = {
-  files: Array<DownloadsMedia>
-  nextToken: null | string
-}
