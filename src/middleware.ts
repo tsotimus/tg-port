@@ -5,8 +5,8 @@ const PROTECTED_ROUTES = ["/admin(.*)", "/api/admin(.*)"]
 const CURRENTLY_PROTECTED_ROUTES = FEATURE_FLAGS.IS_OFFLINE_DEV ? [] : PROTECTED_ROUTES
 const isProtectedRoute = createRouteMatcher(CURRENTLY_PROTECTED_ROUTES);
 
-export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) auth().protect();
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) await auth.protect();
 });
 
 export const config = {
