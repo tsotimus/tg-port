@@ -10,8 +10,6 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.744.0",
-    "@aws-sdk/lib-storage": "^3.744.0",
     "@clerk/nextjs": "^5.5.2",
     "@headlessui/react": "^1.7.18",
     "@hookform/resolvers": "^3.3.4",
