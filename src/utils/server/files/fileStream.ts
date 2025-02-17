@@ -70,9 +70,9 @@ export const createS3Stream = (fileKey: string) => {
     },
   });
 
-  upload.done().catch((err) => {
-    console.log("Error uploading to S3", err)
-  })
+  const uploadPromise = upload.done()
+    .then(() => console.log(`✅ S3 upload complete: ${fileKey}`))
+    .catch((err) => console.error(`❌ S3 upload error: ${fileKey}`, err));
 
-  return passThrough;
+  return { stream: passThrough, uploadPromise };
 };

@@ -1,9 +1,6 @@
 import { type GenericErrorResponse } from "@/types/api";
 import { createApiResponse } from "@/utils/server/createApiResponse";
-import {
-  formidablePromise,
-  removeFileExtension,
-} from "@/utils/server/files/fileHandler";
+import { formidablePromise } from "@/utils/server/files/fileHandler";
 import { type MyVolatileFile, createS3Stream } from "@/utils/server/files/fileStream";
 import { type NextApiRequest, type NextApiResponse } from "next";
 
@@ -17,17 +14,24 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
+      const uploadPromises: Promise<void>[] = [];
+
       const { files } = await formidablePromise(req, {
         fileWriteStreamHandler: (file) => {
           const currentFile = file as MyVolatileFile; // Formidable VolatileFile type is not correct
           const fileName = currentFile.originalFilename!;
-          return createS3Stream(fileName)
+          const { stream, uploadPromise } = createS3Stream(fileName);
+
+          uploadPromises.push(uploadPromise); 
+
+          return stream
         },
         keepExtensions: true,
         allowEmptyFiles: false,
       });
 
       if (files) {
+        await Promise.all(uploadPromises);
         
         return res
           .status(200)
