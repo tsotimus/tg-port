@@ -1,7 +1,7 @@
 "use client"
 
 import cn from "clsx";
-import type { ReactElement, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 const TypeToEmoji = {
   default: "💡",
@@ -29,12 +29,12 @@ export function Callout({
   children,
   type = "default",
   emoji = TypeToEmoji[type],
-}: CalloutProps): ReactElement<any> {
+}: CalloutProps) {
   return (
     <div
       className={cn(
         "callout overflow-x-auto mt-6 flex rounded-lg border py-2 ltr:pr-4 rtl:pl-4",
-        "contrast-more:border-current contrast-more:border-current",
+        "contrast-more:border-current",
         classes[type]
       )}
     >

@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Tab as HeadlessTab } from "@headlessui/react";
 import cn from "clsx";
-import type { ComponentProps, ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { useCallback, useEffect, useState } from "react";
 
 type TabItem = string | ReactNode;
@@ -30,7 +30,7 @@ function _Tabs({
   onChange?: (index: number) => void;
   children: ReactNode;
   storageKey?: string;
-}): ReactElement<any> {
+}) {
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
 
   useEffect(() => {
@@ -116,7 +116,7 @@ function _Tabs({
 export function Tab({
   children,
   ...props
-}: ComponentProps<typeof HeadlessTab.Panel>): ReactElement<any> {
+}: ComponentProps<typeof HeadlessTab.Panel>) {
   return (
     <HeadlessTab.Panel {...props} className="nx-rounded nx-pt-6">
       {children}

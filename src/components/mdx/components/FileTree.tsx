@@ -2,7 +2,7 @@
 
 import cn from "clsx";
 import { createContext, memo, useCallback, useContext, useState } from "react";
-import type { ReactElement, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 const ctx = createContext(0);
 
@@ -12,7 +12,7 @@ function useIndent() {
 
 interface FolderProps {
   name: string;
-  label?: ReactElement<any>;
+  label?: ReactNode;
   open?: boolean;
   defaultOpen?: boolean;
   onToggle?: (open: boolean) => void;
@@ -21,11 +21,11 @@ interface FolderProps {
 
 interface FileProps {
   name: string;
-  label?: ReactElement<any>;
+  label?: ReactNode;
   active?: boolean;
 }
 
-function Tree({ children }: { children: ReactNode }): ReactElement<any> {
+function Tree({ children }: { children: ReactNode }) {
   return (
     <div
       className={cn(
@@ -40,7 +40,7 @@ function Tree({ children }: { children: ReactNode }): ReactElement<any> {
   );
 }
 
-function Ident(): ReactElement<any> {
+function Ident() {
   const length = useIndent();
   return (
     <>

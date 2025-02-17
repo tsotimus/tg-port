@@ -1,13 +1,13 @@
 "use client";
 
 import cn from "clsx";
-import type { ComponentProps, ReactElement } from "react";
+import type { ComponentProps } from "react";
 
 export function Steps({
   children,
   className,
   ...props
-}: ComponentProps<"div">): ReactElement<any> {
+}: ComponentProps<"div">) {
   return (
     <div
       className={cn(
