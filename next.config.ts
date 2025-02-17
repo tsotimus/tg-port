@@ -1,4 +1,4 @@
-// @ts-check
+import {type  NextConfig } from "next";
 
 const generateConfig = async () => {
   const IS_UNDER_CONSTRUCTION = process.env.IS_UNDER_CONSTRUCTION === "true";
@@ -12,8 +12,7 @@ const generateConfig = async () => {
     }
   ]
 
-  /** @type {import('next').NextConfig} */
-  const nextConfig = {
+  const nextConfig: NextConfig = {
     transpilePackages: ["@mdxeditor/editor", "geist"],
     reactStrictMode: true,
     experimental: {
