@@ -3,6 +3,13 @@ import { type CheckBoxProps } from "./types";
 import { FormRow } from "../FormLayout";
 import { FormControl, FormLabel } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
+import { type CheckedState } from "@radix-ui/react-checkbox";
+
+
+type FieldType = {
+  onChange: (checked: CheckedState) => void; 
+  value: boolean | undefined 
+}
 
 const CheckBoxInput = ({
     name,
@@ -17,7 +24,7 @@ const CheckBoxInput = ({
         control={control}
         rules={rules}
         defaultValue={defaultValue ?? false}
-        render={({ field: { onChange, value } }) => {
+        render={({ field: { onChange, value } }: {field: FieldType}) => {
           return (
             <FormRow>
               <FormControl>

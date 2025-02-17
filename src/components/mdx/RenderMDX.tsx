@@ -2,14 +2,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MDXRemote } from "next-mdx-remote/rsc";
-import config from "./config";
+import useMDXConfig from "./useMDXConfig";
 
 interface RenderMDXProps {
   source: string;
 }
  const RenderMDX = ({source}: RenderMDXProps) => {
 
-  const getConfig = config({source})
+  const getConfig = useMDXConfig({source})
 
   return (
     <MDXRemote

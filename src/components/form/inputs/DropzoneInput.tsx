@@ -1,6 +1,6 @@
 "use client";
 
-import { Controller, type RegisterOptions, useFormContext } from "react-hook-form";
+import { Controller, type Noop, type RegisterOptions, useFormContext } from "react-hook-form";
 import {
   type Accept,
   useDropzone,
@@ -25,6 +25,12 @@ interface DropzoneProps {
 // interface FileRejectionWithPath extends FileRejection {
 //   path: string;
 // }
+
+type FieldType = {
+  onChange: (...event: unknown[]) => void
+  value: FileWithPath[] | undefined 
+  onBlur: Noop
+}
 
 const DropzoneInput = ({
   name,
@@ -98,7 +104,7 @@ const DropzoneInput = ({
       name={name}
       rules={rules}
       control={control}
-      render={({ field: { onChange, onBlur, value } }) => {
+      render={({ field: { onChange, onBlur, value } }:{field: FieldType}) => {
         return (
           <div className="w-full max-w-2xl flex-1 flex flex-col items-center border-2 rounded border-gray-200 bg-gray-100 text-gray-400">
             <div

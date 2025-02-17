@@ -1,7 +1,7 @@
 "use client";
 
 import ButtonLink from "@/components/ButtonLink";
-import DropzoneInput from "@/components/form/DropzoneInput";
+import DropzoneInput from "@/components/form/inputs/DropzoneInput";
 import { Button } from "@/components/ui/button";
 import { MEDIA_HEADERS } from "@/utils/client/headers";
 import axios from "axios";

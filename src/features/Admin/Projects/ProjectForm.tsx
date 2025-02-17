@@ -2,9 +2,9 @@
 
 import MDXEditor from "@/components/form/editor/MDXEditor";
 import { FormRow } from "@/components/form/FormLayout";
-import { TextInput } from "@/components/form/Inputs";
 import CheckBoxInput from "@/components/form/inputs/CheckBoxInput";
 import CalendarInput from "@/components/form/inputs/DatePickerInput";
+import { TextInput } from "@/components/form/inputs/TextInput";
 import Stack from "@/components/layouts/Stack";
 import { Button } from "@/components/ui/button";
 import TagsSelect from "@/features/Public/Tags/TagsSelect";
