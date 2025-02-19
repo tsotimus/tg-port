@@ -15,12 +15,13 @@ yarn dev
 - [ ] Article typography styling
 - [ ] Video Component for MDX
 - [ ] CSP Policy
-- [ ] SiteMap
+- [x] SiteMap
 - [ ] Sort out Nav and Footer (Socials + About me)
 
 #### Later
 
 - [ ] Clickable Tags
+- [ ] Pagination on Blog and Projects
 - [ ] Project and Blog search functionality with Atlas Search
 - [ ] Add a contact form with Resend
 - [ ] Live/Events
