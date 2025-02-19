@@ -9,9 +9,7 @@ import type { MetadataRoute } from 'next'
 
 async function fetchAllProjects() {
     await dbConnect();
-    const projects = await Project.find<HydratedDocument<ProjectDisplay>>({
-      featured: true,
-    }).populate("techStack");
+    const projects = await Project.find<HydratedDocument<ProjectDisplay>>()
   
     const serialisedProjects = projects.map((project) => project.toJSON())
     return serialisedProjects
