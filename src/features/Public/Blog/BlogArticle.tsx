@@ -21,8 +21,8 @@ const BlogArticle = ({post, mdxContent, estimatedReadingTime}: BlogArticleProps)
             <BlogArticleHeader post={post}/>
             <BlurImage
                 src={post.coverImage}
-                width={1280}
-                height={832}
+                width={768}
+                height={458}
                 alt={post.title}
                 className="my-12 rounded-lg"
                 lazy={false}

@@ -19,8 +19,8 @@ const ProjectArticle = ({mdxContent, project}: ProjectArticleProps) => {
            <ArticleHeader project={project} />
             <BlurImage
                 src={project.coverImage}
-                width={1280}
-                height={832}
+                width={768}
+                height={458}
                 alt={project.title}
                 className="my-12 rounded-lg"
                 lazy={false}

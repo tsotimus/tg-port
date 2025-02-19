@@ -14,8 +14,8 @@ export const CloudImage = ({ src, alt, size }: CloudImageProps) => {
     .with("normal", () => (
       <BlurImage
         src={src}
-        width={1280}
-        height={832}
+        width={768}
+        height={458}
         alt={alt ?? ""}
         className="my-12 rounded-lg w-full"
       />
@@ -32,8 +32,8 @@ export const CloudImage = ({ src, alt, size }: CloudImageProps) => {
     .otherwise(() => (
       <BlurImage
         src={src}
-        width={1280} // Default size
-        height={832}
+        width={768} // Default size
+        height={458}
         alt={alt ?? ""}
         className="my-12 rounded-lg w-full"
       />
