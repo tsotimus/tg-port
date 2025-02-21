@@ -3,7 +3,7 @@ import LargeMediaDisplay from "@/features/Admin/Media/Large/LargeMediaDisplay";
 
 const GeneralMediaPage = () => {
   return (
-    <TabsContent value="downloads">
+    <TabsContent value="large">
       <LargeMediaDisplay/>
     </TabsContent>
   );

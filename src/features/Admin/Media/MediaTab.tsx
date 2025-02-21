@@ -15,7 +15,7 @@ const MediaTab = ({children}:PropsWithChildren) => {
         <Tabs defaultValue={"general"} value={tab ?? "general"} className="w-full" onValueChange={(v) => router.push(`/admin/media/${v}`)}>
             <TabsList>
             <TabsTrigger value="general">General</TabsTrigger>
-            <TabsTrigger value="downloads">Downloads</TabsTrigger>
+            <TabsTrigger value="large">Downloads</TabsTrigger>
             </TabsList>
             {children}
         </Tabs>

@@ -15,9 +15,9 @@ const useTabValue = () => {
     const lastValue = splitPath[splitPath.length -1]
 
     return match(lastValue)
-    .with("downloads", () => "downloads")
+    .with("large", () => "large")
     .with("upload", () => {
-        if(splitPath.includes("downloads")) return "downloads"
+        if(splitPath.includes("large")) return "large"
         return "general"
     }).otherwise(() => "general")
 }
