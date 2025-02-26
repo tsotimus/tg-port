@@ -4,6 +4,7 @@ import { fetcher } from "@/utils/client/genericFetchers"
 import useSWRInfinite from "swr/infinite"
 
 
+// Unused
 export const useGetTagsInfinite = () => {
     const getKey = (pageIndex: number, previousPageData: GenericPaginatedApiResponse<TagDisplay>) => {
         if (previousPageData && !previousPageData.data) return null // reached the end
