@@ -9,3 +9,8 @@ export const serverParamSchema = z.string().min(1).refine(val => (val !== 'undef
 export const fileNameSchema = z.string().refine((val) => /\.\w+$/.test(val), {
     message: "Invalid file extension",
 });
+
+export const paginationParamSchema = z.object({
+    page: z.coerce.number().nullable(),
+    limit: z.coerce.number()
+})

@@ -17,24 +17,32 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationEllipsis, PaginationNext } from "../ui/pagination";
+import { match } from "ts-pattern";
 
-interface DataTableProps<TData, TValue> {
+type  DataTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  pagination?: boolean;
+  pagination?: {
+    page: number;
+    setPage: (num: number) => Promise<URLSearchParams>
+    totalPages: number;
+  };
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  pagination = false
+  pagination
 }: DataTableProps<TData, TValue>) {
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel:  pagination ? getPaginationRowModel() : undefined,
   });
+
+  console.log(pagination?.page, pagination?.totalPages)
 
   return (
     <div className="rounded-md border">
@@ -84,18 +92,45 @@ export function DataTable<TData, TValue>({
         pagination && (
           <Pagination>
             <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
+              {
+                pagination.page > 1 && (
+                  <PaginationItem className="hover:cursor-pointer">
+                    <PaginationPrevious onClick={() => pagination.setPage(pagination.page - 1)} />
+                  </PaginationItem>
+                )
+              }
+              {
+                match({
+                  page: pagination.page,
+                  totalPages: pagination.totalPages
+                })
+                .with({ page: 0, totalPages: 1 }, () => null)
+                .otherwise(({totalPages, page}) => {
+                  return (
+                    <>
+                      {Array.from({ length: totalPages }).map((_, i) => (
+                        <PaginationItem key={i} className="hover:cursor-pointer">
+                          <PaginationLink onClick={() => pagination.setPage(i+1)} isActive={i + 1 === page}>{i + 1}</PaginationLink>
+                        </PaginationItem>
+                      ))}
+                    </>
+                  )
+                })
+              }
+              {
+                pagination.totalPages > 2 && (
+                  <PaginationItem>
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                )
+              }
+              {
+                pagination.page !== pagination.totalPages && (
+                  <PaginationItem className="hover:cursor-pointer">
+                    <PaginationNext onClick={() => pagination.setPage(pagination.page + 1)} />
+                  </PaginationItem>
+                )
+              }
             </PaginationContent>
           </Pagination>
         )
