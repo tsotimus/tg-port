@@ -7,7 +7,7 @@ const generateConfig = async () => {
   const REDIRECTS = [
     {
       source: "/admin/tags",
-      destination: "/admin/tags/0",
+      destination: "/admin/tags/1",
       permanent: true,
     },
   ]

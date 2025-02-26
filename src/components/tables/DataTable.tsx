@@ -24,7 +24,7 @@ type  DataTableProps<TData, TValue> = {
   data: TData[];
   pagination?: {
     page: number;
-    setPage: (num: number) => Promise<URLSearchParams>
+    setPage: (num: number) => Promise<void>
     totalPages: number;
   };
 }

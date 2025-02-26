@@ -7,9 +7,13 @@ import { type TagDisplay } from "@/types/tag";
 import { DataTable } from "@/components/tables/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
 import { parseAsBoolean, useQueryState } from "nuqs";
+import { type GenericPaginatedApiResponse } from "@/types/api";
+import useGetTechTags from "@/features/Public/Tags/useGetTags";
+import { useRouter } from "next/navigation";
 
 interface TagDisplayProps {
-    tags: TagDisplay[];
+    initialTagData: GenericPaginatedApiResponse<TagDisplay>;
+    page: number
 }
 
 const COLUMNS: ColumnDef<TagDisplay, string | number>[] = [
@@ -40,8 +44,15 @@ const COLUMNS: ColumnDef<TagDisplay, string | number>[] = [
 ];
 
 
-const TagsDisplay = ({tags}:TagDisplayProps) => {
+const TagsDisplay = ({initialTagData, page}:TagDisplayProps) => {
     const [createTag, setShowCreateTag] = useQueryState("createTag", parseAsBoolean.withDefault(false));
+    const router = useRouter()
+
+    const {tags} = useGetTechTags({page: page, limit: 5, fallbackData: initialTagData})
+
+    const handleSetPage = async(num: number) => {
+        router.push(`${num}`)
+    }
 
     return (
         <Stack gap={8}>
@@ -53,7 +64,11 @@ const TagsDisplay = ({tags}:TagDisplayProps) => {
                 </div>
             )}
             {createTag && <CreateTagForm afterSubmit={() => setShowCreateTag(false)} />}
-            <DataTable columns={COLUMNS} data={tags} />
+            <DataTable columns={COLUMNS} data={tags} pagination={{
+                page: page,
+                totalPages: initialTagData.meta.totalPages,
+                setPage: handleSetPage
+            }}/>
         </Stack>
     );
 };

@@ -1,27 +1,31 @@
-import { GenericPaginatedApiResponse } from "@/types/api"
-import { TagDisplay } from "@/types/tag"
-import { fetcher } from "@/utils/client/genericFetchers"
-import useSWRInfinite from "swr/infinite"
+import { GenericPaginatedApiResponse, type Errors, type GenericApiResponse } from "@/types/api";
+import { type TagDisplay } from "@/types/tag";
+import { fetcher } from "@/utils/client/genericFetchers";
+import useSWR from "swr";
 
-
-// Unused
-export const useGetTagsInfinite = () => {
-    const getKey = (pageIndex: number, previousPageData: GenericPaginatedApiResponse<TagDisplay>) => {
-        if (previousPageData && !previousPageData.data) return null // reached the end
-        if (pageIndex === 0) return "/api/public/tags/v1?limit=30" // first page
-        return `/api/public/tags/v1?page=${previousPageData.meta.currentPage + 1}&limit=30` // add cursor for next pages
-    }
-
-    const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite<GenericPaginatedApiResponse<TagDisplay>>(getKey, fetcher)
-
-    return {
-        tags: data ? data.flatMap(page => page.data) : [],
-        meta: data ? data[0].meta : undefined,
-        isLoading,
-        isError: error,
-        isValidating,
-        mutate,
-        size,
-        setSize
-    }
+type UseGetTechTagsProps = {
+    page: number;
+    limit: number;
+    fallbackData?: GenericPaginatedApiResponse<TagDisplay>
 }
+const useGetTechTags = ({page, limit, fallbackData}:UseGetTechTagsProps) => {
+    const { data, isLoading, error } = useSWR<
+    GenericPaginatedApiResponse<TagDisplay>, Errors
+  >(`/api/public/tags/v1?limit=${limit}&page=${page}`, (key: string) => fetcher(key), {
+    fallbackData,
+    revalidateOnFocus: false,
+    revalidateOnMount: false,
+    revalidateIfStale: false 
+  });
+
+
+  const tagOptions = data?.data.map(item => ({value: item.id, label: item.name})) ?? []
+  return {
+    tags: data?.data ?? [],
+    tagOptions,
+    isLoading,
+    error,
+  };
+}
+
+export default useGetTechTags;

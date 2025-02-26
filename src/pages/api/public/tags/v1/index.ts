@@ -31,7 +31,7 @@ export default async function handler(
       const skip = (page - 1) * limit;
 
       // Fetch paginated results
-      const tags = await Tag.find<HydratedDocument<TagDisplay>>().skip(skip).limit(limit);
+      const tags = await Tag.find<HydratedDocument<TagDisplay>>().sort({updatedAt: -1}).skip(skip).limit(limit);
 
       // Get total count of documents
       const totalCount = await Tag.countDocuments();
