@@ -10,13 +10,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import {  FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { mutate } from "swr";
+
 
 
 interface CreateTagFormProps {
     afterSubmit: () => void;
 }
 
+
 const CreateTagForm = ({afterSubmit}:CreateTagFormProps) => {
+    const finder = (key:string) => typeof key === "string" && key.startsWith("/api/public/tags/v1")
+
     const methods = useForm<FormSchema>({
         mode: "onChange",
         resolver: zodResolver(TagSchema),
@@ -24,14 +29,19 @@ const CreateTagForm = ({afterSubmit}:CreateTagFormProps) => {
 
     const {formState: {isValid}} = methods;
 
-    const onSubmit = (data: FormSchema) => {
-        axios.post("/api/admin/v1/tags", data).then(() => {
+    const onSubmit = async (data: FormSchema) => {
+
+        await axios.post('/api/admin/v1/tags', data).then(() => {
             toast.success("Tag created successfully");
             afterSubmit();
         }).catch((error) => {
             toast.error("Failed to create tag");
             console.error(error);
-        });
+        })
+
+        await mutate(finder,null, {
+            revalidate: true
+        })
     }
 
     return (

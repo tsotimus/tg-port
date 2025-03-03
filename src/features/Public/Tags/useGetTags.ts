@@ -9,13 +9,13 @@ type UseGetTechTagsProps = {
     fallbackData?: GenericPaginatedApiResponse<TagDisplay>
 }
 const useGetTechTags = ({page, limit, fallbackData}:UseGetTechTagsProps) => {
-    const { data, isLoading, error } = useSWR<
+    const { data, isLoading, error, mutate } = useSWR<
     GenericPaginatedApiResponse<TagDisplay>, Errors
   >(`/api/public/tags/v1?limit=${limit}&page=${page}`, (key: string) => fetcher(key), {
     fallbackData,
-    revalidateOnFocus: false,
-    revalidateOnMount: false,
-    revalidateIfStale: false 
+    revalidateOnFocus: true,
+    revalidateOnMount: true,
+    revalidateIfStale: true 
   });
 
 
@@ -25,6 +25,7 @@ const useGetTechTags = ({page, limit, fallbackData}:UseGetTechTagsProps) => {
     tagOptions,
     isLoading,
     error,
+    mutate,
   };
 }
 

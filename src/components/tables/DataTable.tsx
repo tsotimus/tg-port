@@ -42,7 +42,6 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel:  pagination ? getPaginationRowModel() : undefined,
   });
 
-  console.log(pagination?.page, pagination?.totalPages)
 
   return (
     <div className="rounded-md border">

@@ -15,7 +15,6 @@ const useGetProjects = () => {
 
   
   
-  console.log(size,data, data?.[size - 1])
 
   return {
     allProjects: data ? data.map(page => page.data) : [],

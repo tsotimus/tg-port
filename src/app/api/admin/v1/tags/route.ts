@@ -14,7 +14,9 @@ const GetTagSchema = z.object({
 export const GET = async(req: NextRequest) => {
 
 
-    const validatedBody = GetTagSchema.safeParse(await req.json());
+    const body = await req.json() as unknown
+
+    const validatedBody = GetTagSchema.safeParse(body);
 
     if (!validatedBody.success) {
       return Response.json(createApiResponse(null, formatZodErrors(validatedBody.error.errors)), {status: 400});
