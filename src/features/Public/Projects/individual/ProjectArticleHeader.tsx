@@ -41,7 +41,7 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
           <div className='flex flex-col space-y-2'>
             <h1 className='text-4xl font-bold'>{project.title}</h1>
             <h2 className='text-muted-foreground'>{project.description}</h2>
-            <div className="w-fit flex flex-wrap space-x-2 ">
+            <div className="w-fit flex flex-wrap gap-2">
               {project.techStack.map((tag) => (
                   <Pill text={tag.name} key={tag.id} />
               ))}
@@ -53,7 +53,7 @@ const ProjectArticleHeader = ({project}:ProjectArticleHeaderProps) => {
         </div>
       </motion.div>
       <motion.div
-        className='flex flex-col items-center sm:flex-row sm:space-x-4'
+        className='flex flex-row items-center space-x-4'
         initial={animation.hide}
         animate={animation.show}
         transition={{ delay: 0.1 }}
