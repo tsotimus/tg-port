@@ -6,7 +6,7 @@ import { DataTable } from "@/components/tables/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
 import ButtonLink from "@/components/ButtonLink";
 import { type ProjectDisplay } from "@/types/project";
-import { GenericPaginatedApiResponse } from "@/types/api";
+import { type GenericPaginatedApiResponse } from "@/types/api";
 import { useRouter } from "next/navigation";
 import Typography from "@/components/Typography";
 import { formatDate } from "@/utils/client/dates";
