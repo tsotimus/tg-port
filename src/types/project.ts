@@ -34,6 +34,7 @@ export type ProjectModel = {
   publishedAt?: Date;
 };
 
+
 export type ProjectDisplay = {
   id: string;
   title: string;
@@ -45,10 +46,10 @@ export type ProjectDisplay = {
   mdxContent: string;
   link?: string;
   github?: string;
-  projectDate: Date;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt?: Date;
+  projectDate: string;
+  createdAt:  string;
+  updatedAt: string;
+  publishedAt?: string;
 };
 
 export type ProjectDisplayWithTags = Omit<ProjectDisplay, "techStack"> & {

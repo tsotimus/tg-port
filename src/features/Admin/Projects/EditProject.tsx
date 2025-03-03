@@ -24,7 +24,10 @@ const EditProject = ({ project }: EditProjectProps) => {
   const methods = useForm<FormSchema>({
     mode: "onChange",
     resolver: zodResolver(ProjectSchema),
-    defaultValues: project,
+    defaultValues: {
+      ...project,
+      projectDate: new Date(project.projectDate)
+    },
   });
 
 

@@ -6,22 +6,48 @@ import { DataTable } from "@/components/tables/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
 import ButtonLink from "@/components/ButtonLink";
 import { type ProjectDisplay } from "@/types/project";
-import { parseAsInteger, useQueryState } from "nuqs";
-import { useEffect } from "react";
+import { GenericPaginatedApiResponse } from "@/types/api";
+import { useRouter } from "next/navigation";
+import Typography from "@/components/Typography";
+import { formatDate } from "@/utils/client/dates";
 
-const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
+const COLUMNS: ColumnDef<ProjectDisplay, string>[] = [
   {
     header: "Title",
     accessorKey: "title",
   },
   {
     header: "Date Created",
+    accessorKey: "createdAt",
+    cell: (cell) => {
+      return (
+        <Typography>
+          {formatDate(cell.getValue())}
+        </Typography>
+      );
+    },
   },
   {
-    header: "Date Posted",
+    header: "Project Date",
+    accessorKey: "projectDate",
+    cell: (cell) => {
+      return (
+        <Typography>
+          {formatDate(cell.getValue())}
+        </Typography>
+      );
+    },
   },
   {
     header: "Date Updated",
+    accessorKey: "updatedAt",
+    cell: (cell) => {
+      return (
+        <Typography>
+          {formatDate(cell.getValue())}
+        </Typography>
+      );
+    },
   },
   {
     header: "View",
@@ -37,7 +63,7 @@ const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
     header: "Edit",
     cell: (cell) => {
       return (
-        <ButtonLink href={`/admin/projects/${cell.row.original.id}`}>
+        <ButtonLink href={`/admin/projects/edit/${cell.row.original.id}`}>
           Edit
         </ButtonLink>
       );
@@ -53,38 +79,29 @@ const COLUMNS: ColumnDef<ProjectDisplay, string | number>[] = [
   // },
 ];
 
-const MyProjects = () => {
 
-  const [page, setPage] = useQueryState(
-    "page",
-    parseAsInteger.withDefault(1),
-  );
+interface MyProjectsProps {
+  initialProjectsData: GenericPaginatedApiResponse<ProjectDisplay>;
+  page: number
+}
 
-  const { currentPageData, isLoading, meta, setSize } = useGetProjects();
+const MyProjects = ({initialProjectsData, page}: MyProjectsProps) => {
 
-  useEffect(() => {
-    const updateSize = async() => {
-      await setSize(page)
-    }
+  const router = useRouter()
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    updateSize();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[page])
+  const { projects, isLoading, meta, } = useGetProjects({page: page, limit: 5, fallbackData: initialProjectsData});
 
-  // const handlePageChange = async(newPage: number) => {
-  //   await setSize(newPage)
-  //   await setPage(newPage)
-  // }
-  
+  const handleSetPage = async(num: number) => {
+    router.push(`${num}`)
+}
 
   return isLoading ? (
     <FullPageLoader />
   ) : (
     <div className="px-40 w-full mt-20">
-      <DataTable columns={COLUMNS} data={currentPageData} pagination={{
+      <DataTable columns={COLUMNS} data={projects} pagination={{
         page,
-        setPage: setPage,
+        setPage: handleSetPage,
         totalPages: meta?.totalPages ?? 1
       }}  />
     </div>

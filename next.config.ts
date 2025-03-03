@@ -10,6 +10,11 @@ const generateConfig = async () => {
       destination: "/admin/tags/1",
       permanent: true,
     },
+    {
+      source: "/admin/projects",
+      destination: "/admin/projects/1",
+      permanent: true,
+    },
   ]
 
   const PROD_REDIRECTS = IS_PROD ? [

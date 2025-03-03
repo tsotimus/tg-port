@@ -1,28 +1,30 @@
 import { type Errors, type GenericPaginatedApiResponse } from "@/types/api";
 import { type ProjectDisplay } from "@/types/project";
 import { fetcher } from "@/utils/client/genericFetchers";
-import useSWRInfinite from "swr/infinite";
+import useSWR from "swr";
 
-const useGetProjects = () => {
+type UseGetProjectsProps = {
+  page?: number;
+  limit?: number;
+  fallbackData?: GenericPaginatedApiResponse<ProjectDisplay>;
+}
 
-  const getKey = (pageIndex:number, previousPageData: GenericPaginatedApiResponse<ProjectDisplay>) => {
-    if (previousPageData && !previousPageData.data.length) return null 
-    if (pageIndex === 0) return "/api/admin/v1/projects?limit=5"
-    return `/api/admin/v1/projects?limit=5&page=${previousPageData.meta.currentPage + 1}`                   
-  }
-
-  const { data, size, setSize, isLoading, error } = useSWRInfinite<GenericPaginatedApiResponse<ProjectDisplay>, Errors>(getKey, fetcher)
-
-  
-  
+const useGetProjects = ({ page = 1, limit = 5, fallbackData }: UseGetProjectsProps = {}) => {
+  const { data, isLoading, error } = useSWR<
+    GenericPaginatedApiResponse<ProjectDisplay>,
+    Errors
+  >(`/api/admin/v1/projects?limit=${limit}&page=${page}`, fetcher, {
+    fallbackData,
+    revalidateOnFocus: true,
+    revalidateOnMount: true,
+    revalidateIfStale: true
+  });
 
   return {
-    allProjects: data ? data.map(page => page.data) : [],
-    currentPageData: data ? data[size - 1].data : [],
-    meta: data ? data[size - 1].meta : undefined,
+    projects: data?.data ?? [],
+    meta: data?.meta,
     isLoading,
     isError: error,
-    setSize,
   };
 };
 
