@@ -1,0 +1,5 @@
+{
+	"dependencies": {
+		"@next/codemod": "16.2.0-canary.50"
+	}
+}
