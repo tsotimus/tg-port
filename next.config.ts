@@ -1,4 +1,4 @@
-import {type  NextConfig } from "next";
+import type { NextConfig } from "next";
 
 const generateConfig = async () => {
   const IS_UNDER_CONSTRUCTION = process.env.IS_UNDER_CONSTRUCTION === "true";
@@ -33,7 +33,7 @@ const generateConfig = async () => {
   ] : []
 
   const nextConfig: NextConfig = {
-    transpilePackages: ["@mdxeditor/editor", "geist"],
+    transpilePackages: ["@mdxeditor/editor", "geist", "next-mdx-remote"],
     reactStrictMode: true,
     experimental: {
       optimizePackageImports: ["shiki", "@icons-pack/react-simple-icons"],
